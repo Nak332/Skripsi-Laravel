@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers\API\v1;
 
+use App\Services\V1\PatientQuery;
 use App\Models\Patient;
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\PatientResource;
+use App\Http\Resources\V1\PatientCollection;
+use Illuminate\Http\Request;
+use Symfony\Component\Finder\Iterator\CustomFilterIterator;
 
 class PatientController extends Controller
 {
@@ -14,10 +19,22 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return Patient::all();
+        $filter = new PatientQuery();
+        $queryItems = $filter->transform($request); //[['column','operator','value']]
+
+        if(count($queryItems)==0){
+            return new PatientCollection(Patient::paginate());
+        }else{
+            return new PatientCollection(Patient::where($queryItems)->paginate());
+        }
+
+
+        
+
+        
     }
 
     /**
@@ -49,7 +66,7 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        //
+        return new PatientResource($patient);
     }
 
     /**

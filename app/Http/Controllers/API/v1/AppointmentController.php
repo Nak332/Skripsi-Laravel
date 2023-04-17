@@ -6,6 +6,8 @@ use App\Models\Appointment;
 use App\Http\Requests\StoreAppointmentRequest;
 use App\Http\Requests\UpdateAppointmentRequest;
 use App\Http\Controllers\Controller;
+use  App\Http\Resources\V1\AppointmentCollection;
+use  App\Http\Resources\V1\AppointmentResource;
 
 class AppointmentController extends Controller
 {
@@ -16,7 +18,13 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        
+        // $appointment = Appointment::with('patient')->get();
+        // // return Appointment::all();
+        // return new AppointmentCollection(Appointment::paginate());
+
+        $appointments = Appointment::with('patient')->paginate();
+        return new AppointmentCollection($appointments);
     }
 
     /**
@@ -48,7 +56,8 @@ class AppointmentController extends Controller
      */
     public function show(Appointment $appointment)
     {
-        //
+         return new AppointmentResource($appointment);
+        //return $appointment;
     }
 
     /**
