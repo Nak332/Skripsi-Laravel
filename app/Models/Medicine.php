@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Appointment extends Model
+class Medicine extends Model
 {
-    use HasFactory;
-    
-    public function patient(){
-        return $this->belongsTo(Patient::class);
-        return $this->belongsTo(Employees::class);
+    public function RekamMedis(){
         return $this->belongsTo(RekamMedis::class);
     }
+    use HasFactory;
 }

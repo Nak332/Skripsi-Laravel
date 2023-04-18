@@ -17,13 +17,24 @@ class PatientFactory extends Factory
     public function definition()
     {
         $name = $this->faker->name();
+        $alias = $this->faker->name();
+        $marital = $this->faker->randomElement(['Kawin','Belum Kawin','Cerai']);
         $gender = 'binary';
 
         return [
-            'name'=>$name,
-            'gender'=> $gender,
-            'phone'=> $this->faker->phoneNumber(),
-            'address'=>$this->faker->address()
+            'patientName'=>$name,
+            'patientGender'=> $gender,
+            'patientAlias' => $alias,
+            'patientPhone'=> $this->faker->phoneNumber(),
+            'patientAddress'=>$this->faker->address(),
+            'patientNIK' => $this->faker->randomNumber(9, true),
+            'patientPOB' => $this->faker->address(),
+            'patientDOB' => $this->faker->dateTimeThisDecade(),
+            'patientEmergencyContactName' => $this->faker->name(),
+            'patientEmergencyContactPhone' => $this->faker->phoneNumber(),
+            'hasBPJS' => $this->faker->numberBetween(0,1),
+            'patientMaritalStatus' => $marital
+
 
 
             //
