@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PatientQuery{
     protected $allowedParamater = [
-        'patientId' => ['eq','gt','lt'],
+        'patient_id' => ['eq','gt','lt'],
         'patientName'=> ['eq'],
         'current_gender'=> ['eq'],
         'patientPhone'=> ['eq'],
