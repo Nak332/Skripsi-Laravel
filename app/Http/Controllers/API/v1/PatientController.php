@@ -14,6 +14,22 @@ use Symfony\Component\Finder\Iterator\CustomFilterIterator;
 
 class PatientController extends Controller
 {
+    public function insert(Request $request)
+{
+    $validatedData = $request->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:users',
+    ]);
+
+    $patient = new Patient();
+    $patient->name = $validatedData['name'];
+    $patient->email = $validatedData['email'];
+    $patient->save();
+
+    return response()->json([
+        'message' => 'User created successfully!'
+    ], 201);
+}
     /**
      * Display a listing of the resource.
      *
