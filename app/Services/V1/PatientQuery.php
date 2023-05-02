@@ -6,17 +6,17 @@ use Illuminate\Http\Request;
 
 class PatientQuery{
     protected $allowedParamater = [
-        'id' => ['eq','gt','lt'],
-        'name'=> ['eq'],
+        'patient_id' => ['eq','gt','lt'],
+        'patientName'=> ['eq'],
         'current_gender'=> ['eq'],
-        'phone'=> ['eq'],
-        'address'=> ['eq'],
+        'patientPhone'=> ['eq'],
+        'patientAddress'=> ['eq'],
         
             
     ];
 
     protected $columnMap = [
-         'current_gender' => 'gender'  
+         'current_gender' => 'patientgender'  
     ];
 
     protected $operands = [

@@ -22,6 +22,11 @@ class PatientSeeder extends Seeder
             ->create();
 
             Patient::factory()
+            ->count(5)
+            ->hasRekamMedis(3)
+            ->create();
+
+            Patient::factory()
             ->count(10)
             ->hasAppointments(7)
             ->create();

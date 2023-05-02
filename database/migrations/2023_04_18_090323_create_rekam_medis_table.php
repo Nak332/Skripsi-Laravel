@@ -13,14 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('appointments', function (Blueprint $table) {
+        Schema::create('rekam_medis', function (Blueprint $table) {
             $table->id();
             $table->integer('patient_id');
+            $table->string('appointment_id');
+            $table->string('medicine_id');
+            $table->string('extramedicine_id');
             $table->string('employee_id');
-            $table->integer('antrianNumber');
-            $table->string('appointmentType');
-            $table->string('status'); //Diproses (sedang testing, atau sedang di revisi), Valid, Invalid
-            $table->date('appointmentDate');
+            $table->string('symptoms');
+            $table->string('disease');
+            $table->string('totalPrice');
+            $table->string('type');
+            $table->string('note');
+            $table->string('flag');
+            $table->string('icd10');
             $table->timestamps();
         });
     }
@@ -32,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appointments');
+        Schema::dropIfExists('rekam_medis');
     }
 };

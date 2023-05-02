@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('appointments', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->integer('patient_id');
-            $table->string('employee_id');
-            $table->integer('antrianNumber');
-            $table->string('appointmentType');
-            $table->string('status'); //Diproses (sedang testing, atau sedang di revisi), Valid, Invalid
-            $table->date('appointmentDate');
+            $table->string('employeeName');
+            $table->string('employeeJob');
+            $table->string('employeePhone');
+            $table->string('employeeGender');
+            $table->string('employeeNIK')->unique();
+            $table->string('username')->nullable();
+            $table->string('password')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appointments');
+        Schema::dropIfExists('employees');
     }
 };

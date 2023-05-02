@@ -16,11 +16,11 @@ class AppointmentResource extends JsonResource
     {
         return [
             'patient_id' => $this->patient_id,
-            'patient_name' => $this->whenLoaded('patient', function () {
-                return $this->patient->name;
+            'patientName' => $this->whenLoaded('patient', function () {
+                return $this->patient->patientName;
             }),
             'status' => $this->status,
-            'date' => $this->date,
+            'date' => $this->appointmentDate,
             'id'=> $this->id
             
         ];
