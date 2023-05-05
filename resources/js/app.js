@@ -1,19 +1,20 @@
 import './bootstrap';
 import { createApp } from 'vue';
-import HelloVue from './components/HelloVue.vue';
-import home from './components/home.vue';
-import axios from 'axios'
+import NavigationBar from './components/NavigationBar.vue';
+import './../css/app.css'
+
+
+// import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+// import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap-vue/dist/bootstrap-vue.css'
+// import axios from 'axios'
+// import home from './components/home.vue';
 
 createApp({
     components: {
-        HelloVue,
+        NavigationBar
     }
-}).mount('#app');
+}).mount('#navbar');
 
 
-createApp({
-    components: {
-        home,
-    }
-}).mount('#home');
 

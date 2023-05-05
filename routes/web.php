@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('resepsi');
 });
+// Route::get('test', function () {
+//     return view('resepsi');
+// });
 
 Route::post('/patient/insert', 'PatientController@insert');
