@@ -1,9 +1,7 @@
 
-{{-- @extends('layouts.master')
 
-@section('title','Resepsi')
-
-@section('content') --}}
+ 
+ 
 <form>
     <label for="fname">First name:</label><br>
     <input type="text" id="fname" name="fname"><br>
@@ -11,4 +9,3 @@
     <input type="text" id="lname" name="lname">
   </form>
 
-{{-- @stop --}}
