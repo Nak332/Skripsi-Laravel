@@ -21,4 +21,13 @@ Route::get('/', function () {
 //     return view('resepsi');
 // });
 
+Route::get('register', function () {
+    return view('register-user');
+});
+
+
+Route::get('dev', function () {
+    return view('crud-sandbox');
+});
+
 Route::post('/patient/insert', 'PatientController@insert');
