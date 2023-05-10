@@ -31,3 +31,7 @@ Route::get('dev', function () {
 });
 
 Route::post('/patient/insert', 'PatientController@insert');
+
+Route::get('login', function () {
+    return view('login-user');
+});
