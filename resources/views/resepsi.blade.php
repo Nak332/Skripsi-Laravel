@@ -4,6 +4,8 @@
 
 @section('content')
 
+@extends('layouts.nav-bar')
+
 
 <div id="container-main" class="h-fit flex-inline bg-gray-200">
 
