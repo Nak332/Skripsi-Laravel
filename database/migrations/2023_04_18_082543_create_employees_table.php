@@ -15,14 +15,18 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('employeeName');
-            $table->string('employeeJob');
-            $table->string('employeePhone');
-            $table->string('employeeGender');
-            $table->string('employeeNIK')->unique();
-            $table->string('username')->nullable();
-            $table->string('password')->nullable();
+            $table->string('employee_name');
+            $table->string('employee_job');
+            $table->string('employee_phone');
+            $table->string('employee_gender');
+            $table->string('employee_NIK')->unique();
+            $table->string('employee_address');
+            $table->string('employee_photo');
+            $table->date('employee_DOB');
+            $table->string('employee_POB');
+            $table->string('employee_email');
             $table->timestamps();
+
         });
     }
 

@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->integer('patient_id');
             $table->string('employee_id');
-            $table->integer('antrianNumber');
-            $table->string('appointmentType');
+            $table->integer('antrian_number');
+            $table->string('appointment_type');
             $table->string('status'); //Diproses (sedang testing, atau sedang di revisi), Valid, Invalid
-            $table->date('appointmentDate');
+            $table->date('appointment_date');
             $table->timestamps();
         });
     }

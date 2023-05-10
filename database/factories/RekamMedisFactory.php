@@ -29,7 +29,7 @@ class RekamMedisFactory extends Factory
             'extramedicine_id' => Medicine::factory(),
             'symptoms' => $this->faker->sentence(3),
             'disease' => $this->faker->sentence(3),
-            'totalPrice' => $this->faker->numberBetween(5000, 10000000),
+            'total_price' => $this->faker->numberBetween(5000, 10000000),
             'type' =>  $typeApp,
             'note' => $this->faker->paragraph(),
             'flag' => $this->faker->numberBetween(0,1),

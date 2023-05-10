@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('medicines', function (Blueprint $table) {
             $table->id();
-            $table->string('medicineName');
-            $table->integer('medicineStock');
-            $table->date('medicineExpiredDate');
-            $table->string('medicineDescription');
-            $table->integer('medicinePrice');
+            $table->string('medicine_name');
+            $table->integer('medicine_stock');
+            $table->date('medicine_expired_date');
+            $table->string('medicine_description');
+            $table->integer('medicine_price');
             $table->timestamps();
         });
     }
