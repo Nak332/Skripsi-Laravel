@@ -1,6 +1,9 @@
 
-``
+@extends('layouts.master')
 
+@section('title','Resepsi')
+
+@section('content')
 
 <div id="container-main-register" class="bg-gray-300">
     <section class="bg-gray-50 dark:bg-gray-900">
@@ -48,4 +51,3 @@
 </div>
 
 
-@stop
