@@ -1,9 +1,5 @@
 
-@extends('layouts.master')
-
-@section('title','Resepsi')
-
-@section('content')
+``
 
 
 <div id="container-main-register" class="bg-gray-300">
