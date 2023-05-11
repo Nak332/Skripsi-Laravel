@@ -26,9 +26,9 @@ class AppointmentFactory extends Factory
             'patient_id' => Patient::factory(),
             'employee_id' => Employees::factory(),
             'status' => $status,
-            'appointmentDate' => $this->faker->dateTimeThisDecade(),
-            'appointmentType' => $typeApp,
-            'antrianNumber' => self::$number++
+            'appointment_date' => $this->faker->dateTimeThisDecade(),
+            'appointment_type' => $typeApp,
+            'antrian_number' => self::$number++
 
         ];
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\v1\PatientController;
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,8 @@ Route::get('register', function () {
 Route::get('dev', function () {
     return view('crud-sandbox');
 });
+
+Route::post('/dev/simp', [PatientController::class,'insert']);
 
 Route::post('/patient/insert', 'PatientController@insert');
 

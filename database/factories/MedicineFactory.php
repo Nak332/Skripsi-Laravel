@@ -18,11 +18,11 @@ class MedicineFactory extends Factory
     {
         $name = $this->faker->name();
         return [
-            'medicineName' => $name,
-            'medicineStock' => $this->faker->numberBetween(0,100),
-            'medicineExpiredDate' => $this->faker->dateTimebetween('+1 week','+10 years'),
-            'medicineDescription' => $this->faker->sentence(),
-            'medicinePrice' => $this->faker->numberBetween('5000','150000')
+            'medicine_name' => $name,
+            'medicine_stock' => $this->faker->numberBetween(0,100),
+            'medicine_expired_date' => $this->faker->dateTimebetween('+1 week','+10 years'),
+            'medicine_description' => $this->faker->sentence(),
+            'medicine_price' => $this->faker->numberBetween('5000','150000')
         ];
     }
 }

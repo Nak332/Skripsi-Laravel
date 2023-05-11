@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('employee_id');
             $table->string('symptoms');
             $table->string('disease');
-            $table->string('totalPrice');
+            $table->string('total_price');
             $table->string('type');
             $table->string('note');
             $table->string('flag');

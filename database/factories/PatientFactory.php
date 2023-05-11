@@ -22,18 +22,18 @@ class PatientFactory extends Factory
         $gender = 'binary';
 
         return [
-            'patientName'=>$name,
-            'patientGender'=> $gender,
-            'patientAlias' => $alias,
-            'patientPhone'=> $this->faker->phoneNumber(),
-            'patientAddress'=>$this->faker->address(),
-            'patientNIK' => $this->faker->randomNumber(9, true),
-            'patientPOB' => $this->faker->address(),
-            'patientDOB' => $this->faker->dateTimeThisDecade(),
-            'patientEmergencyContactName' => $this->faker->name(),
-            'patientEmergencyContactPhone' => $this->faker->phoneNumber(),
-            'hasBPJS' => $this->faker->numberBetween(0,1),
-            'patientMaritalStatus' => $marital
+            'patient_name'=>$name,
+            'patient_gender'=> $gender,
+            'patient_alias' => $alias,
+            'patient_phone'=> $this->faker->phoneNumber(),
+            'patient_address'=>$this->faker->address(),
+            'patient_NIK' => $this->faker->randomNumber(9, true),
+            'patient_POB' => $this->faker->address(),
+            'patient_DOB' => $this->faker->dateTimeThisDecade(),
+            'patient_emergency_contact_name' => $this->faker->name(),
+            'patient_emergency_contact_phone' => $this->faker->phoneNumber(),
+            'has_BPJS' => $this->faker->numberBetween(0,1),
+            'patient_marital_status' => $marital
 
 
 

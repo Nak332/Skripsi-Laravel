@@ -24,11 +24,16 @@ class EmployeesFactory extends Factory
         $job = $this->faker->randomElement(['Perawat','Doktor']);
         $gender = 'binary';
         return [
-            'employeeName' => $name,
-            'employeeJob' => $job,
-            'employeeGender' => $gender,
-            'employeePhone' => $this->faker->phoneNumber(),
-            'employeeNIK' => $this->faker->randomNumber(9, true)
+            'employee_name' => $name,
+            'employee_job' => $job,
+            'employee_gender' => $gender,
+            'employee_phone' => $this->faker->phoneNumber(),
+            'employee_NIK' => $this->faker->randomNumber(9, true),
+            'employee_address' => $this->faker->address(),
+            'employee_photo' => $this->faker->imageUrl(640, 480, 'animals', true),
+            'employee_DOB' =>$this->faker->dateTimeThisDecade(),
+            'employee_POB'=> $this->faker->address(),
+            'employee_email' => $this->faker->email()
             //
         ];
     }
