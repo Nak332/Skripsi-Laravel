@@ -19,3 +19,6 @@ yarn-error.log
 composer.lock
 public/css/app.css
 public/js/app.js
+public/css/app.css
+public/mix-manifest.json
+public/js/app.js
