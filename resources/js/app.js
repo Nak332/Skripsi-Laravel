@@ -1,6 +1,4 @@
 import './bootstrap';
-import { createApp } from 'vue';
-import NavigationBar from './components/NavigationBar.vue';
 import './../css/app.css'
 
 
