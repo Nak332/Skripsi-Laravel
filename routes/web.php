@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\v1\PatientController;
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('resepsi');
+});
+// Route::get('test', function () {
+//     return view('resepsi');
+// });
+
+Route::get('register', function () {
+    return view('register-user');
 });
 
 
+Route::get('dev', function () {
+    return view('crud-sandbox');
+});
+
+Route::post('/dev/simp', [PatientController::class,'insert']);
+
+Route::post('/patient/insert', 'PatientController@insert');
+
+Route::get('login', function () {
+    return view('login-user');
+});
