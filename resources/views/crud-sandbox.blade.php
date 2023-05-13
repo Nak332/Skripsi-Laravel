@@ -10,7 +10,6 @@
 
     <form method="POST" action="/dev/simp">
         {{ csrf_field()}}
-        {{ logger('test')}}
 
         <label for="name">Name:</label>
         <input type="text" name="name" id="name">
@@ -27,11 +26,11 @@
     <hr>
 
     <h1>Users</h1>
-
+{{-- 
     <ul>
-        {{-- @foreach ($users as $user)
+        @foreach ($users as $user)
             <li>{{ $user->name }} ({{ $user->email }})</li>
-        @endforeach --}}
-    </ul>
+        @endforeach
+    </ul> --}}
 </body>
 </html>

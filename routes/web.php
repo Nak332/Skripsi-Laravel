@@ -39,3 +39,7 @@ Route::post('/dev/simp', [UserController::class,'store']);
 Route::get('login', function () {
     return view('login-user');
 });
+
+Route::get('users', function () {
+    return view('crud-sandbox');
+});
