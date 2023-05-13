@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('disease');
             $table->string('total_price');
             $table->string('type');
-            $table->string('note');
+            $table->longtext('note');
             $table->string('flag');
             $table->string('icd10');
             $table->timestamps();
