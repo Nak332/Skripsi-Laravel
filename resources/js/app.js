@@ -2,13 +2,16 @@ import './bootstrap';
 import './../css/app.css'
 import Alpine from 'alpinejs'
 import focus from '@alpinejs/focus'
+import collapse from '@alpinejs/collapse'
  
 
- 
+
 window.Alpine = Alpine
- 
-Alpine.start()
+Alpine.plugin(collapse)  
 Alpine.plugin(focus)
+Alpine.start()
+
+
 
 
 // import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'

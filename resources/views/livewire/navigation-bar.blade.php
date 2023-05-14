@@ -24,16 +24,18 @@
                 <li>
                     <a href="#" class="block py-2 pl-3 pr-4  hover:bg-blue-500 text-transparent bg-clip-text transition-all duration-300 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pengaturan</a>
                 </li>
-                <li>
-                    <div class="container pl-80 mx-auto flex items-center">
-                        <img src="{{ asset('storage/profile-icon.webp') }}" alt="Profile Picture" class="h-10 w-10 rounded-full mr-4">
-                        <div>
-                          <h1 class="text-xs font-bold text-white">Name</h1>
-                          <p class="text-xs text-white">Title</p>
-                        </div>
-                      </div>
-                </li>
+            </ul>
 
+            <ul>
+              <li>
+                <div class="container pl-80 mx-auto flex items-center">
+                    <img src="{{ asset('storage/profile-icon.webp') }}" alt="Profile Picture" class="h-10 w-10 rounded-full mr-4">
+                    <div>
+                      <h1 class="text-xs font-bold text-white">Name</h1>
+                      <p class="text-xs text-white">Title</p>
+                    </div>
+                  </div>
+            </li>
             </ul>
           </div>
         </div>
