@@ -12,8 +12,10 @@
 
 </head>
 <body>
+   
     
     @yield('content')
         
+    @extends('layouts.footer')
 </body>
 </html>

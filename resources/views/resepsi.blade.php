@@ -4,7 +4,7 @@
 
 @section('content')
 
-@livewire('navigation-bar')
+@extends('layouts.navigation-bar')
 
 
 <div id="container-main" class="flex-inline bg-gray-200">
