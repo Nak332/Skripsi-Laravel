@@ -35,7 +35,7 @@
 
 
 
-    <div id="filler" class="flex-inline justify-end p-8 w-4/5 h-fit"></div>
+    <div id="filler" class="flex-inline self-center p-8 w-4/5 h-fit sm:w-full "></div>
 
   
 

@@ -8,7 +8,7 @@
         
         <button @click="open = true" class="drop-shadow hover:drop-shadow-xl transition-all bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 hover:transition-all px-4 rounded">Tambah</button>
         <div x-show="open">
-            @livewire('form-modal')
+            @livewire('tambah-antrian-modal')
         </div>
     </div>
     
