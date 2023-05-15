@@ -10,6 +10,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
@@ -19,7 +20,12 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
+            public function toResponse($request)
+            {
+                return redirect('/login');
+            }
+        });
     }
 
     /**
@@ -46,7 +52,7 @@ class FortifyServiceProvider extends ServiceProvider
             return view('login-user');
         });
         Fortify::registerView(function () {
-            return view('auth.register');
+            return view('register-user');
         });
         Fortify::requestPasswordResetLinkView(function () {
             return view('auth.forgot-password');
