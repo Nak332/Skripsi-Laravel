@@ -12,8 +12,8 @@ class AntrianController extends Controller
 
     public function index()
     {
-    	$antrianview = Appointment::orderBy('antrian_number')->get();
-    	return view('/', compact('antrianview'));
+    	$antrianView = Appointment::orderBy('antrian_number')->get();
+    	return view('/', compact('antrianView'));
 
     }
 
@@ -32,8 +32,8 @@ class AntrianController extends Controller
 
     public function update(Request $request, $id)
 {
-    $AntrianUpdate = Appointment::findOrFail($id);
-    $AntrianUpdate->update([
+    $antrianUpdate = Appointment::findOrFail($id);
+    $antrianUpdate->update([
         'patient_id' => $request->patient_id,
         'employee_id' => $request->employee_id,
         'appointment_type' => $request->appointment_type,
@@ -45,8 +45,8 @@ class AntrianController extends Controller
 
 public function delete($id)
 {
-    $AntrianDelete = Appointment::findOrFail($id);
-    $AntrianDelete->delete();
+    $antrianDelete = Appointment::findOrFail($id);
+    $antrianDelete->delete();
 
 	return redirect('/');
 }
