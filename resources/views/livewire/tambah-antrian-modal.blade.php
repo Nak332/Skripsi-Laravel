@@ -35,8 +35,13 @@
                 </div> --}}
                 <form class="space-y-4 md:space-y-6" action="/tambah-antrian">
                         <div>
-                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Pasien</label>
-                            <input type="email" name="email" id="email" class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Nama / Nomor Pasien / Nomor Telpon" required="">
+                            {{-- <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Pasien</label>
+                            <input type="email" name="email" id="email" class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Nama / Nomor Pasien / Nomor Telpon" required=""> --}}
+                            <select class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                                @foreach ($test_data as $td)
+                                    <option class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" >{{$td}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Tanggal</label>
