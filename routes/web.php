@@ -3,6 +3,8 @@
 use App\Http\Controllers\API\v1\PatientController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AntrianController;
+use App\Models\Appointment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('resepsi', function () {
     return view('resepsi');
 });
 // Route::get('test', function () {
@@ -26,6 +28,11 @@ Route::get('/', function () {
 // Route::get('register', function () {
 //     return view('register-user');
 // });
+
+Route::get('/',function(){
+    return redirect('/resepsi');
+
+});
 
 
 Route::get('dev', function () {
@@ -43,3 +50,6 @@ Route::post('/dev/simp', [UserController::class,'store']);
 Route::get('users', function () {
     return view('crud-sandbox');
 });
+
+
+Route::get('resepsi',[AntrianController::class,'index']);

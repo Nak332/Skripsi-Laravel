@@ -7,6 +7,12 @@
 @extends('layouts.navigation-bar')
 
 
+
+{{-- TESST --}}
+{{-- @foreach ($antrian as $a)
+  <p>{{ $antrian }}</p>
+@endforeach --}}
+
 <div id="container-main" class="flex-inline bg-gray-200">
 
   <div id="header-page" class="flex justify-center">

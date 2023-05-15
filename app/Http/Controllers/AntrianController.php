@@ -12,8 +12,8 @@ class AntrianController extends Controller
 
     public function index()
     {
-    	$antrianView = Appointment::orderBy('antrian_number')->get();
-    	return view('/', compact('antrianView'));
+    	$antrian = Appointment::all();
+    	return view('resepsi', ['antrian' => $antrian]);
 
     }
 
