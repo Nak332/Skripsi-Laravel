@@ -20,8 +20,14 @@ return new class extends Migration
             $table->string('medicine_id');
             $table->string('extramedicine_id');
             $table->string('employee_id');
-            $table->string('symptoms');
-            $table->string('disease');
+            $table->string('symptoms'); //hasil pemeriksaan
+            $table->string('keluhan');
+            $table->string('penatalaksanaan');
+            $table->string('odontogram_klinik');
+            $table->string('tindakan');
+            $table->string('layanan_sebelumnya');
+            $table->string('persetujuan');
+            $table->string('disease');// hasil diagnosis penyakit
             $table->string('total_price');
             $table->string('type');
             $table->longtext('note');
