@@ -29,6 +29,7 @@ class RekamMedisFactory extends Factory
             'extramedicine_id' => Medicine::factory(),
             'symptoms' => $this->faker->sentence(3),
             'keluhan' => $this->faker->sentence(3),
+            'hasil_anamnesis'=> $this->faker->sentence(3),
             'penatalaksanaan' => $this->faker->sentence(3),
             'odontogram_klinik'=> $this->faker->sentence(3),
             'tindakan'=> $this->faker->sentence(3),
