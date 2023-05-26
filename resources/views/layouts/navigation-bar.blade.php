@@ -1,6 +1,7 @@
 <div id="navbar">
     <div class="bg-white border-gray-200 dark:bg-gray-900">
-        <div class="max-w-screen-xl flex flex-wrap items-center  mx-auto p-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
           <!-- Reroute ke home -->
           <a href="" class="flex items-center pr-10">
               <img src="{{ asset('storage/logo-rod.png') }}" class="h-10 mr-4" alt="Logo Klinik" />
@@ -11,22 +12,22 @@
 
           </button>
           <div class="hidden w-full md:inline md:w-auto pt-3" id="navbar-default">
-            <ul class=" self-centerfont-medium flex p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-10 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul class="ml-auto flex items-center space-x-4">
                 <li>
-                    <a href="#" class="block py-2 pl-3 pr-4  hover:bg-blue-500 text-transparent bg-clip-text transition-all duration-300 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Dashboard</a>
+                    <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" aria-current="page">Dashboard</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 pl-3 pr-4  hover:bg-blue-500 text-transparent bg-clip-text transition-all duration-300 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" >Resepsi</a>
+                    <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" >Resepsi</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 pl-3 pr-4  hover:bg-blue-500 text-transparent bg-clip-text transition-all duration-300 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Daftar Pasien</a>
+                    <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Daftar Pasien</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 pl-3 pr-4  hover:bg-blue-500 text-transparent bg-clip-text transition-all duration-300 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pengaturan</a>
+                    <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Pengaturan</a>
                 </li>
             
               <li>
-                <div class="container pl-80 mx-auto flex items-center">
+                <div class="container mx-auto flex items-center">
                   <div class="flex justify-center">
                     <div
                         x-data="{
@@ -60,14 +61,14 @@
                             :aria-expanded="open"
                             :aria-controls="$id('dropdown-button')"
                             type="button"
-                            class="block py-2 pl-3 pr-4  hover:bg-blue-500 text-transparent bg-clip-text transition-all duration-300 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                            class="max-w-xs hover:bg-gray-600 flex rounded-md items-center text-sm  text-white"
                         >
-                        
+                        <div class="ml-2">
+                                <h1 class="text-xs font-bold text-white pr-4">Name</h1>
+                                <p class="text-xs text-white pr-4">Title</p>
+                            </div>
                         <img src="{{ asset('storage/profile-icon.webp') }}" alt="Profile Picture" class="h-10 w-10 rounded-full mr-4">
-                        
-                          <h1 class="text-xs font-bold text-white pr-4">Name</h1>
-                          <p class="text-xs text-white pr-4">Title</p>
-                        
+                            
                         <div>
                           
                         </div>
@@ -103,5 +104,6 @@
           </div>
         </div>
       </div>
+    </div>
   </div>
 
