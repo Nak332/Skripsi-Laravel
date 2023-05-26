@@ -57,3 +57,7 @@ Route::get('resepsi',[AntrianController::class,'index']);
 Route::get('form_rekam', function () {
     return view('form-rekammedis');
 });
+Route::get('pasien', function () {
+    return view('pasien');
+});
+
