@@ -36,12 +36,14 @@
   {{-- ///////////////////////////////////// Container Bawah //////////////////////////////////////--}}
   <div id="container-items-atas" class="md:flex sm:flex-inline ml-16 mr-16  justify-center space-x-4 content h-fit">
     
-    @livewire('antrian-list')  
+      @livewire('antrian-list')
+  
+      
 
 
 
 
-    <div id="filler" class="flex-inline self-center p-8 w-4/5 h-fit sm:w-full "></div>
+    <div id="filler" class="flex-inline self-center p-8 w-4/5 h-fit sm:hidden "></div>
 
   
 
