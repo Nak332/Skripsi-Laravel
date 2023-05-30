@@ -29,7 +29,7 @@
 
 
   <div id="container-items-atas" class=" ml-16 mr-16 xl:flex md:flex-inline justify-center h-fit">
-    @livewire('antrian-list')
+    @livewire('antrian-list',['patients'=>$patients])
     @livewire('antrian-list')    
   </div>
 

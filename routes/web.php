@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\API\v1\PatientController;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AntrianController;
+use App\Http\Controllers\PatientController ;
 use App\Models\Appointment;
 use Illuminate\Support\Facades\Route;
 
@@ -53,7 +54,9 @@ Route::get('users', function () {
 
 
 Route::get('resepsi',[AntrianController::class,'index']);
+Route::get('resepsi',[PatientController::class,'index']);
 
 Route::get('form_rekam', function () {
     return view('form-rekammedis');
+    
 });

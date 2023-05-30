@@ -3,13 +3,19 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Patient;
 
 class PatientSearchBar extends Component
 {
     public $query;
-    public $contacts;
+    public $patient;
     public $highlightIndex;
 
+    public function updatedQuery(){
+        $this->patient = Patient::where('patient_name','like','%'.$this->query.'%')
+        ->get()
+        ->toArray();
+    }
      
     // public function reset()
     // {
@@ -20,7 +26,8 @@ class PatientSearchBar extends Component
  
     public function mount()
     {
-        $this->reset();
+        $this->query='';
+        $this->patient='';
     }
  
     public function incrementHighlight()

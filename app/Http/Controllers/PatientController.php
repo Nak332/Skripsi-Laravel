@@ -9,9 +9,8 @@ class PatientController extends Controller
 {
     public function index()
     {
-    	$patientList = Patient::orderBy('patient_name')->get();
-    	return view('/', compact('patientList'));
-
+    	$patients = Patient::all();
+        return view('resepsi',compact('patients'));
     }
 
     public function insert(Request $request)
