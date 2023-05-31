@@ -17,7 +17,10 @@
 </head>
 
 <body>
-    @yield('content')
+    <div>
+        @yield('content')
+    </div>
+    
 
     @extends('layouts.footer')
 </body>
