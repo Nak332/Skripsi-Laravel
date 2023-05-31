@@ -27,11 +27,12 @@ class PatientTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            
+
             Column::make("Id", "id")
                 ->sortable(),
             Column::make("Nama", "patient_name")
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
             Column::make("Jenis Kelamin", "patient_gender")
                 ->sortable(),
             Column::make("Alamat", "patient_address")
@@ -42,7 +43,7 @@ class PatientTable extends DataTableComponent
                 ->sortable(),
             Column::make("Updated at", "updated_at")
                 ->sortable(),
-            
+
         ];
     }
 }
