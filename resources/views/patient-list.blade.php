@@ -7,8 +7,8 @@
 
 <style>[x-cloak] { display: none !important; }</style>
 
-<div class="flex h-full bg-white justify-center pt-12">
-    <div class="w-3/5 h-fit">
+<div class="flex min-h-screen bg-white justify-center pt-12 pb-4">
+    <div class="w-4/5 h-fit">
         <livewire:patient-table />
     </div>
     
