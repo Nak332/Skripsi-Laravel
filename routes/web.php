@@ -61,3 +61,11 @@ Route::get('pasien', function () {
     return view('pasien');
 });
 
+Route::get('daftar-pasien', function () {
+    return view('patient-list');
+});
+
+
+
+Route::view('/pasien', 'pasien');
+
