@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    @livewire('livewire-ui-modal')
     <div>
         @yield('content')
     </div>

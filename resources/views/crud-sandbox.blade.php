@@ -1,10 +1,11 @@
+@extends('layouts.master')
 
+@section('title','Resepsi')
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create User</title>
-</head>
+@section('content')
+
+@extends('layouts.navigation-bar')
+
 <body>
     <h1>Create User</h1>
 
@@ -26,6 +27,8 @@
     <hr>
 
     <h1>Users</h1>
+    <button onclick="Livewire.emit('openModal', 'add-appointment')">Edit User</button>
+
 {{-- 
     <ul>
         @foreach ($users as $user)
@@ -33,4 +36,6 @@
         @endforeach
     </ul> --}}
 </body>
-</html>
+
+
+@stop
