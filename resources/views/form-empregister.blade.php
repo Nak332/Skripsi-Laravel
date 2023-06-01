@@ -7,14 +7,14 @@
 @extends('layouts.navigation-bar')
 
 <div id="container-main" class="bg-gray-200">
-  <div class="container mx-auto p-4">  
+  <div class="container mx-auto p-4">
         <div class="min-h-screen flex items-center justify-center">
             <div class="max-w-screen-sm w-full mx-auto bg-white p-8 rounded-md shadow-md">
                 <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-4xl w-128 h-fit">
                     <p class="font-bold text-black">Rekam Medis</p>
-                    </div> 
-              <form method="POST" action="#">
-                {{-- @csrf --}}
+                    </div>
+              <form method="POST" action="add-employee">
+                @csrf
                 <div class="mb-4">
                   <label for="employee_name" class="block text-gray-700 text-sm font-medium mb-2">Name</label>
                   <input type="text" id="employee_name" name="employee_name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Nama Karyawan">
@@ -58,9 +58,9 @@
               </form>
             </div>
           </div>
-        
 
-    
+
+
 
 
 

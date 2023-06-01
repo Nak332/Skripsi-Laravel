@@ -17,15 +17,15 @@
                     <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" aria-current="page">Dashboard</a>
                 </li>
                 <li>
-                    <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" >Resepsi</a>
+                    <a href="resepsi" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" >Resepsi</a>
                 </li>
                 <li>
-                    <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Daftar Pasien</a>
+                    <a href="daftar-pasien" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Daftar Pasien</a>
                 </li>
                 <li>
                     <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Pengaturan</a>
                 </li>
-            
+
               <li>
                 <div class="container mx-auto flex items-center">
                   <div class="flex justify-center">
@@ -36,16 +36,16 @@
                                 if (this.open) {
                                     return this.close()
                                 }
-                 
+
                                 this.$refs.button.focus()
-                 
+
                                 this.open = true
                             },
                             close(focusAfter) {
                                 if (! this.open) return
-                 
+
                                 this.open = false
-                 
+
                                 focusAfter && focusAfter.focus()
                             }
                         }"
@@ -68,13 +68,13 @@
                                 <p class="text-xs text-white pr-4">Title</p>
                             </div>
                         <img src="{{ asset('storage/profile-icon.webp') }}" alt="Profile Picture" class="h-10 w-10 rounded-full mr-4">
-                            
+
                         <div>
-                          
+
                         </div>
-                 
+
                         </button>
-                 
+
                         <!-- Panel -->
                         <div
                             x-ref="panel"
@@ -88,14 +88,18 @@
                             <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
                                 Profil
                             </a>
-                 
+
                             <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
                                 Pengaturan
                             </a>
-                 
-                            <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                <span class="text-red-600">Log Out</span>
-                            </a>
+
+                            <form action="logout" method="post">
+                                @csrf
+                                <button class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                    <span class="text-red-600">Log Out</span>
+                                </button>
+                            </form>
+
                         </div>
                     </div>
                   </div>

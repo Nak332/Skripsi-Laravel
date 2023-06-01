@@ -10,5 +10,8 @@ class Employees extends Model
     public function appointments(){
         return $this->hasMany(Appointment::class);
     }
+    public function user(){
+        return $this->hasOne(User::class);
+    }
     use HasFactory;
 }
