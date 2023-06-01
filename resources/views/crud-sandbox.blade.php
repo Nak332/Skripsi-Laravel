@@ -1,11 +1,13 @@
 
+@extends('layouts.master')
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create User</title>
-</head>
-<body>
+@section('title','Resepsi')
+
+@section('content')
+
+@extends('layouts.navigation-bar')
+<div>
+    
     <h1>Create User</h1>
 
     <form method="POST" action="/dev/simp">
@@ -32,5 +34,9 @@
             <li>{{ $user->name }} ({{ $user->email }})</li>
         @endforeach
     </ul> --}}
-</body>
-</html>
+
+    <button onclick= "Livewire.emit('openModal', 'add-janjian')">Edit User</button>  
+</div>
+
+
+@stop
