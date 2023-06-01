@@ -38,7 +38,8 @@ class CreateUserForEmployee
         $addstring = implode("", $deletestrip);
         $username = $emp->employee_name . $addstring;
         $user = new User();
-        $user->name = $username;
+        $user->name = $emp->employee_name;
+        $user->username = $username;
         $user->employee_id = $emp->id;
         $user->role = $emp->employee_job;
         $user->email = $emp->employee_email;

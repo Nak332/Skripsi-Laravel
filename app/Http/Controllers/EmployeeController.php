@@ -18,6 +18,16 @@ class EmployeeController extends Controller
 
     public function insert(Request $request)
     {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $imageName = time().'.'.$request->image->extension();
+
+        $request->image->move(public_path('images'), $imageName);
+
+
+
         $employee = new Employees();
         $employee->employee_name = $request->employee_name;
         $employee->employee_job = $request->employee_job;
@@ -25,7 +35,7 @@ class EmployeeController extends Controller
         $employee->employee_gender = $request->employee_gender;
         $employee->employee_NIK = $request->employee_NIK;
         $employee->employee_address = $request->employee_address;
-        $employee->employee_photo = $request->employee_photo;
+        $employee->employee_photo = $imageName;
         $employee->employee_DOB = $request->employee_DOB;
         $employee->employee_POB = $request->employee_POB;
         $employee->employee_email = $request->employee_email;

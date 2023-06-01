@@ -63,11 +63,28 @@
                             type="button"
                             class="max-w-xs hover:bg-gray-600 flex rounded-md items-center text-sm  text-white"
                         >
+                        @if (!Auth::check())
                         <div class="ml-2">
-                                <h1 class="text-xs font-bold text-white pr-4">Name</h1>
-                                <p class="text-xs text-white pr-4">Title</p>
-                            </div>
+                            <h1 class="text-xs font-bold text-white pr-4">Name</h1>
+                            <p class="text-xs text-white pr-4">Title</p>
+                        </div>
                         <img src="{{ asset('storage/profile-icon.webp') }}" alt="Profile Picture" class="h-10 w-10 rounded-full mr-4">
+                        {{-- ^^^^^ nanti dihapus kalo udah jadi (buat test aja kalo ga ada user) atau header jangan dimunculin pas login --}}
+                        @elseif (Auth::user()->role == 'admin')
+                        <div class="ml-2">
+                            <h1 class="text-xs font-bold text-white pr-4">{{Auth::user()->name}}</h1>
+                            <p class="text-xs text-white pr-4">{{Auth::user()->role}}</p>
+                        </div>
+                        <img src="{{ asset('storage/profile-icon.webp') }}" alt="Profile Picture" class="h-10 w-10 rounded-full mr-4"> {{--default photo--}}
+                        @else
+
+                        <div class="ml-2">
+                            <h1 class="text-xs font-bold text-white pr-4">{{Auth::user()->Employee->employee_name}}</h1>
+                            <p class="text-xs text-white pr-4">{{Auth::user()->role}}</p>
+                        </div>
+                        <img src="{{ asset("images/" . Auth::user()->Employee->employee_photo) }}" alt="Profile Picture" class="h-10 w-10 rounded-full mr-4">
+                        @endif
+
 
                         <div>
 
