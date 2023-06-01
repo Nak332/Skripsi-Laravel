@@ -73,7 +73,13 @@ Route::get('daftar-pasien', function () {
     return view('patient-list');
 });
 
+Route::get('daftar-employee', function () {
+    return view('employee-list');
+});
 
+Route::get('profil', function () {
+    return view('employee-profile');
+});
 
 Route::view('/pasien', 'pasien');
 
