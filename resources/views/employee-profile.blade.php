@@ -9,7 +9,7 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-300">
     <div class="w-3/4 mx-auto bg-white shadow-md rounded-md overflow-hidden">
       <div class="px-6 py-4">
-        <div class="bg-gray-400 p-4 flex justify-center items-center">
+        <div class="p-4 flex justify-center items-center">
             <img class="w-32 h-32 rounded-full mr-4" src="profile-picture.jpg" alt="Profile Picture">
             <div>
               <h2 class="text-2xl font-semibold">John Doe</h2>

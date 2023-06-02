@@ -12,31 +12,31 @@
         <h1 class="text-2xl font-bold mb-4">Biodata</h1>
 
         <div class="grid grid-cols-2 gap-1">
-          <div>
-            <p class="block font-bold mb-2" for="name">Name : {{$patient->patient_name}}</p>
+          <div class="flex mb-2">
+            <p class="block font-bold" for="name">Name : </p><p class="ml-2">{{$patient->patient_name}}</p>
           </div>
 
-          <div>
-            <p class="block font-bold mb-2" for="nik">NIK : {{$patient->patient_NIK}}</p>
+          <div class="flex mb-2">
+            <p class="block font-bold mb-2" for="nik">NIK : </p><p class="ml-2">{{$patient->patient_NIK}}</p>
           </div>
 
-          <div>
-            <p class="block font-bold mb-2" for="gender">Jenis Kelamin : {{$patient->patient_gender}}</p>
+          <div class="flex mb-2">
+            <p class="block font-bold" for="gender">Jenis Kelamin : </p><p class="ml-2">{{$patient->patient_gender}}</p>
           </div>
 
-          <div>
-            <p class="block font-bold mb-2" for="address">Alamat : {{$patient->patient_address}}</p>
+          <div class="flex mb-2">
+            <p class="block font-bold" for="address">Alamat : </p><p class="ml-2">{{$patient->patient_address}}</p>
           </div>
 
-          <div>
-            <p class="block font-bold mb-2" for="age">Umur : </p>
+          <div class="flex mb-2">
+            <p class="block font-bold" for="age">Umur : </p> <p class="ml-2">sample</p>
           </div>
 
-          <div>
-            <p class="block font-bold mb-2" for="phone">No. Telpon : {{$patient->patient_phone}}</p>
+          <div class="flex mb-2">
+            <p class="block font-bold " for="phone">No. Telpon : </p><p class="ml-2"> {{$patient->patient_phone}}</p>
           </div>
-          <div>
-            <p class="block font-bold mb-2" for="dob">Tanggal Lahir : {{$patient->patient_POB}}</p>
+          <div class="flex mb-2">
+            <p class="block font-bold" for="dob">Tanggal Lahir : </p><p class="ml-2"> {{$patient->patient_DOB}}</p>
           </div>
         </div>
       </div>
