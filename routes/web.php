@@ -7,6 +7,7 @@ use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PatientController ;
 use App\Models\Appointment;
+use App\Models\Patient;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,8 @@ Route::get('/',function(){
     return redirect('/resepsi');
 
 });
+
+Route::get('pasien/{id}', [PatientController::class , 'patient']) -> name('to.pasien');
 
 
 Route::get('dev', function () {
@@ -68,9 +71,10 @@ Route::get('resepsi',[PatientController::class,'index']);
 Route::get('form_rekam', function () {
     return view('form-rekammedis');
 });
-Route::get('pasien', function () {
-    return view('pasien');
-});
+
+// Route::get('pasien', function () {
+//     return view('pasien');
+// });
 
 Route::get('daftar-pasien', function () {
     return view('patient-list');

@@ -16,5 +16,5 @@ class Patient extends Model
     public function rekammedis(){
         return $this->hasMany(RekamMedis::class);
     }
-    
+
 }

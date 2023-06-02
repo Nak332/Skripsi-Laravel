@@ -13,7 +13,10 @@ class RekamMedis extends Model
 
     public function Medicine(){
         return $this->hasMany(Medicine::class);
-        return $this->belongsTo(Patient::class);
+
+    }
+    public function Patient(){
+        return $this->belongsTo(Patient::class,'patient_id','id');
     }
     use HasFactory;
 }

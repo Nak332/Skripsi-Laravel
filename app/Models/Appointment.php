@@ -8,10 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Appointment extends Model
 {
     use HasFactory;
-    
+
     public function patient(){
         return $this->belongsTo(Patient::class);
+    }
+    public function employees(){
         return $this->belongsTo(Employees::class);
+    }
+    public function rekammedis(){
         return $this->belongsTo(RekamMedis::class);
     }
+
 }

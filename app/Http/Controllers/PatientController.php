@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
+use App\Models\RekamMedis;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -14,7 +15,14 @@ class PatientController extends Controller
 
     }
 
-    
+    public function patient($id)
+    {
+    	$patient = Patient::find($id);
+        $RekamMedis = RekamMedis::where('patient_id', $id)->orderByDesc('id')->get();
+    	return view('pasien', compact(['patient','RekamMedis']));
+
+    }
+
 
     public function insert(Request $request)
     {

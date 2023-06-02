@@ -12,10 +12,10 @@ class PatientTable extends DataTableComponent
 
     public function configure(): void
 {
-    $this->setPrimaryKey('id');
-        // ->setTableRowUrl(function($row) {
-        //     return route('pasien', $row);
-        // })
+    $this->setPrimaryKey('id')
+        ->setTableRowUrl(function($row) {
+            return route('to.pasien', $row);
+        });
         // ->setTableRowUrlTarget(function($row) {
         //     if ($row->isExternal()) {
         //         return '_blank';
