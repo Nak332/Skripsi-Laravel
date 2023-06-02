@@ -7,11 +7,13 @@ use App\Models\Patient;
 
 class PatientSearchBar extends Component
 {
-    public $patients = [];
-    public $query;
-    public $selected_patient;
-    public $patient;
+    public $patients = []; //Unused, isinya semua patients dari previous page
+    public $query; //Query Searchbar
+    public $selected_patient; //pasien yang terpilih
+    public $patient; //Untuk Dropdown rekomendasi
     public $highlightIndex;
+    public $test='halo';
+    public $selected_patient_name;
 
     public function updatedQuery(){
         $this->patient = Patient::where('patient_name','like','%'.$this->query.'%')
@@ -19,13 +21,22 @@ class PatientSearchBar extends Component
         ->toArray();
     }
 
+    public function selectPatient($id){
+        $this->selected_patient = Patient::findorFail($id);
+        $this->selected_patient_name = $this->selected_patient['patient_name'];
+
+    }
+
+    public function setQuery($incoming_query){
+        $this->query = $incoming_query;
+    }
 
      
     // public function reset()
     // {
     //     $this->query = '';
     //     $this->contacts = [];
-    //     $this->highlightIndex = 0;
+    
     // }
  
     public function mount()
@@ -34,14 +45,11 @@ class PatientSearchBar extends Component
         $this->patient=[];
 
     }
+    public function change_test(){
+        $this->test = 'Hai';
+    }
  
  
-    // public function updatedQuery()
-    // {
-    //     $this->contacts = Contact::where('name', 'like', '%' . $this->query . '%')
-    //         ->get()
-    //         ->toArray();
-    // }
  
 
     public function render()

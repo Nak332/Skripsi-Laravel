@@ -9,7 +9,7 @@
     {{-- <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    @livewireStyles
 </head>
 <body>
    
