@@ -9,6 +9,7 @@ class PatientSearchBar extends Component
 {
     public $patients = [];
     public $query;
+    public $selected_patient;
     public $patient;
     public $highlightIndex;
 
@@ -17,6 +18,8 @@ class PatientSearchBar extends Component
         ->get()
         ->toArray();
     }
+
+
      
     // public function reset()
     // {
@@ -29,6 +32,7 @@ class PatientSearchBar extends Component
     {
         $this->query='';
         $this->patient=[];
+
     }
  
  

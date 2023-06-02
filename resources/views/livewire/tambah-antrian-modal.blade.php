@@ -46,6 +46,8 @@
                     {{-- searchbar --}}
                         <div>
                             @livewire('patient-search-bar')
+                            asd
+                            <p class="w-3/5 bg-red">{{$selected_patient}}</p>
                         </div>
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Tanggal</label>
