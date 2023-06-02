@@ -13,7 +13,7 @@
   <p>{{ $antrian }}</p>
 @endforeach --}}
 
-<div id="container-main" class="flex-inline bg-gray-200 h-fit">
+<div id="container-main" class="flex-inline bg-gray-200 h-screen">
 
   <div id="header-page" class="flex justify-center">
     <div id="current queue" class="drop-shadow flex-inline text-center   text-black p-6 m-4 rounded-lg text-4xl w-128 h-fit">
