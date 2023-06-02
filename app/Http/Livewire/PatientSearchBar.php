@@ -7,6 +7,7 @@ use App\Models\Patient;
 
 class PatientSearchBar extends Component
 {
+    public $patients = [];
     public $query;
     public $patient;
     public $highlightIndex;
@@ -27,34 +28,9 @@ class PatientSearchBar extends Component
     public function mount()
     {
         $this->query='';
-        $this->patient='';
+        $this->patient=[];
     }
  
-    public function incrementHighlight()
-    {
-        if ($this->highlightIndex === count($this->contacts) - 1) {
-            $this->highlightIndex = 0;
-            return;
-        }
-        $this->highlightIndex++;
-    }
- 
-    public function decrementHighlight()
-    {
-        if ($this->highlightIndex === 0) {
-            $this->highlightIndex = count($this->contacts) - 1;
-            return;
-        }
-        $this->highlightIndex--;
-    }
- 
-    public function selectContact()
-    {
-        $contact = $this->contacts[$this->highlightIndex] ?? null;
-        if ($contact) {
-            $this->redirect(route('show-contact', $contact['id']));
-        }
-    }
  
     // public function updatedQuery()
     // {
