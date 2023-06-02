@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('employee_gender');
             $table->string('employee_NIK')->unique();
             $table->string('employee_address');
-            $table->string('employee_photo');
+            $table->string('employee_photo')->nullable();
             $table->date('employee_DOB');
             $table->string('employee_POB');
             $table->string('employee_email');
