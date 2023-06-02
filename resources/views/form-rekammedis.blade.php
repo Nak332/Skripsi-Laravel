@@ -28,9 +28,9 @@
                   <input type="text" name="employee_id" id="employee_id" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                 </div>
                 <div class="mb-4">
-                  <label for="employee_id" class="block text-gray-700 text-sm font-medium mb-2">Suhu Badan</label>
+                  <label for="body_temperature" class="block text-gray-700 text-sm font-medium mb-2">Suhu Badan</label>
                   <div class="flex">
-                    <input type="number" name='body_temperature' class="w-1/6 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=66 >
+                    <input type="number" name='body_temperature' id="body_temperature" class="w-1/6 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=66 >
                     <div class=" p-3"><h1>° C</h1></div>
 
                   </div>
@@ -41,16 +41,40 @@
                   <input type="text" name="symptoms" id="symptoms" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                 </div>
                 <div class="mb-4">
+                  <label for="keluhan" class="block text-gray-700 text-sm font-medium mb-2">Keluhan</label>
+                  <textarea name="keluhan" id="keluhan" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="hasil_anamnesis" class="block text-gray-700 text-sm font-medium mb-2">Hasil Anamnesis</label>
+                  <input type="text" name="hasil_anamnesis" id="hasil_anamnesis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Penatalaksaan</label>
+                  <input type="text" name="penatalaksaan" id="penatalaksaan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="layanan_sebelumnya" class="block text-gray-700 text-sm font-medium mb-2">Layanan Sebelumnya</label>
+                  <textarea rows=2 name="layanan_sebelumnya" id="layanan_sebelumnya" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="persetujuan" class="block text-gray-700 text-sm font-medium mb-2">Persetujuan</label>
+                  <input type="text" name="persetujuan" id="persetujuan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
                   <label for="disease" class="block text-gray-700 text-sm font-medium mb-2">Disease</label>
                   <input type="text" name="disease" id="disease" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="total_price" class="block text-gray-700 text-sm font-medium mb-2">Total Price</label>
+                  <input type="text" name="total_price" id="total_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                 </div>
                 <div class="mb-4">
                   <label for="type" class="block text-gray-700 text-sm font-medium mb-2">Type</label>
                   <input type="text"  name="type" id="type" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                 </div>
                 <div class="mb-4">
-                  <label for="message" class="block text-gray-700 text-sm font-medium mb-2">Note</label>
-                  <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                  <label for="note" class="block text-gray-700 text-sm font-medium mb-2">Note</label>
+                  <textarea id="note" name="note" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                 </div>
                 
                 <div class="mb-4">

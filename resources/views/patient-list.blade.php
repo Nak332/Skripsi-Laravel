@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Resepsi')
+@section('title','Daftar Pasien')
 
 @extends('layouts.navigation-bar')
 @section('content')
