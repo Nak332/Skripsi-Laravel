@@ -3,59 +3,61 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Patient;
 
 class PatientSearchBar extends Component
 {
-    public $query;
-    public $contacts;
+    public $patients = []; //Unused, isinya semua patients dari previous page
+    public $query; //Query Searchbar
+    public $selected_patient; //pasien yang terpilih
+    public $patient; //Untuk Dropdown rekomendasi
     public $highlightIndex;
+    public $selected_patient_name;
 
+    public function updatedQuery(){
+        $this->patient = Patient::where('patient_name','like','%'.$this->query.'%')
+        ->get()
+        ->toArray();
+    }
+
+
+
+    public function selectPatient($id){
+        $this->selected_patient = Patient::findorFail($id);
+        $this->selected_patient_name = $this->selected_patient['patient_name'];
+        $this->sendPatientToParentComponent($id);
+
+    }
+
+    public function setQuery($incoming_query){
+        $this->query = $incoming_query;
+    }
+
+    public function sendPatientToParentComponent($id)
+    {
+        // Update the childData property
+
+        // Update the parentData property in the parent component
+        $this->emitUp('patientSelected', $id);
+ 
+ 
+    }
      
     // public function reset()
     // {
     //     $this->query = '';
     //     $this->contacts = [];
-    //     $this->highlightIndex = 0;
+    
     // }
  
     public function mount()
     {
-        $this->reset();
+        $this->query='';
+        $this->patient=[];
+
     }
- 
-    public function incrementHighlight()
-    {
-        if ($this->highlightIndex === count($this->contacts) - 1) {
-            $this->highlightIndex = 0;
-            return;
-        }
-        $this->highlightIndex++;
-    }
- 
-    public function decrementHighlight()
-    {
-        if ($this->highlightIndex === 0) {
-            $this->highlightIndex = count($this->contacts) - 1;
-            return;
-        }
-        $this->highlightIndex--;
-    }
- 
-    public function selectContact()
-    {
-        $contact = $this->contacts[$this->highlightIndex] ?? null;
-        if ($contact) {
-            $this->redirect(route('show-contact', $contact['id']));
-        }
-    }
- 
-    // public function updatedQuery()
-    // {
-    //     $this->contacts = Contact::where('name', 'like', '%' . $this->query . '%')
-    //         ->get()
-    //         ->toArray();
-    // }
- 
+
+    
 
     public function render()
     {

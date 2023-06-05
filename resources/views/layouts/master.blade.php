@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Klinik Sehat - @yield('title')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     <style>
         [x-cloak] { display: none !important; }
     </style>
@@ -13,12 +14,11 @@
 </head>
 
 <body>
+
+   
     @livewireScripts
+    @yield('content')
     @livewire('livewire-ui-modal')
-    <div>
-        @yield('content')
-    </div>
-    
 
     @extends('layouts.footer')
 </body>

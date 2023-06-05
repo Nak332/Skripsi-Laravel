@@ -20,33 +20,43 @@
             x-transition:leave-end="opacity-0 scale-90"
             @click.outside="open = false" class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
             <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-     
+
                 <form class="space-y-4 md:space-y-6" action="/tambah-antrian">
+                    {{-- Test dropdown select --}}
+
+                   
+                    {{-- searchbar --}}
                         <div>
-                            {{-- @foreach ($patients as $p)
-                           {{$p->patient_name}}
-                        @endforeach --}}
-                            <select class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
-                                @foreach ($patients as $p)
-                                    <option class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" >{{$p->patient_name}}</option>
-                                @endforeach
-                            </select>
+
+                            @livewire('patient-search-bar')
+                       
+                            <p class="w-3/5 bg-red">{{$selected_patient}}</p>
+
                         </div>
-                        <div>
+                        {{-- <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Tanggal</label>
                             <input type="date" name="email" id="email" class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="name@company.com" required="">
-                        </div>
+                        </div> --}}
                         <div>
                             <label for="" class="block mb-2 text-sm font-medium text-gray-900 ">Keluhan</label>
                             <textarea class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" name="" id="" cols="30" rows="10"></textarea>
                         </div>
                        
-                        <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create an account</button>
-                        
-                </form>
+
+                        <div>
+                            <label for="" class="block mb-2 text-sm font-medium text-gray-900 ">Tipe Kunjungan</label>
+                            <select class=" w-full rounded-lg bg-gray-200 border border-gray-300 text-gray-900 p-2" name="" id="selected_patient">
+                                <option value="scheduled">Kunjungan Langsung</option>
+                                <option value="on_the_spot">Kunjungan Janjian</option>
+                            </select>
+                        </div>
+
+                        <input wire:model='selected_patient' type="text">
+                    </form>
+
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-            <button @click="open = false" type="button" class="hover:outline hover:outline-1 hover:outline-red-600 hover:bg-white hover:text-red-600 transition-all inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm  sm:ml-3 sm:w-auto">Deactivate</button>
+            <button @click="open = false" type="button" class="hover:outline hover:outline-1 hover:outline-blue-600 hover:bg-white hover:text-blue-600 transition-all inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm  sm:ml-3 sm:w-auto">Tambah</button>
             <button @click="open = false" type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
             </div>
         </div>

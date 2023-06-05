@@ -16,6 +16,7 @@
         "@alpinejs/focus": "^3.12.1",
         "alpinejs": "^3.12.1",
         "laravel-mix": "^6.0.49",
+        "select2": "^4.1.0-rc.0",
         "vite": "^4.3.5"
     }
 }

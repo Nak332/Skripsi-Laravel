@@ -14,7 +14,6 @@ class AntrianController extends Controller
     {
     	$antrian = Appointment::all();
     	return view('resepsi', ['antrian' => $antrian]);
-
     }
 
     public function insert(Request $request)

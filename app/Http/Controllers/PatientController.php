@@ -10,8 +10,9 @@ class PatientController extends Controller
 {
     public function index()
     {
-    	$patients = Patient::orderBy('patient_name')->get();
-    	return view('/resepsi', compact('patients'));
+<<<<<<< SKS-2-Livewire-Feature-Resepsionis
+    	$patients = Patient::all();
+      return view('resepsi',compact('patients'));
 
     }
 

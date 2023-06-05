@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\EmployeeController;
+
 use App\Http\Controllers\PatientController ;
 use App\Models\Appointment;
 use App\Models\Patient;
@@ -67,9 +68,9 @@ Route::post('add-employee', [EmployeeController::class,'insert']);
 Route::get('resepsi',[AntrianController::class,'index']);
 Route::get('resepsi',[PatientController::class,'index']);
 
-
 Route::get('form_rekam', function () {
     return view('form-rekammedis');
+    
 });
 
 // Route::get('pasien', function () {

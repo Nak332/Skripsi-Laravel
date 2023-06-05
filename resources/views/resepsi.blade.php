@@ -30,19 +30,24 @@
 
   <div id="container-items-atas" class=" ml-16 mr-16 xl:flex md:flex-inline justify-center h-fit">
     @livewire('antrian-list',['patients'=>$patients])
-    @livewire('antrian-list')
+
+    @livewire('antrian-list')    
 
   </div>
 
   {{-- ///////////////////////////////////// Container Bawah //////////////////////////////////////--}}
   <div id="container-items-atas" class="md:flex sm:flex-inline ml-16 mr-16  justify-center space-x-4 content h-fit">
 
-    @livewire('antrian-list')
+    
+      @livewire('antrian-list')
+  
+      
 
 
 
 
-    <div id="filler" class="flex-inline self-center p-8 w-4/5 h-fit sm:w-full "></div>
+
+    <div id="filler" class="flex-inline self-center p-8 w-4/5 h-fit sm:hidden "></div>
 
 {{--
     @foreach ($patients as $p)
