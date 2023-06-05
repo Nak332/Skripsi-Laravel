@@ -7,7 +7,7 @@
     <div>
 
     </div>
-        <div class="rounded-lg  mt-2 flex-inline max-h-32 overflow-y-auto">
+        <div class="rounded-lg  mt-2 flex-inline max-h-32 overflow-y-auto drop-shadow-sm">
             @if (!empty($query))
             {{-- <select class="mt-3 w-full rounded-lg bg-gray-200 border border-gray-300 text-gray-900 p-2" wire:model='selected_patient' name="" id="selected_patient"> --}}
            
@@ -20,7 +20,13 @@
 
             </option>
             @foreach ($patient as $p)
-                <div class="p-2 cursor-pointer" x-on:click="$wire.selectPatient(id='{{$p['id']}}');$wire.setQuery(incoming_query='{{$p['patient_name']}}');" class=" bg-gray-200 w-full">{{$p['patient_name']}}</div>
+                <div class="p-2 cursor-pointer bg-gray-200 hover:bg-blue-500 hover:text-white transition-all" 
+                x-on:click="$wire.selectPatient(id='{{$p['id']}}');$wire.setQuery(incoming_query='{{$p['patient_name']}}');" 
+                class="w-full">
+                    <p>
+                        {{$p['patient_name']}}
+                    </p>
+                </div>
                 <hr >
   
             @endforeach

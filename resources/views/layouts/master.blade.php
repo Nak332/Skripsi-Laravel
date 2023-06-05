@@ -14,14 +14,15 @@
 </head>
 
 <body>
-
+   
    
     @livewireScripts
     @yield('content')
     @livewire('livewire-ui-modal')
-
     @extends('layouts.footer')
+
 </body>
+
 
 
 </html>
