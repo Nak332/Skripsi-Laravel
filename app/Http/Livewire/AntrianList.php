@@ -6,6 +6,12 @@ use Livewire\Component;
 
 class AntrianList extends Component
 {
+    public $patients=[];
+
+    protected $rules=[
+        'patients'=>'required'
+    ];
+
     public function render()
     {
         return view('livewire.antrian-list');

@@ -11,7 +11,7 @@
         <!--
             Modal panel, show/hide based on modal state.
         -->
-        <div  x-show="open"
+        <div wire:model='patients' x-show="open"
             x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="opacity-0 scale-90"
             x-transition:enter-end="opacity-100 scale-100"
@@ -20,16 +20,18 @@
             x-transition:leave-end="opacity-0 scale-90"
             @click.outside="open = false" class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
             <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-      
+
                 <form class="space-y-4 md:space-y-6" action="/tambah-antrian">
                     {{-- Test dropdown select --}}
 
                    
                     {{-- searchbar --}}
                         <div>
+
                             @livewire('patient-search-bar')
                        
                             <p class="w-3/5 bg-red">{{$selected_patient}}</p>
+
                         </div>
                         {{-- <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Tanggal</label>
@@ -40,6 +42,7 @@
                             <textarea class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" name="" id="" cols="30" rows="10"></textarea>
                         </div>
                        
+
                         <div>
                             <label for="" class="block mb-2 text-sm font-medium text-gray-900 ">Tipe Kunjungan</label>
                             <select class=" w-full rounded-lg bg-gray-200 border border-gray-300 text-gray-900 p-2" name="" id="selected_patient">
@@ -50,6 +53,7 @@
 
                         <input wire:model='selected_patient' type="text">
                     </form>
+
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
             <button @click="open = false" type="button" class="hover:outline hover:outline-1 hover:outline-blue-600 hover:bg-white hover:text-blue-600 transition-all inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm  sm:ml-3 sm:w-auto">Tambah</button>

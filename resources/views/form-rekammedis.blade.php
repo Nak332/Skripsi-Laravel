@@ -1,87 +1,104 @@
 @extends('layouts.master')
 
-@section('title','Resepsi')
+@section('title','Rekam medis')
 
 @section('content')
 
 @extends('layouts.navigation-bar')
 
-<style>
-    .textbox{
-        width: 600px;
-        height:50px;
-    }
+<div id="container-main" class="bg-gray-200">
+  <div class="container mx-auto p-4">  
+        <div class="min-h-screen flex items-center justify-center">
+            <div class="max-w-screen-sm w-full mx-auto bg-white p-8 rounded-md shadow-md">
+                <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-4xl w-128 h-fit">
+                    <p class="font-bold text-black">Rekam Medis</p>
+                    </div> 
+              <form method="POST" action="#">
+                {{-- @csrf --}}
+                {{-- <div class="mb-4">
+                  <label for="patient_id" class="block text-gray-700 text-sm font-medium mb-2">Pasien</label>
+                  <input type="text" id="patient_id" name="patient_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Masukan .. pasien">
+                </div> --}}
+                {{-- <div class="mb-4">
+                  <label for="appointment_id" class="block text-gray-700 text-sm font-medium mb-2">Appointment</label>
+                  <input type="text" id="appointment_id" name="appointment_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="">
+                </div> --}}
+                <div class="mb-4">
+                  <label for="employee_id" class="block text-gray-700 text-sm font-medium mb-2">Employee</label>
+                  <input type="text" name="employee_id" id="employee_id" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="body_temperature" class="block text-gray-700 text-sm font-medium mb-2">Suhu Badan</label>
+                  <div class="flex">
+                    <input type="number" name='body_temperature' id="body_temperature" class="w-1/6 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=66 >
+                    <div class=" p-3"><h1>° C</h1></div>
 
-    .longertext{
-        width: 600px;
-        height:125px;
-    }
-</style>
+                  </div>
+                
+                </div>
+                <div class="mb-4">
+                  <label for="symptoms" class="block text-gray-700 text-sm font-medium mb-2">Symptoms</label>
+                  <input type="text" name="symptoms" id="symptoms" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="keluhan" class="block text-gray-700 text-sm font-medium mb-2">Keluhan</label>
+                  <textarea name="keluhan" id="keluhan" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="hasil_anamnesis" class="block text-gray-700 text-sm font-medium mb-2">Hasil Anamnesis</label>
+                  <input type="text" name="hasil_anamnesis" id="hasil_anamnesis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Penatalaksaan</label>
+                  <input type="text" name="penatalaksaan" id="penatalaksaan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="layanan_sebelumnya" class="block text-gray-700 text-sm font-medium mb-2">Layanan Sebelumnya</label>
+                  <textarea rows=2 name="layanan_sebelumnya" id="layanan_sebelumnya" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="persetujuan" class="block text-gray-700 text-sm font-medium mb-2">Persetujuan</label>
+                  <input type="text" name="persetujuan" id="persetujuan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="disease" class="block text-gray-700 text-sm font-medium mb-2">Disease</label>
+                  <input type="text" name="disease" id="disease" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="total_price" class="block text-gray-700 text-sm font-medium mb-2">Total Price</label>
+                  <input type="text" name="total_price" id="total_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="type" class="block text-gray-700 text-sm font-medium mb-2">Type</label>
+                  <input type="text"  name="type" id="type" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="note" class="block text-gray-700 text-sm font-medium mb-2">Note</label>
+                  <textarea id="note" name="note" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+                
+                <div class="mb-4">
+                  <label for="medicine_id" class="block text-gray-700 text-sm font-medium mb-2">Medicine</label>
+                  <input type="text" id="medicine_id" name="medicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Obat">
+                </div>
+                <div class="mb-4">
+                  <label for="extramedicine_id" class="block text-gray-700 text-sm font-medium mb-2">Extra Medicine</label>
+                  <input type="text" id="extramedicine_id" name="extramedicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="">
+                </div>
+                {{-- <div class="mb-4">
+                  <label for="total_price" class="block text-gray-700 text-sm font-medium mb-2">Total Price</label>
+                  <input type="text" name="total_price" id="total_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div> --}}
 
+                  <div class="flex justify-center">
+                    <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        
 
-<div id="container-main" class="flex-inline bg-gray-200">
-
-  <div id="header-page" class="flex justify-center">
-    <div class="drop-shadow flex-inline text-center   text-black p-6 m-4 rounded-lg text-4xl w-128 h-fit">
-    <p class="font-bold  mt-2 p-5 truncate text-black">Rekam Medis</p>
-    </div> 
-  </div>
-  <div class="grid justify-items-start">
-    <form class="space-y-4 md:space-y-6" method="POST" action="#">
-        {{-- @csrf --}}
-        <div class="ml-40">
-            <label for="patient_id" class="block mb-2 text-sm font-medium  text-black">Pasien</label>
-            <input type="text" name="patient_id" id="patiend_id" class="bg-gray-50 border border-gray-300 text-gray-900 textbox sm:text-sm rounded-lg   block w-full p-2.5 bg-white dark:border-gray-600  text-black " placeholder="" required="">
-
-        </div>
-        <div class="ml-40">
-            <label for="appointment_id" class="block mb-2 text-sm font-medium  text-black">Appointment</label>
-            <input type="text" name="appointment_id" id="appointment_id" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 textbox sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-600 block w-full p-2.5 bg-white dark:border-gray-600 dark:placeholder-gray-400" required="">
-        </div>
-        <div class="ml-40">
-            <label for="medicine_id" class="block mb-2 text-sm font-medium  text-black">Medicine</label>
-            <input type="text" name="medicine_id" id="medicine_id" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 textbox sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-600 block w-full p-2.5 bg-white dark:border-gray-600 dark:placeholder-gray-400" required="">
-        </div>
-        <div class="ml-40">
-            <label for="extramedicine_id" class="block mb-2 text-sm font-medium  text-black">Extra Medicine</label>
-            <input type="text" name="extramedicine_id" id="extramedicine_id" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 textbox sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-600 block w-full p-2.5 bg-white dark:border-gray-600 dark:placeholder-gray-400" required="">
-        </div>
-        <div class="ml-40">
-            <label for="employee_id" class="block mb-2 text-sm font-medium  text-black">Employee</label>
-            <input type="text" name="employee_id" id="employee_id" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 textbox sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-600 block w-full p-2.5 bg-white dark:border-gray-600 dark:placeholder-gray-400" required="">
-        </div>
-        <div class="ml-40">
-            <label for="symptoms" class="block mb-2 text-sm font-medium  text-black">Symptoms</label>
-            <input type="text" name="symptoms" id="symptoms" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 textbox sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-600 block w-full p-2.5 bg-white dark:border-gray-600 dark:placeholder-gray-400" required="">
-        </div>
-        <div class="ml-40">
-            <label for="disease" class="block mb-2 text-sm font-medium  text-black">Disease</label>
-            <input type="text" name="disease" id="disease" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 textbox sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-600 block w-full p-2.5 bg-white dark:border-gray-600 dark:placeholder-gray-400" required="">
-        </div>
-        <div class="ml-40">
-            <label for="total_price" class="block mb-2 text-sm font-medium  text-black">Total Price</label>
-            <input type="text" name="total_price" id="total_price" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 textbox sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-600 block w-full p-2.5 bg-white dark:border-gray-600 dark:placeholder-gray-400" required="">
-        </div>
-        <div class="ml-40">
-            <label for="text" class="block mb-2 text-sm font-medium  text-black">Type</label>
-            <input type="text" name="type" id="type" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 textbox sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-600 block w-full p-2.5 bg-white dark:border-gray-600 dark:placeholder-gray-400" required="">
-        </div>
-        <div class="ml-40">
-            <label for="note" class="block mb-2 text-sm font-medium  text-black">Note</label>
-            <textarea name="note" id="note" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 longertext text-clip rounded-lg focus:ring-primary-800 focus:border-primary-600 bg-white dark:border-gray-600 dark:placeholder-gray-400" required=""></textarea>
-        </div>
-        <div class="ml-40">
-            <label for="icd10" class="block mb-2 text-sm font-medium  text-black">ICD10</label>
-            <input type="text" name="icd10" id="icd10" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 textbox sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-600 block w-full p-2.5 bg-white dark:border-gray-600 dark:placeholder-gray-400" required="">
-        </div>
-    </div>
-        <div class="flex justify-center py-6">
-            <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Submit</button>
-        </div>
-
-    </form>
-  
-  
+    
 
 
 

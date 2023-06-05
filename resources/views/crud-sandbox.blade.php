@@ -1,3 +1,5 @@
+@extends('layouts.master')
+
 
 @extends('layouts.master')
 
@@ -7,7 +9,7 @@
 
 @extends('layouts.navigation-bar')
 <div>
-    
+
     <h1>Create User</h1>
 
     <form method="POST" action="/dev/simp">
@@ -28,6 +30,8 @@
     <hr>
 
     <h1>Users</h1>
+    <button onclick="Livewire.emit('openModal', 'add-appointment')">Edit User</button>
+
 {{-- 
     <ul>
         @foreach ($users as $user)
@@ -35,11 +39,15 @@
         @endforeach
     </ul> --}}
 
+
     <button onclick= "Livewire.emit('openModal', 'add-janjian')">Edit User</button>  
 </div>
 
 
   </div>
-  
+
+</body>
+
+
 
 @stop

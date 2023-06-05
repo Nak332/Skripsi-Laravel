@@ -8,9 +8,14 @@ use Livewire\Component;
 class TambahAntrianModal extends Component
 {   
     public $test_data = ['john','james','jake'];
+
     public $selected_patient;
     public $selected_patient_name;
+    public $patients=[];
 
+    protected $rules=[
+        'patients'=>'required'
+    ];
 
     public function render()
     {

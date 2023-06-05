@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('employee_id');
             $table->string('symptoms'); //hasil pemeriksaan
             $table->string('keluhan');
+            $table->string('hasil_anamnesis');
             $table->string('penatalaksanaan');
             $table->string('odontogram_klinik');
             $table->string('tindakan');
