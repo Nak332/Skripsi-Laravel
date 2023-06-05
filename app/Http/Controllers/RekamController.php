@@ -21,11 +21,11 @@ class RekamController extends Controller
         $rekamMedis->appointment_id = $request->appointment_id;
         $rekamMedis->medicine_id = $request->medicine_id;
         $rekamMedis->employee_id = $request->employee_id;
+        $rekamMedis->body_temperature = $request->body_temperature;
         $rekamMedis->symptoms = $request->symptoms;
         $rekamMedis->keluhan = $request->keluhan;
         $rekamMedis->hasil_anamnesis = $request->hasil_anamnesis;
         $rekamMedis->penatalaksanaan = $request->penatalaksanaan;
-        $rekamMedis->odontogram_klinik = $request->odontogram_klinik;
         $rekamMedis->tindakan = $request->tindakan;
         $rekamMedis->layanan_sebelumnya = $request->layanan_sebelumnya;
         $rekamMedis->persetujuan = $request->persetujuan;

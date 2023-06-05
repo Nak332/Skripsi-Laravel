@@ -7,6 +7,7 @@ use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\EmployeeController;
 
 use App\Http\Controllers\PatientController ;
+use App\Http\Controllers\RekamController;
 use App\Models\Appointment;
 use App\Models\Patient;
 use Illuminate\Support\Facades\Route;
@@ -70,8 +71,9 @@ Route::get('resepsi',[PatientController::class,'index']);
 
 Route::get('form_rekam', function () {
     return view('form-rekammedis');
-    
 });
+
+Route::post('form_rekam/tambah', [RekamController::class,'insert']);
 
 // Route::get('pasien', function () {
 //     return view('pasien');
