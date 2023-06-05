@@ -20,7 +20,7 @@
 
             </option>
             @foreach ($patient as $p)
-                <div class="p-2 cursor-pointer" x-on:click="$wire.selectPatient(id='{{$p['id']}}');$wire.setQuery(incoming_query='{{$p['patient_name']}}')" class=" bg-gray-200 w-full">{{$p['patient_name']}}</div>
+                <div class="p-2 cursor-pointer" x-on:click="$wire.selectPatient(id='{{$p['id']}}');$wire.setQuery(incoming_query='{{$p['patient_name']}}');" class=" bg-gray-200 w-full">{{$p['patient_name']}}</div>
                 <hr >
   
             @endforeach

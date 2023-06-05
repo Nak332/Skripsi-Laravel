@@ -12,7 +12,6 @@ class PatientSearchBar extends Component
     public $selected_patient; //pasien yang terpilih
     public $patient; //Untuk Dropdown rekomendasi
     public $highlightIndex;
-    public $test='halo';
     public $selected_patient_name;
 
     public function updatedQuery(){
@@ -21,9 +20,12 @@ class PatientSearchBar extends Component
         ->toArray();
     }
 
+
+
     public function selectPatient($id){
         $this->selected_patient = Patient::findorFail($id);
         $this->selected_patient_name = $this->selected_patient['patient_name'];
+        $this->sendPatientToParentComponent($id);
 
     }
 
@@ -31,6 +33,15 @@ class PatientSearchBar extends Component
         $this->query = $incoming_query;
     }
 
+    public function sendPatientToParentComponent($id)
+    {
+        // Update the childData property
+
+        // Update the parentData property in the parent component
+        $this->emitUp('patientSelected', $id);
+ 
+ 
+    }
      
     // public function reset()
     // {
@@ -45,12 +56,8 @@ class PatientSearchBar extends Component
         $this->patient=[];
 
     }
-    public function change_test(){
-        $this->test = 'Hai';
-    }
- 
- 
- 
+
+    
 
     public function render()
     {
