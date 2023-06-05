@@ -24,13 +24,25 @@
                 <form class="space-y-4 md:space-y-6" action="/tambah-antrian">
                     {{-- Test dropdown select --}}
 
-                   
+                    
                     {{-- searchbar --}}
                         <div>
 
-                            @livewire('patient-search-bar')
+                            <div class="pb-4">
+                                @livewire('patient-search-bar')
+                            </div>
+                    
+                            @if ($selected_patient)
+                            <label class="block mb-2 text-sm font-medium text-gray-900 " for="patient_id">Pasien</label>
+                            <div>
+                                <p class="font-bold text-white rounded-lg bg-blue-500 p-3"> {{$selected_patient['patient_name']}}</p>  
+                            </div>
+                            <input type="number" name="id" id="id" class='hidden' disabled value="{{$selected_patient['id']}}">
+                            @endif
+
+                            
                        
-                            <p class="w-3/5 bg-red">{{$selected_patient}}</p>
+                            <br><br>
 
                         </div>
                         {{-- <div>
@@ -51,7 +63,7 @@
                             </select>
                         </div>
 
-                        <input wire:model='selected_patient' type="text">
+                        {{-- <input wire:model='selected_patient' type="text"> --}}
                     </form>
 
             </div>

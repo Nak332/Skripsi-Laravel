@@ -21,7 +21,7 @@
             </option>
             @foreach ($patient as $p)
                 <div class="p-2 cursor-pointer bg-gray-200 hover:bg-blue-500 hover:text-white transition-all" 
-                x-on:click="$wire.selectPatient(id='{{$p['id']}}');$wire.setQuery(incoming_query='{{$p['patient_name']}}');" 
+                x-on:click="$wire.selectPatient(id='{{$p['id']}}');$wire.setQuery(incoming_query='');" 
                 class="w-full">
                     <p>
                         {{$p['patient_name']}}
@@ -35,7 +35,7 @@
         </div>
 
         
-        <input wire:model='selected_patient_name' type="text">
+        {{-- <input wire:model='selected_patient_name' type="text"> --}}
     
         
         
