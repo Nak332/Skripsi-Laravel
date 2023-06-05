@@ -10,7 +10,7 @@ class PatientController extends Controller
 {
     public function index()
     {
-<<<<<<< SKS-2-Livewire-Feature-Resepsionis
+
     	$patients = Patient::all();
       return view('resepsi',compact('patients'));
 
