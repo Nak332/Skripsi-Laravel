@@ -1,3 +1,6 @@
+
+{{-- card untuk list antrian pasien di resepsi --}}
+
 <div x-data="{ expanded: false }" @click="expanded = !expanded" href="#" class="cursor-pointer" @click.outside="expanded = false" >
     <div class="truncate bg-gray-300 p-3 m-4 rounded-lg hover:bg-blue-500
     hover:ml-5 hover:mr-3 hover:border-black
