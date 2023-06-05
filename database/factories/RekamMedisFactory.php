@@ -31,7 +31,7 @@ class RekamMedisFactory extends Factory
             'keluhan' => $this->faker->sentence(3),
             'hasil_anamnesis'=> $this->faker->sentence(3),
             'penatalaksanaan' => $this->faker->sentence(3),
-            'odontogram_klinik'=> $this->faker->sentence(3),
+            'body_temperature' => $this->faker->numberBetween(33, 40),
             'tindakan'=> $this->faker->sentence(3),
             'layanan_sebelumnya'=> $this->faker->sentence(3),
             'persetujuan'=> $this->faker->sentence(3),
