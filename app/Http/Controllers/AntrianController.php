@@ -6,11 +6,13 @@ use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 
 
 class AntrianController extends Controller
 {
+
     public $nomor = 1;
 
     public function index()
@@ -23,20 +25,23 @@ class AntrianController extends Controller
     {
         $lastappointment = Appointment::OrderBy('id','desc')->first();
         $lastdate = strtotime($lastappointment->created_at->format('Y-m-d'));
-        $last = date('d',$lastdate);
+        $last = date('j',$lastdate);
         $today = Carbon::now();
+        Log::info('terakhir' . $last);
+        Log::info('sekarang' . $today->day);
+
+
 
         $antrian = new Appointment;
+        $nilai = $lastappointment->antrian_number;
         $antrian->patient_id = $request->patient_id;
         $antrian->employee_id = $request->employee_id;
         $antrian->appointment_type = $request->appointment_type;
         if ($last != $today->day) {
-            $this->nomor = 1;
-            $antrian->antrian_number = $this->nomor;
-            $this->nomor= $this->nomor + 1;
+            DB::table('appointments')->truncate();
+            $antrian->antrian_number = '1';
         } else {
-            $antrian->antrian_number = $this->nomor;
-            $this->nomor= $this->nomor + 1;
+            $antrian->antrian_number = $nilai+1;
         }
 
         $antrian->keluhan = $request->keluhan;
@@ -44,6 +49,7 @@ class AntrianController extends Controller
         $antrian->appointment_date = $today;
         $antrian->save();
 
+        Log::info('sekarang' . $antrian->id);
         return redirect('/');
     }
 

@@ -38,7 +38,7 @@
                             <div>
                                 <p class="font-bold text-white rounded-lg bg-blue-500 p-3"> {{$selected_patient['patient_name']}}</p>
                             </div>
-                            <input type="text" name="patient_id" id="patient_id" disabled value="{{$selected_patient['id']}}">
+                            <input type="text" name="patient_id" id="patient_id" class='hidden' value="{{$selected_patient['id']}}">
                             @endif
 
 
