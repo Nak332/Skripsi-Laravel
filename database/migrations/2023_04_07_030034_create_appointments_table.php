@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->integer('patient_id');
-            $table->string('employee_id');
+            $table->string('employee_id')->nullable();
             $table->integer('antrian_number');
             $table->string('appointment_type');
             $table->string('keluhan');

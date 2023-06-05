@@ -21,9 +21,9 @@ class AntrianController extends Controller
 
     public function insert(Request $request)
     {
-        $lastappointment = Appointment::latest()->get();
-        $lastdate = strtotime($lastappointment->created_at);
-        $last = date($lastdate, 'd');
+        $lastappointment = Appointment::OrderBy('id','desc')->first();
+        $lastdate = strtotime($lastappointment->created_at->format('Y-m-d'));
+        $last = date('d',$lastdate);
         $today = Carbon::now();
 
         $antrian = new Appointment;
@@ -40,8 +40,8 @@ class AntrianController extends Controller
         }
 
         $antrian->keluhan = $request->keluhan;
-        $antrian->status = $request->status;
-        $antrian->appointment_date = $request->date;
+        $antrian->status = '1';
+        $antrian->appointment_date = $today;
         $antrian->save();
 
         return redirect('/');

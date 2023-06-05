@@ -75,6 +75,8 @@ Route::get('form_rekam', function () {
 
 Route::post('form_rekam/tambah', [RekamController::class,'insert']);
 
+Route::post('tambah-antrian', [AntrianController::class,'insert']);
+
 // Route::get('pasien', function () {
 //     return view('pasien');
 // });
