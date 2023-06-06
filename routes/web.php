@@ -126,9 +126,7 @@ Route::post('tambah-obat/tambah', [MedicineController::class,'insert']);
 Route::get('edit_obat', function () {
     return view('edit-obat');
 });
-Route::get('obat', function () {
-    return view('obat');
-});
+Route::get('obat/{id}', [MedicineController::class , 'medicines']) -> name('to.obat');
 Route::get('list_obat', function () {
     return view('obat-list');
 });

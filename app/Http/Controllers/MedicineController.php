@@ -16,11 +16,11 @@ class MedicineController extends Controller
 
     }
 
-    public function medicine($id)
+    public function medicines($id)
     {
     	$medicine = Medicine::find($id);
-        $medicineDetail = MedicineDetail::where('medicine_id', $id)->orderByAsc('id')->get();
-    	return view('daftar-obat', compact(['medicine','medicineDetail']));
+        $medicineDetail = MedicineDetail::where('medicine_id', $id)->get();
+    	return view('obat', compact(['medicine','medicineDetail']));
 
     }
 

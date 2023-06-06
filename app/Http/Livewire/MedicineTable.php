@@ -12,12 +12,17 @@ class MedicineTable extends DataTableComponent
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('id')
+        ->setTableRowUrl(function($row) {
+            return route('to.obat', $row);
+        });;
     }
 
     public function columns(): array
     {
         return [
+            Column::make("Number", "id")
+                ->sortable()->searchable(),
             Column::make("Name", "medicine_name")
                 ->sortable()->searchable(),
             Column::make("Description", "medicine_description")
