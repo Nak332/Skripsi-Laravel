@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('employee_id')->nullable();
             $table->integer('antrian_number');
             $table->string('appointment_type');
-            $table->string('keluhan');
+            $table->string('complaint');
             $table->string('status'); //Diproses (sedang testing, atau sedang di revisi), Valid, Invalid
             $table->date('appointment_date');
             $table->timestamps();

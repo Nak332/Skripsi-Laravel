@@ -18,20 +18,22 @@ return new class extends Migration
             $table->integer('patient_id')->nullable();
             $table->string('appointment_id')->nullable();
             $table->string('medicine_id')->nullable();
-            $table->string('extramedicine_id')->nullable();
             $table->string('employee_id')->nullable();
             $table->string('symptoms'); //hasil pemeriksaan
-            $table->string('keluhan');
+            $table->string('sistol');
+            $table->string('diastol');
+            $table->string('attachment')->nullable();
+            $table->string('complaint');
             $table->string('body_temperature');
-            $table->string('hasil_anamnesis');
-            $table->string('penatalaksanaan')->nullable();
-            $table->string('tindakan')->nullable();
-            $table->string('layanan_sebelumnya');
-            $table->string('persetujuan');
-            $table->string('disease');// hasil diagnosis penyakit
+            $table->string('anamnesis');
+            $table->string('follow_up_plan')->nullable();
+            $table->string('treatment')->nullable();
+            $table->string('past_service');
+            $table->string('agreement');
+            $table->string('diagnosis');// hasil diagnosis penyakit
             $table->string('total_price');
-            $table->string('type');
             $table->longtext('note');
+            $table->string('type');
             $table->string('flag')->nullable();
             $table->string('icd10')->nullable();
             $table->timestamps();

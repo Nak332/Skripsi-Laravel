@@ -52,7 +52,7 @@
                         </div> --}}
                         <div>
                             <label for="" class="block mb-2 text-sm font-medium text-gray-900 ">Keluhan</label>
-                            <textarea class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" name="keluhan" id="keluhan" cols="30" rows="10"></textarea>
+                            <textarea class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" name="complaint" id="complaint" cols="30" rows="10"></textarea>
                         </div>
 
 

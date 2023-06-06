@@ -44,7 +44,7 @@ class AntrianController extends Controller
             $antrian->antrian_number = $nilai+1;
         }
 
-        $antrian->keluhan = $request->keluhan;
+        $antrian->complaint = $request->complaint;
         $antrian->status = '1';
         $antrian->appointment_date = $today;
         $antrian->save();
@@ -59,7 +59,7 @@ class AntrianController extends Controller
     $antrianUpdate->update([
         'patient_id' => $request->patient_id,
         'employee_id' => $request->employee_id,
-        'keluhan' => $request->keluhan,
+        'keluhan' => $request->complaint,
         'appointment_type' => $request->appointment_type,
         'status' => $request->status,
         'appointment_date' => $request->date
