@@ -95,3 +95,24 @@ Route::get('profil', function () {
 
 Route::view('/pasien', 'pasien');
 
+//obat
+Route::get('edit_obat', function () {
+    return view('edit-obat');
+});
+Route::get('add_obat', function () {
+    return view('form-obat');
+});
+
+Route::get('edit_rekam', function () {
+    return view('edit-rekammedis');
+});
+
+Route::get('edit_emp', function () {
+    return view('edit-employee');
+});
+Route::get('add_pasien', function () {
+    return view('form-patient');
+});
+Route::get('edit_pasien', function () {
+    return view('edit-patient');
+});

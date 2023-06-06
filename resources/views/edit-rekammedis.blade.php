@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Rekam medis')
+@section('title','Edit Rekam Medis')
 
 @section('content')
 
@@ -11,24 +11,24 @@
         <div class="min-h-screen flex items-center justify-center">
             <div class="max-w-screen-sm w-full mx-auto bg-white p-8 rounded-md shadow-md">
                 <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-4xl w-128 h-fit">
-                    <p class="font-bold text-black">Rekam Medis</p>
+                    <p class="font-bold text-black">Edit Rekam Medis</p>
                     </div>
               <form method="POST" action="form_rekam/tambah">
                 @csrf
-                {{-- <div class="mb-4">
-                  <label for="patient_id" class="block text-gray-700 text-sm font-medium mb-2">Pasien</label>
+                <div class="mb-4">
+                  <label for="patient_id" class="block text-gray-700 text-sm font-medium mb-2">ID Pasien</label>
                   <input type="text" id="patient_id" name="patient_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Masukan .. pasien">
-                </div> --}}
-                {{-- <div class="mb-4">
-                  <label for="appointment_id" class="block text-gray-700 text-sm font-medium mb-2">Appointment</label>
+                </div>
+                <div class="mb-4">
+                  <label for="appointment_id" class="block text-gray-700 text-sm font-medium mb-2">ID Appointment</label>
                   <input type="text" id="appointment_id" name="appointment_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="">
-                </div> --}}
-                {{-- <div class="mb-4">
-                  <label for="employee_id" class="block text-gray-700 text-sm font-medium mb-2">Employee</label>
+                </div>
+                <div class="mb-4">
+                  <label for="employee_id" class="block text-gray-700 text-sm font-medium mb-2">ID Employee</label>
                   <input type="text" name="employee_id" id="employee_id" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
-                </div> --}}
+                </div>
 
-                {{--Bikin iinvisible buat 3 bagian diatas --}}
+      
 
                 <div class="mb-4">
                   <label for="body_temperature" class="block text-gray-700 text-sm font-medium mb-2">Suhu Badan</label>
