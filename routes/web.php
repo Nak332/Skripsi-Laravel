@@ -109,6 +109,10 @@ Route::get('edit_obat', function () {
 Route::get('add_obat', function () {
     return view('form-obat');
 });
+Route::get('obat', function () {
+    return view('obat');
+});
+
 
 Route::get('edit_rekam', function () {
     return view('edit-rekammedis');
