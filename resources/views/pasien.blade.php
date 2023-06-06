@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Rekam medis')
+@section('title','Detail Pasien')
 
 @section('content')
 
@@ -17,7 +17,10 @@
           </div>
 
           <div class="flex mb-2">
-            <p class="block font-bold mb-2" for="nik">NIK : </p><p class="ml-2">{{$patient->patient_NIK}}</p>
+            <p class="block font-bold" for="nik">NIK : </p><p class="ml-2">{{$patient->patient_NIK}}</p>
+          </div>
+          <div class="flex mb-2">
+            <p class="block font-bold" for="nik">Alias : </p><p class="ml-2">{{$patient->patient_alias}}</p>
           </div>
 
           <div class="flex mb-2">
@@ -33,10 +36,25 @@
           </div>
 
           <div class="flex mb-2">
+            <p class="block font-bold" for="name">Status Perkawinan : </p><p class="ml-2">{{$patient->patient_marital_status}}</p>
+          </div>
+
+          <div class="flex mb-2">
             <p class="block font-bold " for="phone">No. Telpon : </p><p class="ml-2"> {{$patient->patient_phone}}</p>
           </div>
           <div class="flex mb-2">
             <p class="block font-bold" for="dob">Tanggal Lahir : </p><p class="ml-2"> {{$patient->patient_DOB}}</p>
+          </div>
+          
+        </div>
+
+        <h1 class="text-2xl font-bold pt-3 mb-4">Kontak Darurat</h1>
+        <div class="grid grid-cols-2 gap-1">
+          <div class="flex mb-2">
+            <p class="block font-bold" for="dob">Nama : </p><p class="ml-2"> {{$patient->patient_emergency_contact_name}}</p>
+          </div>
+          <div class="flex mb-2">
+            <p class="block font-bold" for="dob">No. Telpon : </p><p class="ml-2"> {{$patient->patient_emergency_contact_phone}}</p>
           </div>
         </div>
       </div>

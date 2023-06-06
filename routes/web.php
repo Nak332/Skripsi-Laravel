@@ -5,10 +5,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\EmployeeController;
-
+use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\PatientController ;
 use App\Http\Controllers\RekamController;
 use App\Models\Appointment;
+use App\Models\Medicine;
 use App\Models\Patient;
 use Illuminate\Support\Facades\Route;
 
@@ -81,6 +82,12 @@ Route::post('tambah-antrian', [AntrianController::class,'insert']);
 //     return view('pasien');
 // });
 
+Route::get('tambah-obat', function () {
+    return view('form-obat');
+});
+
+Route::post('tambah-obat/tambah', [MedicineController::class,'insert']);
+
 Route::get('daftar-pasien', function () {
     return view('patient-list');
 });
@@ -95,3 +102,28 @@ Route::get('profil', function () {
 
 Route::view('/pasien', 'pasien');
 
+//obat
+Route::get('edit_obat', function () {
+    return view('edit-obat');
+});
+Route::get('add_obat', function () {
+    return view('form-obat');
+});
+Route::get('obat', function () {
+    return view('obat');
+});
+
+
+Route::get('edit_rekam', function () {
+    return view('edit-rekammedis');
+});
+
+Route::get('edit_emp', function () {
+    return view('edit-employee');
+});
+Route::get('add_pasien', function () {
+    return view('form-patient');
+});
+Route::get('edit_pasien', function () {
+    return view('edit-patient');
+});

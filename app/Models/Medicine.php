@@ -10,5 +10,8 @@ class Medicine extends Model
     public function RekamMedis(){
         return $this->belongsTo(RekamMedis::class);
     }
+    public function Detail(){
+        return $this->hasMany(MedicineDetail::class);
+    }
     use HasFactory;
 }

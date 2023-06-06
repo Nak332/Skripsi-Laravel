@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('appointments', function (Blueprint $table) {
+        Schema::create('appointment_histories', function (Blueprint $table) {
             $table->id();
+            $table->integer('appointment_id');
             $table->integer('patient_id');
             $table->string('employee_id')->nullable();
             $table->integer('antrian_number');
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appointments');
+        Schema::dropIfExists('appointment_histories');
     }
 };

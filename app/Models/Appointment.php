@@ -18,5 +18,8 @@ class Appointment extends Model
     public function rekammedis(){
         return $this->belongsTo(RekamMedis::class);
     }
+    public function history(){
+        return $this->belongsTo(AppointmentHistory::class);
+    }
 
 }
