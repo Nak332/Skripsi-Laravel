@@ -5,10 +5,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\EmployeeController;
-
+use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\PatientController ;
 use App\Http\Controllers\RekamController;
 use App\Models\Appointment;
+use App\Models\Medicine;
 use App\Models\Patient;
 use Illuminate\Support\Facades\Route;
 
@@ -80,6 +81,12 @@ Route::post('tambah-antrian', [AntrianController::class,'insert']);
 // Route::get('pasien', function () {
 //     return view('pasien');
 // });
+
+Route::get('tambah-obat', function () {
+    return view('form-obat');
+});
+
+Route::post('tambah-obat/tambah', [MedicineController::class,'insert']);
 
 Route::get('daftar-pasien', function () {
     return view('patient-list');

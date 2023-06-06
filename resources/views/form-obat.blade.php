@@ -13,7 +13,7 @@
                 <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-4xl w-128 h-fit">
                     <p class="font-bold text-black">Add Medicine</p>
                     </div>
-              <form method="POST" action="add-employee" enctype="multipart/form-data">
+              <form method="POST" action="tambah-obat/tambah" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4">
                   <label for="medicine_name" class="block text-gray-700 text-sm font-medium mb-2">Nama</label>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="mb-4">
                   <label for="medicine_expired_date" class="block text-gray-700 text-sm font-medium mb-2">Tanggal Kadaluarsa</label>
-                  <input type="text" id="employee_gender" name="employee_gender" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Tanggal kadaluarsa obat">
+                  <input type="text" id="medicine_expired_date" name="medicine_expired_date" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Tanggal kadaluarsa obat">
                 </div>
                 <div class="mb-4">
                     <label for="medicine_description" class="block text-gray-700 text-sm font-medium mb-2">Deskripsi</label>
