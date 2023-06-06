@@ -40,7 +40,7 @@ Route::middleware(['isLogin'])->group(function () {
     Route::view('/pasien', 'pasien');
 });
 
-Route::middleware(['checkrole:admin,dokter'])->group(function () {
+Route::middleware(['checkrole:dokter'])->group(function () {
     Route::get('pasien/{id}', [PatientController::class , 'patient']) -> name('to.pasien');
     Route::get('tambah-karyawan', function () {
         return view('form-empregister');
@@ -58,7 +58,7 @@ Route::middleware(['checkrole:admin,dokter'])->group(function () {
     Route::post('form_rekam/tambah', [RekamController::class,'insert']);
 });
 
-Route::middleware(['checkrole:admin,resepsionis'])->group(function () {
+Route::middleware(['checkrole:dokter,resepsionis'])->group(function () {
     Route::get('tambah-pasien', function () {
         return view('form-patient');
     });
