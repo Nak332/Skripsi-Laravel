@@ -40,7 +40,7 @@ Route::middleware(['isLogin'])->group(function () {
     Route::view('/pasien', 'pasien');
 });
 
-Route::middleware(['checkrole:dokter'])->group(function () {
+Route::middleware(['checkrole:admin,dokter'])->group(function () {
     Route::get('pasien/{id}', [PatientController::class , 'patient']) -> name('to.pasien');
     Route::get('tambah-karyawan', function () {
         return view('form-empregister');
@@ -58,7 +58,7 @@ Route::middleware(['checkrole:dokter'])->group(function () {
     Route::post('form_rekam/tambah', [RekamController::class,'insert']);
 });
 
-Route::middleware(['checkrole:dokter,resepsionis'])->group(function () {
+Route::middleware(['checkrole:admin,dokter,resepsionis'])->group(function () {
     Route::get('tambah-pasien', function () {
         return view('form-patient');
     });
@@ -125,9 +125,6 @@ Route::post('tambah-obat/tambah', [MedicineController::class,'insert']);
 //obat
 Route::get('edit_obat', function () {
     return view('edit-obat');
-});
-Route::get('add_obat', function () {
-    return view('form-obat');
 });
 Route::get('obat', function () {
     return view('obat');
