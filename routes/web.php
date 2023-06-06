@@ -69,7 +69,7 @@ Route::post('add-employee', [EmployeeController::class,'insert']);
 
 
 Route::get('form_rekam', function () {
-    return view('form-rekammedis');
+    return view('tambah-rekam-medis-page');
 });
 
 Route::post('form_rekam/tambah', [RekamController::class,'insert']);
@@ -107,6 +107,10 @@ Route::get('edit_obat', function () {
 Route::get('add_obat', function () {
     return view('form-obat');
 });
+Route::get('obat', function () {
+    return view('obat');
+});
+
 
 Route::get('edit_rekam', function () {
     return view('edit-rekammedis');
