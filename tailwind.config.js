@@ -7,6 +7,7 @@ module.exports = {
   './vendor/rappasoft/laravel-livewire-tables/resources/views/**/*.blade.php'
   ],
   
+  
   theme: {
     extend: {},
   },
