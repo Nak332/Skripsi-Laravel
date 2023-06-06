@@ -70,7 +70,7 @@ Route::get('resepsi',[AntrianController::class,'index']);
 Route::get('resepsi',[PatientController::class,'index']);
 
 Route::get('form_rekam', function () {
-    return view('form-rekammedis');
+    return view('tambah-rekam-medis-page');
 });
 
 Route::post('form_rekam/tambah', [RekamController::class,'insert']);

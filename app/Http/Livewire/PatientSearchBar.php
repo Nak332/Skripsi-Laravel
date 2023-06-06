@@ -20,6 +20,12 @@ class PatientSearchBar extends Component
         ->toArray();
     }
 
+    public function clear(){
+        $this->query='';
+        $this->selected_patient_name='';
+        $this->selected_patient='';
+    }
+
 
 
     public function selectPatient($id){
@@ -43,12 +49,7 @@ class PatientSearchBar extends Component
  
     }
      
-    // public function reset()
-    // {
-    //     $this->query = '';
-    //     $this->contacts = [];
-    
-    // }
+
  
     public function mount()
     {
