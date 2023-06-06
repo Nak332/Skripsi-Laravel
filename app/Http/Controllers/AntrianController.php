@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AppointmentHistoryCreated;
 use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -24,10 +25,16 @@ class AntrianController extends Controller
     public function insert(Request $request)
     {
         $lastappointment = Appointment::OrderBy('id','desc')->first();
-        $lastdate = strtotime($lastappointment->created_at->format('Y-m-d'));
-        $last = date('j',$lastdate);
+        if ($lastappointment != null){
+            $lastdate = strtotime($lastappointment->created_at->format('Y-m-d'));
+            $last = date('j',$lastdate);
+            Log::info('terakhir' . $last);
+        }
+        else{
+            $last = 0;
+        }
         $today = Carbon::now();
-        Log::info('terakhir' . $last);
+
         Log::info('sekarang' . $today->day);
 
 
@@ -48,6 +55,8 @@ class AntrianController extends Controller
         $antrian->status = '1';
         $antrian->appointment_date = $today;
         $antrian->save();
+
+        event(new AppointmentHistoryCreated($antrian));
 
         Log::info('sekarang' . $antrian->id);
         return redirect('/');
