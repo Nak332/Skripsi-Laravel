@@ -112,6 +112,10 @@ Route::get('add_obat', function () {
 Route::get('obat', function () {
     return view('obat');
 });
+Route::get('list_obat', function () {
+    return view('obat-list');
+});
+
 
 
 Route::get('edit_rekam', function () {
