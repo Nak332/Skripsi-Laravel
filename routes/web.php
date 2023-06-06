@@ -26,17 +26,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('resepsi', function () {
     return view('resepsi');
-});
-// Route::get('test', function () {
-//     return view('resepsi');
-// });
+})->middleware(['auth','admin']);
+
+Route::get('resepsi',[AntrianController::class,'index'])->middleware(['auth','admin']);
+Route::get('resepsi',[PatientController::class,'index'])->middleware(['auth','admin']);
 
 // Route::get('register', function () {
 //     return view('register-user');
 // });
 
 Route::get('/',function(){
-    return redirect('/resepsi');
+    return redirect('/login');
 
 });
 
@@ -67,8 +67,6 @@ Route::get('tambah-karyawan', function () {
 
 Route::post('add-employee', [EmployeeController::class,'insert']);
 
-Route::get('resepsi',[AntrianController::class,'index']);
-Route::get('resepsi',[PatientController::class,'index']);
 
 Route::get('form_rekam', function () {
     return view('form-rekammedis');
