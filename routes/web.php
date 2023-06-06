@@ -24,23 +24,56 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('resepsi', function () {
-    return view('resepsi');
-})->middleware(['auth','admin']);
+Route::middleware(['isLogin'])->group(function () {
+    Route::get('resepsi', function () {
+        return view('resepsi');
+    });
+    Route::get('/',function(){
+        return redirect('/resepsi');
+    });
+    Route::get('resepsi',[AntrianController::class,'index']);
+    Route::get('resepsi',[PatientController::class,'index']);
+    Route::get('/logout', [UserController::class, 'logout']);
+    Route::get('daftar-pasien', function () {
+        return view('patient-list');
+    });
+    Route::view('/pasien', 'pasien');
+});
 
-Route::get('resepsi',[AntrianController::class,'index'])->middleware(['auth','admin']);
-Route::get('resepsi',[PatientController::class,'index'])->middleware(['auth','admin']);
+Route::middleware(['checkrole:admin,dokter'])->group(function () {
+    Route::get('pasien/{id}', [PatientController::class , 'patient']) -> name('to.pasien');
+    Route::get('tambah-karyawan', function () {
+        return view('form-empregister');
+    });
+    Route::get('daftar-employee', function () {
+        return view('employee-list');
+    });
+    Route::get('profil', function () {
+        return view('employee-profile');
+    });
+    Route::post('add-employee', [EmployeeController::class,'insert']);
+    Route::get('form_rekam', function () {
+        return view('tambah-rekam-medis-page');
+    });
+    Route::post('form_rekam/tambah', [RekamController::class,'insert']);
+});
+
+Route::middleware(['checkrole:admin,resepsionis'])->group(function () {
+    Route::get('tambah-pasien', function () {
+        return view('form-patient');
+    });
+});
+
+
+
 
 // Route::get('register', function () {
 //     return view('register-user');
 // });
 
-Route::get('/',function(){
-    return redirect('/login');
 
-});
 
-Route::get('pasien/{id}', [PatientController::class , 'patient']) -> name('to.pasien');
+
 
 
 Route::get('dev', function () {
@@ -59,20 +92,15 @@ Route::get('users', function () {
     return view('crud-sandbox');
 });
 
-Route::get('/logout', [UserController::class, 'logout']);
-
-Route::get('tambah-karyawan', function () {
-    return view('form-empregister');
-});
-
-Route::post('add-employee', [EmployeeController::class,'insert']);
 
 
-Route::get('form_rekam', function () {
-    return view('tambah-rekam-medis-page');
-});
 
-Route::post('form_rekam/tambah', [RekamController::class,'insert']);
+
+
+
+
+
+
 
 Route::post('tambah-antrian', [AntrianController::class,'insert']);
 
@@ -86,19 +114,13 @@ Route::get('tambah-obat', function () {
 
 Route::post('tambah-obat/tambah', [MedicineController::class,'insert']);
 
-Route::get('daftar-pasien', function () {
-    return view('patient-list');
-});
 
-Route::get('daftar-employee', function () {
-    return view('employee-list');
-});
 
-Route::get('profil', function () {
-    return view('employee-profile');
-});
 
-Route::view('/pasien', 'pasien');
+
+
+
+
 
 //obat
 Route::get('edit_obat', function () {
@@ -123,9 +145,7 @@ Route::get('edit_rekam', function () {
 Route::get('edit_emp', function () {
     return view('edit-employee');
 });
-Route::get('add_pasien', function () {
-    return view('form-patient');
-});
+
 Route::get('edit_pasien', function () {
     return view('edit-patient');
 });
