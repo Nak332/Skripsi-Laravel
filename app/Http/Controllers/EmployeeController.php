@@ -88,7 +88,7 @@ class EmployeeController extends Controller
         ]);
 
         if ($imageName != NULL) {
-            File::delete(public_path('images/' . $employeeUpdate->employee_photo)z);
+            File::delete(public_path('images/' . $employeeUpdate->employee_photo));
             $employeeUpdate->update([
                 'employee_photo' => $imageName
             ]);
