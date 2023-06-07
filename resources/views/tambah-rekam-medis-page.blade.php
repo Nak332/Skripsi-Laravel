@@ -10,11 +10,6 @@
  
   @livewire('tambah-rekam')
 
-
-
-
-
-
 </div>
 
 
