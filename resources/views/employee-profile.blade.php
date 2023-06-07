@@ -6,7 +6,9 @@
 
 @extends('layouts.navigation-bar')
 
-<div class="min-h-screen flex items-center justify-center bg-gray-300">
+<div id="container-main" class="bg-gray-300">
+<div class="container mx-auto p-4 bg-gray-300">
+<div class="h-max py-4 flex items-center justify-center bg-gray-300">
     <div class="w-3/4 mx-auto bg-white shadow-md rounded-md overflow-hidden">
       <div class="px-6 py-4">
         <div class="p-4 flex justify-center items-center">
@@ -38,13 +40,13 @@
           <p class="text-gray-600">No.Telp : 03453895234</p>
         </div>
       </div>
-      <div class="flex py-3 justify-center">
-        <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-          <a href="/edit-emp/{{$employee->id}}">Edit</a>
-        </button>
-      </div>
     </div>
   </div>
- 
-
+  <div class="flex justify-center">
+    <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+      <a href="/edit-emp/{{$employee->id}}">Edit</a>
+    </button>
+  </div>
+</div>
+</div>
 @stop
