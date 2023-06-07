@@ -4,9 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-
-    "content-hash": "75048605a7b561e395d411cf3e9f8178",
-
+    "content-hash": "3ad8ee8e4cdd20596365554bc8a527b1",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2929,6 +2927,86 @@
             "time": "2023-02-25T19:38:58+00:00"
         },
         {
+            "name": "power-components/livewire-powergrid",
+            "version": "v4.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Power-Components/livewire-powergrid.git",
+                "reference": "754af635c48dbf5a61f8188f2242c10c31972b32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Power-Components/livewire-powergrid/zipball/754af635c48dbf5a61f8188f2242c10c31972b32",
+                "reference": "754af635c48dbf5a61f8188f2242c10c31972b32",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^3.6.2|2.12.1",
+                "illuminate/support": "^9.0|^10.0",
+                "livewire/livewire": "^2.12.3",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "composer/composer": "^2.5.5",
+                "laradumps/laradumps": "^1.12.1",
+                "laravel/pint": "^1.10",
+                "nunomaduro/larastan": "^2.6.0",
+                "orchestra/testbench": "^7.0 | ^8.5.3",
+                "pestphp/pest": "^2.6.1",
+                "pestphp/pest-plugin-faker": "^2.0",
+                "pestphp/pest-plugin-livewire": "^2.0",
+                "spaze/phpstan-disallowed-calls": "^2.14.2"
+            },
+            "suggest": {
+                "openspout/openspout": "Required to export XLS and CSV"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "PowerComponents\\LivewirePowerGrid\\Providers\\PowerGridServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "PowerComponents\\LivewirePowerGrid\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Luan Freitas",
+                    "email": "luanfreitasgoncalves@gmail.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "DanSysAnalyst",
+                    "email": "daniel@sysanalyst.eu",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PowerGrid generates Advanced Datatables using Laravel Livewire.",
+            "homepage": "https://github.com/power-components/livewire-powergrid",
+            "support": {
+                "issues": "https://github.com/Power-Components/livewire-powergrid/issues",
+                "source": "https://github.com/Power-Components/livewire-powergrid/tree/v4.6.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/luanfreitasdev",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-06-07T00:55:07+00:00"
+        },
+        {
             "name": "pragmarx/google2fa",
             "version": "v8.0.1",
             "source": {
@@ -3768,7 +3846,48 @@
             "time": "2023-05-19T01:55:52+00:00"
         },
         {
-
+            "name": "select2/select2",
+            "version": "4.0.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/select2/select2.git",
+                "reference": "45f2b83ceed5231afa7b3d5b12b58ad335edd82e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/select2/select2/zipball/45f2b83ceed5231afa7b3d5b12b58ad335edd82e",
+                "reference": "45f2b83ceed5231afa7b3d5b12b58ad335edd82e",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "dist/js/select2.js"
+                    ],
+                    "styles": [
+                        "dist/css/select2.css"
+                    ],
+                    "files": [
+                        "dist/js/select2.js",
+                        "dist/js/i18n/*.js",
+                        "dist/css/select2.css"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Select2 is a jQuery based replacement for select boxes.",
+            "homepage": "https://select2.org/",
+            "support": {
+                "issues": "https://github.com/select2/select2/issues",
+                "source": "https://github.com/select2/select2/tree/4.0.13"
+            },
+            "time": "2020-01-28T05:01:22+00:00"
+        },
+        {
             "name": "spatie/laravel-package-tools",
             "version": "1.15.0",
             "source": {

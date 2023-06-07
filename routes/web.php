@@ -24,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
 Route::middleware(['isLogin'])->group(function () {
     Route::get('resepsi', function () {
         return view('resepsi');
@@ -31,6 +34,7 @@ Route::middleware(['isLogin'])->group(function () {
     Route::get('/',function(){
         return redirect('/resepsi');
     });
+    
     Route::get('resepsi',[AntrianController::class,'index']);
     Route::get('resepsi',[PatientController::class,'index']);
     Route::get('/logout', [UserController::class, 'logout']);
