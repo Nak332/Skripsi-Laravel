@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\AppointmentHistoryCreated;
 use App\Models\Appointment;
+use App\Models\AppointmentHistory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,8 @@ class AntrianController extends Controller
     public function index()
     {
     	$antrian = Appointment::all();
-    	return view('resepsi', ['antrian' => $antrian]);
+        $history = AppointmentHistory::whereDate('created_at',  Carbon::today()->toDateString())->get();
+    	return view('resepsi', compact(['antrian','history']));
     }
 
     public function insert(Request $request)
