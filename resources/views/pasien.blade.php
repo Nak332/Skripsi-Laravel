@@ -9,7 +9,12 @@
 <div id="container-main" class="flex-inline pt-5 py-5 bg-gray-100 space-y-8 min-h-screen">
 
     <div id="container-biodata" class="bg-white rounded-3xl shadow-md h-fit mx-auto w-3/4 p-8">
+
+      
         <h1 class="text-2xl font-bold mb-4 truncate">Biodata</h1>
+       
+     
+        
 
         <div class="grid truncate md:grid-cols-2 grid-cols-1 gap-1">
           <div class="flex mb-2">
@@ -72,8 +77,15 @@
       
       <div id="container-rekam-imunisasi" class="md:flex justify-center  mx-auto w-3/4 ">
 
-        <div class="flex-inline md:w-1/2 pb-12 md:mr-4 p-4 bg-white rounded-3xl shadow-md">
-          <h1 class="text-2xl font-bold mb-4 truncate">Rekam Medis </h1>
+        <div class="flex-inline md:w-1/2  md:mr-4 p-4 bg-white rounded-3xl shadow-md">
+          <div class="flex justify-between pb-6">
+            <h1 class="text-2xl font-bold mb-4 truncate">Rekam Medis </h1>
+            <button class="text-xl text-white font-bold bg-green-500 hover:bg-green-700 transition-all rounded-lg p-2"> 
+              <h1 >+ Tambah Rekam</h1>
+            </button>
+
+          </div>
+          
           <div class="overflow-y-auto h-fit  max-h-96">
   
             @foreach ($RekamMedis as $R)
@@ -93,17 +105,26 @@
 
         </div>
 
-        <div class="flex-inline md:w-1/2 md:ml-4 p-4 bg-white rounded-3xl shadow-md">
-          <h1 class="text-2xl font-bold mb-4 truncate">Riwayat Imunisasi </h1>
+        <div class="flex-inline md:w-1/2  md:mr-4 p-4 bg-white rounded-3xl shadow-md">
+          <div class="flex justify-between pb-6">
+            <h1 class="text-2xl font-bold mb-4 truncate">Riwayat Imunisasi </h1>
+            <button class="text-xl text-white font-bold bg-green-500 hover:bg-green-700 transition-all rounded-lg p-2"> 
+              <h1 >+ Tambah Riwayat</h1>
+            </button>
+
+          </div>
+          
           <div class="overflow-y-auto h-fit  max-h-96">
   
             @foreach ($RekamMedis as $R)
   
             <div class="p-4 rounded-lg text-white transition-all cursor-pointer {{$R->flag =='1' ?  'bg-blue-500 hover:bg-blue-300' : 'bg-red-500  hover:bg-red-300' }} ">
-            <p class="font-bold truncate">{{$R->created_at}}</p>
+            <p class=" truncate font-bold">{{$R->created_at}}</p>
             <p class="truncate">Diagnosis: {{$R->diagnosis}}</p>
             </div>
+
             
+          
             
           
             <br>
