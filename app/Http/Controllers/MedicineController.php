@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Medicine;
 use App\Models\MedicineDetail;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class MedicineController extends Controller
@@ -21,7 +22,6 @@ class MedicineController extends Controller
     	$medicine = Medicine::find($id);
         $medicineDetail = MedicineDetail::where('medicine_id', $id)->get();
     	return view('obat', compact(['medicine','medicineDetail']));
-
     }
 
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\RekamController;
 use App\Models\Appointment;
 use App\Models\Medicine;
 use App\Models\Patient;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,13 +49,14 @@ Route::middleware(['checkrole:admin,dokter'])->group(function () {
     Route::get('daftar-employee', function () {
         return view('employee-list');
     });
-    Route::get('profil', function () {
-        return view('employee-profile');
-    });
     Route::post('add-employee', [EmployeeController::class,'insert']);
+    Route::get('profil/{id}', [EmployeeController::class , 'employee']) -> name('to.emp');
+    Route::get('/edit-emp/{id}', [EmployeeController::class , 'employee']);
+    Route::post('/edit-emp/edit/{id}', [EmployeeController::class , 'update']);
     Route::get('form_rekam', function () {
         return view('tambah-rekam-medis-page');
     });
+
     Route::post('form_rekam/tambah', [RekamController::class,'insert']);
 });
 
@@ -137,9 +139,7 @@ Route::get('edit_rekam', function () {
     return view('edit-rekammedis');
 });
 
-Route::get('edit_emp', function () {
-    return view('edit-employee');
-});
+
 
 Route::get('edit_pasien', function () {
     return view('edit-patient');

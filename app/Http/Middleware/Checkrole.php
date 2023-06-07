@@ -18,9 +18,10 @@ class Checkrole
      */
     public function handle(Request $request, Closure $next, ...$role)
     {
-        Log::alert(Auth::user()->role);
-        Log::alert($role);
+
         if (Auth::check() && in_array(Auth::user()->role,$role)) {
+            Log::alert(Auth::user()->role);
+            Log::alert($role);
             return $next($request);
         }
 

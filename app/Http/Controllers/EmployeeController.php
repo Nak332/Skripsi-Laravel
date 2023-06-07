@@ -6,6 +6,8 @@ use App\Events\EmployeeCreated;
 use App\Listeners\CreateUserForEmployee;
 use App\Models\Employees;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 class EmployeeController extends Controller
 {
@@ -13,6 +15,22 @@ class EmployeeController extends Controller
     {
     	$employeeList = Employees::orderBy('Employee_name')->get();
     	return view('/', compact('employeeList'));
+
+    }
+
+    public function employee(Request $request , $id)
+    {
+        $p = strstr($request->path(),'/',true);
+        Log::alert($p);
+    	$employee = Employees::find($id);
+        if ($p == 'profil' ) {
+            return view('employee-profile', compact('employee'));
+        } else {
+            return view('edit-employee', compact('employee'));
+        }
+
+
+
 
     }
 
@@ -48,6 +66,14 @@ class EmployeeController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $imageName = time().'.'.$request->image->extension();
+
+        $request->image->move(public_path('images'), $imageName);
+
         $employeeUpdate = Employees::findOrFail($id);
         $employeeUpdate->update([
             'employee_name' => $request->employee_name,
@@ -56,11 +82,20 @@ class EmployeeController extends Controller
             'employee_gender' => $request->employee_gender,
             'employee_NIK' => $request->employee_NIK,
             'employee_address' => $request->employee_address,
-            'employee_photo' => $request->employee_photo,
             'employee_DOB' => $request->employee_DOB,
             'employee_POB' => $request->employee_POB,
             'employee_email' => $request->employee_email
         ]);
+
+        if ($imageName != NULL) {
+            File::delete(public_path('images/' . $employeeUpdate->employee_photo)z);
+            $employeeUpdate->update([
+                'employee_photo' => $imageName
+            ]);
+        }
+
+
+
         return redirect('/');
     }
 

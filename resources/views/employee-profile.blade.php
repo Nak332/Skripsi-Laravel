@@ -16,7 +16,7 @@
               <p class="text-gray-600">Software Engineer</p>
             </div>
           </div>
-        
+
         <div class="mt-4">
           <h3 class="text-lg font-medium">Informasi</h3>
           <ul class="mt-2 list-disc list-inside text-gray-600">
@@ -29,9 +29,9 @@
         <div class="mt-4">
             <h3 class="text-lg font-medium">Alamat</h3>
             <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis mi vel tellus rhoncus, in lobortis mauris mollis</p>
-    
+
           </div>
-        
+
         <div class="mt-4">
           <h3 class="text-lg font-medium">Contact</h3>
           <p class="text-gray-600">Email: something@mail.com</p>
@@ -40,9 +40,14 @@
       </div>
     </div>
   </div>
-        
 
-    
+    <button  class="ml-32 rounded-full bg-green-500 px-2 py-1 text-xl text-white transition duration-300 hover:bg-green-600">
+        <a href="/edit-emp/{{$employee->id}}">+</a>
+        </button>
+
+
+
+
 
 
 
