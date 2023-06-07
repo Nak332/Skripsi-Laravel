@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use App\Events\AppointmentHistoryCreated;
 use App\Events\EmployeeCreated;
+use App\Events\RoleChanged;
 use App\Listeners\AppointmentToHistory;
+use App\Listeners\ChangingRole;
 use App\Listeners\CreateUserForEmployee;
 use App\Models\Employees;
 use GuzzleHttp\Promise\Create;
@@ -30,6 +32,9 @@ class EventServiceProvider extends ServiceProvider
         AppointmentHistoryCreated::class => [
             AppointmentToHistory::class,
         ],
+        RoleChanged::class => [
+            ChangingRole::class
+        ]
     ];
 
     /**
