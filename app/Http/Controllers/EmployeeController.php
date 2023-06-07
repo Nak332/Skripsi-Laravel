@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\EmployeeCreated;
+use App\Events\RoleChanged;
 use App\Listeners\CreateUserForEmployee;
 use App\Models\Employees;
 use Illuminate\Http\Request;
@@ -37,12 +38,18 @@ class EmployeeController extends Controller
     public function insert(Request $request)
     {
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $imageName = time().'.'.$request->image->extension();
+        if ($request->employee_photo != NULL) {
+            $imageName = time().'.'.$request->image->extension();
 
-        $request->image->move(public_path('images'), $imageName);
+            $request->image->move(public_path('images'), $imageName);
+        } else {
+            $imageName = NULL;
+        }
+
+
 
 
 
@@ -67,12 +74,10 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $imageName = time().'.'.$request->image->extension();
 
-        $request->image->move(public_path('images'), $imageName);
 
         $employeeUpdate = Employees::findOrFail($id);
         $employeeUpdate->update([
@@ -86,15 +91,20 @@ class EmployeeController extends Controller
             'employee_POB' => $request->employee_POB,
             'employee_email' => $request->employee_email
         ]);
+        Log::alert('berjalan1');
 
-        if ($imageName != NULL) {
+        if ($request->employee_image != NULL) {
+            $imageName = time().'.'.$request->image->extension();
+
+            $request->image->move(public_path('images'), $imageName);
             File::delete(public_path('images/' . $employeeUpdate->employee_photo));
             $employeeUpdate->update([
                 'employee_photo' => $imageName
             ]);
         }
+        Log::alert('berjalan2');
 
-
+        event(new RoleChanged($employeeUpdate));
 
         return redirect('/');
     }
