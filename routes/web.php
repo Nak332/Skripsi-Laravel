@@ -32,8 +32,10 @@ Route::middleware(['isLogin'])->group(function () {
     Route::get('/',function(){
         return redirect('/resepsi');
     });
-    Route::get('/resepsi',[AntrianController::class,'index']);
-    Route::get('/resepsi',[PatientController::class,'index']);
+
+    Route::get('resepsi',[AntrianController::class,'index']);
+    // Route::get('resepsi',[PatientController::class,'index']);
+
     Route::get('/logout', [UserController::class, 'logout']);
     Route::get('/daftar-pasien', function () {
         return view('patient-list');
@@ -56,6 +58,9 @@ Route::middleware(['checkrole:admin,dokter'])->group(function () {
     Route::get('/form-rekam/{id}', [RekamController::class , 'Rekam']);
 
     Route::post('form_rekam/tambah', [RekamController::class,'insert']);
+    Route::get('tambah-vaksin', function () {
+        return view('form-vaksin');
+    });
 });
 
 Route::middleware(['checkrole:admin,dokter,resepsionis'])->group(function () {
