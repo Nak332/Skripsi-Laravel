@@ -36,4 +36,11 @@ class Patient extends Model
         return $p;
     }
 
+    protected $fillable = [
+        'patient_NIK'
+    ];
+    protected $casts = [
+        'patient_NIK' => 'encrypted',
+    ];
+
 }

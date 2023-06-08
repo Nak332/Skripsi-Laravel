@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('patient_gender');
             $table->string('patient_phone');
             $table->string('patient_address');
-            $table->string('patient_NIK')->nullable()->unique();
+            $table->text('patient_NIK')->nullable()->unique();
             $table->string('patient_alias');
             $table->date('patient_DOB');
             $table->string('patient_POB');
