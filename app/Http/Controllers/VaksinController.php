@@ -19,7 +19,7 @@ class VaksinController extends Controller
     {
         $vaksin = new Vaksin;
         $vaksin->vaccine_name = $request->vaccine_name;
-        $vaksin->vaccine_date = $request->vaccination_date;
+        $vaksin->vaccination_date = $request->vaccination_date;
         $vaksin->patient_id = $request->patient_id;
         $vaksin->batch_number = $request->batch_number;
         $vaksin->notes = $request->notes;

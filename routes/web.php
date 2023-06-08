@@ -8,6 +8,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\PatientController ;
 use App\Http\Controllers\RekamController;
+use App\Http\Controllers\VaksinController;
 use App\Models\Appointment;
 use App\Models\Medicine;
 use App\Models\Patient;
@@ -71,16 +72,33 @@ Route::middleware(['checkrole:admin,dokter,resepsionis'])->group(function () {
 });
 
 
+//obat
+Route::get('edit_obat', function () {
+    return view('edit-obat');
+});
+Route::get('obat/{id}', [MedicineController::class , 'medicines']) -> name('to.obat');
+Route::get('list_obat', function () {
+    return view('obat-list');
+});
 
+Route::get('tambah-obat', function () {
+    return view('form-obat');
+});
 
+Route::post('tambah-obat/tambah', [MedicineController::class,'insert']);
+
+Route::post('tambah-antrian', [AntrianController::class,'insert']);
 // Route::get('register', function () {
 //     return view('register-user');
 // });
 
 
+Route::get('vaksinasi', function () {
+    return view('form-vaksin');
+});
 
 
-
+Route::post('vaksinasi/tambah', [VaksinController::class,'insert']);
 
 Route::get('dev', function () {
     return view('crud-sandbox');
@@ -108,17 +126,12 @@ Route::get('users', function () {
 
 
 
-Route::post('tambah-antrian', [AntrianController::class,'insert']);
+
 
 // Route::get('pasien', function () {
 //     return view('pasien');
 // });
 
-Route::get('tambah-obat', function () {
-    return view('form-obat');
-});
-
-Route::post('tambah-obat/tambah', [MedicineController::class,'insert']);
 
 
 
@@ -128,14 +141,6 @@ Route::post('tambah-obat/tambah', [MedicineController::class,'insert']);
 
 
 
-//obat
-Route::get('edit_obat', function () {
-    return view('edit-obat');
-});
-Route::get('obat/{id}', [MedicineController::class , 'medicines']) -> name('to.obat');
-Route::get('list_obat', function () {
-    return view('obat-list');
-});
 
 
 
