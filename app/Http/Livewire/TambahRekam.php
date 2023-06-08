@@ -26,7 +26,7 @@ class TambahRekam extends Component
         $p =  Appointment::OrderBy('id','asc')->first();
         $this->selected_patient = Patient::findorFail($p->patient_id);
         $this->selected_patient_name=  $this->selected_patient['patient_name'];
-        $this->q_number = $p->antrian_number;
+        $this->q_number = $p->id;
 
     }
 

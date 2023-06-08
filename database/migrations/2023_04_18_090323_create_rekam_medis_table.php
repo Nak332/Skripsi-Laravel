@@ -29,11 +29,11 @@ return new class extends Migration
             $table->string('follow_up_plan')->nullable();
             $table->string('treatment')->nullable();
             $table->string('past_service')->nullable();
-            $table->string('agreement');
+            $table->string('agreement')->nullable();
             $table->string('diagnosis');// hasil diagnosis penyakit
-            $table->string('total_price');
+            $table->string('total_price')->nullable();
             $table->longtext('note')->nullable();
-            $table->string('type');
+            $table->string('type')->nullable();
             $table->string('flag')->nullable();
             $table->string('icd10')->nullable();
             $table->timestamps();

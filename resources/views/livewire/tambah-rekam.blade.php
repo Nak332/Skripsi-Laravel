@@ -62,9 +62,10 @@
                             </p>
                         </div>
                     <input type="text" name="patient_id" id="patient_id" hidden value="{{$selected_patient['id']}}">
-                    <input type="text" name="antrian_number" id="antrian_number"  wire:model='q_number' hidden @if($q_number>0) value="{{ $q_number }}" @else value="-1" @endif >
+                    <input type="text" name="appointment_id" id="appointment_id"  wire:model='q_number' hidden @if($q_number>0) value="{{ $q_number }}" @else value="-1" @endif >
+                    <input type="text" name="employee_id" id="employee_id" hidden value="{{Auth::user()->employee_id}}">
 
-          
+
 
                     </div>
 
@@ -129,7 +130,7 @@
 
                 <div class="mb-4">
                   <label for="disease" class="block text-gray-700 text-sm font-medium mb-2">Diagnosa</label>
-                  <input type="text" name="disease" id="disease" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                  <input type="text" name="diagnosis" id="diagnosis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                 </div>
                 {{-- <div class="mb-4">
                   <label for="total_price" class="block text-gray-700 text-sm font-medium mb-2">Total Price</label>

@@ -16,7 +16,7 @@ class RekamController extends Controller
 
     public function Rekam($id)
     {
-    	$rekamMedis = Patient::find($id);
+        $rekamMedis = Patient::find($id);
     	return view('tambah-rekam-medis-page', compact(['rekamMedis']));
 
     }

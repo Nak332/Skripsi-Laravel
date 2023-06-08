@@ -57,6 +57,10 @@ Route::middleware(['checkrole:admin,dokter'])->group(function () {
     Route::get('/edit-emp/{id}', [EmployeeController::class , 'employee']);
     Route::post('/edit-emp/edit/{id}', [EmployeeController::class , 'update']);
     Route::get('/form-rekam/{id}', [RekamController::class , 'Rekam']);
+    Route::get('/form-rekam/new', [RekamController::class , 'Rekam']);
+    // Route::get('/form-rekam', function () {
+    //     return view('tambah-rekam-medis-page');
+    // });
 
     Route::post('form_rekam/tambah', [RekamController::class,'insert']);
     Route::get('tambah-vaksin', function () {
