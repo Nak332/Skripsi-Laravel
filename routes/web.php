@@ -33,7 +33,7 @@ Route::middleware(['isLogin'])->group(function () {
         return redirect('/resepsi');
     });
     Route::get('resepsi',[AntrianController::class,'index']);
-    Route::get('resepsi',[PatientController::class,'index']);
+    // Route::get('resepsi',[PatientController::class,'index']);
     Route::get('/logout', [UserController::class, 'logout']);
     Route::get('daftar-pasien', function () {
         return view('patient-list');
