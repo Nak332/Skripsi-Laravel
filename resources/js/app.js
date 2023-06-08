@@ -3,7 +3,7 @@ import './../css/app.css'
 import Alpine from 'alpinejs'
 import focus from '@alpinejs/focus'
 import collapse from '@alpinejs/collapse'
- 
+
 
 
 window.Alpine = Alpine

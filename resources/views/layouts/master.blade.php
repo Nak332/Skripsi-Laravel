@@ -14,14 +14,14 @@
 </head>
 
 <body>
-   
-   
+    @livewire('livewire-ui-modal')
     @livewireScripts
-    <div class="h-fit bg-gray-200 mb-5">
+
+    <div class="h-fit">
         @yield('content')
     </div>
     
-    @livewire('livewire-ui-modal')
+    
 
 </body>
 

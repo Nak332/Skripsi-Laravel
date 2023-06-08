@@ -90,7 +90,8 @@
   
             @foreach ($RekamMedis as $R)
   
-            <div class="p-4 rounded-lg text-white transition-all cursor-pointer {{$R->flag =='1' ?  'bg-blue-500 hover:bg-blue-300' : 'bg-red-500  hover:bg-red-300' }} ">
+            <div onclick="Livewire.emit('openModal', 'card-rekammedis')"
+            class="p-4 rounded-lg text-white transition-all cursor-pointer {{$R->flag =='1' ?  'bg-blue-500 hover:bg-blue-300' : 'bg-red-500  hover:bg-red-300' }} ">
             <p class=" truncate font-bold">{{$R->created_at}}</p>
             <p class="truncate">Diagnosis: {{$R->diagnosis}}</p>
             </div>
@@ -105,7 +106,7 @@
 
         </div>
 
-        <div class="flex-inline md:w-1/2  md:mr-4 p-4 bg-white rounded-3xl shadow-md">
+        <div class="flex-inline md:w-1/2  md:ml-4 p-4 bg-white rounded-3xl shadow-md">
           <div class="flex justify-between pb-6">
             <h1 class="text-2xl font-bold mb-4 truncate">Riwayat Imunisasi </h1>
             <button class="text-xl text-white font-bold bg-green-500 hover:bg-green-700 transition-all rounded-lg p-2"> 

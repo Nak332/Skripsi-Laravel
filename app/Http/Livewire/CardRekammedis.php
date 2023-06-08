@@ -11,4 +11,11 @@ class CardRekammedis extends ModalComponent
     {
         return view('livewire.card-rekammedis');
     }
+
+    public static function modalMaxWidth(): string
+    { 
+    return '7xl';
+    }
+
+
 }
