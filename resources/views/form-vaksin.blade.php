@@ -15,7 +15,7 @@
                 <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-4xl w-128 h-fit">
                     <p class="font-bold text-black">Tambah pasien tervaksinasi</p>
                     </div>
-              <form method="POST" action="tambah-vaksin/tambah" enctype="multipart/form-data">
+              <form method="POST" action="vaksinasi/tambah" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4">
                   <label for="vaccine_name" class="block text-gray-700 text-sm font-medium mb-2">Nama vaksin</label>
