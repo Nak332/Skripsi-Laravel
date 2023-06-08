@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use App\Models\RekamMedis;
+use App\Models\Vaksin;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -20,7 +21,8 @@ class PatientController extends Controller
     {
     	$patient = Patient::find($id);
         $RekamMedis = RekamMedis::where('patient_id', $id)->orderByDesc('id')->get();
-    	return view('pasien', compact(['patient','RekamMedis']));
+        $Vaksin = Vaksin::where('patient_id', $id)->orderByDesc('id')->get();
+    	return view('pasien', compact(['patient','RekamMedis','Vaksin']));
 
     }
 
