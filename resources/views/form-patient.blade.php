@@ -13,7 +13,7 @@
                 <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-4xl w-128 h-fit">
                     <p class="font-bold text-black">Tambah Pasien</p>
                     </div>
-              <form method="POST" action="add-employee" enctype="multipart/form-data">
+              <form method="POST" action="/tambah-pasien/tambah" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4">
                   <label for="patient_name" class="block text-gray-700 text-sm font-medium mb-2">Nama</label>
@@ -23,6 +23,10 @@
                   <label for="patient_gender" class="block text-gray-700 text-sm font-medium mb-2">Jenis Kelamin</label>
                   <input type="text" id="patient_gender" name="patient_gender" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="">
                 </div>
+                <div class="mb-4">
+                    <label for="patient_gender" class="block text-gray-700 text-sm font-medium mb-2">NIK</label>
+                    <input type="text" id="patient_NIK" name="patient_NIK" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="">
+                  </div>
                 <div class="mb-4">
                   <label for="patient_alias" class="block text-gray-700 text-sm font-medium mb-2">Nama alias</label>
                   <input type="text" id="patient_alias" name="patient_alias" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="">
@@ -58,7 +62,7 @@
                         <label for="patient_emergency_contact_phone" class="block text-gray-700 text-sm font-medium mb-2">No.telpon</label>
                         <input type="text" id="patient_emergency_contact_phone" name="patient_emergency_contact_phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                       </div>
-                
+
                   <div class="flex justify-center">
                     <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Submit</button>
                 </div>

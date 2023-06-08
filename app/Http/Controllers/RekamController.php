@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patient;
 use App\Models\RekamMedis;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,12 @@ class RekamController extends Controller
     {
     	$rekamMedis = RekamMedis::all();
     	return view('resepsi', ['rekamMedis' => $rekamMedis]);
+    }
+
+    public function Rekam($id)
+    {
+    	$rekamMedis = Patient::find($id);
+    	return view('tambah-rekam-medis-page', compact(['rekamMedis']));
 
     }
 

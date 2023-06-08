@@ -17,10 +17,10 @@
                     <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" aria-current="page">Dashboard</a>
                 </li>
                 <li>
-                    <a href="resepsi" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" >Resepsi</a>
+                    <a href="/resepsi" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" >Resepsi</a>
                 </li>
                 <li>
-                    <a href="daftar-pasien" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Daftar Pasien</a>
+                    <a href="/daftar-pasien" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Daftar Pasien</a>
                 </li>
                 <li>
                     <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Pengaturan</a>

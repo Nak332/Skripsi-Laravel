@@ -80,9 +80,12 @@
         <div class="flex-inline md:w-1/2  md:mr-4 p-4 bg-white rounded-3xl shadow-md">
           <div class="flex justify-between pb-6">
             <h1 class="text-2xl font-bold mb-4 truncate">Rekam Medis </h1>
-            <button class="text-xl text-white font-bold bg-green-500 hover:bg-green-700 transition-all rounded-lg p-2">
-              <h1 >+ Tambah Rekam</h1>
-            </button>
+            <form action="/form-rekam/{{$patient->id}}" method="get">
+                <button class="text-xl text-white font-bold bg-green-500 hover:bg-green-700 transition-all rounded-lg p-2">
+                    <h1 >+ Tambah Rekam</h1>
+                  </button>
+            </form>
+
 
           </div>
 
@@ -90,7 +93,7 @@
 
             @foreach ($RekamMedis as $R)
 
-            <div onclick="Livewire.emit('openModal', 'card-rekammedis')"
+            <div onclick="Livewire.emit('openModal', 'card-rekammedis', {{json_encode(['Rekam' => $R])}})"
             class="p-4 rounded-lg text-white transition-all cursor-pointer {{$R->flag =='1' ?  'bg-blue-500 hover:bg-blue-300' : 'bg-red-500  hover:bg-red-300' }} ">
             <p class=" truncate font-bold">{{$R->created_at}}</p>
             <p class="truncate">Diagnosis: {{$R->diagnosis}}</p>

@@ -4,10 +4,10 @@
             <div class="drop-shadow flex-inline text-center text-black   m-4 rounded-lg text-4xl h-fit">
                 <p class="font-bold text-black">Rekam Medis</p>
                 </div>
-          <form method="POST" action="form_rekam/tambah">
+          <form method="POST" action="/form_rekam/tambah">
             @csrf
 
-            
+
             {{-- <div class="mb-4">
               <label for="patient_id" class="block text-gray-700 text-sm font-medium mb-2">Pasien</label>
               <input type="text" id="patient_id" name="patient_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Masukan .. pasien">
@@ -24,7 +24,7 @@
             {{--Bikin iinvisible buat 3 bagian diatas --}}
 
             <div id="container_pasien" class="flex-inline py-4">
-              
+
 
 
                 <div class="px-6 py-4 w-1/3 ml-2" x-data="{ show: true }">
@@ -35,53 +35,53 @@
                         @livewire('patient-search-bar')
                     </div>
                 </div>
-                
-        
+
+
 
                 @if ($selected_patient)
                 <div id="selected-patient-container" class="flex">
                     <div id="selected-patient-card" class="w-1/2 flex-inline px-8">
-                        
+
                         <label class="block mb-2 text-sm font-medium text-gray-900  " for="patient_id">Pasien</label>
                         <div>
-                            <p class="font-bold text-white rounded-lg bg-blue-500 p-3 truncate"> 
+                            <p class="font-bold text-white rounded-lg bg-blue-500 p-3 truncate">
                             {{$selected_patient['patient_name']}}
                             {{-- Satria Narayana --}}
                             </p>
                         </div>
-                  
-                    </div>  
+
+                    </div>
 
                     <div id="selected-patient-card" class="w-1/2 flex-inline px-8">
                         {{-- @if ($selected_patient) --}}
                         <label class="block mb-2 text-sm font-medium text-gray-900" for="patient_id">Kunjungan terakhir</label>
                         <div>
-                            <p class="py-3 px-2 truncate"> 
+                            <p class="py-3 px-2 truncate">
                             {{-- {{$selected_patient['patient_name']}} --}}
-                            22/12/2018 16:04
+                            {{$selected_patient->lastAppointment()->created_at}}
                             </p>
                         </div>
-                    {{-- <input type="text" name="patient_id" id="patient_id" disabled value="{{$selected_patient['id']}}"> --}}
-            
-                    </div>  
-                    
+                    <input type="text" name="patient_id" id="patient_id" hidden value="{{$selected_patient['id']}}">
+
+                    </div>
+
 
                 </div>
                 @endif
-              
+
 
               <hr class="mt-8">
             </div>
 
-            
+
 
             <div id="main_container_form" class="md:flex px-4">
-             
-              
+
+
               <div id="left-side" class="md:w-1/2 flex-inline p-6">
                 <div class="mb-4">
                   <label for="keluhan" class="block text-gray-700 text-sm font-medium mb-2">Keluhan</label>
-                  <textarea name="keluhan" id="keluhan" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                  <textarea name="complaint" id="complaint" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                 </div>
                 <div class="mb-4">
                   <label for="symptoms" class="block text-gray-700 text-sm font-medium mb-2">Gejala</label>
@@ -89,15 +89,15 @@
                 </div>
                 <div class="mb-4">
                   <label for="hasil_anamnesis" class="block text-gray-700 text-sm font-medium mb-2">Anamnesis</label>
-                  <textarea name="hasil_anamnesis" id="hasil_anamnesis" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                  <textarea name="anamnesis" id="anamnesis" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                 </div>
 
-             
+
 
                 <div class="mb-4">
                   <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Suhu Badan</label>
                   <div class="flex">
-                    <input type="number" name='suhu_badan' step="0.1" min="25" max="45" id="body_temperature" class="md:w-1/4 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=36 >
+                    <input type="number" name='body_temperature' step="0.1" min="25" max="45" id="body_temperature" class="md:w-1/4 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=36 >
                     <div class=" p-3"><h1>° C</h1></div>
                   </div>
                 </div>
@@ -106,16 +106,16 @@
                   <div class="mb-4 w-1/2">
                     <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Sistol</label>
                     <div class="flex">
-                      <input type="number" name='body_temperature' id="suhu_badan" class="md:w-1/2  px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=120 >
+                      <input type="number" name='sistol' id="sistol" class="md:w-1/2  px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=120 >
                       <div class=" p-3"><h1>mmHg</h1></div>
                     </div>
                   </div>
-                  
-                  
+
+
                   <div class="mb-4 w-1/2">
                     <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Diastol</label>
                     <div class="flex">
-                      <input type="number" name='body_temperature' id="suhu_badan" class="md:w-1/2 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=80 >
+                      <input type="number" name='diastol' id="diastol" class="md:w-1/2 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=80 >
                       <div class=" p-3"><h1>mmHg</h1></div>
                     </div>
                   </div>
@@ -123,7 +123,7 @@
               </div>
 
               <div id="right-side" class="md:w-1/2 flex-inline p-6">
-              
+
                 <div class="mb-4">
                   <label for="disease" class="block text-gray-700 text-sm font-medium mb-2">Diagnosa</label>
                   <input type="text" name="disease" id="disease" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
@@ -148,11 +148,11 @@
 
                 <div class="mb-4">
                   <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Penatalaksanaan</label>
-                  <textarea rows="3" name="penatalaksaan" id="penatalaksaan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                  <textarea rows="3" name="follow_up_plan" id="follow_up_plan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                 </div>
                 <div class="mb-4">
                     <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tindakan</label>
-                    <textarea rows="3" name="penatalaksaan" id="penatalaksaan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                    <textarea rows="3" name="treatment" id="treatment" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                 </div>
 
                 {{-- <div class="mb-4">
@@ -182,14 +182,14 @@
                     <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tindakan</label>
                     <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
                 </div>
-         
-                
-                
-                
+
+
+
+
 
             </div>
 
-           
+
 
               <div class="flex justify-center">
                 <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Submit</button>
