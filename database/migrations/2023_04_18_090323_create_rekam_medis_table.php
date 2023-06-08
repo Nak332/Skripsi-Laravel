@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('rekam_medis', function (Blueprint $table) {
             $table->id();
-            $table->integer('patient_id')->nullable();
+            $table->integer('patient_id');
             $table->string('appointment_id')->nullable();
             $table->string('medicine_id')->nullable();
-            $table->string('employee_id')->nullable();
+            $table->string('employee_id');
             $table->string('symptoms'); //hasil pemeriksaan
             $table->string('sistol');
             $table->string('diastol');
@@ -28,11 +28,11 @@ return new class extends Migration
             $table->string('anamnesis');
             $table->string('follow_up_plan')->nullable();
             $table->string('treatment')->nullable();
-            $table->string('past_service');
+            $table->string('past_service')->nullable();
             $table->string('agreement');
             $table->string('diagnosis');// hasil diagnosis penyakit
             $table->string('total_price');
-            $table->longtext('note');
+            $table->longtext('note')->nullable();
             $table->string('type');
             $table->string('flag')->nullable();
             $table->string('icd10')->nullable();

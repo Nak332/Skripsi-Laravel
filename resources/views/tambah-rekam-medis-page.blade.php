@@ -6,9 +6,14 @@
 
 @extends('layouts.navigation-bar')
 
+
+
 <div id="container-main h-fit" class="bg-gray-200">
- 
-  @livewire('tambah-rekam')
+
+
+  @livewire('tambah-rekam', ['selected_patient' => $rekamMedis])
+
+
 
 </div>
 
