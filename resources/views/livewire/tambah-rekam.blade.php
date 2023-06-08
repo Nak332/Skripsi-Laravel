@@ -62,6 +62,9 @@
                             </p>
                         </div>
                     <input type="text" name="patient_id" id="patient_id" hidden value="{{$selected_patient['id']}}">
+                    <input type="text" name="antrian_number" id="antrian_number"  wire:model='q_number' hidden @if($q_number>0) value="{{ $q_number }}" @else value="-1" @endif >
+
+          
 
                     </div>
 

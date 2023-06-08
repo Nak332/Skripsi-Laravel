@@ -47,6 +47,7 @@ class TambahRekam extends Component
     public function addPatient($id)
     {
         // Update the parentData property with the received data
+        $this->q_number=-1;
         $this->selected_patient=Patient::findorFail($id);
         $this->selected_patient_name=  $this->selected_patient['patient_name'];
     }
