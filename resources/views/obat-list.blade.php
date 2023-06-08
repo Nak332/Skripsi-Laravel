@@ -8,6 +8,7 @@
 
 <div id="container-main" class="bg-gray-200">
   <div class="container mx-auto p-4">  
+    
         <div class="min-h-screen flex items-center justify-center">
             <livewire:medicine-table />
              
