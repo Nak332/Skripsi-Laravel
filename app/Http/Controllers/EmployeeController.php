@@ -39,7 +39,7 @@ class EmployeeController extends Controller
     {
         $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'employee_name' =>'required|alpha|max:25',
+            'employee_name' =>'required', //|alpha|max:25
             'employee_job' => 'required|in:Dokter,Perawat,Farmasi|alpha|max:25',
             'employee_phone' => 'required|min:8|max:15',
             'employee_gender' => 'required|in:Laki-Laki,Perempuan,Pria,Wanita|alpha|max:25',
