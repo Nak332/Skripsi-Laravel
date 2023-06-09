@@ -11,7 +11,6 @@
     <div class="bg-white rounded-3xl shadow-md mx-auto w-3/4 p-8">
         <h1 class="text-2xl font-bold mb-4">Obat</h1>
         <table class="min-w-full bg-white">
-
               <tr>
                 <td class="px-4 py-2">Nama</td>
                 <td class="px-4 py-2">{{$medicine->medicine_name}}</td>
@@ -52,7 +51,7 @@
                         Edit
                        </button>
                 <div wire:model='medicinedetails' x-show="open">
-                  @livewire('edit-stok-obat',['medicine'=>$medicine, 'medicineDetail'=>$medicineDetail])
+                  @livewire('edit-stok-obat',['medicine'=>$medicine,'medicineDetail'=>$MD])
                 </div>
               </div>
 

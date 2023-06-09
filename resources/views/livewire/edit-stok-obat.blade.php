@@ -28,17 +28,16 @@
                         <div>
                                    
                            <input type="text" class="hidden" value="{{$medicine->id}}"> 
-                           
+                            {{-- {{$medicineDetail->id}} --}}
 
                             <label class="block mb-2 text-sm font-medium text-gray-900 " for="patient_id">Tanggal Kadaluarsa</label>
                             
-                            <input type="date" name="medicine_expired_date" id="medicine_expired_date" class='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300'
-                            value="">
+                            <input type="date" name="medicine_expired_date" id="medicine_expired_date" class='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300' wire:model='expiry'>
                             <br><br>
                         </div>
                         <div>
                             <label for="" class="block mb-2 text-sm font-medium text-gray-900 ">Stok</label>
-                            <input type="number" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="medicine_stock" id="medicine_stock"
+                            <input wire:model='currentStock' type="number" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="medicine_stock" id="medicine_stock"
                             value="">
                         </div>
                        
