@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Events\AppointmentHistoryCreated;
+use App\Events\EmployeeCreated;
+use App\Listeners\AppointmentToHistory;
+use App\Listeners\CreateUserForEmployee;
+use App\Models\Employees;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +24,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        EmployeeCreated::class => [
+            CreateUserForEmployee::class,
+        ],
+        AppointmentHistoryCreated::class => [
+            AppointmentToHistory::class,
+        ],
     ];
 
     /**
@@ -27,7 +39,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+
     }
 
     /**

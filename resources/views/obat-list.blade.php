@@ -1,0 +1,26 @@
+@extends('layouts.master')
+
+@section('title','Daftar Karyawan')
+
+@section('content')
+
+@extends('layouts.navigation-bar')
+
+<div id="container-main" class="bg-gray-200">
+  <div class="container mx-auto p-4">  
+        <div class="min-h-screen flex items-center justify-center">
+            <livewire:medicine-table />
+             
+            </div>
+          </div>
+        
+
+    
+
+
+
+</div>
+
+
+
+@stop
