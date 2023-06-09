@@ -12,7 +12,10 @@ class EmployeeTable extends DataTableComponent
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('id')
+        ->setTableRowUrl(function($row) {
+            return route('to.emp', $row);
+        });
     }
 
     public function columns(): array

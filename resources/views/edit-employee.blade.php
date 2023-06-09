@@ -13,43 +13,43 @@
                 <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-4xl w-128 h-fit">
                     <p class="font-bold text-black">Employee Edit</p>
                     </div>
-              <form method="POST" action="add-employee" enctype="multipart/form-data">
+              <form method="POST" action="/edit-emp/edit/{{$employee->id}}" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4">
                   <label for="employee_name" class="block text-gray-700 text-sm font-medium mb-2">Name</label>
-                  <input type="text" id="employee_name" name="employee_name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Nama Karyawan">
+                  <input type="text" id="employee_name" name="employee_name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Nama Karyawan" value="{{$employee->employee_name}}">
                 </div>
                 <div class="mb-4">
                   <label for="employee_job" class="block text-gray-700 text-sm font-medium mb-2">Job</label>
-                  <input type="text" id="employee_job" name="employee_job" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Pekerjaan">
+                  <input type="text" id="employee_job" name="employee_job" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Pekerjaan" value="{{$employee->employee_job}}">
                 </div>
                 <div class="mb-4">
                   <label for="employee_gender" class="block text-gray-700 text-sm font-medium mb-2">Gender</label>
-                  <input type="text" id="employee_gender" name="employee_gender" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Kelamin">
+                  <input type="text" id="employee_gender" name="employee_gender" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Kelamin" value="{{$employee->employee_gender}}">
                 </div>
                 <div class="mb-4">
                     <label for="employee_NIK" class="block text-gray-700 text-sm font-medium mb-2">NIK</label>
-                    <input type="text" id="employee_NIK" name="employee_NIK" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="NIK">
+                    <input type="text" id="employee_NIK" name="employee_NIK" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="NIK" value="{{$employee->employee_NIK}}">
                   </div>
                 <div class="mb-4">
                   <label for="employee_address" class="block text-gray-700 text-sm font-medium mb-2">Address</label>
-                  <input type="text" name="employee_address" id="employee_address" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Alamat"></textarea>
+                  <input type="text" name="employee_address" id="employee_address" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Alamat" value="{{$employee->employee_address}}"></textarea>
                 </div>
                   <div class="mb-4">
                     <label for="employee_phone" class="block text-gray-700 text-sm font-medium mb-2">Phone</label>
-                    <input type="text" name="employee_phone" id="employee_phone" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="No. telpon"></textarea>
+                    <input type="text" name="employee_phone" id="employee_phone" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="No. telpon" value="{{$employee->employee_phone}}"></textarea>
                   </div>
                   <div class="mb-4">
                     <label for="employee_DOB" class="block text-gray-700 text-sm font-medium mb-2">Date of Birth</label>
-                    <input type="date" name="employee_DOB" id="employee_DOB" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                    <input type="date" name="employee_DOB" id="employee_DOB" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="" value="{{$employee->employee_DOB}}"></textarea>
                   </div>
                 <div class="mb-4">
                     <label for="employee_POB" class="block text-gray-700 text-sm font-medium mb-2">Place of Birth</label>
-                    <input type="text" name="employee_POB" id="employee_POB" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                    <input type="text" name="employee_POB" id="employee_POB" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="" value="{{$employee->employee_POB}}"></textarea>
                   </div>
                   <div class="mb-4">
                     <label for="employee_email" class="block text-gray-700 text-sm font-medium mb-2">Email</label>
-                    <input type="email"  name="employee_email" id="employee_email" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                    <input type="email"  name="employee_email" id="employee_email" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="" value="{{$employee->employee_email}}"></textarea>
                   </div>
                   <div>
                     <label for="password" class="block text-gray-700 text-sm font-medium mb-2">Password</label>

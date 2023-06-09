@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use App\Models\RekamMedis;
+use App\Models\Vaksin;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -20,7 +21,8 @@ class PatientController extends Controller
     {
     	$patient = Patient::find($id);
         $RekamMedis = RekamMedis::where('patient_id', $id)->orderByDesc('id')->get();
-    	return view('pasien', compact(['patient','RekamMedis']));
+        $Vaksin = Vaksin::where('patient_id', $id)->orderByDesc('id')->get();
+    	return view('pasien', compact(['patient','RekamMedis','Vaksin']));
 
     }
 
@@ -39,7 +41,7 @@ class PatientController extends Controller
         $patient->patient_marital_status = $request->patient_marital_status;
         $patient->patient_emergency_contact_name = $request->patient_emergency_contact_name;
         $patient->patient_emergency_contact_phone = $request->patient_emergency_contact_phone;
-        $patient->patient_BPJS = $request->patient_BPJS;
+        $patient->has_BPJS = $request->has_BPJS;
         $patient->save();
 
         return redirect('/');
@@ -60,7 +62,7 @@ class PatientController extends Controller
         'patient_marital_status' => $request->patient_marital_status,
         'patient_emergency_contact_name' => $request->patient_emergency_contact_name,
         'patient_emergency_contact_phone' => $request->patient_emergency_contact_phone,
-        'patient_BPJS' => $request->patient_BPJS
+        'has_BPJS' => $request->has_BPJS
         ]);
         return redirect('/');
     }

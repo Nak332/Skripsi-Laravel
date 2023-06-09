@@ -5,7 +5,7 @@ import focus from '@alpinejs/focus'
 import flatpickr from "flatpickr";
 import 'flatpickr/dist/flatpickr.min.css'
 import collapse from '@alpinejs/collapse'
- 
+
 
 
 window.Alpine = Alpine

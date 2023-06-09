@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Medicine;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class MedicineTable extends DataTableComponent
 {
