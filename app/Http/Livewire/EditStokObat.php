@@ -9,12 +9,16 @@ class EditStokObat extends Component
 {
 
     public $medicine;
-    public $medicineDetail = [];
+    public $currentStock=[];
 
     public function render()
     {
         return view('livewire.edit-stok-obat');
     }
 
+    public function getStock($id){
+        $this->currentStock = MedicineDetail::find($id);
+    }
+ 
    
 }

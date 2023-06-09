@@ -45,18 +45,18 @@
               <td class="py-2 px-4 border border-black">{{$MD->medicine_expired_date}}</td>
               <td class="py-2 px-4 border border-black">{{$MD->medicine_stock}}</td>
               <td>
-            <div class="flex">
+            <div class="pt-2 flex">
               <div x-data="{ open: false }">
-                <form action="/edit-stock/{{$MD->id}}" method="get">
-                    {{-- <button @click="open = true" class="rounded-full bg-black ml-2 px-3 py-1 text-lg text-white">
+                {{-- <form action="/edit-stock/{{$MD->id}}" method="get"> --}}
+                    <button @click="open = true" class="rounded-full bg-black ml-2 px-3 py-1 text-lg text-white"> 
                         Edit
-                       </button> --}}
+                       </button>
                 <div wire:model='medicinedetails' x-show="open">
                   @livewire('edit-stok-obat',['medicine'=>$medicine, 'medicineDetail'=>$medicineDetail])
                 </div>
               </div>
 
-                </form>
+                {{-- </form> --}}
               <form action="/delete-stock/{{$MD->id}}" method="post">
                 @csrf
                 <button class="rounded-full bg-red-500 ml-2 px-3 py-1 text-lg text-white transition duration-300 hover:bg-red-600">
