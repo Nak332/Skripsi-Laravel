@@ -55,7 +55,13 @@ class AntrianController extends Controller
 
         $antrian->complaint = $request->complaint;
         $antrian->status = '1';
-        $antrian->appointment_date = $today;
+        if ($request->appointment_type == 'on_the_spot') {
+            $antrian->appointment_date = $today;
+        } else {
+            $antrian->appointment_date = $request->appointment_date;
+        }
+
+
         $antrian->save();
 
         event(new AppointmentHistoryCreated($antrian));

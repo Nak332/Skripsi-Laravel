@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('complaint');
             $table->string('body_temperature');
             $table->string('anamnesis');
+            $table->string('quantity')->nullable();
             $table->string('follow_up_plan')->nullable();
             $table->string('treatment')->nullable();
             $table->string('past_service')->nullable();
