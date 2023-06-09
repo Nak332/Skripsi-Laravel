@@ -7,10 +7,13 @@
 
 <style>[x-cloak] { display: none !important; }</style>
 
-<div class="flex min-h-screen bg-white justify-center pt-12 pb-4">
+<div class="flex min-h-screen bg-gray-200 justify-center pt-12 pb-4">
     <div class="w-4/5 h-fit">
-        <livewire:patient-table />
+        @livewire('patient-table2')
     </div>
+    
+
+     
     
 </div>
 

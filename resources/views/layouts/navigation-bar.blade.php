@@ -14,7 +14,7 @@
           <div class="hidden w-full md:inline md:w-auto pt-3" id="navbar-default">
             <ul class="ml-auto flex items-center space-x-4">
                 <li>
-                    <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" aria-current="page">Dashboard</a>
+                    <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white transition-all hover:bg-gray-600" aria-current="page">Dashboard</a>
                 </li>
                 <li>
                     <a href="/resepsi" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" >Resepsi</a>
@@ -100,7 +100,7 @@
                             x-on:click.outside="close($refs.button)"
                             :id="$id('dropdown-button')"
                             style="display: none;"
-                            class="absolute left-0 mt-2 w-40 rounded-md bg-white shadow-md"
+                            class="absolute left-0 mt-4 w-40 z-50 rounded-md bg-white shadow-md"
                         >
                             <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
                                 Profil

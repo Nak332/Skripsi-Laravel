@@ -26,6 +26,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
 Route::middleware(['isLogin'])->group(function () {
     Route::get('/resepsi', function () {
         return view('resepsi');
