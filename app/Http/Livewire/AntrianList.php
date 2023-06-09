@@ -11,6 +11,7 @@ class AntrianList extends Component
     public $antrian=[];
     public $history=[];
     public $current_patient=[];
+    public $q_type;
 
     protected $rules=[
         'patients'=>'required'
@@ -23,12 +24,22 @@ class AntrianList extends Component
 
     public function mount($antrian,$history)
     {
-
+        
         $this->antrian = $antrian;
         $this->history = $history;
     }
 
     public function getPatientDetails($id){
         $this->current_patient = Patient::find($id);
+    }
+
+    public function sendPatientToParentComponent($id)
+    {
+        // Update the childData property
+
+        // Update the parentData property in the parent component
+        $this->emitUp('patientBumped', $id);
+ 
+ 
     }
 }

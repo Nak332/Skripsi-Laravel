@@ -59,8 +59,8 @@
                         <div>
                             <label for="" class="block mb-2 text-sm font-medium text-gray-900 ">Tipe Kunjungan</label>
                             <select class=" w-full rounded-lg bg-gray-200 border border-gray-300 text-gray-900 p-2" name="appointment_type" id="appointment_type">
-                                <option value="scheduled">Kunjungan Langsung</option>
-                                <option value="on_the_spot">Kunjungan Janjian</option>
+                                <option value="on_the_spot">Kunjungan Langsung</option>
+                                <option  value="scheduled">Kunjungan Janjian</option>
                             </select>
                         </div>
 
