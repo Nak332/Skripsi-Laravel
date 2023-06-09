@@ -6,6 +6,7 @@ use App\Models\Patient;
 use App\Models\RekamMedis;
 use App\Models\Vaksin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PatientController extends Controller
 {
@@ -22,7 +23,13 @@ class PatientController extends Controller
     	$patient = Patient::find($id);
         $RekamMedis = RekamMedis::where('patient_id', $id)->orderByDesc('id')->get();
         $Vaksin = Vaksin::where('patient_id', $id)->orderByDesc('id')->get();
-    	return view('pasien', compact(['patient','RekamMedis','Vaksin']));
+        if (request()->segment(count(request()->segments())) == 'edit') {
+            return view('edit-patient', compact(['patient']));
+        } else {
+            return view('pasien', compact(['patient','RekamMedis','Vaksin']));
+        }
+
+
 
     }
 
@@ -50,12 +57,12 @@ class PatientController extends Controller
     public function update(Request $request, $id)
     {
         $patientUpdate = Patient::findOrFail($id);
+        Log::alert($patientUpdate);
         $patientUpdate->update([
         'patient_name' => $request->patient_name,
         'patient_gender' => $request->patient_gender,
         'patient_phone' => $request->patient_phone,
         'patient_address'=> $request->patient_address,
-        'patient_NIK' => $request->patient_NIK,
         'patient_alias' => $request->patient_alias,
         'patient_DOB' => $request->patient_DOB,
         'patient_POB' => $request->patient_POB,

@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             PatientSeeder::class,
             MedicineSeeder::class,
             MedicineDetailSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            VaksinSeeder::class
         ]);
     }
 }

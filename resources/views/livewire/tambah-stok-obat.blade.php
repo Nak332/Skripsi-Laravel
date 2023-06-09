@@ -22,15 +22,15 @@
             <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                 <p class="text-2xl font-bold">Input stok obat</p>
 
-                <form class="space-y-4 md:space-y-6" action="/tambah-stok" method="POST">
+                <form class="space-y-4 md:space-y-6" action="/tambah-stock" method="POST">
                     @csrf
-                   
+
                         <div>
-                                   
-                           <input type="text" class="hidden" value="{{$medicine->id}}"> 
+
+                           <input type="text" name="medicine_id" id='medicine_id' class="hidden" value="{{$medicine->id}}">
 
                             <label class="block mb-2 text-sm font-medium text-gray-900 " for="patient_id">Tanggal Kadaluarsa</label>
-                            
+
                             <input type="date" name="medicine_expired_date" id="medicine_expired_date" class='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300'>
                             <br><br>
                         </div>

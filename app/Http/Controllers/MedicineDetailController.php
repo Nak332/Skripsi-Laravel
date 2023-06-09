@@ -10,11 +10,12 @@ class MedicineDetailController extends Controller
     public function insert(Request $request)
     {
         $medicineDetail = new MedicineDetail;
-        $medicineDetail->medicine_id = $request->id;
+        $medicineDetail->medicine_id = $request->medicine_id;
         $medicineDetail->medicine_stock = $request->medicine_stock;
         $medicineDetail->medicine_expired_date = $request->medicine_expired_date;
+        $medicineDetail->save();
 
-        return redirect('/');
+        return redirect()->back();
     }
 
     public function update(Request $request, $id)
@@ -24,12 +25,12 @@ class MedicineDetailController extends Controller
         'medicine_stock' => $request->medicine_stock,
         'medicine_expired_date' => $request->medicine_expired_date
         ]);
-        return redirect('/');
+        return back();
     }
 
     public function delete($id)
     {
-        $medicineDelete = MedicineDetail::findOrFail($id);
+        $medicineDelete = MedicineDetail::find($id);
         $medicineDelete->delete();
 
         return redirect('/');

@@ -107,7 +107,7 @@
               @endforeach
             @endif
 
-            
+
           </div>
 
         </div>
@@ -130,17 +130,20 @@
               <p class="font-bold"> Riwayat pasien ini masih kosong</p>
             </div>
             @else
-              @foreach ($RekamMedis as $R)
-                <div class="p-4 rounded-lg text-white transition-all cursor-pointer {{$R->flag =='1' ?  'bg-blue-500 hover:bg-blue-300' : 'bg-red-500  hover:bg-red-300' }} ">
-                <p class=" truncate font-bold">{{$R->created_at}}</p>
-                <p class="truncate">Diagnosis: {{$R->diagnosis}}</p>
+              @foreach ($Vaksin as $V)
+                <div class="p-4 rounded-lg text-white transition-all cursor-pointer {{$V->flag =='1' ?  'bg-blue-500 hover:bg-blue-300' : 'bg-red-500  hover:bg-red-300' }} ">
+                <p class=" truncate font-bold">{{$V->created_at}}</p>
+                <p class="truncate">Nama Vaksin: {{$V->vaccine_name}}</p>
+            <p class="truncate">Tanggal Vaksinasi: {{$V->vaccination_date}}</p>
+            <p class="truncate">Batch Number: {{$V->batch_number}}</p>
+            <p class="truncate">Tanggal Dosis Selanjutnya: {{$V->next_dose}}</p>
                 </div>
               <br>
             @endforeach
-            
+
             @endif
 
-           
+
           </div>
 
         </div>

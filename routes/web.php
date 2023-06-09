@@ -6,6 +6,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\MedicineDetailController;
 use App\Http\Controllers\PatientController ;
 use App\Http\Controllers\RekamController;
 use App\Http\Controllers\VaksinController;
@@ -76,6 +77,8 @@ Route::middleware(['checkrole:admin,dokter,resepsionis'])->group(function () {
         return view('form-patient');
     });
     Route::post('/tambah-pasien/tambah', [PatientController::class,'insert']);
+    Route::get('/pasien/{id}/edit', [PatientController::class,'patient']);
+    Route::post('/edit/pasien/{id}', [PatientController::class,'update']);
 });
 
 
@@ -93,8 +96,10 @@ Route::get('tambah-obat', function () {
 });
 
 Route::post('tambah-obat/tambah', [MedicineController::class,'insert']);
-
+Route::post('/tambah-stock', [MedicineDetailController::class,'insert']);
+Route::post('/delete-stock/{id}', [MedicineDetailController::class,'delete']);
 Route::post('tambah-antrian', [AntrianController::class,'insert']);
+
 // Route::get('register', function () {
 //     return view('register-user');
 // });

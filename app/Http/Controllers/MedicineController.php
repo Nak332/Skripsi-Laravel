@@ -20,7 +20,7 @@ class MedicineController extends Controller
     public function medicines($id)
     {
     	$medicine = Medicine::find($id);
-        $medicineDetail = MedicineDetail::where('medicine_id', $id)->get();
+        $medicineDetail = MedicineDetail::where('medicine_id', $id)->orderBy('medicine_expired_date')->get();
     	return view('obat', compact(['medicine','medicineDetail']));
     }
 

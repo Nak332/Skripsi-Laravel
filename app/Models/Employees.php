@@ -17,4 +17,8 @@ class Employees extends Model
         return $this->hasOne(User::class);
     }
     use HasFactory;
+
+    protected $casts = [
+        'employee_NIK' => 'encrypted',
+    ];
 }
