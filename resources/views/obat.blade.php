@@ -42,12 +42,23 @@
               <td class="py-2 px-4 border border-black">date</td>
               <td class="py-2 px-4 border border-black">angka</td>
               <td>
-                <button class="rounded-full bg-black ml-2 px-3 py-1 text-lg text-white">
+            <div class="flex">
+              <div x-data="{ open: false }">
+                <button @click="open = true" class="rounded-full bg-black ml-2 px-3 py-1 text-lg text-white">
                 Edit
-              </button>
+               </button> 
+                <div wire:model='medicinedetails' x-show="open">
+                  @livewire('edit-stok-obat',['medicine'=>$medicine, 'medicineDetail'=>$medicineDetail])
+                </div>
+              </div>
+            
                 <button class="rounded-full bg-red-500 ml-2 px-3 py-1 text-lg text-white transition duration-300 hover:bg-red-600">
                 Delete
               </button></td>
+            </div>
+            </div>
+          
+            
             </tr>     
             {{-- endforeach --}}
 
