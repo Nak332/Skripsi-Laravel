@@ -33,7 +33,7 @@
                   </div>
                 <div class="mb-4">
                   <label for="medicine_price" class="block text-gray-700 text-sm font-medium mb-2">Harga</label>
-                  <input type="text" name="medicine_price" id="medicine_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Harga obat"></textarea>
+                  <input type="text" name="medicine_price" id="medicine_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Harga obat" pattern="[0-9]+" title="">
                 </div>
                   <div class="flex justify-center">
                     <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Submit</button>
