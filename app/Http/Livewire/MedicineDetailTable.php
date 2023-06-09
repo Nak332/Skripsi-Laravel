@@ -49,19 +49,19 @@ final class MedicineDetailTable extends PowerGridComponent
     /**
      * PowerGrid datasource.
      *
-     * @return Builder<\App\Models\Medicine>
-     */
+        * @return Builder<\App\Models\Medicine>
+        */
     public function datasource(): Builder
     {
-        return Medicine::query()->join('medicine_details',function($medicine_details){
+        return Medicine::query()->leftjoin('medicine_details',function($medicine_details){
             $medicine_details->on('medicine_details.medicine_id','=','medicines.id');
-    
+
         })->select([
-            'medicines.id','medicines.medicine_name', 
-            DB::raw('SUM(medicine_details.medicine_stock) as total_quantity'),
+            'medicines.id','medicines.medicine_name',
+            DB::raw('COALESCE(SUM(medicine_details.medicine_stock),0) as total_quantity'),
             'medicines.medicine_price'
 
-            
+
         ])->groupBy('medicines.id','medicines.medicine_name', 'medicines.medicine_price');
     }
 
