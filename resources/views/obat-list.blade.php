@@ -10,7 +10,7 @@
   <div class="container mx-auto p-4">  
     
         <div class="min-h-screen flex items-center justify-center">
-            <livewire:medicine-table />
+            <livewire:medicine-detail-table />
              
             </div>
             <div class="flex justify-center pt-4">
