@@ -77,7 +77,7 @@
 
       <div id="container-rekam-imunisasi" class="md:flex justify-center  mx-auto w-3/4 ">
 
-        <div class="flex-inline md:w-1/2  md:mr-4 p-4 bg-white rounded-3xl shadow-md">
+        <div class="flex-inline md:w-1/2 mt-4  md:mr-4 p-4 bg-white rounded-3xl shadow-md">
           <div class="flex justify-between pb-6">
             <h1 class="text-2xl font-bold mb-4 truncate">Rekam Medis </h1>
             <form action="/form-rekam/{{$patient->id}}" method="get">
@@ -89,7 +89,13 @@
 
           </div>
 
-          <div class="overflow-y-auto h-fit  max-h-96">
+          <div class="overflow-y-auto h-96 max-h-96">
+
+            @if (!$RekamMedis->first())
+            <div class=" mt-8 flex justify-center">
+              <p class="font-bold"> Rekam medis pasien ini masih kosong</p>
+            </div>
+            @endif
 
             @foreach ($RekamMedis as $R)
 
@@ -109,7 +115,7 @@
 
         </div>
 
-        <div class="flex-inline md:w-1/2  md:ml-4 p-4 bg-white rounded-3xl shadow-md">
+        <div class="flex-inline md:w-1/2 mt-4 md:ml-4 p-4 bg-white rounded-3xl shadow-md">
           <div class="flex justify-between pb-6">
             <h1 class="text-2xl font-bold mb-4 truncate">Riwayat Imunisasi </h1>
             <button class="text-xl text-white font-bold bg-green-500 hover:bg-green-700 transition-all rounded-lg p-2">
@@ -118,10 +124,16 @@
 
           </div>
 
-          <div class="overflow-y-auto h-fit  max-h-96">
+          <div class="overflow-y-auto h-96 max-h-96">
+
+            @if (!$RekamMedis->first())
+            <div class=" mt-8 flex justify-center">
+              <p class="font-bold"> Riwayat pasien ini masih kosong</p>
+            </div>
+            @endif
 
             @foreach ($RekamMedis as $R)
-
+            
             <div class="p-4 rounded-lg text-white transition-all cursor-pointer {{$R->flag =='1' ?  'bg-blue-500 hover:bg-blue-300' : 'bg-red-500  hover:bg-red-300' }} ">
             <p class=" truncate font-bold">{{$R->created_at}}</p>
             <p class="truncate">Diagnosis: {{$R->diagnosis}}</p>
