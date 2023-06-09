@@ -39,6 +39,26 @@ class EmployeeController extends Controller
     {
         $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'employee_name' =>'required|alpha|max:25',
+            'employee_job' => 'required|in:Dokter,Perawat,Farmasi|alpha|max:25',
+            'employee_phone' => 'required|min:8|max:15',
+            'employee_gender' => 'required|in:Laki-Laki,Perempuan,Pria,Wanita|alpha|max:25',
+            'employee_NIK' => 'required|size:16',
+            'employee_address' => 'required',
+            'employee_DOB' => 'required|date_format:Y-m-d',
+            'employee_POB' => 'required',
+            'employee_email' =>'nullable|email'
+        ],[
+            'image' => 'test1',
+            'employee_name' =>'test2',
+            'employee_job' => 'test3',
+            'employee_phone' => 'test4',
+            'employee_gender' => 'test5',
+            'employee_NIK' => 'test6',
+            'employee_address' => 'test7',
+            'employee_DOB' => 'test8',
+            'employee_POB' => 'test9',
+            'employee_email' =>'test10'
         ]);
 
         if ($request->employee_photo != NULL) {

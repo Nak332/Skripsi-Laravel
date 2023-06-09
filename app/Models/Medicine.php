@@ -14,4 +14,6 @@ class Medicine extends Model
         return $this->hasMany(MedicineDetail::class);
     }
     use HasFactory;
+    protected $guarded = [
+    ];
 }

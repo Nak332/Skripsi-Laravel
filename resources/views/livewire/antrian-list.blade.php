@@ -10,7 +10,7 @@
 
         @if ($antrian)
             @foreach ($antrian as $a)
-                @if ($q_type==$a->appointment_type)
+                @if ($q_type==$a->appointment_type && $a->status != '3')
 
                 <div x-data="{ expanded: false }" @click="if(!expanded){expanded = !expanded}" href="#" class="cursor-pointer" @click.outside="expanded = false">
                     <div class="truncate bg-gray-300 p-3 m-4 rounded-lg hover:bg-blue-500
@@ -18,28 +18,28 @@
                     hover:text-white hover:transition-all ">
                         <p class="">@if ($q_type=='on_the_spot')    A @else J @endif {{$a->antrian_number}} - {{$a->patient->patient_name}}</p>
                         <div class="pt-2 " x-show="expanded" x-collapse>
-                            
+
                             <p class="border-t-2 pb-2 border-white"></p>
                             <p class="truncate">{{$a->patient->patient_address}}</p>
                             <p>{{$a->patient->patient_gender}}</p>
                             <p>{{$a->patient->getAge()}}</p>
-                            <button x-on:click="$wire.sendPatientToParentComponent(id='{{$a->patient_id}}');" class="bg-green-300" >tes disini</button>
+                            <button x-on:click="$wire.sendPatientToParentComponent(id='{{$a->id}}');" class="bg-green-300" >tes disini</button>
                         </div>
                     </div>
                 </div>
-                    
+
                 @endif
-            
-                
+
+
             @endforeach
         @endif
 
-     
-        
+
+
 
     </div>
     <div x-data="{ open: false }">
-        
+
         <button @click="open = true" class="drop-shadow hover:drop-shadow-xl transition-all bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 hover:transition-all px-4 rounded">Tambah</button>
         <div wire:model='patients' x-show="open">
             @livewire('tambah-antrian-modal',['patients'=>$patients])
@@ -51,11 +51,11 @@
         </div>
     </div>
 
-    
 
 
 
-  
 
-  
-</div> 
+
+
+
+</div>

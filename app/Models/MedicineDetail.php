@@ -11,4 +11,6 @@ class MedicineDetail extends Model
         return $this->belongsTo(Medicine::class);
     }
     use HasFactory;
+    protected $guarded = [
+    ];
 }

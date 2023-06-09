@@ -24,7 +24,7 @@ class AntrianList extends Component
 
     public function mount($antrian,$history)
     {
-        
+
         $this->antrian = $antrian;
         $this->history = $history;
     }
@@ -39,7 +39,7 @@ class AntrianList extends Component
 
         // Update the parentData property in the parent component
         $this->emitUp('patientBumped', $id);
- 
- 
+
+
     }
 }

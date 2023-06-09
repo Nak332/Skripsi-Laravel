@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('employee_photo')->nullable();
             $table->date('employee_DOB');
             $table->string('employee_POB');
-            $table->string('employee_email');
+            $table->string('employee_email')->nullable();
             $table->timestamps();
 
         });

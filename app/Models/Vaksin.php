@@ -10,5 +10,7 @@ class Vaksin extends Model
     public function Patient(){
         return $this->belongsTo(Patient::class,'patient_id','id');
     }
+    protected $guarded = [
+    ];
     use HasFactory;
 }

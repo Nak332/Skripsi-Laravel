@@ -10,5 +10,7 @@ class TransactionDetails extends Model
     public function transaksi(){
         return $this->belongsTo(Transaction::class);
     }
+    protected $guarded = [
+    ];
     use HasFactory;
 }

@@ -22,4 +22,7 @@ class Appointment extends Model
         return $this->belongsTo(AppointmentHistory::class);
     }
 
+    protected $guarded = [
+    ];
+
 }

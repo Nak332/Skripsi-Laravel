@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('employee_id');
             $table->string('role');
             $table->string('username');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

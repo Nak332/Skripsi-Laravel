@@ -10,6 +10,8 @@ class Transaction extends Model
     public function transaksi(){
         return $this->hasMany(TransactionDetails::class);
     }
+    protected $guarded = [
+    ];
 
     use HasFactory;
 }

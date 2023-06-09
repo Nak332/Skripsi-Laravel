@@ -13,6 +13,9 @@
                 <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-4xl w-128 h-fit">
                     <p class="font-bold text-black">Employee Register</p>
                     </div>
+                    @if($errors->any())
+    {!! implode('', $errors->all('<div>:message</div>')) !!}
+@endif
               <form method="POST" action="add-employee" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4">
@@ -29,7 +32,7 @@
                 </div>
                 <div class="mb-4">
                     <label for="employee_NIK" class="block text-gray-700 text-sm font-medium mb-2">NIK</label>
-                    <input type="text" id="employee_NIK" name="employee_NIK" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="NIK">
+                    <input type="number" id="employee_NIK" name="employee_NIK" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="NIK">
                   </div>
                 <div class="mb-4">
                   <label for="employee_address" class="block text-gray-700 text-sm font-medium mb-2">Address</label>
@@ -37,7 +40,7 @@
                 </div>
                   <div class="mb-4">
                     <label for="employee_phone" class="block text-gray-700 text-sm font-medium mb-2">Phone</label>
-                    <input type="text" name="employee_phone" id="employee_phone" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="No. telpon"></textarea>
+                    <input type="number" name="employee_phone" id="employee_phone" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="No. telpon"></textarea>
                   </div>
                   <div class="mb-4">
                     <label for="employee_DOB" class="block text-gray-700 text-sm font-medium mb-2">Date of Birth</label>
