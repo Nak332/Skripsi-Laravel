@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('medicine_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('medicine_id');
+            $table->unsignedBigInteger('medicine_id');
             $table->integer('medicine_stock');
             $table->date('medicine_expired_date');
             $table->timestamps();
+            $table->foreign('medicine_id')->references('id')->on('medicines')->onDelete('cascade');
         });
     }
 

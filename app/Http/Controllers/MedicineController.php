@@ -27,6 +27,14 @@ class MedicineController extends Controller
 
     public function insert(Request $request)
     {
+        $request->validate([
+            'medicine_name' => 'required',
+            'medicine_description' =>'required',
+            'medicine_price' =>'required',
+            'medicine_stock' =>'required',
+            'medicine_expired_date' =>'required',
+        ]);
+
         $medicine = new Medicine;
         $medicine->medicine_name = $request->medicine_name;
         $medicine->medicine_description = $request->medicine_description;
@@ -42,6 +50,11 @@ class MedicineController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'medicine_name' => 'required',
+            'medicine_description' =>'required',
+            'medicine_price' =>'required',
+        ]);
         $medicineUpdate = Medicine::findOrFail($id);
         $medicineUpdate->update([
         'medicine_name' => $request->medicine_name,

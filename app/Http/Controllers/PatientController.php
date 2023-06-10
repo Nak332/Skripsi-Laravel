@@ -36,6 +36,19 @@ class PatientController extends Controller
 
     public function insert(Request $request)
     {
+        $request->validate([
+        'patient_name' => 'required',
+        'patient_gender' => 'required',
+        'patient_phone' => 'required',
+        'patient_address'=> 'required',
+        'patient_alias' => 'nullable',
+        'patient_DOB' => 'required',
+        'patient_POB' => 'required',
+        'patient_marital_status' => 'required',
+        'patient_emergency_contact_name' => 'required',
+        'patient_emergency_contact_phone' => 'required',
+        ]);
+
         $patient = new Patient;
         $patient->patient_name = $request->patient_name;
         $patient->patient_gender = $request->patient_gender;
@@ -56,6 +69,19 @@ class PatientController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'patient_name' => 'required',
+            'patient_gender' => 'required',
+            'patient_phone' => 'required',
+            'patient_address'=> 'required',
+            'patient_alias' => 'nullable',
+            'patient_DOB' => 'required',
+            'patient_POB' => 'required',
+            'patient_marital_status' => 'required',
+            'patient_emergency_contact_name' => 'required',
+            'patient_emergency_contact_phone' => 'required',
+            ]);
+
         $patientUpdate = Patient::findOrFail($id);
         Log::alert($patientUpdate);
         $patientUpdate->update([
