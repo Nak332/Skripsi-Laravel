@@ -5,7 +5,7 @@
       <div class="md:flex " >
             <div x-show="expanded"  x-collapse class="flex {{$current_patient ? 'hidden' : ''}}">
                 @if ($appointment)
-                <button  x-on:click="$wire.undo(id='{{$appointment->id}}')"  title="Kembalikan pasien sebelumnya" class=" relative bg-yellow-300 rounded-lg text-xl font-bold items-center p-4 ml-4 mt-6 drop-shadow-md h-fit outline-offset-1 ">
+                <button  x-on:click="$wire.undo(id='{{$appointment->id}}')" wire:click="$refresh()"  title="Kembalikan pasien sebelumnya" class=" relative bg-yellow-300 rounded-lg text-xl font-bold items-center p-4 ml-4 mt-6 drop-shadow-md h-fit outline-offset-1 ">
                     <x-tabler-arrow-back-up class="w-12 h-12 "/>
                     {{-- <p class="text-md ml-1">Pasien Sebelumnya</p> --}}
 
@@ -25,13 +25,13 @@
 
           <p x-transition id="card_pasien_sekarang"  class="font-bold bg-blue-500 rounded-lg mt-2 p-5 truncate text-white">
 
-            @if ($current_patient)
+            @if ($current_patient && $appointment)
                 @if ($appointment->appointment_type=='on_the_spot')
                   A
                   @else
                   J
                   @endif
-                  {{$q_number}} {{$current_patient['patient_name']}}
+                  {{$appointment->antrian_number}} {{$appointment->patient->patient_name}}
             @elseif ($current_patient == NULL && $appointment != NULL)
 
                   @if ($appointment->appointment_type=='on_the_spot')

@@ -17,6 +17,7 @@ class ResepsiMainComponent extends Component
 
     protected $listeners = [
         'patientBumped' => 'setCurrent',
+        'refreshComponent' => '$refresh'
     ];
 
     public function undo($id){
