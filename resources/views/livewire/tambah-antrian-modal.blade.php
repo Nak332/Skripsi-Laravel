@@ -67,7 +67,7 @@
                         @if ($selected_type=='scheduled')
                         <div>
                             <label for="" class="block mb-2 text-sm font-medium text-gray-900 ">Waktu Kunjungan</label>
-                            <input type="time" class="bg-gray-200 border border-gray-300 rounded p-2" required>
+                            <input type="time" id='appointment_date' name="appointment_date" class="bg-gray-200 border border-gray-300 rounded p-2" value required>
                         </div>
                         @endif
                         

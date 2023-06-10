@@ -41,9 +41,6 @@ class PatientSearchBar extends Component
 
     public function sendPatientToParentComponent($id)
     {
-        // Update the childData property
-
-        // Update the parentData property in the parent component
         $this->emitUp('patientSelected', $id);
  
  

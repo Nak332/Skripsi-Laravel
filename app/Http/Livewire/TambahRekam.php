@@ -23,7 +23,7 @@ class TambahRekam extends Component
     ];
 
     public function getFromQueue(){
-        $p =  Appointment::OrderBy('id','asc')->where('status','=',2)->get();
+        $p =  Appointment::OrderBy('id','asc')->first();
         $this->selected_patient = Patient::findorFail($p->patient_id);
         $this->selected_patient_name=  $this->selected_patient['patient_name'];
         $this->q_number = $p->id;
