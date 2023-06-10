@@ -28,6 +28,7 @@ class AntrianController extends Controller
     {
         $lastappointment = Appointment::OrderBy('id','desc')->first();
         if ($lastappointment != null){
+            $nilai = $lastappointment->antrian_number;
             $lastdate = strtotime($lastappointment->created_at->format('Y-m-d'));
             $last = date('j',$lastdate);
             Log::info('terakhir' . $last);
@@ -42,7 +43,7 @@ class AntrianController extends Controller
 
 
         $antrian = new Appointment;
-        $nilai = $lastappointment->antrian_number;
+        
         $antrian->patient_id = $request->patient_id;
         $antrian->employee_id = $request->employee_id;
         $antrian->appointment_type = $request->appointment_type;

@@ -28,12 +28,16 @@ class ResepsiMainComponent extends Component
             'status' => '2',
         ]);
         $antrian_sebelumnya = $this->appointment->antrian_number-1;
-        $antsebelum = Appointment::where('antrian_number', $antrian_sebelumnya)->first();
+        if($antrian_sebelumnya!='0'){
+            $antsebelum = Appointment::where('antrian_number', $antrian_sebelumnya)->first();
         $antsebelum->update([
             'status' => '3',
         ]);
         Log::alert("jalan");
         Log::info("idsekarang" . $antrian_sebelumnya);
+
+        }
+        
     }
 
 
