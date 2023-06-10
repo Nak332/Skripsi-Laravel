@@ -10,6 +10,7 @@ class TambahAntrianModal extends Component
     public $test_data = ['john','james','jake'];
 
     public $selected_patient;
+    public $selected_type;
     public $selected_patient_name;
     public $patients=[];
 

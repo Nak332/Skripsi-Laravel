@@ -58,11 +58,19 @@
 
                         <div>
                             <label for="" class="block mb-2 text-sm font-medium text-gray-900 ">Tipe Kunjungan</label>
-                            <select class=" w-full rounded-lg bg-gray-200 border border-gray-300 text-gray-900 p-2" name="appointment_type" id="appointment_type">
-                                <option value="on_the_spot">Kunjungan Langsung</option>
+                            <select wire:model='selected_type' class=" w-full rounded-lg bg-gray-200 border border-gray-300 text-gray-900 p-2" name="appointment_type" id="appointment_type">
+                                <option  value="on_the_spot">Kunjungan Langsung</option>
                                 <option  value="scheduled">Kunjungan Janjian</option>
                             </select>
                         </div>
+
+                        @if ($selected_type=='scheduled')
+                        <div>
+                            <label for="" class="block mb-2 text-sm font-medium text-gray-900 ">Waktu Kunjungan</label>
+                            <input type="time" class="bg-gray-200 border border-gray-300 rounded p-2" required>
+                        </div>
+                        @endif
+                        
 
                     </div>
                     <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
