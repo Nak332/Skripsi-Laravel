@@ -23,6 +23,24 @@ class RekamController extends Controller
 
     public function insert(Request $request)
     {
+        $request->validate([
+            'patient_id' => 'required',
+            'appointment_id' => 'nullable',
+            'medicine_id' => 'nullable',
+            'employee_id' => 'required',
+            'symptoms' => 'required',
+            'complaint' => 'required',
+            'anamnesis' => 'required',
+            'follow_up_plan' => 'nullable',
+            'treatment' => 'required',
+            'past_service' => 'nullable',
+            'agreement' => 'nullable',
+            'diagnosis' => 'required',
+            'total_price' => 'nullable',
+            'type' => 'nullable',
+            'note' => 'nullable'
+            ]);
+
         $rekamMedis = new RekamMedis;
         $rekamMedis->patient_id = $request->patient_id;
         $rekamMedis->appointment_id = $request->appointment_id;
@@ -51,6 +69,24 @@ class RekamController extends Controller
 
     public function update(Request $request, $id)
 {
+    $request->validate([
+        'patient_id' => 'required',
+        'appointment_id' => 'nullable',
+        'medicine_id' => 'nullable',
+        'employee_id' => 'required',
+        'symptoms' => 'required',
+        'complaint' => 'required',
+        'anamnesis' => 'required',
+        'follow_up_plan' => 'nullable',
+        'treatment' => 'required',
+        'past_service' => 'nullable',
+        'agreement' => 'nullable',
+        'diagnosis' => 'required',
+        'total_price' => 'nullable',
+        'type' => 'nullable',
+        'note' => 'nullable'
+        ]);
+
     $rekamMedisUpdate = RekamMedis::findOrFail($id);
     $rekamMedisUpdate->update([
         'patient_id' => $request->patient_id,

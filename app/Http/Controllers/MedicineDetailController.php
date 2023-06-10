@@ -9,6 +9,11 @@ class MedicineDetailController extends Controller
 {
     public function insert(Request $request)
     {
+        $request->validate([
+            'medicine_stock' =>'required',
+            'medicine_expired_date' =>'required',
+        ]);
+
         $medicineDetail = new MedicineDetail;
         $medicineDetail->medicine_id = $request->medicine_id;
         $medicineDetail->medicine_stock = $request->medicine_stock;
@@ -20,6 +25,10 @@ class MedicineDetailController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'medicine_stock' =>'required',
+            'medicine_expired_date' =>'required',
+        ]);
         $medicineUpdate = MedicineDetail::findOrFail($id);
         $medicineUpdate->update([
         'medicine_stock' => $request->medicine_stock,

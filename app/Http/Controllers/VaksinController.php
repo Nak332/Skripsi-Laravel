@@ -17,6 +17,15 @@ class VaksinController extends Controller
 
     public function insert(Request $request)
     {
+        $request->validate([
+            'vaccine_name' => 'required',
+            'vaccine_date' => 'required',
+            'patient_id' => 'required',
+            'batch_number' => 'nullable',
+            'notes' => 'nullable',
+            'next_dose' => 'nullable'
+            ]);
+
         $vaksin = new Vaksin;
         $vaksin->vaccine_name = $request->vaccine_name;
         $vaksin->vaccination_date = $request->vaccination_date;
@@ -30,6 +39,16 @@ class VaksinController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'vaccine_name' => 'required',
+            'vaccine_date' => 'required',
+            'patient_id' => 'required',
+            'batch_number' => 'nullable',
+            'notes' => 'nullable',
+            'next_dose' => 'nullable'
+            ]);
+
+            
         $vaksinUpdate = vaksin::findOrFail($id);
         $vaksinUpdate->update([
             'vaccine_name' => $request->vaccine_name,

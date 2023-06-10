@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('transaction_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('transaction_id');
+            $table->unsignedBigInteger('transaction_id');
+            $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
             $table->string('treatment')->nullable();
             $table->integer('medicine_id')->nullable();
             $table->integer('quantity')->nullable();
