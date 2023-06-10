@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.12",
         "openspout/openspout": "^4.14",
+        "owenvoke/blade-fontawesome": "^2.3",
         "power-components/livewire-powergrid": "^4.6",
         "rappasoft/laravel-livewire-tables": "^2.14",
         "ryangjchandler/blade-tabler-icons": "^1.5",
