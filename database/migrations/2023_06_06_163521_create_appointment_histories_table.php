@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('appointment_histories', function (Blueprint $table) {
-            $table->id();
+            $table->id();   
             $table->integer('appointment_id');
             $table->integer('patient_id');
             $table->string('employee_id')->nullable();
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('appointment_type');
             $table->string('complaint');
             $table->string('status'); //Diproses (sedang testing, atau sedang di revisi), Valid, Invalid
-            $table->date('appointment_date');
+            $table->time('appointment_date');
             $table->timestamps();
         });
     }

@@ -33,9 +33,12 @@ class ResepsiMainComponent extends Component
             $this->current_patient = Patient::where('id',$b)->first();
             $this->q_number = $this->appointment->antrian_number;
         }else {
-            $b = $this->appointment->patient_id;
-            $this->current_patient = Patient::where('id',$b)->first();
-            $this->q_number = $this->appointment->antrian_number;
+            $this->appointment->update([
+                'status' => '1',
+            ]);
+            // $b = $this->appointment->patient_id;
+            // $this->current_patient = Patient::where('id',$b)->first();
+            // $this->q_number = $this->appointment->antrian_number;
         }
 
 
@@ -62,7 +65,7 @@ class ResepsiMainComponent extends Component
         $this->appointment->update([
             'status' => '2',
         ]);
-        
+
         // $antrian_sebelumnya = $this->appointment->antrian_number-1;
         // $antsebelum = Appointment::where('antrian_number', $antrian_sebelumnya)->first();
         // $antsebelum->update([
