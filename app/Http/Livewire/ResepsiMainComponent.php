@@ -19,25 +19,56 @@ class ResepsiMainComponent extends Component
         'patientBumped' => 'setCurrent',
     ];
 
+    public function undo($id){
+        $this->appointment = Appointment::find($id);
+        $antsebelum = Appointment::where('status', '3')->orderBy('updated_at')->first();
+        if ($antsebelum != NULL) {
+            $antsebelum->update([
+                'status' => '2',
+            ]);
+            $this->appointment->update([
+                'status' => '1',
+            ]);
+            $b = $antsebelum->patient_id;
+            $this->current_patient = Patient::where('id',$b)->first();
+            $this->q_number = $this->appointment->antrian_number;
+        }else {
+            $b = $this->appointment->patient_id;
+            $this->current_patient = Patient::where('id',$b)->first();
+            $this->q_number = $this->appointment->antrian_number;
+        }
+
+
+        // $antrian_sebelumnya = $this->appointment->antrian_number-1;
+        // $antsebelum = Appointment::where('antrian_number', $antrian_sebelumnya)->first();
+        // $antsebelum->update([
+        //     'status' => '3',
+        // ]);
+        Log::alert("jalan");
+    }
+
     public function setCurrent($id){
         $this->appointment = Appointment::find($id);
         $b = $this->appointment->patient_id;
         $this->current_patient = Patient::where('id',$b)->first();
         $this->q_number = $this->appointment->antrian_number;
+        $antsebelum = Appointment::where('status', '2')->first();
+        if ($antsebelum != NULL) {
+            $antsebelum->update([
+                'status' => '3',
+            ]);
+        }
+
+
         $this->appointment->update([
             'status' => '2',
         ]);
-        $antrian_sebelumnya = $this->appointment->antrian_number-1;
-        if($antrian_sebelumnya!='0'){
-            $antsebelum = Appointment::where('antrian_number', $antrian_sebelumnya)->first();
-        $antsebelum->update([
-            'status' => '3',
-        ]);
+        // $antrian_sebelumnya = $this->appointment->antrian_number-1;
+        // $antsebelum = Appointment::where('antrian_number', $antrian_sebelumnya)->first();
+        // $antsebelum->update([
+        //     'status' => '3',
+        // ]);
         Log::alert("jalan");
-        Log::info("idsekarang" . $antrian_sebelumnya);
-
-        }
-        
     }
 
 

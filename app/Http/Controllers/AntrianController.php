@@ -32,6 +32,7 @@ class AntrianController extends Controller
             $lastdate = strtotime($lastappointment->created_at->format('Y-m-d'));
             $last = date('j',$lastdate);
             Log::info('terakhir' . $last);
+            $nilai = $lastappointment->antrian_number;
         }
         else{
             $last = 0;
@@ -43,7 +44,7 @@ class AntrianController extends Controller
 
 
         $antrian = new Appointment;
-        
+
         $antrian->patient_id = $request->patient_id;
         $antrian->employee_id = $request->employee_id;
         $antrian->appointment_type = $request->appointment_type;
