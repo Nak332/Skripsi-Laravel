@@ -37,17 +37,37 @@ class PatientController extends Controller
     public function insert(Request $request)
     {
         $request->validate([
-        'patient_name' => 'required',
-        'patient_gender' => 'required',
-        'patient_phone' => 'required',
-        'patient_address'=> 'required',
-        'patient_alias' => 'nullable',
-        'patient_DOB' => 'required',
-        'patient_POB' => 'required',
-        'patient_marital_status' => 'required',
-        'patient_emergency_contact_name' => 'required',
-        'patient_emergency_contact_phone' => 'required',
-        ]);
+            'patient_name' => 'required|max:50|regex:/^[a-zA-Z\s]+$/',
+            'patient_gender' => 'required',
+            'patient_phone' => ['required','regex:/^(08|\+62)\d{8,}$/'],
+            'patient_address'=> 'required',
+            'patient_NIK' => 'required|size:16|numeric',
+            'patient_alias' => 'nullable',
+            'patient_DOB' => 'required|date_format:Y-m-d',
+            'patient_POB' => 'required',
+            'patient_marital_status' => 'required',
+            'patient_emergency_contact_name' => 'required|max:50|regex:/^[a-zA-Z\s]+$/',
+            'patient_emergency_contact_phone' => ['required','regex:/^(08|\+62)\d{8,}$/']
+            ],[
+                'patient_name'=> 'Nama harus diisi',
+                'patient_name.max' => 'Maksimal 50 huruf',
+                'patient_name.regex' => 'Nama hanya boleh berisikan alfabet',
+                'patient_gender' => 'Jenis kelamin harus diisi',
+                'patient_phone' => 'Nomor telepon harus diisi',
+                'patient_phone.regex' => 'Masukan nomor telepon yang sesuai',
+                'patient_address' => 'Alamat harus diisi',
+                'patient_NIK' => 'NIK harus ditambahkan',
+                'patient_NIK.size' => 'NIK harus sesuai 16 digit',
+                'patient_NIK.numeric' => 'NIK hanya berisi angka',
+                'patient_DOB' => 'Tanggal lahir harus diisi',
+                'patient_POB' => 'Tempat lahir harus diisi',
+                'patient_marital_status' => 'Status perkawinan harus diisi',
+                'patient_emergency_contact_name' => 'Nama harus diisi',
+                'patient_emergency_contact_name.max' => 'Maksimal 50 huruf',
+                'patient_emergency_contact_name.regex' => 'Nama hanya boleh berisikan alfabet',
+                'patient_emergency_contact_phone' => 'Nomor telepon harus diisi',
+                'patient_emergency_contact_phone.regex' => 'Masukan nomor telepon yang sesuai'
+            ]);
 
         $patient = new Patient;
         $patient->patient_name = $request->patient_name;
@@ -70,16 +90,32 @@ class PatientController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'patient_name' => 'required',
+            'patient_name' => 'required|max:50|regex:/^[a-zA-Z\s]+$/',
             'patient_gender' => 'required',
-            'patient_phone' => 'required',
+            'patient_phone' => ['required','regex:/^(08|\+62)\d{8,}$/'],
             'patient_address'=> 'required',
             'patient_alias' => 'nullable',
-            'patient_DOB' => 'required',
+            'patient_DOB' => 'required|date_format:Y-m-d',
             'patient_POB' => 'required',
             'patient_marital_status' => 'required',
-            'patient_emergency_contact_name' => 'required',
-            'patient_emergency_contact_phone' => 'required',
+            'patient_emergency_contact_name' => 'required|max:50|regex:/^[a-zA-Z\s]+$/',
+            'patient_emergency_contact_phone' => ['required','regex:/^(08|\+62)\d{8,}$/']
+            ],[
+                'patient_name'=> 'Nama harus diisi',
+                'patient_name.max' => 'Maksimal 50 huruf',
+                'patient_name.regex' => 'Nama hanya boleh berisikan alfabet',
+                'patient_gender' => 'Jenis kelamin harus diisi',
+                'patient_phone' => 'Nomor telepon harus diisi',
+                'patient_phone.regex' => 'Masukan nomor telepon yang sesuai',
+                'patient_address' => 'Alamat harus diisi',
+                'patient_DOB' => 'Tanggal lahir harus diisi',
+                'patient_POB' => 'Tempat lahir harus diisi',
+                'patient_marital_status' => 'Status perkawinan harus diisi',
+                'patient_emergency_contact_name' => 'Nama harus diisi',
+                'patient_emergency_contact_name.max' => 'Maksimal 50 huruf',
+                'patient_emergency_contact_name.regex' => 'Nama hanya boleh berisikan alfabet',
+                'patient_emergency_contact_phone' => 'Nomor telepon harus diisi',
+                'patient_emergency_contact_phone.regex' => 'Masukan nomor telepon yang sesuai'
             ]);
 
         $patientUpdate = Patient::findOrFail($id);
