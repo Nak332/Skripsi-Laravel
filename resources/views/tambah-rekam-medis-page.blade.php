@@ -10,8 +10,9 @@
 
 <div id="container-main h-fit" class="bg-gray-200">
 
-    
-  @livewire('tambah-rekam', ['selected_patient' => $rekamMedis])
+ 
+    @livewire('tambah-rekam', ['selected_patient' => $rekamMedis])
+
 
 
 

@@ -1,4 +1,4 @@
-<div class="container mx-auto p-4 min-h-screen h-fit">
+<div class="container mx-auto w-max-1/2 p-4 min-h-screen h-fit">
     <div class=" w-full flex  justify-center">
        <div class="max-w-screen py-12w-full mx-auto bg-white p-8 rounded-md shadow-md mt-8">
             <div class="drop-shadow flex-inline text-center text-black   m-4 rounded-lg text-4xl h-fit">
@@ -124,10 +124,15 @@
                     </div>
                   </div>
                 </div>
+
+
+                <div class="mb-4">
+                  <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Penatalaksanaan</label>
+                  <textarea rows="3" name="follow_up_plan" id="follow_up_plan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
               </div>
 
               <div id="right-side" class="md:w-1/2 flex-inline p-6">
-
                 <div class="mb-4">
                   <label for="disease" class="block text-gray-700 text-sm font-medium mb-2">Diagnosa</label>
                   <input type="text" name="diagnosis" id="diagnosis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
@@ -147,13 +152,14 @@
 
                 <div class="mb-4">
                   <label for="medicine_id" class="block text-gray-700 text-sm font-medium mb-2">Preskripsi Obat</label>
-                  <input type="text" id="medicine_id" name="medicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Obat">
+                  {{-- <input type="text" id="medicine_id" name="medicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Obat"> --}}
+                  <div class="truncate h-96 bg-blue-200">
+                    {{-- @livewire('medicine-cart') --}}
+                  </div>
+                  
                 </div>
 
-                <div class="mb-4">
-                  <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Penatalaksanaan</label>
-                  <textarea rows="3" name="follow_up_plan" id="follow_up_plan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
-                </div>
+                
                 <div class="mb-4">
                     <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tindakan</label>
                     <textarea rows="3" name="treatment" id="treatment" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>

@@ -6,7 +6,7 @@
             <div x-show="expanded"  x-collapse class="flex {{$current_patient ? 'hidden' : ''}}">
                 @if ($appointment)
                 <button  x-on:click="$wire.undo(id='{{$appointment->id}}')" wire:click="$refresh()"  title="Kembalikan pasien sebelumnya" class=" relative bg-yellow-300 rounded-lg text-xl font-bold items-center p-4 ml-4 mt-6 drop-shadow-md h-fit outline-offset-1 ">
-                    <x-tabler-arrow-back-up class="w-12 h-12 "/>
+                    {{-- <x-tabler-arrow-back-up class="w-12 h-12 "/> --}}
                     {{-- <p class="text-md ml-1">Pasien Sebelumnya</p> --}}
 
                 </button>
