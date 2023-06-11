@@ -4,7 +4,7 @@
             <div class="drop-shadow flex-inline text-center text-black   m-4 rounded-lg text-4xl h-fit">
                 <p class="font-bold text-black">Rekam Medis</p>
                 </div>
-          <form method="POST" action="/form_rekam/tambah">
+          <form method="POST" action="/form_rekam/tambah" enctype="multipart/form-data">
             @csrf
 
 
@@ -190,7 +190,7 @@
 
                 <div class="mb-4">
                     <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tindakan</label>
-                    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+                    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"  name="file_input" id="file_input" type="file">
                 </div>
 
 

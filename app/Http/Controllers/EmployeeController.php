@@ -62,7 +62,7 @@ class EmployeeController extends Controller
         ]);
 
         if ($request->employee_photo != NULL) {
-            $imageName = time().'.'.$request->image->extension();
+            $imageName = $request->employee_name. '_' . $request->employee_DOB .'_' . time().'.'.$request->image->extension();
 
             $request->image->move(public_path('images'), $imageName);
         } else {
@@ -133,7 +133,7 @@ class EmployeeController extends Controller
         Log::alert('berjalan1');
 
         if ($request->employee_image != NULL) {
-            $imageName = time().'.'.$request->image->extension();
+            $imageName = $request->employee_name. '_' . $request->employee_DOB .'_' . time().'.'.$request->image->extension();
 
             $request->image->move(public_path('images'), $imageName);
             File::delete(public_path('images/' . $employeeUpdate->employee_photo));
