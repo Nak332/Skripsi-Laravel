@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Medicine;
 use App\Models\MedicineDetail;
+use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class MedicineSearchBar extends Component
@@ -14,7 +15,9 @@ class MedicineSearchBar extends Component
     public $selected_medicine; //pasien yang terpilih
     public $medicines; //Untuk Dropdown rekomendasi
     public $highlightIndex;
-    public $selected_patient_name;
+
+ 
+
 
     public function updatedQuery(){
         $this->medicines= Medicine::where('medicine_name','like','%'.$this->query.'%')
@@ -24,15 +27,14 @@ class MedicineSearchBar extends Component
 
     public function clear(){
         $this->query='';
-        $this->selected_patient_name='';
         $this->selected_medicine='';
     }
 
 
-    public function addMedicine($id,$qty){
+    public function addMedicine($id){
         $this->selected_medicine= Medicine::findorFail($id);
-        $this->selected_patient_name = $this->selected_patient['patient_name'];
-        $this->sendPatientToParentComponent($id,$qty);
+        $this->medicines = collect(['id'=> $this->selected_medicine->id,'name'=>$this->selected_medicine->medicine_name,'qty'=> 3]);
+        $this->sendMedicineToParentComponent($id);
 
     }
 
@@ -40,9 +42,9 @@ class MedicineSearchBar extends Component
         $this->query = $incoming_query;
     }
 
-    public function sendPatientToParentComponent($id,$qty)
+    public function sendMedicineToParentComponent($id)
     {
-        $this->emitUp('patientSelected', [$id,$qty]);
+        $this->emitUp('medicineSent', ['obat' =>$id]);
  
  
     }
@@ -53,6 +55,12 @@ class MedicineSearchBar extends Component
     {
         $this->query='';
         $this->medicines=[];
+        // $this->prescription = collect(
+        //     [
+        //         ['id'=> 1,'name'=>'nakara','qty'=> 3],
+        //         ['id'=> 2,'name'=>'satria','qty'=> 3]
+        //     ]);
+       
 
     }
 
