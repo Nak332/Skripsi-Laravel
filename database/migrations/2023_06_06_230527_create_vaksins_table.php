@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('patient_id');
             $table->date('vaccination_date');
             $table->string('batch_number');
-            $table->string('flag');
+            $table->string('flag')->nullable();
             $table->string('notes');
-            $table->string('next_dose')->nullable();
+            $table->date('next_dose')->nullable();
             $table->timestamps();
         });
     }

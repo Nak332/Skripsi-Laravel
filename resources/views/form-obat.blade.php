@@ -27,7 +27,7 @@
                 </div>
                 <div class="mb-4">
                   <label for="medicine_expired_date" class="block text-gray-700 text-sm font-medium mb-2">Tanggal Kadaluarsa</label>
-                  <input type="text" id="medicine_expired_date" name="medicine_expired_date" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Tanggal kadaluarsa obat">
+                  <input type="date" id="medicine_expired_date" name="medicine_expired_date" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Tanggal kadaluarsa obat">
                 </div>
                 <div class="mb-4">
                     <label for="medicine_description" class="block text-gray-700 text-sm font-medium mb-2">Deskripsi</label>

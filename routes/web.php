@@ -67,6 +67,7 @@ Route::middleware(['checkrole:admin,dokter'])->group(function () {
     // });
 
     Route::post('form_rekam/tambah', [RekamController::class,'insert']);
+    Route::get('/tambah-vaksin/{id}', [VaksinController::class , 'Vaksin']);
     Route::get('tambah-vaksin', function () {
         return view('form-vaksin');
     });

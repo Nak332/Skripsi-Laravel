@@ -115,7 +115,7 @@
         <div class="flex-inline md:w-1/2 mt-4  md:mr-4 p-4 bg-white rounded-3xl shadow-md">
           <div class="flex justify-between pb-6">
             <h1 class="text-2xl font-bold mb-4 truncate">Riwayat Imunisasi </h1>
-            <form action="/form-rekam/{{$patient->id}}" method="get">
+            <form action="/tambah-vaksin/{{$patient->id}}" method="get">
                 <button class="text-xl text-white font-bold bg-green-500 hover:bg-green-700 transition-all rounded-lg p-2">
                     <h1 >+ Tambah Riwayat</h1>
                   </button>
