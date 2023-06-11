@@ -37,28 +37,34 @@ class EmployeeController extends Controller
 
     public function insert(Request $request)
     {
+        $delapanBelas = Date::now()->subYears(18)->format('Y-m-d');
         $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
-            'employee_name' =>'required', //|alpha|max:25
-            'employee_job' => 'required|in:Dokter,Perawat,Farmasi|alpha|max:25',
-            'employee_phone' => 'required|min:8|max:15',
+            'employee_name' =>'required|max:25|regex:/^[a-zA-Z\s]+$/', //|alpha|max:25
+            'employee_job' => 'required',
+            'employee_phone' => ['required','regex:/^(08|\+62)\d{8,}$/'],
             'employee_gender' => 'required|in:Laki-Laki,Perempuan,Pria,Wanita|alpha|max:25',
             'employee_NIK' => 'required|size:16',
             'employee_address' => 'required',
-            'employee_DOB' => 'required|date_format:Y-m-d',
+            'employee_DOB' => ['required','date_format:Y-m-d','before:'.$delapanBelas],
             'employee_POB' => 'required',
             'employee_email' =>'nullable|email'
         ],[
             'image' => 'Gambar yang dimasukkan harus dalam format jpeg atau png atau jpg atau svg',
             'employee_name' =>'Nama harus ditambahkan',
+            'employee_name.regex' =>'Nama hanya boleh berisikan alfabet',
+            'employee_name.max' =>'Nama maksimal 25 huruf',
             'employee_job' => 'Pekerjaan harus ditambahkan',
-            'employee_phone' => 'No telepon harus ditambahkan',
+            'employee_phone' => 'Nomor telepon harus ditambahkan',
+            'employee_phone.regex' => 'Masukan nomor telepon yang sesuai',
             'employee_gender' => 'Jenis Kelamin harus ditambahkan',
             'employee_NIK' => 'NIK harus ditambahkan',
+            'employee_NIK.size' => 'NIK harus sesuai 16 digit',
             'employee_address' => 'Alamat harus ditambahkan',
-            'employee_DOB' => 'tanggal lahir harus ditambahkan',
-            'employee_POB' => 'tempat lahir harus ditambahkan',
-            'employee_email' =>'email yang anda amsukkan salah'
+            'employee_DOB' => 'Tanggal lahir harus ditambahkan',
+            'employee_DOB.before' => 'Minimal 18 tahun',
+            'employee_POB' => 'Tempat lahir harus ditambahkan',
+            'employee_email.email' =>'Format email salah'
         ]);
 
         if ($request->employee_photo != NULL) {

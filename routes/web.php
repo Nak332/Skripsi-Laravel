@@ -92,7 +92,7 @@ Route::get('list_obat', function () {
 });
 
 Route::get('tambah-obat', function () {
-    return view('form-obat');
+    return view('tambah-obat-page');
 });
 
 Route::post('tambah-obat/tambah', [MedicineController::class,'insert']);

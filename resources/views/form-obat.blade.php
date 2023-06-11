@@ -17,11 +17,13 @@
                 @csrf
                 <div class="mb-4">
                   <label for="medicine_name" class="block text-gray-700 text-sm font-medium mb-2">Nama</label>
-                  <input type="text" id="medicine_name" name="medicine_name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Nama obat">
+                  <input type="text" id="medicine_name" name="medicine_name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Nama obat"
+                  pattern="^[a-zA-Z\s]+$" title="Masukkan nama obat">
                 </div>
                 <div class="mb-4">
                   <label for="medicine_stock" class="block text-gray-700 text-sm font-medium mb-2">Stok</label>
-                  <input type="text" id="medicine_stock" name="medicine_stock" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Stok obat">
+                  <input type="text" id="medicine_stock" name="medicine_stock" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Stok obat" 
+                  pattern="^[0-9]+$" title="Masukkan angka">
                 </div>
                 <div class="mb-4">
                   <label for="medicine_expired_date" class="block text-gray-700 text-sm font-medium mb-2">Tanggal Kadaluarsa</label>
@@ -29,11 +31,12 @@
                 </div>
                 <div class="mb-4">
                     <label for="medicine_description" class="block text-gray-700 text-sm font-medium mb-2">Deskripsi</label>
-                    <textarea rows="2" id="medicine_description" name="medicine_description" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Deskripsi obat"></textarea>
+                    <textarea rows="2" id="medicine_description" name="medicine_description" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Deskripsi obat"
+                    pattern="^[a-zA-Z\s]+$" title="Masukkan deskripsi"></textarea>
                   </div>
                 <div class="mb-4">
                   <label for="medicine_price" class="block text-gray-700 text-sm font-medium mb-2">Harga</label>
-                  <input type="text" name="medicine_price" id="medicine_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Harga obat" pattern="[0-9]+" title="">
+                  <input type="text" name="medicine_price" id="medicine_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Harga obat" pattern="[0-9]+" title="Masukkan angka">
                 </div>
                   <div class="flex justify-center">
                     <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Submit</button>
