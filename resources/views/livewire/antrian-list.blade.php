@@ -10,7 +10,7 @@
 
         @if ($antrian)
             @foreach ($antrian as $a)
-                @if ($q_type==$a->appointment_type && $a->status != '3')
+                @if ($q_type==$a->appointment_type && $a->status != '3' && $a->status != '4')
 
                 <div x-data="{ expanded: false }" @click="if(!expanded){expanded = !expanded}" href="#" class="cursor-pointer" @click.outside="expanded = false">
                     <div class="truncate bg-gray-300 p-3 m-4 rounded-lg hover:bg-blue-500
