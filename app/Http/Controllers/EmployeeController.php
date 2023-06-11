@@ -9,6 +9,7 @@ use App\Models\Employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Date;
 
 class EmployeeController extends Controller
 {
@@ -37,7 +38,7 @@ class EmployeeController extends Controller
 
     public function insert(Request $request)
     {
-        $delapanBelas = Date::now()->subYears(18)->format('Y-m-d');
+        $limaBelas = Date::now()->subYears(15)->format('Y-m-d');
         $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
             'employee_name' =>'required|max:25|regex:/^[a-zA-Z\s]+$/', //|alpha|max:25
@@ -46,7 +47,7 @@ class EmployeeController extends Controller
             'employee_gender' => 'required|in:Laki-Laki,Perempuan,Pria,Wanita|alpha|max:25',
             'employee_NIK' => 'required|size:16',
             'employee_address' => 'required',
-            'employee_DOB' => ['required','date_format:Y-m-d','before:'.$delapanBelas],
+            'employee_DOB' => ['required','date_format:Y-m-d','before:'.$limaBelas],
             'employee_POB' => 'required',
             'employee_email' =>'nullable|email'
         ],[
@@ -62,7 +63,7 @@ class EmployeeController extends Controller
             'employee_NIK.size' => 'NIK harus sesuai 16 digit',
             'employee_address' => 'Alamat harus ditambahkan',
             'employee_DOB' => 'Tanggal lahir harus ditambahkan',
-            'employee_DOB.before' => 'Minimal 18 tahun',
+            'employee_DOB.before' => 'Minimal 15 tahun',
             'employee_POB' => 'Tempat lahir harus ditambahkan',
             'employee_email.email' =>'Format email salah'
         ]);
