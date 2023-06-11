@@ -7,6 +7,7 @@
         <form method="POST" action="/form_rekam/tambah">
            @csrf
            {{--Bikin iinvisible buat 3 bagian diatas --}}
+           
            <div id="container_pasien" class="flex-inline py-4">
               <div class="px-6 py-4 w-1/3 ml-2" x-data="{ show: true }">
                  <input
