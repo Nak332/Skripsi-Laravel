@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\antrianUpdateFlag;
 use App\Models\Patient;
 use App\Models\RekamMedis;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class RekamController extends Controller
 {
@@ -24,10 +26,11 @@ class RekamController extends Controller
     public function insert(Request $request)
     {
         $request->validate([
+            'file_input' => 'nullable|mimetypes:application/pdf,application/msword|max:50000',
             'patient_id' => 'required',
             'appointment_id' => 'nullable',
             'medicine_id' => 'nullable',
-            'employee_id' => 'required',
+             'employee_id' => 'required',
             'symptoms' => 'required',
             'complaint' => 'required',
             'anamnesis' => 'required',
@@ -42,6 +45,13 @@ class RekamController extends Controller
             ]);
 
         $rekamMedis = new RekamMedis;
+            if ($request->file_input != NULL) {
+                $pasien = Patient::find($request->patient_id);
+            $file_input= $pasien->patient_name . '_'. $pasien->patient_DOB . '_' .  time() .'.'.$request->file_input->extension();
+            $request->file_input->move(public_path('Dokumen'), $file_input);
+            $rekamMedis->attachment = $file_input;
+            }
+
         $rekamMedis->patient_id = $request->patient_id;
         $rekamMedis->appointment_id = $request->appointment_id;
         $rekamMedis->medicine_id = $request->medicine_id;
@@ -64,12 +74,18 @@ class RekamController extends Controller
         $rekamMedis->icd10 = $request->icd10;
         $rekamMedis->save();
 
+        if ($request->appointment_id != NULL) {
+            event(new antrianUpdateFlag($rekamMedis));
+        }
+
+
         return redirect('/');
     }
 
     public function update(Request $request, $id)
 {
     $request->validate([
+        'file_input' => 'mimetypes:application/pdf,application/msword|max:50000',
         'patient_id' => 'required',
         'appointment_id' => 'nullable',
         'medicine_id' => 'nullable',
@@ -107,6 +123,16 @@ class RekamController extends Controller
         'flag' => $request->flag,
         'icd10' => $request->icd10
     ]);
+    if ($request->file_input != NULL) {
+        $pasien = Patient::find($request->patient_id);
+        $file_input= $pasien->patient_name . '_'. $pasien->patient_DOB . '_' .  time() .'.'.$request->file_input->extension();
+        $request->file_input->move(public_path('Dokumen'), $file_input);
+        File::delete(public_path('images/' . $rekamMedisUpdate->attachment));
+            $rekamMedisUpdate->update([
+                'attachment' => $file_input
+            ]);
+    }
+
 	return redirect('/');
 }
 

@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Events\antrianUpdateFlag;
 use App\Events\AppointmentHistoryCreated;
 use App\Events\EmployeeCreated;
 use App\Events\RoleChanged;
+use App\Listeners\antrian123;
 use App\Listeners\AppointmentToHistory;
 use App\Listeners\ChangingRole;
 use App\Listeners\CreateUserForEmployee;
@@ -34,6 +36,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         RoleChanged::class => [
             ChangingRole::class
+        ],
+        antrianUpdateFlag::class=> [
+            antrian123::class
         ]
     ];
 
