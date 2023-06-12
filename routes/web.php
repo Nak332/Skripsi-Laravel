@@ -57,7 +57,7 @@ Route::middleware(['checkrole:admin,dokter'])->group(function () {
     Route::get('/tambah-karyawan', function () {
         return view('form-empregister');
     });
-    Route::get('/daftar-employee', function () {
+    Route::get('/daftar-karyawan', function () {
         return view('employee-list');
     });
 
@@ -72,6 +72,7 @@ Route::middleware(['checkrole:admin,dokter'])->group(function () {
     // });
 
     Route::post('form_rekam/tambah', [RekamController::class,'insert']);
+    Route::post('vaksinasi/tambah', [VaksinController::class,'insert']);
     Route::get('/tambah-vaksin/{id}', [VaksinController::class , 'Vaksin']);
     Route::get('tambah-vaksin', function () {
         return view('form-vaksin');
@@ -111,12 +112,6 @@ Route::post('tambah-antrian', [AntrianController::class,'insert']);
 // });
 
 
-Route::get('vaksinasi', function () {
-    return view('form-vaksin');
-});
-
-
-Route::post('vaksinasi/tambah', [VaksinController::class,'insert']);
 
 Route::get('dev', function () {
     return view('crud-sandbox');
