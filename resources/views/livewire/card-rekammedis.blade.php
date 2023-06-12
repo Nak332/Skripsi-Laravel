@@ -28,24 +28,26 @@
         </div>
         <div class="mb-4">
             <label for="symptoms" class="block text-gray-700 text-sm font-medium mb-2">Gejala</label>
-            <p>{{$Rekam->symptoms}}</p>
+            <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->symptoms}}</p>
         </div>
 
         <div class="mb-4">
             <label for="hasil_anamnesis" class="block text-gray-700 text-sm font-medium mb-2">Anamnesis</label>
-            <p>{{$Rekam->anamnesis}}</p>
+            <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->anamnesis}}</p>
         </div>
 
 
 
         <div class="mb-4">
             <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Suhu Badan</label>
-            <div class="flex items-center p-3 text-white rounded-lg w-fit bg-green-500">
+            <div class="flex items-center p-3 text-white rounded-lg w-fit {{($Rekam->body_temperature > '36' or $Rekam->body_temperature < '35') ?  'bg-red-500'  : 'bg-green-500' }}">
             {{-- <input type="number" name='suhu_badan' step="0.1" min="25" max="45" id="body_temperature" class="md:w-1/4 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=36 > --}}
             <p class="px-1 py-1  rounded-md resize-none"> {{$Rekam->body_temperature}}</p>
             <div class=" p-1"><h1>° C</h1></div>
             </div>
         </div>
+
+        
 
         <div class="md:flex ">
             <div class="mb-4 w-1/2">
@@ -73,7 +75,7 @@
 
         <div class="mb-4">
             <label for="disease" class="block text-gray-700 text-sm font-medium mb-2">Diagnosa</label>
-            <p>{{$Rekam->diagnosis}}</p>
+            <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->diagnosis}}</p>
 
             {{-- <input type="text" name="disease" id="disease" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
         </div>
@@ -87,24 +89,24 @@
         </div> --}}
         <div class="mb-4">
             <label for="note" class="block text-gray-700 text-sm font-medium mb-2">Note</label>
-            <p>{{$Rekam->note}}</p>
+            <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->note}}</p>
             {{-- <textarea id="note" name="note" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
         </div>
 
         <div class="mb-4">
             <label for="medicine_id" class="block text-gray-700 text-sm font-medium mb-2">Preskripsi Obat</label>
-            <p>Paracetamol</p>
+            <p class="bg-gray-200 rounded-lg p-2">Paracetamol</p>
             {{-- <input type="text" id="medicine_id" name="medicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Obat"> --}}
         </div>
 
         <div class="mb-4">
             <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Penatalaksanaan</label>
-            <p> {{$Rekam->follow_up_plan}}</p>
+            <p class="bg-gray-200 rounded-lg p-2"> {{$Rekam->follow_up_plan}}</p>
             {{-- <textarea rows="3" name="penatalaksaan" id="penatalaksaan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
         </div>
         <div class="mb-4">
             <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tindakan</label>
-            <p>{{$Rekam->treatment}}</p>
+            <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->treatment}}</p>
             {{-- <textarea rows="3" name="penatalaksaan" id="penatalaksaan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
         </div>
 
