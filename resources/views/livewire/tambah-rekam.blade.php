@@ -10,6 +10,7 @@
            
            <div id="container_pasien" class="flex-inline py-4">
               <div class="px-6 py-4 w-1/3 ml-2" x-data="{ show: true }">
+               
                  <input
                     type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" @click="show = !show;$wire.clear();$wire.getFromQueue();">
                  <label for="checkbox" class="ml-2 text-sm font-medium text-gray-400 dark:text-gray-700">Gunakan antrian pasien</label>
@@ -116,10 +117,10 @@
                  </div>
                  <div id="med" class="mb-4  overflow-auto">
                     <label for="medicine_id" class="block text-gray-700 text-sm font-medium mb-2">Preskripsi Obat</label>
-                    {{-- <input type="text" id="medicine_id" name="medicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Obat"> --}}
-                    <div class="  p-2 rounded-md border border-gray-300 ">
+                    <input type="text" id="medicine_id" name="medicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Obat">
+                    {{-- <div class="  p-2 rounded-md border border-gray-300 ">
                        @livewire('medicine-cart')
-                    </div>
+                    </div> --}}
                  </div>
                  <div class="mb-4">
                     <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tindakan</label>

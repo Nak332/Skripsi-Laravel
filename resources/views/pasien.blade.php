@@ -65,11 +65,12 @@
           <div class="flex mb-2 truncate">
             <p class="block font-bold" for="dob">Nama : </p><p class="ml-2"> {{$patient->patient_emergency_contact_name}}</p>
           </div>
-            <div class="flex mb-2 truncate">
+            <div class="flex mb-4  truncate">
               <p class="block font-bold" for="dob">No. Telpon : </p><p class="ml-2"> {{$patient->patient_emergency_contact_phone}}</p>
             </div>
           </div>
-          <div class="flex pt-3 justify-center">
+          <hr>
+          <div class="flex mt-4 justify-start">
             <a href="/pasien/{{$patient->id}}/edit">
             <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Edit</button>
             </a>
