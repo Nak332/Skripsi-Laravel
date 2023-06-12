@@ -14,7 +14,7 @@ class TambahRekam extends Component
     public $selected_patient_name;
     public $patients=[];
     public $rekam;
-    public $check = '0';
+    public $check;
     public $q_number;
 
 
@@ -24,6 +24,10 @@ class TambahRekam extends Component
 
     public function getFromQueue(){
         $p =  Appointment::where('status','2')->first();
+        if(!$p){
+            $this->check = 'false';
+            return;
+        }
         $this->selected_patient = Patient::findorFail($p->patient_id);
         $this->selected_patient_name=  $this->selected_patient['patient_name'];
         $this->q_number = $p->id;
