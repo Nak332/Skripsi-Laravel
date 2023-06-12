@@ -49,7 +49,7 @@ Route::middleware(['isLogin'])->group(function () {
     Route::get('/db', function(){
         return view('dashboard.dashboard_main');
     });
-    
+
 });
 
 Route::middleware(['checkrole:admin,dokter'])->group(function () {
@@ -60,7 +60,7 @@ Route::middleware(['checkrole:admin,dokter'])->group(function () {
     Route::get('/daftar-employee', function () {
         return view('employee-list');
     });
-    
+
     Route::post('/add-employee', [EmployeeController::class,'insert']);
     Route::get('/profil/{id}', [EmployeeController::class , 'employee']) -> name('to.emp');
     Route::get('/edit-emp/{id}', [EmployeeController::class , 'employee']);
@@ -93,7 +93,7 @@ Route::get('edit_obat', function () {
     return view('edit-obat');
 });
 Route::get('obat/{id}', [MedicineController::class , 'medicines']) -> name('to.obat');
-Route::get('list_obat', function () {
+Route::get('daftar-obat', function () {
     return view('obat-list');
 });
 
