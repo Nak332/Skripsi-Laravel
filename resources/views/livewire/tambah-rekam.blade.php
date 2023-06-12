@@ -10,10 +10,14 @@
            
            <div id="container_pasien" class="flex-inline py-4">
               <div class="px-6 py-4 w-1/3 ml-2" x-data="{ show: true }">
-               
-                 <input
-                    type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" @click="show = !show;$wire.clear();$wire.getFromQueue();">
+                 <input type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" @click="show = !show;$wire.clear();$wire.getFromQueue();">
                  <label for="checkbox" class="ml-2 text-sm font-medium text-gray-400 dark:text-gray-700">Gunakan antrian pasien</label>
+                 @if ($check=='false')
+                 <p class="mt-3 text-sm text-red-500">
+                  Antrian masih kosong
+                 </p>
+                    
+                 @endif
                  <div class="mt-4" x-show="show">
                     @livewire('patient-search-bar')
                  </div>
