@@ -125,10 +125,10 @@
 
           <div class="overflow-y-auto h-96 max-h-96">
 
-            @if ($RekamMedis->first())
+            @if (!$RekamMedis->first())
             <div class=" mt-8 flex justify-center">
               <p class="font-bold"> Riwayat pasien ini masih kosong</p>
-            </div>
+            </div>  
             @else
               @foreach ($Vaksin as $V)
                 <div class="p-4 rounded-lg text-white transition-all cursor-pointer {{$V->flag =='1' ?  'bg-blue-500 hover:bg-blue-300' : 'bg-red-500  hover:bg-red-300' }} ">
