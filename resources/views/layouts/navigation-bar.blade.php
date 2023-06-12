@@ -35,7 +35,7 @@
                             toggle() {
                                 if (this.open) {
                                     return this.close()
-                                }
+                                }   
 
                                 this.$refs.button.focus()
 
