@@ -14,7 +14,7 @@
           <div class="hidden w-full md:inline md:w-auto pt-3" id="navbar-default">
             <ul class="ml-auto flex items-center space-x-4">
                 <li>
-                    <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white transition-all hover:bg-gray-600" aria-current="page">Dashboard</a>
+                    <a href="/db" class="px-4 py-2 rounded-md text-sm font-medium text-white transition-all hover:bg-gray-600" aria-current="page">Dashboard</a>
                 </li>
                 <li>
                     <a href="/resepsi" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" >Resepsi</a>
