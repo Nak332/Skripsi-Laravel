@@ -61,9 +61,7 @@
                         <div class="bg-blue-400 w-4/5 m-3 p-2 rounded">Satria Narayana</div>
                         <div class="bg-blue-400 w-4/5 m-3 p-2 rounded">Satria Narayana</div>
                         <div class="bg-blue-400 w-4/5 m-3 p-2 rounded">Satria Narayana</div>
-
                     </div>
-
                 </div>
                 
 
@@ -71,6 +69,12 @@
             </div>
         </div>
     </div>
+    <div class="flex justify-center">
+        <button class="bg-green-500 text-white p-4 text-xl rounded font-bold"> 
+            Tambah rekam
+        </button>
+    </div>
+
    
 
 </div>
