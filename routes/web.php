@@ -27,6 +27,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/trs',function(){
+    return view('transaksi');
+});
+
 
 
 
