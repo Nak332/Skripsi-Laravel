@@ -40,9 +40,9 @@
                 </div>
                 <div class="mb-4">
                   <label for="employee_gender" class="block text-gray-700 text-sm font-medium mb-2">Gender</label>
-                    <input type="radio" id="pria" name="employee_gender" value="pria" class="mr-2">
+                    <input type="radio" id="pria" name="employee_gender" id="employee_gender" value="pria" class="mr-2">
                     <label for="pria" class="mr-4">Pria</label>
-                    <input type="radio" id="wanita" name="employee_gender" value="wanita" class="mr-2">
+                    <input type="radio" id="wanita" name="employee_gender" id="employee_gender" value="wanita" class="mr-2">
                     <label for="wanita">Wanita</label>
                   @error('employee_gender')
                   <div class="error text-red-600">{{ $message }}</div>
