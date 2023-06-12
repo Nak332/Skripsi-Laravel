@@ -53,7 +53,7 @@ Route::middleware(['isLogin'])->group(function () {
     Route::get('/db', function(){
         return view('dashboard.dashboard_main');
     });
-    
+
 });
 
 Route::middleware(['checkrole:admin,dokter'])->group(function () {
@@ -61,10 +61,10 @@ Route::middleware(['checkrole:admin,dokter'])->group(function () {
     Route::get('/tambah-karyawan', function () {
         return view('form-empregister');
     });
-    Route::get('/daftar-employee', function () {
+    Route::get('/daftar-karyawan', function () {
         return view('employee-list');
     });
-    
+
     Route::post('/add-employee', [EmployeeController::class,'insert']);
     Route::get('/profil/{id}', [EmployeeController::class , 'employee']) -> name('to.emp');
     Route::get('/edit-emp/{id}', [EmployeeController::class , 'employee']);
@@ -76,6 +76,7 @@ Route::middleware(['checkrole:admin,dokter'])->group(function () {
     // });
 
     Route::post('form_rekam/tambah', [RekamController::class,'insert']);
+    Route::post('vaksinasi/tambah', [VaksinController::class,'insert']);
     Route::get('/tambah-vaksin/{id}', [VaksinController::class , 'Vaksin']);
     Route::get('tambah-vaksin', function () {
         return view('form-vaksin');
@@ -97,7 +98,7 @@ Route::get('edit_obat', function () {
     return view('edit-obat');
 });
 Route::get('obat/{id}', [MedicineController::class , 'medicines']) -> name('to.obat');
-Route::get('list_obat', function () {
+Route::get('daftar-obat', function () {
     return view('obat-list');
 });
 
@@ -115,12 +116,6 @@ Route::post('tambah-antrian', [AntrianController::class,'insert']);
 // });
 
 
-Route::get('vaksinasi', function () {
-    return view('form-vaksin');
-});
-
-
-Route::post('vaksinasi/tambah', [VaksinController::class,'insert']);
 
 Route::get('dev', function () {
     return view('crud-sandbox');
