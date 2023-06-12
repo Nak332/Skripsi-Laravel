@@ -68,7 +68,7 @@ class EmployeeController extends Controller
             'employee_email.email' =>'Format email salah'
         ]);
 
-        if ($request->employee_photo != NULL) {
+        if ($request->image != NULL) {
             $imageName = $request->employee_name. '_' . $request->employee_DOB .'_' . time().'.'.$request->image->extension();
 
             $request->image->move(public_path('images'), $imageName);
@@ -145,7 +145,7 @@ class EmployeeController extends Controller
         ]);
         Log::alert('berjalan1');
 
-        if ($request->employee_image != NULL) {
+        if ($request->image != NULL) {
             $imageName = $request->employee_name. '_' . $request->employee_DOB .'_' . time().'.'.$request->image->extension();
 
             $request->image->move(public_path('images'), $imageName);

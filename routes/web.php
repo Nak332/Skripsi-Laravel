@@ -52,7 +52,7 @@ Route::middleware(['isLogin'])->group(function () {
 
 });
 
-Route::middleware(['checkrole:admin,dokter'])->group(function () {
+Route::middleware(['checkrole:admin,Dokter'])->group(function () {
     Route::get('/pasien/{id}', [PatientController::class , 'patient']) -> name('to.pasien');
     Route::get('/tambah-karyawan', function () {
         return view('form-empregister');
@@ -79,7 +79,7 @@ Route::middleware(['checkrole:admin,dokter'])->group(function () {
     });
 });
 
-Route::middleware(['checkrole:admin,dokter,resepsionis'])->group(function () {
+Route::middleware(['checkrole:admin,Dokter,Perawat'])->group(function () {
     Route::get('/tambah-pasien', function () {
         return view('form-patient');
     });
