@@ -23,7 +23,7 @@
                     <a href="/daftar-pasien" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Daftar Pasien</a>
                 </li>
                 <li>
-                    <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Pengaturan</a>
+                    <a href="#" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600"> Stok Obat</a>
                 </li>
 
               <li>

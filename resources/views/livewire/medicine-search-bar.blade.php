@@ -1,7 +1,7 @@
 <div >
     <input type="text" 
     class="form-input w-full underline-offset-1 sm:text-sm rounded-lg block p-2.5 outline-0" 
-    placeholder="Cari Pasien...." 
+    placeholder="Cari Obat...." 
     wire:model='query'>
     <hr>
     <div>
@@ -14,7 +14,7 @@
             {{-- <option value=""@if (empty($patient)) disabled selected @endif> --}}
                 @if (!empty($query) and empty($medicines))
                     
-                    Pasien tidak ditemukan
+                    Obat tidak ditemukan
                     
                 @endif
                 
