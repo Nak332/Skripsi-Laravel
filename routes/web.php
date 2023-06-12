@@ -108,6 +108,7 @@ Route::get('tambah-obat', function () {
 
 Route::post('tambah-obat/tambah', [MedicineController::class,'insert']);
 Route::post('/tambah-stock', [MedicineDetailController::class,'insert']);
+Route::post('/edit-stock/{id}', [MedicineDetailController::class,'update']);
 Route::post('/delete-stock/{id}', [MedicineDetailController::class,'delete']);
 Route::post('tambah-antrian', [AntrianController::class,'insert']);
 

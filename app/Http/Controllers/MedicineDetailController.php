@@ -31,6 +31,7 @@ class MedicineDetailController extends Controller
         ]);
         $medicineUpdate = MedicineDetail::findOrFail($id);
         $medicineUpdate->update([
+        'medicine_id' => $request->medicine_id,
         'medicine_stock' => $request->medicine_stock,
         'medicine_expired_date' => $request->medicine_expired_date
         ]);
