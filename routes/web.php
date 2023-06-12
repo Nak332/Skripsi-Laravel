@@ -46,6 +46,10 @@ Route::middleware(['isLogin'])->group(function () {
         return view('patient-list');
     });
     Route::view('/pasien', 'pasien');
+    Route::get('/db', function(){
+        return view('dashboard.dashboard_main');
+    });
+    
 });
 
 Route::middleware(['checkrole:admin,dokter'])->group(function () {
@@ -56,6 +60,7 @@ Route::middleware(['checkrole:admin,dokter'])->group(function () {
     Route::get('/daftar-employee', function () {
         return view('employee-list');
     });
+    
     Route::post('/add-employee', [EmployeeController::class,'insert']);
     Route::get('/profil/{id}', [EmployeeController::class , 'employee']) -> name('to.emp');
     Route::get('/edit-emp/{id}', [EmployeeController::class , 'employee']);
@@ -128,8 +133,6 @@ Route::post('/dev/simp', [UserController::class,'store']);
 Route::get('users', function () {
     return view('crud-sandbox');
 });
-
-
 
 
 
