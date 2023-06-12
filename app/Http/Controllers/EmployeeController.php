@@ -41,11 +41,11 @@ class EmployeeController extends Controller
         $limaBelas = Date::now()->subYears(15)->format('Y-m-d');
         $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
-            'employee_name' =>'required|max:25|regex:/^[a-zA-Z\s]+$/', //|alpha|max:25
+            'employee_name' =>'required|max:50|regex:/^[a-zA-Z\s]+$/', //|alpha|max:25
             'employee_job' => 'required',
             'employee_phone' => ['required','regex:/^(08|\+62)\d{8,}$/'],
             'employee_gender' => 'required|in:Laki-Laki,Perempuan,Pria,Wanita|alpha|max:25',
-            'employee_NIK' => 'required|size:16',
+            'employee_NIK' => 'required|size:16|numeric',
             'employee_address' => 'required',
             'employee_DOB' => ['required','date_format:Y-m-d','before:'.$limaBelas],
             'employee_POB' => 'required',
@@ -54,13 +54,14 @@ class EmployeeController extends Controller
             'image' => 'Gambar yang dimasukkan harus dalam format jpeg atau png atau jpg atau svg',
             'employee_name' =>'Nama harus ditambahkan',
             'employee_name.regex' =>'Nama hanya boleh berisikan alfabet',
-            'employee_name.max' =>'Nama maksimal 25 huruf',
+            'employee_name.max' =>'Nama maksimal 50 huruf',
             'employee_job' => 'Pekerjaan harus ditambahkan',
             'employee_phone' => 'Nomor telepon harus ditambahkan',
             'employee_phone.regex' => 'Masukan nomor telepon yang sesuai',
             'employee_gender' => 'Jenis Kelamin harus ditambahkan',
-            'employee_NIK' => 'NIK harus ditambahkan',
+            'employee_NIK' => 'NIK harus diisi',
             'employee_NIK.size' => 'NIK harus sesuai 16 digit',
+            'employee_NIK.numeric' => 'NIK hanya berisi angka',
             'employee_address' => 'Alamat harus ditambahkan',
             'employee_DOB' => 'Tanggal lahir harus ditambahkan',
             'employee_DOB.before' => 'Minimal 15 tahun',
@@ -100,28 +101,34 @@ class EmployeeController extends Controller
 
     public function update(Request $request, $id)
     {
+        $limaBelas = Date::now()->subYears(15)->format('Y-m-d');
         $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'employee_name' =>'required', //|alpha|max:25
-            'employee_job' => 'required|in:Dokter,Perawat,Farmasi|alpha|max:25',
-            'employee_phone' => 'required|min:8|max:15',
+            'image' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
+            'employee_name' =>'required|max:50|regex:/^[a-zA-Z\s]+$/', //|alpha|max:25
+            'employee_job' => 'required',
+            'employee_phone' => ['required','regex:/^(08|\+62)\d{8,}$/'],
             'employee_gender' => 'required|in:Laki-Laki,Perempuan,Pria,Wanita|alpha|max:25',
             'employee_NIK' => 'required|size:16',
             'employee_address' => 'required',
-            'employee_DOB' => 'required|date_format:Y-m-d',
+            'employee_DOB' => ['required','date_format:Y-m-d','before:'.$limaBelas],
             'employee_POB' => 'required',
             'employee_email' =>'nullable|email'
         ],[
-            'image' => 'test1',
-            'employee_name' =>'test2',
-            'employee_job' => 'test3',
-            'employee_phone' => 'test4',
-            'employee_gender' => 'test5',
-            'employee_NIK' => 'test6',
-            'employee_address' => 'test7',
-            'employee_DOB' => 'test8',
-            'employee_POB' => 'test9',
-            'employee_email' =>'test10'
+            'image' => 'Gambar yang dimasukkan harus dalam format jpeg atau png atau jpg atau svg',
+            'employee_name' =>'Nama harus ditambahkan',
+            'employee_name.regex' =>'Nama hanya boleh berisikan alfabet',
+            'employee_name.max' =>'Nama maksimal 50 huruf',
+            'employee_job' => 'Pekerjaan harus ditambahkan',
+            'employee_phone' => 'Nomor telepon harus ditambahkan',
+            'employee_phone.regex' => 'Masukan nomor telepon yang sesuai',
+            'employee_gender' => 'Jenis Kelamin harus ditambahkan',
+            'employee_NIK' => 'NIK harus ditambahkan',
+            'employee_NIK.size' => 'NIK harus sesuai 16 digit',
+            'employee_address' => 'Alamat harus ditambahkan',
+            'employee_DOB' => 'Tanggal lahir harus ditambahkan',
+            'employee_DOB.before' => 'Minimal 15 tahun',
+            'employee_POB' => 'Tempat lahir harus ditambahkan',
+            'employee_email.email' =>'Format email salah'
         ]);
 
 
