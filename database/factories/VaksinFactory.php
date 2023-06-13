@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Employees;
 use App\Models\Patient;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,6 +19,7 @@ class VaksinFactory extends Factory
     public function definition()
     {
         return [
+            'employee_id' => Employees::factory(),
             'vaccine_name' => $this->faker->name(),
             'patient_id' => Patient::factory(),
             'vaccination_date' => $this->faker->dateTimeThisDecade(),
