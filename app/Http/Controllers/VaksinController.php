@@ -59,6 +59,7 @@ class VaksinController extends Controller
 
         $vaksinUpdate = vaksin::findOrFail($id);
         $vaksinUpdate->update([
+            'employee_id' => $request->employee_id,
             'vaccine_name' => $request->vaccine_name,
             'vaccine_date' => $request->vaccination_date,
             'patient_id' => $request->patient_id,
