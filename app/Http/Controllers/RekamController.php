@@ -30,10 +30,10 @@ class RekamController extends Controller
             'patient_id' => 'required',
             'appointment_id' => 'nullable',
             'medicine_id' => 'nullable',
-             'employee_id' => 'required',
-            'symptoms' => 'required',
-            'complaint' => 'required',
+            'employee_id' => 'required',
             'anamnesis' => 'required',
+            'blood_sugar' => 'nullable',
+            'pulse' => 'nullable',
             'follow_up_plan' => 'nullable',
             'treatment' => 'required',
             'past_service' => 'nullable',
@@ -59,8 +59,8 @@ class RekamController extends Controller
         $rekamMedis->body_temperature = $request->body_temperature;
         $rekamMedis->sistol = $request->sistol;
         $rekamMedis->diastol = $request->diastol;
-        $rekamMedis->symptoms = $request->symptoms;
-        $rekamMedis->complaint = $request->complaint;
+        $rekamMedis->blood_sugar = $request->blood_sugar;
+        $rekamMedis->pulse = $request->pulse;
         $rekamMedis->anamnesis = $request->anamnesis;
         $rekamMedis->follow_up_plan = $request->follow_up_plan;
         $rekamMedis->treatment = $request->treatment;
@@ -90,8 +90,8 @@ class RekamController extends Controller
         'appointment_id' => 'nullable',
         'medicine_id' => 'nullable',
         'employee_id' => 'required',
-        'symptoms' => 'required',
-        'complaint' => 'required',
+        'blood_sugar' => 'nullable',
+        'pulse' => 'nullable',
         'anamnesis' => 'required',
         'follow_up_plan' => 'nullable',
         'treatment' => 'required',
@@ -109,8 +109,8 @@ class RekamController extends Controller
         'appointment_id' => $request->appointment_id,
         'medicine_id' => $request->medicine_id,
         'employee_id' => $request->employee_id,
-        'symptoms' => $request->symptoms,
-        'complaint' => $request->complaint,
+        'blood_sugar' => $request->blood_sugar,
+        'pulse' => $request->pulse,
         'anamnesis' => $request->anamnesis,
         'follow_up_plan' => $request->follow_up_plan,
         'treatment' => $request->treatment,
