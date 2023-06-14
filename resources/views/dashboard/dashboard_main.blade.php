@@ -19,14 +19,13 @@
 
     
 
-    <div id="top_container" class="content-center justify-center flex w-full">
-        <div class="bg-gray-300 rounded-xl w-1/3 h-96 p-4 m-4  text-center">
-            <div>  
+    <div id="top_container" class="justify-center flex w-full">
+        <div class="bg-gray-300 rounded-xl w-1/3 h-96 p-4 m-4 flex flex-col justify-center items-center text-center">
+            <div class="h-full flex flex-col justify-center items-center">
                 <h1 class="text-7xl">91</h1>
                 <h1>Jumlah Pasien</h1>
             </div>
         </div>
-
         <div class="bg-gray-300 rounded-xl w-1/3 h-96 p-4 m-4">
             <div> 
                 <h1 class="font-bold ml-7">Rekam Medis Terbuka</h1> 
@@ -61,7 +60,7 @@
 
         <div class="bg-gray-300 rounded-xl w-1/3 h-96 p-4 m-4">
             <div> 
-                <h1 class="font-bold ml-7">Imunisasi Mendatang Pasien </h1> 
+                <h1 class="font-bold ml-7">Pasien dengan Imunisasi Mendatang </h1> 
                 {{-- <hr class="h-0.5 rounded-2xl my-4 border-0 dark:bg-gray-700"> --}}
                 <div class="justify-center flex mt-4">
                     <div class="w-11/12 h-72 bg-white inline rounded overflow-y-auto">

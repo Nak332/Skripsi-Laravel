@@ -43,6 +43,7 @@ class MedicineCart extends Component
         $this->obat = array_values($this->obat);
         $this->qty = array_values($this->qty);
         $this->obat_name = array_values($this->obat_name);
+        $this->updateParentData();
     }
 
     public function getMedicineName($id){
@@ -59,6 +60,19 @@ class MedicineCart extends Component
         $medicineName = $obj ? $obj->medicine_name : null;
         array_push($this->obat_name, $medicineName);
         array_push($this->obat, $obat);
+        $this->updateParentData();
+    }
+
+    public function updateParentData(){
+        if(!$this->qty){
+            $tempqty = [];
+            array_push($tempqty,0);
+            $this->emit('objectsUpdated', ['obat'=>$this->obat,'qty'=>$tempqty] );
+        }
+        else{
+            $this->emit('objectsUpdated', ['obat'=>$this->obat,'qty'=>$this->qty] );
+        }
+        
     }
 
     public function render()
