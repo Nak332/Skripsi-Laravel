@@ -43,6 +43,7 @@ class CreateUserForEmployee
         $user->employee_id = $emp->id;
         $user->role = $emp->employee_job;
         $user->email = $emp->employee_email;
+        $user->status = '1';
         $user->password = bcrypt('test');
         $user->save();
     }

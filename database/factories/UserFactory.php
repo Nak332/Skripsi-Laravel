@@ -22,6 +22,7 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'employee_id' => '0',
             'role' => 'admin',
+            'status' => '1',
             'username' => 'admin',
             'email_verified_at' => now(),
             'password' => bcrypt('admin'), // password

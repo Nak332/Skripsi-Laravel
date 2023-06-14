@@ -17,9 +17,13 @@ class isLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()) {
-            return $next($request);
+        if (Auth::check() && auth()->user()->status == 0) {
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect('/login');
+
         }
-        return redirect('/login');
+        return $next($request);
     }
 }
