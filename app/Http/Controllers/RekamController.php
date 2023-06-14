@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\antrianUpdateFlag;
+use App\Events\CreateTransaction;
 use App\Models\Patient;
 use App\Models\RekamMedis;
 use Illuminate\Http\Request;
@@ -37,9 +38,7 @@ class RekamController extends Controller
             'follow_up_plan' => 'nullable',
             'treatment' => 'required',
             'past_service' => 'nullable',
-            'agreement' => 'nullable',
             'diagnosis' => 'required',
-            'total_price' => 'nullable',
             'type' => 'nullable',
             'note' => 'nullable'
             ]);
@@ -62,12 +61,11 @@ class RekamController extends Controller
         $rekamMedis->blood_sugar = $request->blood_sugar;
         $rekamMedis->pulse = $request->pulse;
         $rekamMedis->anamnesis = $request->anamnesis;
+        $rekamMedis->quantity = $request->quantity;
         $rekamMedis->follow_up_plan = $request->follow_up_plan;
         $rekamMedis->treatment = $request->treatment;
         $rekamMedis->past_service = $request->past_service;
-        $rekamMedis->agreement = $request->agreement;
         $rekamMedis->diagnosis = $request->diagnosis;
-        $rekamMedis->total_price = $request->total_price;
         $rekamMedis->type = $request->type;
         $rekamMedis->note = $request->note;
         $rekamMedis->flag = $request->flag;
@@ -78,6 +76,7 @@ class RekamController extends Controller
             event(new antrianUpdateFlag($rekamMedis));
         }
 
+        event(new CreateTransaction($rekamMedis));
 
         return redirect('/');
     }
@@ -96,9 +95,7 @@ class RekamController extends Controller
         'follow_up_plan' => 'nullable',
         'treatment' => 'required',
         'past_service' => 'nullable',
-        'agreement' => 'nullable',
         'diagnosis' => 'required',
-        'total_price' => 'nullable',
         'type' => 'nullable',
         'note' => 'nullable'
         ]);
@@ -113,11 +110,10 @@ class RekamController extends Controller
         'pulse' => $request->pulse,
         'anamnesis' => $request->anamnesis,
         'follow_up_plan' => $request->follow_up_plan,
+        'quantity' => $request->quantity,
         'treatment' => $request->treatment,
         'past_service' => $request->past_service,
-        'agreement' => $request->agreement,
         'diagnosis' => $request->diagnosis,
-        'total_price' => $request->total_price,
         'type' => $request->type,
         'note' => $request->note,
         'flag' => $request->flag,

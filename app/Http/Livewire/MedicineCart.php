@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Medicine;
 use Livewire\Component;
 
-
+use function PHPUnit\Framework\isEmpty;
 
 class MedicineCart extends Component
 {
@@ -16,9 +16,12 @@ class MedicineCart extends Component
     public $prescription;
     public $obat_name;
     public $obat_qty;
+    public $obat_list;
+    public $qty_list;
+    public $indexing;
+
     // public $obj;
-    
-    
+
 
     public function mount(){
         $this->ix;
@@ -26,6 +29,21 @@ class MedicineCart extends Component
         $this->obat_name=[];
         $this->qty=[];
         $this->prescription=[];
+        $this->obat_list = '';
+        $this->qty_list = '';
+        $this->indexing = 0;
+    }
+
+    public function tostring(){
+        $this->obat_list = '';
+            $this->qty_list = '';
+        if ($this->obat && $this->qty && count($this->obat) === count($this->qty) && !empty($this->obat) && !empty($this->qty)) {
+            foreach ($this->obat as $index => $o) {
+                $this->obat_list .= $o . ',';
+                $this->qty_list .= $this->qty[$index] . ',';
+            }
+        }
+
     }
 
     public function add($i){
@@ -38,7 +56,7 @@ class MedicineCart extends Component
         unset($this->obat[$i]);
         unset($this->qty[$i]);
         unset($this->obat_name[$i]);
-        
+
         // Re-index the arrays to remove any gaps
         $this->obat = array_values($this->obat);
         $this->qty = array_values($this->qty);
@@ -60,24 +78,18 @@ class MedicineCart extends Component
         $medicineName = $obj ? $obj->medicine_name : null;
         array_push($this->obat_name, $medicineName);
         array_push($this->obat, $obat);
+        array_push($this->qty,0);
         $this->updateParentData();
     }
 
     public function updateParentData(){
-        if(!$this->qty){
-            $tempqty = [];
-            array_push($tempqty,0);
-            $this->emit('objectsUpdated', ['obat'=>$this->obat,'qty'=>$tempqty] );
-        }
-        else{
-            $this->emit('objectsUpdated', ['obat'=>$this->obat,'qty'=>$this->qty] );
-        }
-        
+        $this->tostring();
+        $this->emit('objectsUpdated', ['obat'=>$this->obat,'qty'=>$this->qty,'listobat'=>$this->obat_list,'listqty' => $this->qty_list] );
     }
 
     public function render()
     {
         return view('livewire.medicine-cart');
     }
-}    
- 
+}
+

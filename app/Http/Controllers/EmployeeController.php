@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\DisableAccount;
 use App\Events\EmployeeCreated;
 use App\Events\RoleChanged;
 use App\Listeners\CreateUserForEmployee;
@@ -88,6 +89,7 @@ class EmployeeController extends Controller
         $employee->employee_NIK = $request->employee_NIK;
         $employee->employee_address = $request->employee_address;
         $employee->employee_photo = $imageName;
+        $employee->status = '1';
         $employee->employee_DOB = $request->employee_DOB;
         $employee->employee_POB = $request->employee_POB;
         $employee->employee_email = $request->employee_email;
@@ -164,7 +166,11 @@ class EmployeeController extends Controller
     public function delete($id)
 {
     $employeeDelete = Employees::findOrFail($id);
-    $employeeDelete->delete();
+    $employeeDelete->update([
+        'status' => 0
+    ]);
+
+    event(new DisableAccount($employeeDelete));
 
 	return redirect('/');
 }

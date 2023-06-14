@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->integer('patient_id');
             $table->integer('rekamMedis_id');
-            $table->integer('employee_id');
+            $table->integer('employee_id')->nullable();
             $table->integer('appointment_id')->nullable();
-            $table->string('payment');
+            $table->string('payment')->nullable();
             $table->string('flag');
             $table->timestamps();
         });

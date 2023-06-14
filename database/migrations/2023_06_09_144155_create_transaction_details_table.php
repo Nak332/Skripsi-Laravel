@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('treatment')->nullable();
             $table->integer('medicine_id')->nullable();
             $table->integer('quantity')->nullable();
-            $table->integer('price');
+            $table->integer('price')->nullable();
             $table->timestamps();
         });
     }

@@ -20,25 +20,28 @@
                             <p class="">@if ($q_type=='on_the_spot')    A @else J @endif {{$a->antrian_number}} - {{$a->patient->patient_name}} @if ($q_type=='scheduled') - {{$a->appointment_date}} @endif</p>
                             <div class="flex space-x-1">
                                 <button  x-on:click="$wire.sendPatientToParentComponent(id='{{$a->id}}');" wire:click="$emit('refreshComponent')" class="bg-green-500 hover:bg-white hover:text-green-500 transition-all text-white p-2 rounded" title="Beri giliran ke pasien ini" ><x-fas-up-long class="w-4 h-4"/></button>
-                                <button x-on:click="$wire.sendPatientToParentComponent(id='{{$a->id}}');" wire:click="$emit('refreshComponent')" class="bg-red-500 hover:bg-white hover:text-red-500 transition-all text-white p-2 rounded" title="Hapus antrian pasien ini" ><x-feathericon-x  class=" w-4 h-4"/></button>
+                                <form action="/hapus-antrian/{{$a->id}}" method="post">
+                                    @csrf
+                                <button  x-on:click="$wire.sendPatientToParentComponent(id='{{$a->id}}');" wire:click="$emit('refreshComponent')" class="bg-red-500 hover:bg-white hover:text-red-500 transition-all text-white p-2 rounded" title="Hapus antrian pasien ini" ><x-feathericon-x  class=" w-4 h-4"/></button>
+                            </form>
                             </div>
-                            
+
                         </div>
-                       
+
                             <div class="pt-2 " x-show="expanded" x-collapse>
 
                                 <p class="border-t-2 pb-2 border-white"></p>
                                 <p class="truncate">{{$a->patient->patient_address}}</p>
                                 <p>{{$a->patient->patient_gender}}</p>
                                 <p>{{$a->patient->getAge()}}</p>
-    
+
                             </div>
 
 
-                          
 
-                        
-                    
+
+
+
                     </div>
                 </div>
 
@@ -64,10 +67,6 @@
             @endforeach --}}
         </div>
     </div>
-
-
-
-
 
 
 

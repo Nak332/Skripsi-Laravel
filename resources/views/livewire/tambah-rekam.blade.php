@@ -7,7 +7,7 @@
         <form method="POST" action="/form_rekam/tambah">
            @csrf
            {{--Bikin iinvisible buat 3 bagian diatas --}}
-           
+
            <div id="container_pasien" class="flex-inline py-4">
               <div class="px-6 py-4 w-1/3 ml-2" x-data="{ show: true }">
                  <input type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" @click="show = !show;$wire.clear();$wire.getFromQueue();">
@@ -16,7 +16,7 @@
                  <p class="mt-3 text-sm text-red-500">
                   Antrian masih kosong
                  </p>
-                    
+
                  @endif
                  <div class="mt-4" x-show="show">
                     @livewire('patient-search-bar')
@@ -73,6 +73,19 @@
                        </div>
                     </div>
                  </div>
+                 <div class="mb-4">
+                    <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Pulse</label>
+                    <div class="flex">
+                       <input type="number" name='pulse' id="pulse" class="md:w-1/4 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=36 >
+
+                    </div>
+                 </div>
+                 <div class="mb-4">
+                    <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">blood_sugar</label>
+                    <div class="flex">
+                       <input type="number" name='blood_sugar' id="blood_sugar" class="md:w-1/4 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=36 >
+                    </div>
+                 </div>
                  <div class="md:flex inline">
                     <div class="mb-4 w-1/2">
                        <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Sistol</label>
@@ -99,13 +112,13 @@
                  </div>
               </div>
 
-              
+
               <div id="right-side" class="md:w-1/2 flex-inline p-6 max-w-screen  w-full mx-auto  overflow-x-hidden">
                  <div class="mb-4">
                     <label for="disease" class="block text-gray-700 text-sm font-medium mb-2">Diagnosa</label>
                     <input type="text" name="diagnosis" id="diagnosis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                  </div>
-                 {{-- 
+                 {{--
                  <div class="mb-4">
                     <label for="total_price" class="block text-gray-700 text-sm font-medium mb-2">Total Price</label>
                     <input type="text" name="total_price" id="total_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
@@ -129,20 +142,25 @@
                        @foreach ($obat as $index => $o)
                            /{{$o}} /{{$qty[$index]}}/
                        @endforeach
+                           {{$listobat}} |||| {{$listqty}}
                    @endif
                     </div>
                  </div>
+
+                 <input type="text" name="medicine_id" id="medicine_id" hidden value="{{$listobat}}">
+                 <input type="text" name="quantity" id="quantity" hidden value="{{$listqty}}">
+
                  <div class="mb-4">
                     <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tindakan</label>
                     <textarea rows="3" name="treatment" id="treatment" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                  </div>
-                 {{-- 
+                 {{--
                  <div class="mb-4">
                     <label for="extramedicine_id" class="block text-gray-700 text-sm font-medium mb-2">Extra Medicine</label>
                     <input type="text" id="extramedicine_id" name="extramedicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="">
                  </div>
                  --}}
-                 {{-- 
+                 {{--
                  <div class="mb-4">
                     <label for="total_price" class="block text-gray-700 text-sm font-medium mb-2">Total Price</label>
                     <input type="text" name="total_price" id="total_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>

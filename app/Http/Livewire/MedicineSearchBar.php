@@ -16,7 +16,7 @@ class MedicineSearchBar extends Component
     public $medicines; //Untuk Dropdown rekomendasi
     public $highlightIndex;
 
- 
+
 
 
     public function updatedQuery(){
@@ -33,7 +33,7 @@ class MedicineSearchBar extends Component
 
     public function addMedicine($id){
         $this->selected_medicine= Medicine::findorFail($id);
-        $this->medicines = collect(['id'=> $this->selected_medicine->id,'name'=>$this->selected_medicine->medicine_name,'qty'=> 3]);
+        $this->medicines = collect(['id'=> $this->selected_medicine->id,'name'=>$this->selected_medicine->medicine_name,'qty'=> '0']);
         $this->sendMedicineToParentComponent($id);
 
     }
@@ -45,12 +45,12 @@ class MedicineSearchBar extends Component
     public function sendMedicineToParentComponent($id)
     {
         $this->emitUp('medicineSent', ['obat' =>$id]);
- 
- 
-    }
-     
 
- 
+
+    }
+
+
+
     public function mount()
     {
         $this->query='';
@@ -60,13 +60,13 @@ class MedicineSearchBar extends Component
         //         ['id'=> 1,'name'=>'nakara','qty'=> 3],
         //         ['id'=> 2,'name'=>'satria','qty'=> 3]
         //     ]);
-       
+
 
     }
 
-    
+
     public function render()
     {
-        return view('livewire.medicine-search-bar');    
+        return view('livewire.medicine-search-bar');
     }
 }

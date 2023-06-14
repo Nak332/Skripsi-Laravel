@@ -64,8 +64,8 @@ Route::middleware(['checkrole:admin,Dokter'])->group(function () {
     Route::get('/daftar-karyawan', function () {
         return view('employee-list');
     });
-
     Route::post('/add-employee', [EmployeeController::class,'insert']);
+    Route::post('/disableemployee/{id}', [EmployeeController::class,'delete']);
     Route::get('/profil/{id}', [EmployeeController::class , 'employee']) -> name('to.emp');
     Route::get('/edit-emp/{id}', [EmployeeController::class , 'employee']);
     Route::post('/edit-emp/edit/{id}', [EmployeeController::class , 'update']);
@@ -90,6 +90,7 @@ Route::middleware(['checkrole:admin,Dokter,Perawat'])->group(function () {
     Route::post('/tambah-pasien/tambah', [PatientController::class,'insert']);
     Route::get('/pasien/{id}/edit', [PatientController::class,'patient']);
     Route::post('/edit/pasien/{id}', [PatientController::class,'update']);
+    Route::post('/hapus-antrian/{id}', [AntrianController::class,'delete']);
 });
 
 

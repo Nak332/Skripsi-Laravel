@@ -33,7 +33,8 @@ class EmployeesFactory extends Factory
             'employee_photo' => $this->faker->imageUrl(640, 480, 'animals', true),
             'employee_DOB' =>$this->faker->dateTimeThisDecade(),
             'employee_POB'=> $this->faker->address(),
-            'employee_email' => $this->faker->email()
+            'employee_email' => $this->faker->email(),
+            'status' => $this->faker->numberBetween('0','1')
             //
         ];
     }

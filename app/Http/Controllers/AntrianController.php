@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\antrianDelete;
 use App\Events\AppointmentHistoryCreated;
 use App\Models\Appointment;
 use App\Models\AppointmentHistory;
@@ -89,9 +90,10 @@ class AntrianController extends Controller
 public function delete($id)
 {
     $antrianDelete = Appointment::findOrFail($id);
+    event(new antrianDelete($antrianDelete));
     $antrianDelete->delete();
 
-	return redirect('/');
+	return redirect()->back();
 }
 
 

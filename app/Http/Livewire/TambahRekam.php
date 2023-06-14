@@ -18,6 +18,8 @@ class TambahRekam extends Component
     public $q_number;
     public $obat=[];
     public $qty=[];
+    public $listobat = '';
+    public $listqty ='';
 
 
     protected $rules=[
@@ -62,5 +64,7 @@ class TambahRekam extends Component
     public function updateMedicines($data){
         $this->obat = $data['obat'];
         $this->qty  = $data['qty'];
+        $this->listqty = $data ['listqty'];
+        $this->listobat = $data['listobat'];
     }
 }
