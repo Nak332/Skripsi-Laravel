@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "andreiio/blade-remix-icon": "^2.3",
         "blade-ui-kit/blade-heroicons": "^2.1",
+        "blade-ui-kit/blade-icons": "^1.5",
         "brunocfalcao/blade-feather-icons": "^3.0",
         "doctrine/dbal": "^3.6",
         "guzzlehttp/guzzle": "^7.2",

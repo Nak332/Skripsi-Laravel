@@ -8,6 +8,17 @@
 
 <div class=" h-screen bg-gray-200">
 
+    <div id="sambutan" class="w-full flex p-6">
+        <p class="text-center w-6/12 font-bold ">
+            Selamat Datang, Satria Narayana
+        </p>
+        <hr>
+    </div>
+
+    
+
+    
+
     <div id="top_container" class="content-center justify-center flex w-full">
         <div class="bg-gray-300 rounded-xl w-1/3 h-96 p-4 m-4  text-center">
             <div>  
@@ -50,7 +61,7 @@
 
         <div class="bg-gray-300 rounded-xl w-1/3 h-96 p-4 m-4">
             <div> 
-                <h1 class="font-bold ml-7">Rekam Medis Terbuka</h1> 
+                <h1 class="font-bold ml-7">Imunisasi Mendatang Pasien </h1> 
                 {{-- <hr class="h-0.5 rounded-2xl my-4 border-0 dark:bg-gray-700"> --}}
                 <div class="justify-center flex mt-4">
                     <div class="w-11/12 h-72 bg-white inline rounded overflow-y-auto">
