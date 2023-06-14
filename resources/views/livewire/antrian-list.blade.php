@@ -1,4 +1,4 @@
-<div id="container-antrian" class="flex-inline self-center p-8 w-4/5 h-fit sm:w-full">
+<div id="container-antrian" class="flex-inline self-center p-8  h-fit w-full truncate">
     <h1 class="text-2xl font-bold mb-4">
         @if ($q_type=='on_the_spot')
             Antrian Kunjungan
@@ -10,25 +10,35 @@
 
         @if ($antrian)
             @foreach ($antrian as $a)
-                @if ($q_type==$a->appointment_type && $a->status != '3' && $a->status != '4')
+                @if ($q_type==$a->appointment_type && $a->status == '1')
 
                 <div x-data="{ expanded: false }" @click="if(!expanded){expanded = !expanded}" href="#" class="cursor-pointer" @click.outside="expanded = false">
                     <div class="truncate bg-gray-300 p-3 m-4 rounded-lg hover:bg-blue-500
                     hover:ml-5 hover:mr-3 hover:border-black
                     hover:text-white hover:transition-all ">
                         <div class="flex justify-between items-center">
-                            <p class="">@if ($q_type=='on_the_spot')    A @else J @endif {{$a->antrian_number}} - {{$a->patient->patient_name}}</p>
-                            <button x-on:click="$wire.sendPatientToParentComponent(id='{{$a->id}}');" wire:click="$emit('refreshComponent')" class="bg-green-500 hover:bg-white hover:text-green-500 transition-all text-white p-2 rounded" title="Beri giliran ke pasien ini" ><x-fas-up-long class="w-4 h-4"/></button>
+                            <p class="">@if ($q_type=='on_the_spot')    A @else J @endif {{$a->antrian_number}} - {{$a->patient->patient_name}} @if ($q_type=='scheduled') - {{$a->appointment_date}} @endif</p>
+                            <div class="flex space-x-1">
+                                <button  x-on:click="$wire.sendPatientToParentComponent(id='{{$a->id}}');" wire:click="$emit('refreshComponent')" class="bg-green-500 hover:bg-white hover:text-green-500 transition-all text-white p-2 rounded" title="Beri giliran ke pasien ini" ><x-fas-up-long class="w-4 h-4"/></button>
+                                <button x-on:click="$wire.sendPatientToParentComponent(id='{{$a->id}}');" wire:click="$emit('refreshComponent')" class="bg-red-500 hover:bg-white hover:text-red-500 transition-all text-white p-2 rounded" title="Hapus antrian pasien ini" ><x-feathericon-x  class=" w-4 h-4"/></button>
+                            </div>
+                            
                         </div>
+                       
+                            <div class="pt-2 " x-show="expanded" x-collapse>
 
-                        <div class="pt-2 " x-show="expanded" x-collapse>
+                                <p class="border-t-2 pb-2 border-white"></p>
+                                <p class="truncate">{{$a->patient->patient_address}}</p>
+                                <p>{{$a->patient->patient_gender}}</p>
+                                <p>{{$a->patient->getAge()}}</p>
+    
+                            </div>
 
-                            <p class="border-t-2 pb-2 border-white"></p>
-                            <p class="truncate">{{$a->patient->patient_address}}</p>
-                            <p>{{$a->patient->patient_gender}}</p>
-                            <p>{{$a->patient->getAge()}}</p>
 
-                        </div>
+                          
+
+                        
+                    
                     </div>
                 </div>
 
