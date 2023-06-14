@@ -64,7 +64,15 @@ class MedicineCart extends Component
     }
 
     public function updateParentData(){
-        $this->emit('objectsUpdated', $this->obat, $this->qty);
+        if(!$this->qty){
+            $tempqty = [];
+            array_push($tempqty,0);
+            $this->emit('objectsUpdated', ['obat'=>$this->obat,'qty'=>$tempqty] );
+        }
+        else{
+            $this->emit('objectsUpdated', ['obat'=>$this->obat,'qty'=>$this->qty] );
+        }
+        
     }
 
     public function render()

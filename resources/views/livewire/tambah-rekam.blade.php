@@ -124,6 +124,12 @@
                     {{-- <input type="text" id="medicine_id" name="medicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Obat"> --}}
                     <div class="  p-2 rounded-md border border-gray-300 ">
                        @livewire('medicine-cart')
+
+                       @if ($obat && $qty && count($obat) === count($qty))
+                       @foreach ($obat as $index => $o)
+                           /{{$o}} /{{$qty[$index]}}/
+                       @endforeach
+                   @endif
                     </div>
                  </div>
                  <div class="mb-4">

@@ -61,6 +61,6 @@ class TambahRekam extends Component
 
     public function updateMedicines($data){
         $this->obat = $data['obat'];
-        $this->qty  = $data['obat'];
+        $this->qty  = $data['qty'];
     }
 }
