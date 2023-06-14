@@ -18,7 +18,7 @@
                         <div class="w-full text-black"> {{$obat_name[$index]}} </div>
                     </div>
                     <div class="p-2 text-center">
-                        <input wire:model="qty.{{ $index }}" type="number" class="p-1 rounded-md w-3/5 border outline-none border-gray-300" placeholder="99">
+                        <input wire:model="qty.{{ $index }}" type="number" wire:change='updateParentData' class="p-1 rounded-md w-3/5 border outline-none border-gray-300" placeholder="99">
                     </div>
                 </div>
                 <div wire:click="remove({{ $index }})"  class="bg-red-500 rounded-br w-1/12 p-3 border border-red-500  rounded-tr justify-center text-center text-white font-bold cursor-pointer hover:bg-white hover:text-red-500 transition-all">

@@ -16,6 +16,8 @@ class TambahRekam extends Component
     public $rekam;
     public $check;
     public $q_number;
+    public $obat=[];
+    public $qty=[];
 
 
     protected $rules=[
@@ -41,6 +43,7 @@ class TambahRekam extends Component
 
     protected $listeners = [
         'patientSelected' => 'addPatient',
+        'objectsUpdated' => 'updateMedicines'
     ];
 
     public function render()
@@ -54,5 +57,10 @@ class TambahRekam extends Component
         $this->q_number=-1;
         $this->selected_patient=Patient::findorFail($id);
         $this->selected_patient_name=  $this->selected_patient['patient_name'];
+    }
+
+    public function updateMedicines($data){
+        $this->obat = $data['obat'];
+        $this->qty  = $data['obat'];
     }
 }
