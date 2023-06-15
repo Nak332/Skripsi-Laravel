@@ -33,6 +33,7 @@
                     <option value="Dokter" class="pl-4 py-2">Dokter</option>
                     <option value="Perawat" class="pl-4 py-2">Perawat</option>
                     <option value="Farmasi" class="pl-4 py-2">Farmasi</option>
+                    <option value="Farmasi" class="pl-4 py-2">Resepsionis</option>
                   </select>
                   @error('employee_job')
                   <div class="error text-red-600">{{ $message }}</div>

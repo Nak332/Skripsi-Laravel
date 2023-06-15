@@ -26,10 +26,11 @@
                     <label for="employee_job" class="block text-gray-700 text-sm font-medium mb-2">Job</label>
     
                     <select name = "employee_job" id="employee_job" class="border border-gray-300 rounded-md p-2">
-                      <option readonly value="{{$employee->employee_job}}" class="pl-4 py-2 text-gray-300">{{$employee->employee_job}}</option>
+                      <option hidden selected value="{{$employee->employee_job}}" class="pl-4 py-2 text-gray-300">{{$employee->employee_job}}</option>
                       <option value="Dokter" class="pl-4 py-2">Dokter</option>
                       <option value="Perawat" class="pl-4 py-2">Perawat</option>
                       <option value="Farmasi" class="pl-4 py-2">Farmasi</option>
+                      <option value="Farmasi" class="pl-4 py-2">Resepsionis</option>
                     </select>
                     @error('employee_job')
                     <div class="error text-red-600">{{ $message }}</div>
