@@ -43,7 +43,7 @@
              
               @foreach ($medicineDetail as $MD)
               <div class="flex p-2">
-                <p class="w-5/12 text-center">{{$MD->medicine_expired_date}}</p>
+                <p class="w-5/12 text-center {{$MD->isExpired() ? 'text-red-500': '' }}">{{$MD->medicine_expired_date}}</p>
                 <p class="w-5/12 text-center">{{$MD->medicine_stock}} pcs</p>
                 
                
