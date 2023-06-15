@@ -25,6 +25,9 @@
                 <li>
                     <a href="/daftar-obat" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600"> Stok Obat</a>
                 </li>
+                <li>
+                    <a href="/daftar-karyawan" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600"> Daftar Karyawan</a>
+                </li>
 
               <li>
                 <div class="container mx-auto flex items-center">

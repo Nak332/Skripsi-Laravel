@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class=" h-screen bg-gray-200">
+<div class="fit-content bg-gray-200">
 
     <div id="sambutan" class="w-full flex p-6">
         <p class="text-center w-6/12 font-bold ">
@@ -79,7 +79,7 @@
             </div>
         </div>
     </div>
-    <div class="flex justify-center">
+    <div class="flex justify-center py-4">
         <button class="bg-green-500 text-white p-4 text-xl rounded font-bold"> 
             Tambah rekam
         </button>
@@ -88,6 +88,7 @@
    
 
 </div>
+
 
 
 @stop
