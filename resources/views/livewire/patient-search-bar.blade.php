@@ -7,14 +7,21 @@
     <div>
 
     </div>
-        <div class="rounded-lg  mt-2 flex-inline max-h-32 overflow-y-auto drop-shadow-sm">
+        <div class="rounded-lg  mt-2 flex-inline max-h-32 overflow-y-auto ">
             @if (!empty($query))
             {{-- <select class="mt-3 w-full rounded-lg bg-gray-200 border border-gray-300 text-gray-900 p-2" wire:model='selected_patient' name="" id="selected_patient"> --}}
            
             {{-- <option value=""@if (empty($patient)) disabled selected @endif> --}}
                 @if (!empty($query) and empty($patient))
+                    <div class="space-y-2">
+                        <p class="text-red-500 ">Pasien tidak ditemukan</p>
+                        
+                        <button class="bg-green-500 text-white hover:bg-white hover:text-green-500 hover:outline-green-500   transition-all rounded p-2  font-bold">
+                            + Pasien baru
+                        </button>
+
+                    </div>
                     
-                    Pasien tidak ditemukan
                     
                 @endif
 
