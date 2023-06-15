@@ -22,9 +22,9 @@ return new class extends Migration
             $table->integer('sistol');
             $table->integer('diastol');
             $table->string('attachment')->nullable();
-            $table->float('body_temperature', 5, 2);
-            $table->integer('pulse');
-            $table->float('blood_sugar', 5, 2);
+            $table->float('body_temperature', 5, 2)->nullable();
+            $table->integer('pulse') ->nullable();
+            $table->float('blood_sugar', 5, 2) ->nullable();
             $table->string('anamnesis');
             $table->string('quantity')->nullable();
             $table->string('follow_up_plan')->nullable();
