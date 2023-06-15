@@ -79,7 +79,7 @@
 
 
 
-    <div id="container-items-atas" class=" ml-16 mr-16 xl:flex  justify-center h-fit">
+    <div id="container-items-atas" class=" ml-16 mr-16 mt-20 xl:flex  justify-center h-fit">
       @if ($history and $antrian)
         @livewire('antrian-list',['antrian'=>$antrian,'history'=>$history,'q_type'=>'on_the_spot'])
       @endif
