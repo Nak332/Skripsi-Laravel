@@ -29,16 +29,16 @@
                     <div>
                        <p class="font-bold text-white rounded-lg bg-blue-500 p-3 truncate">
                           {{$selected_patient['patient_name']}}
-                          {{-- Satria Narayana --}}
+                         
                        </p>
                     </div>
                  </div>
                  <div id="selected-patient-card" class="w-1/2 flex-inline px-8">
-                    {{-- @if ($selected_patient) --}}
+              
                     <label class="block mb-2 text-sm font-medium text-gray-900" for="patient_id">Kunjungan terakhir</label>
                     <div>
                        <p class="py-3 px-2 truncate">
-                          {{-- {{$selected_patient['patient_name']}} --}}
+                          
                           {{$selected_patient->lastAppointment()->created_at}}
                        </p>
                     </div>
@@ -51,7 +51,7 @@
               <hr class="mt-8">
            </div>
            <div id="main_container_form" class="md:flex px-4">
-              <div id="left-side" class="md:w-1/2 flex-inline p-6">
+               <div id="left-side" class="w-1/2 flex flex-col justify-between p-6">
                  <div class="mb-4">
                     <label for="keluhan" class="block text-gray-700 text-sm font-medium mb-2">Keluhan</label>
                     <textarea name="complaint" id="complaint" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
@@ -113,28 +113,19 @@
               </div>
 
 
-              <div id="right-side" class="md:w-1/2 flex-inline p-6 max-w-screen  w-full mx-auto  overflow-x-hidden">
+              <div id="right-side" class="w-1/2 flex flex-col justify-between p-6">
                  <div class="mb-4">
                     <label for="disease" class="block text-gray-700 text-sm font-medium mb-2">Diagnosa</label>
                     <input type="text" name="diagnosis" id="diagnosis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                  </div>
-                 {{--
-                 <div class="mb-4">
-                    <label for="total_price" class="block text-gray-700 text-sm font-medium mb-2">Total Price</label>
-                    <input type="text" name="total_price" id="total_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
-                 </div>
-                 <div class="mb-4">
-                    <label for="type" class="block text-gray-700 text-sm font-medium mb-2">Type</label>
-                    <input type="text"  name="type" id="type" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
-                 </div>
-                 --}}
+
                  <div class="mb-4">
                     <label for="note" class="block text-gray-700 text-sm font-medium mb-2">Note</label>
                     <textarea id="note" name="note" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                  </div>
                  <div id="med" class="mb-4  overflow-auto">
                     <label for="medicine_id" class="block text-gray-700 text-sm font-medium mb-2">Preskripsi Obat</label>
-                    {{-- <input type="text" id="medicine_id" name="medicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Obat"> --}}
+                   
                     <div class="  p-2 rounded-md border border-gray-300 ">
                        @livewire('medicine-cart')
 
@@ -154,21 +145,50 @@
                     <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tindakan</label>
                     <textarea rows="3" name="treatment" id="treatment" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                  </div>
-                 {{--
-                 <div class="mb-4">
-                    <label for="extramedicine_id" class="block text-gray-700 text-sm font-medium mb-2">Extra Medicine</label>
-                    <input type="text" id="extramedicine_id" name="extramedicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="">
-                 </div>
-                 --}}
-                 {{--
-                 <div class="mb-4">
-                    <label for="total_price" class="block text-gray-700 text-sm font-medium mb-2">Total Price</label>
-                    <input type="text" name="total_price" id="total_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
-                 </div>
-                 --}}
+
+                 
+      
+                
               </div>
+            
+            </div>
+            <hr class="mb-8">
+            <div class="flex justify-center">
+               
+               <div x-data="{ rujukan: @entangle('rujukan') }" >
+                  <label for="toggleSwitch">Buat Rujukan</label>
+                  <input type="checkbox" id="toggleSwitch" x-model="rujukan" x-on:click="rujukan = !toggleProperty">
+                </div>
+            </div>
+            
+
+            <div class="w-full px-10">
+
+               @if ($rujukan)
+               
+                  <div class="mb-4 ">
+                     <label for="dissease" class="block text-gray-700 text-sm font-medium mb-2">Kepada Rumah Sakit / Klinik / Dokter</label>
+                     <input type="text" name="diagnosiss" id="diasnosis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>  
+                  </div>
+                  
+                  <div class="mb-4 ">
+                     <label for="dissease" class="block text-gray-700 text-sm font-medium mb-2">Untuk Poli</label>
+                     <input type="text" name="diagnosiss" id="diasnosis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Ortopedi"></textarea>
+                  </div>
+
+                  <div class="mb-4 ">
+                     <label for="dissease" class="block text-gray-700 text-sm font-medium mb-2">Kondisi dan pengobatan saat ini</label>
+                     <input type="text" name="diagnosiss" id="diasnosis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Diberi obat X 3 kali sehari"></textarea>
+                  </div>
+          
+               
+               @endif
 
             </div>
+            
+            
+            
+            
 
             <hr class="my-8">
             <div id="selected-patient-footer" class="flex justify-center">

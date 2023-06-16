@@ -20,6 +20,7 @@ class TambahRekam extends Component
     public $qty=[];
     public $listobat = '';
     public $listqty ='';
+    public $rujukan = false;
 
 
     protected $rules=[
@@ -48,10 +49,6 @@ class TambahRekam extends Component
         'objectsUpdated' => 'updateMedicines'
     ];
 
-    public function render()
-    {
-        return view('livewire.tambah-rekam');
-    }
 
     public function addPatient($id)
     {
@@ -60,11 +57,22 @@ class TambahRekam extends Component
         $this->selected_patient=Patient::findorFail($id);
         $this->selected_patient_name=  $this->selected_patient['patient_name'];
     }
+    
+    public function toggle()
+    {
+        $this->rujukan = !$this->rujukan;
+    }
 
     public function updateMedicines($data){
         $this->obat = $data['obat'];
         $this->qty  = $data['qty'];
         $this->listqty = $data ['listqty'];
         $this->listobat = $data['listobat'];
+    }
+
+    
+    public function render()
+    {
+        return view('livewire.tambah-rekam');
     }
 }

@@ -68,20 +68,10 @@
 
                                 </div>
 
-                                
                             </div>
-
-
-
-
-
-
                     </div>
                 </div>
-
                 @endif
-
-
             @endforeach
         @endif
 
