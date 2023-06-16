@@ -13,7 +13,7 @@ class DeactivateEmployee extends Component
 
     public function render()
     {
-        return view('livewire.deactivate-employee');
+        return view('livewire.employee-component.deactivate-employee');
     }
 
     public function mount($employee){

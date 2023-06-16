@@ -13,6 +13,6 @@ class TambahStokObat extends Component
 
     public function render()
     {
-        return view('livewire.tambah-stok-obat');
+        return view('livewire.obat-component.tambah-stok-obat');
     }
 }

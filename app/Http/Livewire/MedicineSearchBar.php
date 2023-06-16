@@ -67,6 +67,6 @@ class MedicineSearchBar extends Component
 
     public function render()
     {
-        return view('livewire.medicine-search-bar');
+        return view('livewire.obat-component.medicine-search-bar');
     }
 }

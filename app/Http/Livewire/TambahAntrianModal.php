@@ -20,7 +20,7 @@ class TambahAntrianModal extends Component
 
     public function render()
     {
-        return view('livewire.tambah-antrian-modal');
+        return view('livewire.resepsi-component.tambah-antrian-modal');
     }
 
     protected $listeners = [

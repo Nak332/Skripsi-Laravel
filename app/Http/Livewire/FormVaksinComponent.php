@@ -51,6 +51,6 @@ class FormVaksinComponent extends Component
     
     public function render()
     {
-        return view('livewire.form-vaksin-component');
+        return view('livewire.rekam-vaksin-component.form-vaksin-component');
     }
 }

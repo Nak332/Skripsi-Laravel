@@ -15,7 +15,7 @@ class EditStokObat extends Component
 
     public function render()
     {
-        return view('livewire.edit-stok-obat');
+        return view('livewire.obat-component.edit-stok-obat');
     }
 
     public function mount($medicine,$medicineDetail){

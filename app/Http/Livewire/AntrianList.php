@@ -19,7 +19,7 @@ class AntrianList extends Component
 
     public function render()
     {
-        return view('livewire.antrian-list');
+        return view('livewire.resepsi-component.antrian-list');
     }
 
     public function mount($antrian,$history)

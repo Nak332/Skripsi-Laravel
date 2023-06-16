@@ -68,6 +68,6 @@ class TambahObat extends Component
 
     public function render()
     {
-        return view('livewire.tambah-obat');
+        return view('livewire.obat-component.tambah-obat');
     }
 }

@@ -21,7 +21,7 @@ class CardRekammedis extends ModalComponent
 
     public function render()
     {
-        return view('livewire.card-rekammedis');
+        return view('livewire.rekam-vaksin-component.card-rekammedis');
     }
 
     public static function modalMaxWidth(): string

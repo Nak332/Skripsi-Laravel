@@ -84,7 +84,7 @@ class ResepsiMainComponent extends Component
             return view('livewire.resepsi.resepsi-main-component', $this->appointment);
         }
         else{
-            return view('livewire.resepsi.resepsi-main-component');
+            return view('livewire.resepsi-component.resepsi-main-component');
         }
 
     }

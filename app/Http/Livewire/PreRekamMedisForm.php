@@ -12,6 +12,6 @@ class PreRekamMedisForm extends ModalComponent
 
     public function render()
     {
-        return view('livewire.resepsi.pre-rekam-medis-form');
+        return view('livewire.resepsi-component.pre-rekam-medis-form');
     }
 }

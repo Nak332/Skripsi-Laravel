@@ -12,7 +12,7 @@ class DeleteObat extends Component
 
     public function render()
     {
-        return view('livewire.delete-obat');
+        return view('livewire.obat-component.delete-obat');
     }
 
     public function mount($medicine){

@@ -89,7 +89,7 @@ class MedicineCart extends Component
 
     public function render()
     {
-        return view('livewire.medicine-cart');
+        return view('livewire.obat-component.medicine-cart');
     }
 }
 

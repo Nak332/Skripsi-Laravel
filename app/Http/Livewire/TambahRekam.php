@@ -73,6 +73,6 @@ class TambahRekam extends Component
     
     public function render()
     {
-        return view('livewire.tambah-rekam');
+        return view('livewire.rekam-vaksin-component.tambah-rekam');
     }
 }

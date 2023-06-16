@@ -145,25 +145,17 @@ final class EmployeesTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
+    
     public function actions(): array
     {
-       return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('employees.edit', function(\App\Models\Employees $model) {
-                    return $model->id;
-               }),
-
-           Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('employees.destroy', function(\App\Models\Employees $model) {
-                    return $model->id;
-               })
-               ->method('delete')
-        ];
+        return [
+            Button::make('redirect','Open')
+                 ->class('bg-green-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+                 ->route('to.obat',['id'=>'id'])
+         ];
+     
     }
-    */
+    
 
     /*
     |--------------------------------------------------------------------------
