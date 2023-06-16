@@ -26,6 +26,18 @@
               </tr>
 
           </table>
+          <div class="flex mt-4 justify-start">
+            <a href="">
+            <button type="submit" class="bg-gray-700 hover:bg-white hover:text-gray-700 hover:outline hover:outline-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 outline-2 transition-all text-center text-white ">Edit</button>
+            </a>
+            <div x-data="{ open: false }">
+              <button @click="open = true" class="rounded-lg font-medium bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all  text-sm px-5 py-2.5 mr-2 mb-2 text-center text-white"> Delete </button>
+              <div x-show="open">
+                @livewire('delete-obat',['medicine'=>$medicine])
+              </div>
+          </div>
+        </div>
+
       </div>
 
       <div class="bg-white mt-12 h-max rounded-3xl shadow-md mx-auto w-3/4 p-8">
