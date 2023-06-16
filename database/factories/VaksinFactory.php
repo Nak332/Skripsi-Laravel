@@ -27,6 +27,10 @@ class VaksinFactory extends Factory
             'flag' => $this->faker->numberBetween(0,1),
             'notes' => $this->faker->sentence(3),
             'next_dose' => $this->faker->dateTimeThisDecade(),
+            'penyakit' => $this->faker->sentence(3),
+            'register_number' => $this->faker->numberBetween(0,99999),
+            'supplier' => $this->faker->sentence(3),
+            'expired_date' => $this->faker->dateTimeThisDecade(),
         ];
     }
 }

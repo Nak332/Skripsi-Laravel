@@ -29,7 +29,12 @@ class AppointmentFactory extends Factory
             'complaint' => $this->faker->sentence(),
             'appointment_date' => $this->faker->dateTimeThisDecade(),
             'appointment_type' => $typeApp,
-            'antrian_number' => self::$number++
+            'antrian_number' => self::$number++,
+            'blood_sugar' => $this->faker->numberBetween(33, 40),
+            'pulse' => $this->faker->numberBetween(33, 40),
+            'body_temperature' => $this->faker->numberBetween(33, 40),
+            'weight' => $this->faker->numberBetween(33, 40),
+            'height' => $this->faker->numberBetween(33, 40)
 
         ];
     }

@@ -82,7 +82,12 @@ class AntrianController extends Controller
         'keluhan' => $request->complaint,
         'appointment_type' => $request->appointment_type,
         'status' => $request->status,
-        'appointment_date' => $request->date
+        'appointment_date' => $request->date,
+        'blood_sugar' => $request->blood_sugar,
+        'pulse' => $request->pulse,
+        'body_temperature' => $request->body_temperatur,
+        'weight' => $request->weight,
+        'height' => $request->height
     ]);
 	return redirect('/');
 }

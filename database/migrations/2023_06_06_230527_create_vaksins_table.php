@@ -18,6 +18,10 @@ return new class extends Migration
             $table->string('vaccine_name');
             $table->string('employee_id');
             $table->string('patient_id');
+            $table->string('penyakit');
+            $table->string('register_number')->nullable();
+            $table->string('supplier')->nullable();
+            $table->date('expired_date');
             $table->date('vaccination_date');
             $table->string('batch_number');
             $table->string('flag')->nullable();

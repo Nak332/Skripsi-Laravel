@@ -20,6 +20,11 @@ return new class extends Migration
             $table->integer('antrian_number');
             $table->string('appointment_type');
             $table->string('complaint');
+            $table->integer('height') ->nullable();
+            $table->integer('weight') ->nullable();
+            $table->float('body_temperature', 5, 2)->nullable();
+            $table->integer('pulse') ->nullable();
+            $table->float('blood_sugar', 5, 2) ->nullable();
             $table->string('status'); //Diproses (sedang testing, atau sedang di revisi), Valid, Invalid
             $table->time('appointment_date');
             $table->timestamps();

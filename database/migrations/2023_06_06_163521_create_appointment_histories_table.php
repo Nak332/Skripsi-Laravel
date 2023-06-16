@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('appointment_histories', function (Blueprint $table) {
-            $table->id();   
+            $table->id();
             $table->integer('appointment_id');
             $table->integer('patient_id');
             $table->string('employee_id')->nullable();

@@ -39,7 +39,9 @@ class RekamMedisFactory extends Factory
             'type' =>  $typeApp,
             'note' => $this->faker->paragraph(),
             'flag' => $this->faker->numberBetween(0,1),
-            'icd10' => $this->faker->sentence()
+            'icd10' => $this->faker->sentence(),
+            'weight' => $this->faker->numberBetween(33, 40),
+            'height' => $this->faker->numberBetween(33, 40)
             //
         ];
     }

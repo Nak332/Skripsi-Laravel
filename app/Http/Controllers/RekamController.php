@@ -58,6 +58,8 @@ class RekamController extends Controller
         $rekamMedis->body_temperature = $request->body_temperature;
         $rekamMedis->sistol = $request->sistol;
         $rekamMedis->diastol = $request->diastol;
+        $rekamMedis->weight -> $request->weight;
+        $rekamMedis->height -> $request->heigh;
         $rekamMedis->blood_sugar = $request->blood_sugar;
         $rekamMedis->pulse = $request->pulse;
         $rekamMedis->anamnesis = $request->anamnesis;
@@ -97,7 +99,7 @@ class RekamController extends Controller
         'past_service' => 'nullable',
         'diagnosis' => 'required',
         'type' => 'nullable',
-        'note' => 'nullable'
+        'note' => 'nullable',
         ]);
 
     $rekamMedisUpdate = RekamMedis::findOrFail($id);
@@ -108,6 +110,8 @@ class RekamController extends Controller
         'employee_id' => $request->employee_id,
         'blood_sugar' => $request->blood_sugar,
         'pulse' => $request->pulse,
+        'weight' => $request->weight,
+        'height' => $request->height,
         'anamnesis' => $request->anamnesis,
         'follow_up_plan' => $request->follow_up_plan,
         'quantity' => $request->quantity,
