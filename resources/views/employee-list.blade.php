@@ -8,6 +8,9 @@
 
 <div id="container-main" class="bg-gray-200">
   <div class=" bg-gray-200 min-h-screen">
+    <div class="flex justify-center pt-8">
+      <h1 class="w-4/5 font-bold text-2xl">Daftar Karyawan</h1>
+  </div>
 
     <div class="flex justify-center pt-12">
         <div class="w-4/5">

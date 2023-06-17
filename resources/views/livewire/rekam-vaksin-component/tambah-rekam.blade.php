@@ -52,14 +52,7 @@
            </div>
            <div id="main_container_form" class="md:flex px-4">
                <div id="left-side" class="w-1/2 flex flex-col justify-between p-6">
-                 <div class="mb-4">
-                    <label for="keluhan" class="block text-gray-700 text-sm font-medium mb-2">Keluhan</label>
-                    <textarea name="complaint" id="complaint" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
-                 </div>
-                 <div class="mb-4">
-                    <label for="symptoms" class="block text-gray-700 text-sm font-medium mb-2">Gejala</label>
-                    <textarea name="symptoms" rows="2" id="symptoms" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
-                 </div>
+           
                  <div class="mb-4">
                     <label for="hasil_anamnesis" class="block text-gray-700 text-sm font-medium mb-2">Anamnesis</label>
                     <textarea name="anamnesis" id="anamnesis" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
@@ -74,14 +67,7 @@
                     </div>
                  </div>
                  <div class="mb-4">
-                    <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Pulse</label>
-                    <div class="flex">
-                       <input type="number" name='pulse' id="pulse" class="md:w-1/4 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=36 >
-
-                    </div>
-                 </div>
-                 <div class="mb-4">
-                    <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">blood_sugar</label>
+                    <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Gula Darah</label>
                     <div class="flex">
                        <input type="number" name='blood_sugar' id="blood_sugar" class="md:w-1/4 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=36 >
                     </div>
@@ -107,9 +93,20 @@
                     </div>
                  </div>
                  <div class="mb-4">
+                  <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Denyut Nadi</label>
+                  <div class="flex">
+                     <input type="number" name='pulse' id="pulse" class="md:w-1/4 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=70 >
+
+                     </div>
+                  </div>
+                 <div class="mb-4">
                     <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Penatalaksanaan</label>
                     <textarea rows="3" name="follow_up_plan" id="follow_up_plan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                  </div>
+                 <div class="mb-4">
+                  <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tindakan</label>
+                  <textarea rows="3" name="treatment" id="treatment" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+               </div>
               </div>
 
 
@@ -129,12 +126,12 @@
                     <div class="  p-2 rounded-md border border-gray-300 ">
                        @livewire('medicine-cart')
 
-                       @if ($obat && $qty && count($obat) === count($qty))
+                       {{-- @if ($obat && $qty && count($obat) === count($qty))
                        @foreach ($obat as $index => $o)
                            /{{$o}} /{{$qty[$index]}}/
                        @endforeach
                            {{$listobat}} |||| {{$listqty}}
-                   @endif
+                   @endif --}}
                     </div>
                  </div>
 
@@ -142,8 +139,8 @@
                  <input type="text" name="quantity" id="quantity" hidden value="{{$listqty}}">
 
                  <div class="mb-4">
-                    <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tindakan</label>
-                    <textarea rows="3" name="treatment" id="treatment" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                    <label for="obat lain" class="block text-gray-700 text-sm font-medium mb-2">Obat lain</label>
+                    <textarea rows="3" name="" id="" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                  </div>
 
                  
@@ -168,17 +165,17 @@
                
                   <div class="mb-4 ">
                      <label for="dissease" class="block text-gray-700 text-sm font-medium mb-2">Kepada Rumah Sakit / Klinik / Dokter</label>
-                     <input type="text" name="diagnosiss" id="diasnosis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>  
+                     <input type="text" name="rujukan_recepient" id="rujukan_recepient" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>  
                   </div>
                   
                   <div class="mb-4 ">
                      <label for="dissease" class="block text-gray-700 text-sm font-medium mb-2">Untuk Poli</label>
-                     <input type="text" name="diagnosiss" id="diasnosis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Ortopedi"></textarea>
+                     <input type="text" name="rujukan_specialist" id="rujukan_specialist" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Ortopedi"></textarea>
                   </div>
 
                   <div class="mb-4 ">
                      <label for="dissease" class="block text-gray-700 text-sm font-medium mb-2">Kondisi dan pengobatan saat ini</label>
-                     <input type="text" name="diagnosiss" id="diasnosis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Diberi obat X 3 kali sehari"></textarea>
+                     <input type="text" name="rujukan_current_state" id="rujukan_current_state" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Badan lemas, suhu normal, sedang Diberi obat X 3 kali sehari"></textarea>
                   </div>
           
                
@@ -191,9 +188,9 @@
             
 
             <hr class="my-8">
-            <div id="selected-patient-footer" class="flex justify-center">
+            <div id="selected-patient-footer" class="flex justify-center mb-4">
 
-                <div class="mb-4 w-1/2">
+                <div class="mb-4 w-1/2 hidden">
                     <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Status Rekam</label>
                     <select name="flag" class="w-1/2" id="flag">
                         <option value="0">Terbuka</option>
@@ -213,8 +210,8 @@
             </div>
 
 
-
-              <div class="flex justify-center">
+<hr>  
+              <div class="flex justify-center mt-4">
                 <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Submit</button>
             </div>
           </form>
