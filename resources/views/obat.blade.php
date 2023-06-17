@@ -9,25 +9,25 @@
 <div id="container-main" class="flex-inline h-screen pt-5 py-5 bg-gray-200">
 
     <div class="bg-white rounded-3xl shadow-md mx-auto w-3/4 p-8">
-        <h1 class="text-2xl font-bold mb-4">Obat</h1>
+        <h1 class="text-2xl font-bold mb-4 px-2">Obat</h1>
           <table class="min-w-full bg-white">
               <tr>
-                <td class="px-4 py-2 font-bold">Nama</td>
-                <td class="px-4 py-2">{{$medicine->medicine_name}}</td>
+                <td class="px-2 py-2 font-bold">Nama</td>
+                <td class="px-2 py-2">{{$medicine->medicine_name}}</td>
               </tr>
 
               <tr>
-                <td class="px-4 py-2 font-bold">Deskripsi</td>
-                <td class="px-4 py-2">{{$medicine->medicine_description}}</td>
+                <td class="px-2 py-2 font-bold">Deskripsi</td>
+                <td class="px-2 py-2">{{$medicine->medicine_description}}</td>
               </tr>
               <tr>
-                <td class="px-4 py-2 font-bold">Harga</td>
-                <td class="px-4 py-2">{{$medicine->medicine_price}}</td>
+                <td class="px-2 py-2 font-bold">Harga</td>
+                <td class="px-2 py-2">{{$medicine->medicine_price}}</td>
               </tr>
 
           </table>
-          <div class="flex mt-4 justify-start">
-            <a href="">
+          <div class="px-2 flex mt-4 justify-start">
+            <a href="edit_obat/{{$medicine->id}}">
             <button type="submit" class="bg-gray-700 hover:bg-white hover:text-gray-700 hover:outline hover:outline-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 outline-2 transition-all text-center text-white ">Edit</button>
             </a>
             <div x-data="{ open: false }">

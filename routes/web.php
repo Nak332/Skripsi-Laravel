@@ -35,17 +35,10 @@ Route::get('/trs',function(){
 
 
 Route::middleware(['isLogin'])->group(function () {
-    Route::get('/resepsi', function () {
-        return view('resepsi');
-    });
-    Route::get('/',function(){
-        return redirect('/resepsi');
-    });
-
-    Route::get('resepsi',[AntrianController::class,'index']);
+    Route::get('/resepsi',[AntrianController::class,'index']);
     // Route::get('resepsi',[PatientController::class,'index']);
 
-    Route::get('/logout', [UserController::class, 'logout']);
+    // Route::get('/logout', [UserController::class, 'logout']);
     Route::get('/daftar-pasien', function () {
         return view('patient-list');
     });
@@ -96,7 +89,7 @@ Route::middleware(['checkrole:admin,Dokter,Perawat'])->group(function () {
 
 //obat
 Route::get('edit_obat', function () {
-    return view('edit-obat');
+    return view('edit-obat/{id}');
 });
 Route::get('obat/{id}', [MedicineController::class , 'medicines']) -> name('to.obat');
 Route::get('daftar-obat', function () {
@@ -106,6 +99,8 @@ Route::get('daftar-obat', function () {
 Route::get('tambah-obat', function () {
     return view('tambah-obat-page');
 });
+
+Route::get('/logout', [UserController::class, 'logout']);
 
 Route::post('tambah-obat/tambah', [MedicineController::class,'insert']);
 Route::post('/tambah-stock', [MedicineDetailController::class,'insert']);
@@ -120,8 +115,8 @@ Route::post('tambah-antrian', [AntrianController::class,'insert']);
 Route::get('/forgot-password', function(){
     return view('userForgot.forgot-password');
 });
-Route::get('/verify-email', function(){
-    return view('userForgot.verify-email');
+Route::get('/reset_password', function(){
+    return view('userForgot.reset-password');
 });
 
 

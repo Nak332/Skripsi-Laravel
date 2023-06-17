@@ -17,13 +17,18 @@ class isLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && auth()->user()->status == 0) {
+
+        if (!Auth::check()) {
+            return redirect('/login');
+        } else if (Auth::check() && Auth::user()->status != 1) {
             Auth::logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
-            return redirect('/login');
-
+            return redirect('/login')->with('error', 'Your Account is suspended, please contact Admin.');
         }
-        return $next($request);
+
+
+            return $next($request);
+
     }
 }
