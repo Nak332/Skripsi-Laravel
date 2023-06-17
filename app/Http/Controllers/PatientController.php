@@ -39,7 +39,7 @@ class PatientController extends Controller
         $request->validate([
             'patient_name' => 'required|max:50|regex:/^[a-zA-Z\s]+$/',
             'patient_gender' => 'required',
-            'patient_phone' => ['required','regex:/^(08|\+62)\d{8,}$/'],
+            'patient_phone' => 'required',
             'patient_address'=> 'required',
             'patient_NIK' => 'required|size:16|numeric',
             'patient_alias' => 'nullable',
@@ -54,7 +54,6 @@ class PatientController extends Controller
                 'patient_name.regex' => 'Nama hanya boleh berisikan alfabet',
                 'patient_gender' => 'Jenis kelamin harus diisi',
                 'patient_phone' => 'Nomor telepon harus diisi',
-                'patient_phone.regex' => 'Masukan nomor telepon yang sesuai',
                 'patient_address' => 'Alamat harus diisi',
                 'patient_NIK' => 'NIK harus ditambahkan',
                 'patient_NIK.size' => 'NIK harus sesuai 16 digit',

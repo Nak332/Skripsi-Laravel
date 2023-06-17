@@ -118,10 +118,10 @@ final class MedicineDetailTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make(_('Id'),'id' ,'medicines.id'),
-            Column::make(_('Medicine Name'),'medicine_name' ,'medicines.medicine_name')->searchable(),
-            Column::make(_('Medicine Quantity'),'total_quantity','total_quantity'),
-            Column::make(_('Price'),'medicine_price' ,'medicines.medicine_price'),
+            Column::make(('Id'),'id' ,'medicines.id'),
+            Column::make(('Medicine Name'),'medicine_name' ,'medicines.medicine_name')->searchable(),
+            Column::make(('Medicine Quantity'),'total_quantity','total_quantity'),
+            Column::make(('Price'),'medicine_price' ,'medicines.medicine_price'),
             // Column::make('Created at', 'created_at_formatted', 'created_at')
             //     ->sortable(),
 
