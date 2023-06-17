@@ -12,7 +12,7 @@
 
       <div class="bg-white rounded-lg shadow-lg px-10 py-8">
         <h1 class="text-3xl font-bold mb-6 text-center">Reset Password</h1>
-        <form action="" method="POST">
+        <form action="/reset-password" method="POST">
           @csrf
           <div class="mb-6">
             <label class="block text-gray-700 font-bold mb-2" for="email">
@@ -20,7 +20,7 @@
             </label>
             <input
               class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="email" type="email" placeholder="" required>
+              id="email" name="email" type="email" placeholder="" required>
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 font-bold mb-2" for="email">
@@ -28,7 +28,7 @@
             </label>
             <input
               class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="password" type="password" placeholder="" required>
+              id="password" name="password" type="password" placeholder="" required>
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 font-bold mb-2" for="email">
@@ -36,8 +36,11 @@
             </label>
             <input
               class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="confirm_password" type="password" placeholder="" required>
+              id="password_confirmation" name="password_confirmation" type="password" placeholder="" required>
           </div>
+          <input
+          class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+          id="token" name="token" type="text" hidden value="{{request()->route('token')}}" required>
           <div class="flex items-center justify-between">
             <button
               class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
