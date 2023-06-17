@@ -96,7 +96,7 @@ Route::middleware(['checkrole:admin,Dokter,Perawat'])->group(function () {
 
 //obat
 Route::get('edit_obat', function () {
-    return view('edit-obat');
+    return view('edit-obat/{id}');
 });
 Route::get('obat/{id}', [MedicineController::class , 'medicines']) -> name('to.obat');
 Route::get('daftar-obat', function () {
@@ -120,8 +120,8 @@ Route::post('tambah-antrian', [AntrianController::class,'insert']);
 Route::get('/forgot-password', function(){
     return view('userForgot.forgot-password');
 });
-Route::get('/verify-email', function(){
-    return view('userForgot.verify-email');
+Route::get('/reset_password', function(){
+    return view('userForgot.reset-password');
 });
 
 
