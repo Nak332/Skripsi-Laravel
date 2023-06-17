@@ -117,6 +117,14 @@ Route::post('tambah-antrian', [AntrianController::class,'insert']);
 //     return view('register-user');
 // });
 
+Route::get('/forgot-password', function(){
+    return view('userForgot.forgot-password');
+});
+Route::get('/verify-email', function(){
+    return view('userForgot.verify-email');
+});
+
+
 
 
 Route::get('dev', function () {
