@@ -27,6 +27,7 @@ return new class extends Migration
             $table->float('body_temperature', 5, 2)->nullable();
             $table->integer('pulse') ->nullable();
             $table->float('blood_sugar', 5, 2) ->nullable();
+            $table->string('extra_medicine')->nullable();
             $table->string('anamnesis');
             $table->string('quantity')->nullable();
             $table->string('follow_up_plan')->nullable();
@@ -37,6 +38,9 @@ return new class extends Migration
             $table->string('type')->nullable();
             $table->string('flag')->nullable();
             $table->string('icd10')->nullable();
+            $table->string('rujukan_recipient')->nullable();
+            $table->string('rujukan_specialist')->nullable();
+            $table->string('rujukan_current_state')->nullable();
             $table->timestamps();
         });
     }

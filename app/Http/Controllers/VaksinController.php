@@ -78,11 +78,5 @@ class VaksinController extends Controller
         return redirect('/');
     }
 
-    public function delete($id)
-{
-    $vaksinDelete = vaksin::findOrFail($id);
-    $vaksinDelete->delete();
 
-	return redirect('/');
-}
 }

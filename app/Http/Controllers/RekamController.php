@@ -136,13 +136,4 @@ class RekamController extends Controller
 	return redirect('/');
 }
 
-public function delete($id)
-{
-    $rekamMedisDelete = RekamMedis::findOrFail($id);
-    $rekamMedisDelete->delete();
-
-	return redirect('/');
-}
-
-
 }

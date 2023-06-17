@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('employee_id')->nullable();
             $table->integer('antrian_number');
             $table->string('appointment_type');
-            $table->string('complaint');
+            $table->string('complaint')->nullable();
             $table->integer('height') ->nullable();
             $table->integer('weight') ->nullable();
             $table->float('body_temperature', 5, 2)->nullable();

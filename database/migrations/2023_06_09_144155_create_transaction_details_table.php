@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('transaction_id');
             $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
+            $table->string('konsultasi')->nullable();
             $table->string('treatment')->nullable();
+            $table->string('extra_medicine')->nullable();
             $table->integer('medicine_id')->nullable();
             $table->integer('quantity')->nullable();
             $table->integer('price')->nullable();
