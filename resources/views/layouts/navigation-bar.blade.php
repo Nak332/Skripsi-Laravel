@@ -3,7 +3,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
           <!-- Reroute ke home -->
-          <a href="" class="flex items-center pr-10">
+          <a href="/db" class="flex items-center pr-10">
               <img src="{{ asset('storage/logo-rod.png') }}" class="h-10 mr-4" alt="Logo Klinik" />
               <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Klinik Sehat</span>
           </a>
@@ -13,20 +13,21 @@
           </button>
           <div class="hidden w-full md:inline md:w-auto pt-3" id="navbar-default">
             <ul class="ml-auto flex items-center space-x-4">
-                <li>
-                    <a href="/db" class="px-4 py-2 rounded-md text-sm font-medium text-white transition-all hover:bg-gray-600" aria-current="page">Dashboard</a>
-                </li>
+                
                 <li>
                     <a href="/resepsi" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" >Resepsi</a>
                 </li>
                 <li>
-                    <a href="/daftar-pasien" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Daftar Pasien</a>
+                    <a href="/daftar-pasien" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Pasien</a>
                 </li>
                 <li>
-                    <a href="/daftar-obat" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600"> Stok Obat</a>
+                    <a href="/trs" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Transaksi</a>
                 </li>
                 <li>
-                    <a href="/daftar-karyawan" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600"> Daftar Karyawan</a>
+                    <a href="/daftar-obat" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">e-Obat</a>
+                </li>
+                <li>
+                    <a href="/daftar-karyawan" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Karyawan</a>
                 </li>
 
               <li>

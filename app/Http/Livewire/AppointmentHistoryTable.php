@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Employees;
+use App\Models\AppointmentHistory;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
@@ -10,7 +10,7 @@ use PowerComponents\LivewirePowerGrid\Traits\{ActionButton, WithExport};
 use PowerComponents\LivewirePowerGrid\Filters\Filter;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridColumns};
 
-final class EmployeesTable extends PowerGridComponent
+final class AppointmentHistoryTable extends PowerGridComponent
 {
     use ActionButton;
     use WithExport;
@@ -48,11 +48,11 @@ final class EmployeesTable extends PowerGridComponent
     /**
      * PowerGrid datasource.
      *
-     * @return Builder<\App\Models\Employees>
+     * @return Builder<\App\Models\AppointmentHistory>
      */
     public function datasource(): Builder
     {
-        return Employees::query();
+        return AppointmentHistory::query();
     }
 
     /*
@@ -88,7 +88,7 @@ final class EmployeesTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
-            ->addColumn('created_at_formatted', fn (Employees $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (AppointmentHistory $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -97,7 +97,7 @@ final class EmployeesTable extends PowerGridComponent
     |--------------------------------------------------------------------------
     | Include the columns added columns, making them visible on the Table.
     | Each column can be configured with properties, filters, actions...
-    | 
+    |
     */
 
      /**
@@ -109,12 +109,8 @@ final class EmployeesTable extends PowerGridComponent
     {
         return [
             Column::make('Id', 'id'),
-            Column::make('Nama', 'employee_name')->searchable(),
-            Column::make('Jabatan', 'employee_job'),
             Column::make('Created at', 'created_at_formatted', 'created_at')
                 ->sortable(),
-            
-                
 
         ];
     }
@@ -140,22 +136,30 @@ final class EmployeesTable extends PowerGridComponent
     */
 
     /**
-     * PowerGrid Employees Action Buttons.
+     * PowerGrid AppointmentHistory Action Buttons.
      *
      * @return array<int, Button>
      */
 
-    
+    /*
     public function actions(): array
     {
-        return [
-            Button::make('redirect','Open')
-                 ->class('bg-green-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-                 ->route('to.obat',['id'=>'id'])
-         ];
-     
+       return [
+           Button::make('edit', 'Edit')
+               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
+               ->route('appointment-history.edit', function(\App\Models\AppointmentHistory $model) {
+                    return $model->id;
+               }),
+
+           Button::make('destroy', 'Delete')
+               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+               ->route('appointment-history.destroy', function(\App\Models\AppointmentHistory $model) {
+                    return $model->id;
+               })
+               ->method('delete')
+        ];
     }
-    
+    */
 
     /*
     |--------------------------------------------------------------------------
@@ -166,7 +170,7 @@ final class EmployeesTable extends PowerGridComponent
     */
 
     /**
-     * PowerGrid Employees Action Rules.
+     * PowerGrid AppointmentHistory Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -178,7 +182,7 @@ final class EmployeesTable extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($employees) => $employees->id === 1)
+                ->when(fn($appointment-history) => $appointment-history->id === 1)
                 ->hide(),
         ];
     }
