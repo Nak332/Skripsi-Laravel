@@ -38,7 +38,7 @@ Route::middleware(['isLogin'])->group(function () {
     Route::get('/resepsi',[AntrianController::class,'index']);
     // Route::get('resepsi',[PatientController::class,'index']);
 
-    Route::get('/logout', [UserController::class, 'logout']);
+    // Route::get('/logout', [UserController::class, 'logout']);
     Route::get('/daftar-pasien', function () {
         return view('patient-list');
     });
@@ -99,6 +99,8 @@ Route::get('daftar-obat', function () {
 Route::get('tambah-obat', function () {
     return view('tambah-obat-page');
 });
+
+Route::get('/logout', [UserController::class, 'logout']);
 
 Route::post('tambah-obat/tambah', [MedicineController::class,'insert']);
 Route::post('/tambah-stock', [MedicineDetailController::class,'insert']);

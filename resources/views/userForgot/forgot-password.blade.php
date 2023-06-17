@@ -13,15 +13,7 @@
         {{ session('status') }}
     </div>
 @endif
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
     <div class="w-full max-w-md">
 
       <div class="bg-white rounded-lg shadow-lg px-10 py-8">
@@ -44,6 +36,15 @@
             </button>
           </div>
         </form>
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         <div class="mt-4">
           <p class="text-center text-sm text-gray-600">
             Ingat kata sandi? <a class="text-blue-500 hover:text-blue-700" href="/login">Log in disini</a>.
