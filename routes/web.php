@@ -65,7 +65,7 @@ Route::middleware(['checkrole:admin,Dokter'])->group(function () {
         return view('employee-list');
     });
     Route::post('/add-employee', [EmployeeController::class,'insert']);
-    Route::post('/disableemployee/{id}', [EmployeeController::class,'delete']);
+    Route::post('/disable-employee/{id}', [EmployeeController::class,'delete']);
     Route::get('/profil/{id}', [EmployeeController::class , 'employee']) -> name('to.emp');
     Route::get('/edit-emp/{id}', [EmployeeController::class , 'employee']);
     Route::post('/edit-emp/edit/{id}', [EmployeeController::class , 'update']);
@@ -95,9 +95,8 @@ Route::middleware(['checkrole:admin,Dokter,Perawat'])->group(function () {
 
 
 //obat
-Route::get('edit_obat', function () {
-    return view('edit-obat/{id}');
-});
+Route::get('edit-obat/{id}/edit', [MedicineController::class , 'medicines']);
+Route::post('edit-obat/{id}', [MedicineController::class , 'update']);
 Route::get('obat/{id}', [MedicineController::class , 'medicines']) -> name('to.obat');
 Route::get('daftar-obat', function () {
     return view('obat-list');
@@ -109,11 +108,12 @@ Route::get('tambah-obat', function () {
 
 Route::get('/logout', [UserController::class, 'logout']);
 
-Route::post('tambah-obat/tambah', [MedicineController::class,'insert']);
+Route::post('/tambah-obat/tambah', [MedicineController::class,'insert']);
+Route::post('/delete-obat/{id}', [MedicineController::class,'delete']);
 Route::post('/tambah-stock', [MedicineDetailController::class,'insert']);
 Route::post('/edit-stock/{id}', [MedicineDetailController::class,'update']);
 Route::post('/delete-stock/{id}', [MedicineDetailController::class,'delete']);
-Route::post('tambah-antrian', [AntrianController::class,'insert']);
+Route::post('/tambah-antrian', [AntrianController::class,'insert']);
 
 // Route::get('register', function () {
 //     return view('register-user');

@@ -6,6 +6,7 @@ use App\Models\Medicine;
 use App\Models\MedicineDetail;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class MedicineController extends Controller
 {
@@ -17,11 +18,22 @@ class MedicineController extends Controller
 
     }
 
-    public function medicines($id)
+    public function medicines(Request $request,$id)
     {
+
+        $p = strstr($request->path(),'/',true);
+        Log::alert($p);
     	$medicine = Medicine::find($id);
         $medicineDetail = MedicineDetail::where('medicine_id', $id)->orderBy('medicine_expired_date')->get();
-    	return view('obat', compact(['medicine','medicineDetail']));
+        if ($p == 'obat' ) {
+            return view('obat', compact(['medicine','medicineDetail']));
+        } else {
+            return view('edit-obat', compact('medicine'));
+        }
+
+    	// $medicine = Medicine::find($id);
+        // $medicineDetail = MedicineDetail::where('medicine_id', $id)->orderBy('medicine_expired_date')->get();
+    	// return view('obat', compact(['medicine','medicineDetail']));
     }
 
 
@@ -49,7 +61,7 @@ class MedicineController extends Controller
         $medicineDetail->medicine_stock = $request->medicine_stock;
         $medicineDetail->medicine_expired_date = $request->medicine_expired_date;
         $medicineDetail->save();
-        return redirect('/');
+        return redirect('/daftar-obat');
     }
 
     public function update(Request $request, $id)
@@ -65,7 +77,8 @@ class MedicineController extends Controller
         'medicine_description' => $request->medicine_description,
         'medicine_price' => $request->medicine_price
         ]);
-        return redirect('/');
+
+        return redirect()->route('to.obat', ['id' => $id]);
     }
 
     public function delete($id)

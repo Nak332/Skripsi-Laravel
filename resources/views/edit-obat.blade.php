@@ -13,25 +13,25 @@
                 <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-4xl w-128 h-fit">
                     <p class="font-bold text-black">Edit Medicine</p>
                     </div>
-              <form method="POST" action="add-employee" enctype="multipart/form-data">
+              <form method="POST" action="/edit-obat/{{$medicine->id}}" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4">
                   <label for="medicine_name" class="block text-gray-700 text-sm font-medium mb-2">Nama</label>
-                  <input type="text" id="medicine_name" name="medicine_name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Nama obat">
+                  <input type="text" id="medicine_name" name="medicine_name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" value="{{$medicine->medicine_name}}" placeholder="Nama obat">
                 </div>
                 @error('medicine_name')
                 <div class="error text-red-600">{{ $message }}</div>
                 @enderror
                 <div class="mb-4">
                     <label for="medicine_description" class="block text-gray-700 text-sm font-medium mb-2">Deskripsi</label>
-                    <textarea rows="2" id="medicine_description" name="medicine_description" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Deskripsi obat"></textarea>
+                    <textarea rows="2" id="medicine_description" name="medicine_description" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" value="{{$medicine->medicine_description}}" placeholder="Deskripsi obat"></textarea>
                     @error('medicine_description')
                     <div class="error text-red-600">{{ $message }}</div>
                     @enderror
                   </div>
                 <div class="mb-4">
                   <label for="medicine_price" class="block text-gray-700 text-sm font-medium mb-2">Harga</label>
-                  <input type="text" name="medicine_price" id="medicine_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="">
+                  <input type="text" name="medicine_price" id="medicine_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" value="{{$medicine->medicine_price}}" placeholder="">
                   @error('patient_phone')
                   <div class="error text-red-600">{{ $message }}</div>
                   @enderror

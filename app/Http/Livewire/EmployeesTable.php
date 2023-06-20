@@ -52,7 +52,8 @@ final class EmployeesTable extends PowerGridComponent
      */
     public function datasource(): Builder
     {
-        return Employees::query();
+        return Employees::query()->where('status','1');
+
     }
 
     /*
@@ -97,7 +98,7 @@ final class EmployeesTable extends PowerGridComponent
     |--------------------------------------------------------------------------
     | Include the columns added columns, making them visible on the Table.
     | Each column can be configured with properties, filters, actions...
-    | 
+    |
     */
 
      /**
@@ -108,13 +109,13 @@ final class EmployeesTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id'),
+            // Column::make('Id', 'id'),
             Column::make('Nama', 'employee_name')->searchable(),
-            Column::make('Jabatan', 'employee_job'),
+            Column::make('Jabatan', 'employee_job')->sortable(),
             Column::make('Created at', 'created_at_formatted', 'created_at')
                 ->sortable(),
-            
-                
+
+
 
         ];
     }
@@ -145,17 +146,17 @@ final class EmployeesTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    
+
     public function actions(): array
     {
         return [
             Button::make('redirect','Open')
                  ->class('bg-green-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-                 ->route('to.obat',['id'=>'id'])
+                 ->route('to.emp',['id'=>'id'])
          ];
-     
+
     }
-    
+
 
     /*
     |--------------------------------------------------------------------------

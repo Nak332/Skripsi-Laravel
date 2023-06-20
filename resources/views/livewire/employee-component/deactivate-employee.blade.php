@@ -22,11 +22,11 @@
             <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                 <p class="text-2xl font-bold">Deactivate User</p>
 
-                <form class="space-y-4 md:space-y-6" action="/delete-karyawan/" method="POST">
+                <form class="space-y-4 md:space-y-6" action="/disable-employee/{{$employee->id}}" method="POST">
                     @csrf
 
-                          <p wire:model="currentEmployee">Apakah anda ingin menonaktifkan akun {{$employee->employee_name}}?</p> 
-                    
+                          <p wire:model="currentEmployee">Apakah anda ingin menonaktifkan akun {{$employee->employee_name}}?</p>
+
                     <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                     <button @click="open = false" type="submit" class="hover:outline hover:outline-1 hover:outline-blue-600 hover:bg-white hover:text-blue-600 transition-all inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm  sm:ml-3 sm:w-auto">Deaktivasi</button>
                     <button @click="open = false" type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
