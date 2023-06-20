@@ -119,7 +119,7 @@ Route::get('/reset_password', function(){
     return view('userForgot.reset-password');
 });
 
-
+Route::post('pra-rekam/{id}', [AntrianController::class,'update']);
 
 
 Route::get('dev', function () {

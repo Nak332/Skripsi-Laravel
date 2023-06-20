@@ -171,6 +171,6 @@ class EmployeeController extends Controller
 
     event(new DisableAccount($employeeDelete));
 
-	return redirect('/');
+	return redirect()->back();
 }
 }

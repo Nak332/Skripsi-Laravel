@@ -140,6 +140,6 @@ class PatientController extends Controller
     $patientDelete = Patient::findOrFail($id);
     $patientDelete->delete();
 
-	return redirect('/');
+	return redirect()->back();
 }
 }

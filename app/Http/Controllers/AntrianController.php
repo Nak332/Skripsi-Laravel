@@ -77,12 +77,12 @@ class AntrianController extends Controller
 {
     $antrianUpdate = Appointment::findOrFail($id);
     $antrianUpdate->update([
-        'patient_id' => $request->patient_id,
-        'employee_id' => $request->employee_id,
-        'keluhan' => $request->complaint,
-        'appointment_type' => $request->appointment_type,
-        'status' => $request->status,
-        'appointment_date' => $request->date,
+        // 'patient_id' => $request->patient_id,
+        // 'employee_id' => $request->employee_id,
+        // 'keluhan' => $request->complaint,
+        // 'appointment_type' => $request->appointment_type,
+        // 'status' => $request->status,
+        // 'appointment_date' => $request->date,
         'blood_sugar' => $request->blood_sugar,
         'pulse' => $request->pulse,
         'body_temperature' => $request->body_temperatur,

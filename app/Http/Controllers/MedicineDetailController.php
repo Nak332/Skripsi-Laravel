@@ -54,6 +54,6 @@ class MedicineDetailController extends Controller
         $medicineDelete = MedicineDetail::find($id);
         $medicineDelete->delete();
 
-        return redirect('/');
+        return redirect()->back();
     }
 }

@@ -71,6 +71,6 @@ class MedicineController extends Controller
     $medicineDetailDelete = MedicineDetail::where('medicine_id',$id);
     $medicineDetailDelete->delete();
 
-	return redirect('/');
+	return redirect('daftar-obat');
 }
 }

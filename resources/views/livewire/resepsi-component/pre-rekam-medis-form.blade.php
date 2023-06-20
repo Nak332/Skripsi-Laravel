@@ -6,14 +6,14 @@
             A1 - Tes
         </div>
     </div>
-   
-    <form action="">
+
+    <form action="/pra-rekam/" method="POST">
         @csrf
         <div class="mb-4">
             <label for="keluhan" class="block text-gray-700 text-sm font-medium mb-2">Keluhan</label>
             <textarea name="complaint" id="complaint" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
          </div>
-    
+
          <div class="mb-4">
             <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Suhu Badan</label>
             <div class="flex">
@@ -23,7 +23,7 @@
                </div>
             </div>
          </div>
-        
+
          <div class="mb-4">
             <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Gula Darah</label>
             <div class="flex items-center">
@@ -55,16 +55,18 @@
             <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Pulse</label>
             <div class="flex">
                <input type="number" name='pulse' id="pulse" class="md:w-1/4 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=70 >
-    
+
             </div>
          </div>
 
+         <button type="submit" class="mt-4 bg-green-500 text-white hover:bg-white hover:text-green-500 transition-all outline hover:outline-1 hover:outline-green-500 font-bold rounded p-2">
+            + Hasil Tes
+
+         </button>
+
     </form>
     <hr>
-    
 
-     <button class="mt-4 bg-green-500 text-white hover:bg-white hover:text-green-500 transition-all outline hover:outline-1 hover:outline-green-500 font-bold rounded p-2">
-        + Hasil Tes
-        
-     </button>
+
+
 </div>
