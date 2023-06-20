@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Patient;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class AntrianList extends Component
@@ -39,7 +40,15 @@ class AntrianList extends Component
 
         // Update the parentData property in the parent component
         $this->emitUp('patientBumped', $id);
+    }
 
+    public function sendFirstPatientToComponent($id)
+    {
+        // Update the childData property
 
+        // Update the parentData property in the parent component
+
+        Log::alert("message");
+        $this->emitUp('FirstPatient',$id);
     }
 }

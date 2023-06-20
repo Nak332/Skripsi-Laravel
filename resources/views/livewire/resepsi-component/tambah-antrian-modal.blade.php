@@ -39,6 +39,7 @@
                                 <p class="font-bold text-white rounded-lg bg-blue-500 p-3"> {{$selected_patient['patient_name']}}</p>
                             </div>
                             <input type="text" name="patient_id" id="patient_id" class='hidden' value="{{$selected_patient['id']}}">
+                            <input type="text" name="employee_id" id="employee_id" class='hidden' value="{{Auth::user()->employee_id}}">
                             @endif
 
 
@@ -50,7 +51,7 @@
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Tanggal</label>
                             <input type="date" name="email" id="email" class="bg-gray-200 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="name@company.com" required="">
                         </div> --}}
-                   
+
 
                         <div>
                             <label for="" class="block mb-2 text-sm font-medium text-gray-900 ">Tipe Kunjungan</label>
@@ -66,7 +67,7 @@
                             <input type="time" id='appointment_date' name="appointment_date" class="bg-gray-200 border border-gray-300 rounded p-2" value required>
                         </div>
                         @endif
-                        
+
 
                     </div>
                     <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">

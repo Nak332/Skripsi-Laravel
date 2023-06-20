@@ -8,15 +8,15 @@
             @endif
         </h1>
         @if ($q_type=='on_the_spot')
-        <button x-on:click="" wire:click="$emit('refreshComponent')" class="bg-green-500 hover:bg-white space-x-2 hover:text-green-500 transition-all text-white p-2 rounded flex items-center mb-2 " title="Beri giliran ke pasien selanjutnya">
+        <button x-on:click="" wire:click="sendFirstPatientToComponent(id='{{$q_type}}')" class="bg-green-500 hover:bg-white space-x-2 hover:text-green-500 transition-all text-white p-2 rounded flex items-center mb-2 " title="Beri giliran ke pasien selanjutnya">
             <p class="pl-1"> Antrian Selanjutnya</p>
             <x-fas-up-long class="w-4 h-4" />
         </button>
         @endif
-        
+
 
     </div>
-    
+
     <div id="container-list-antrian" class="bg-white rounded-lg p-4 mb-4 overflow-y-auto h-96 drop-shadow">
 
         @if ($antrian)
@@ -30,11 +30,11 @@
                         <div class="flex justify-between items-center">
                             <p class="">@if ($q_type=='on_the_spot')    A @else J @endif {{$a->antrian_number}} - {{$a->patient->patient_name}} @if ($q_type=='scheduled') - {{$a->appointment_date}} @endif</p>
                             <div class="h-fit">
-                                <button onclick="Livewire.emit('openModal', 'pre-rekam-medis-form')" wire:click="$emit('refreshComponent')" class="bg-yellow-400 hover:bg-white hover:text-yellow-400 transition-all text-white p-2 rounded" title="Ib">
+                                <button onclick="Livewire.emit('openModal', 'pre-rekam-medis-form', {{json_encode(['patient' => $a->id])}})" wire:click="$emit('refreshComponent')" class="bg-yellow-400 hover:bg-white hover:text-yellow-400 transition-all text-white p-2 rounded" title="Ib">
                                     <x-far-edit class="w-4 h-4" />
                                 </button>
                             </div>
-                            
+
 
                         </div>
 
@@ -43,14 +43,14 @@
 
                                 <div class="pt-2 flex">
                                     <div class="w-4/5">
-                                
+
                                         <p class="truncate">{{$a->patient->patient_address}}</p>
                                         <p>{{$a->patient->patient_gender}}</p>
                                         <p>{{$a->patient->getAge()}}</p>
                                     </div>
-    
+
                                     <div class="w-1/5 flex justify-end">
-                                    
+
                                         <div class="space-y-1">
                                             <div class="h-fit">
                                                 <button x-on:click="$wire.sendPatientToParentComponent(id='{{$a->id}}');" wire:click="$emit('refreshComponent')" class="bg-green-500 hover:bg-white hover:text-green-500 transition-all text-white p-2 rounded" title="Beri giliran ke pasien ini">
@@ -94,9 +94,9 @@
     </div>
     @else
     <div class="py-5"></div>
-        
+
     @endif
-    
+
 
 
 
