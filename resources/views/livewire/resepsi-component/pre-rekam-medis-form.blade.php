@@ -3,7 +3,7 @@
     <div class="mb-4">
         <label  class="block text-gray-700 text-sm font-medium mb-2">Pasien</label>
         <div class="bg-blue-500 text-white font-bold w-full rounded p-4">
-            A1 - Tes
+            {{$isipasien->patient->patient_name}}
         </div>
     </div>
 
