@@ -2,7 +2,7 @@
 
     <div id="header-page"  class="flex justify-center">
 
-      <div class="md:flex truncate w-2/5 " >
+      <div class="md:flex truncate md:w-2/5 " >
         <div  x-data="{ expanded: false }" @click="expanded = !expanded"  @click.outside="expanded = false" id="current queue"  class=" my-4 drop-shadow text-center min-w-full text-gray-700 rounded-lg text-2xl h-fit">
           {{-- <p class="">Antrian sekarang:</p> --}}
           <p  class="pb-1 pt-2 ">
@@ -79,7 +79,7 @@
 
 
 
-    <div id="container-items-atas" class=" ml-16 mr-16 mt-20 xl:flex  justify-center h-fit">
+    <div id="container-items-atas" class="  mt-20 xl:flex  justify-center h-fit">
       @if ($history and $antrian)
         @livewire('antrian-list',['antrian'=>$antrian,'history'=>$history,'q_type'=>'on_the_spot'])
       @endif

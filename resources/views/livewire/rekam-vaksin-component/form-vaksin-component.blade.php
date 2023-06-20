@@ -33,7 +33,7 @@
 
             <div class="mb-4 mt-4">
                 <label for="vaccine_name" class="block text-gray-700 text-sm font-medium mb-2">Jenis Vaksin</label>
-                <select  name="" id="" class="w-full px-4 py-2 border border-gray-300 rounded-md ">
+                <select  name="penyakit" id="" class="w-full px-4 py-2 border border-gray-300 rounded-md ">
                     @foreach ($penyakit as $p)
                     <option value="{{$p}}">{{$p}}</option>
                     @endforeach
@@ -48,7 +48,7 @@
             </div>
             <div class="mb-4">
               <label for="vaccine_name" class="block text-gray-700 text-sm font-medium mb-2">Supplier Vaksin</label>
-              <input type="text" id="vaccine_name" name="vaccine_name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Abott">
+              <input type="text" id="supplier" name="supplier" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Abott">
             </div>
             
            
@@ -58,7 +58,7 @@
             </div>
             <div class="mb-4">
               <label for="next_dose" class="block text-gray-700 text-sm font-medium mb-2">Tanggal Kadarluasa</label>
-              <input type="date" name="next_dose" id="next_dose" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Harga obat">
+              <input type="date" name="expired_date" id="next_dose" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Harga obat">
             </div>
 
               <div class="mb-4">
