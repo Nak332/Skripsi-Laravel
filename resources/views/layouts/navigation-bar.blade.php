@@ -106,7 +106,8 @@
                             style="display: none;"
                             class="absolute left-0 mt-4 w-40 z-50 rounded-md bg-white shadow-md"
                         >
-                            <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                        {{-- /profil-user/{{Auth::user()->employee_id}} --}}
+                            <a href="/profil-user" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
                                 Profil
                             </a>
 

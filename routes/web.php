@@ -46,6 +46,12 @@ Route::middleware(['isLogin'])->group(function () {
     Route::get('/db', function(){
         return view('dashboard.dashboard_main');
     });
+    Route::get('/profil-user',function(){
+        return view('user-profile');
+    });
+    Route::get('/change-password',function(){
+        return view('change-user-password');
+    });
 
 });
 
