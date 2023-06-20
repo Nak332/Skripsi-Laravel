@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('medicine_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('medicine_id');
-            $table->integer('medicine_stock');
-            $table->date('medicine_expired_date');
+            $table->integer('medicine_stock')->nullable();
+            $table->date('medicine_expired_date')->nullable();
             $table->timestamps();
             $table->foreign('medicine_id')->references('id')->on('medicines')->onDelete('cascade');
         });

@@ -30,6 +30,6 @@ class TransactionController extends Controller
         $transaksi->payment = $request->payment;
         $transaksi->save();
 
-        return redirect('/');
+        return redirect('/daftar-transaksi');
     }
 }

@@ -33,7 +33,7 @@
 
             <div class="mb-4 mt-4">
                 <label for="vaccine_name" class="block text-gray-700 text-sm font-medium mb-2">Jenis Vaksin</label>
-                <select  name="penyakit" id="" class="w-full px-4 py-2 border border-gray-300 rounded-md ">
+                <select  name="jenis_vaksin" id="jenis_vaksin" class="w-full px-4 py-2 border border-gray-300 rounded-md ">
                     @foreach ($penyakit as $p)
                     <option value="{{$p}}">{{$p}}</option>
                     @endforeach

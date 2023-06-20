@@ -39,7 +39,7 @@ class VaksinController extends Controller
         $vaksin->vaccination_date = $request->vaccination_date;
         $vaksin->patient_id = $request->patient_id;
         $vaksin->batch_number = $request->batch_number;
-        $vaksin->penyakit = $request->penyakit;
+        $vaksin->jenis_vaksin = $request->jenis_vaksin;
         $vaksin->register_number = $request->register_number;
         $vaksin->supplier = $request->supplier;
         $vaksin->expired_date = $request->expired_date;
@@ -67,7 +67,7 @@ class VaksinController extends Controller
             'vaccine_name' => $request->vaccine_name,
             'vaccine_date' => $request->vaccination_date,
             'patient_id' => $request->patient_id,
-            'penyakit' => $request->penyakit,
+            'jenis_vaksin' => $request->jenis_vaksin,
             'register_number' => $request->register_number,
             'supplier' => $request->supplier,
             'expired_date' => $request->expired_date,
