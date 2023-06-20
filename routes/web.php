@@ -145,6 +145,10 @@ Route::get('users', function () {
     return view('crud-sandbox');
 });
 
+Route::get('trxlist', function () {
+    return view('transaction-list');
+});
+
 
 
 
