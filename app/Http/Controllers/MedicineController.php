@@ -31,8 +31,12 @@ class MedicineController extends Controller
             'medicine_name' => 'required',
             'medicine_description' =>'required',
             'medicine_price' =>'required',
-            'medicine_stock' =>'required',
-            'medicine_expired_date' =>'required',
+            'medicine_stock' =>'nullable',
+            'medicine_expired_date' =>'nullable'
+        ],[
+            'medicine_name' => 'Nama obat harus diisi',
+            'medicine_description' => 'Keterangan obat perlu diisi',
+            'medicine_price' => 'Harga obat perlu diisi'
         ]);
 
         $medicine = new Medicine;
