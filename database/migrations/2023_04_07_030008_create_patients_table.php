@@ -20,12 +20,12 @@ return new class extends Migration
             $table->string('patient_phone');
             $table->string('patient_address');
             $table->text('patient_NIK')->nullable()->unique();
-            $table->string('patient_alias');
+            $table->string('patient_alias')->nullable();
             $table->date('patient_DOB');
             $table->string('patient_POB');
             $table->string('patient_marital_status');
-            $table->string('patient_emergency_contact_name');
-            $table->string('patient_emergency_contact_phone');
+            $table->string('patient_emergency_contact_name')->nullable();
+            $table->string('patient_emergency_contact_phone')->nullable();
             $table->integer('has_BPJS')->nullable();
             $table->timestamps();
         });
