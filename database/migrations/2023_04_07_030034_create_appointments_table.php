@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('complaint')->nullable();
             $table->integer('height') ->nullable();
             $table->integer('weight') ->nullable();
+            $table->integer('sistol') ->nullable();
+            $table->integer('diastol') ->nullable();
             $table->float('body_temperature', 5, 2)->nullable();
             $table->integer('pulse') ->nullable();
             $table->float('blood_sugar', 5, 2) ->nullable();

@@ -67,13 +67,16 @@
                     </div>
                   </div>
     
-                    {{-- </form> --}}
-                  <form action="/delete-stock/{{$MD->id}}" method="post">
-                    @csrf
-                    <button class="rounded-full  bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all ml-2 px-3 py-1 text-lg text-white  duration-300 ">
+               
+                  <div x-data="{ open: false }">
+                    <button @click="open = true" class="rounded-full  bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all ml-2 px-3 py-1 text-lg text-white  duration-300 ">
                       <x-feathericon-x  class=" w-6 h-6"/>
                       </button>
-                  </form>
+                      <div x-show="open">
+                        @livewire('delete-stok-obat',['MD'=>$MD])
+                      </div>
+                    </div>
+                  
 
                 </div>
               

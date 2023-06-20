@@ -70,7 +70,7 @@ class AntrianController extends Controller
         event(new AppointmentHistoryCreated($antrian));
 
         Log::info('sekarang' . $antrian->id);
-        return redirect('/');
+        return redirect('/resepsi');
     }
 
     public function update(Request $request, $id)
@@ -79,17 +79,19 @@ class AntrianController extends Controller
     $antrianUpdate->update([
         // 'patient_id' => $request->patient_id,
         // 'employee_id' => $request->employee_id,
-        // 'keluhan' => $request->complaint,
+        'complaint' => $request->complaint,
         // 'appointment_type' => $request->appointment_type,
         // 'status' => $request->status,
         // 'appointment_date' => $request->date,
         'blood_sugar' => $request->blood_sugar,
         'pulse' => $request->pulse,
-        'body_temperature' => $request->body_temperatur,
+        'sistol' => $request->sistol,
+        'diastol' => $request->diastol,
+        'body_temperature' => $request->body_temperature,
         'weight' => $request->weight,
         'height' => $request->height
     ]);
-	return redirect('/');
+	return redirect('/resepsi');
 }
 
 public function delete($id)

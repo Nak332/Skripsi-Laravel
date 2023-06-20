@@ -17,8 +17,31 @@ class ResepsiMainComponent extends Component
 
     protected $listeners = [
         'patientBumped' => 'setCurrent',
-        'refreshComponent' => '$refresh'
+        'refreshComponent' => '$refresh',
+        'FirstPatient' => 'search',
     ];
+
+    public function search($id){
+        $appointment = Appointment::where('appointment_type',$id)->where('status','1')->orderBy('antrian_number')->first();
+        $appointmentsekarang = Appointment::where('appointment_type',$id)->where('status','2')->orderBy('antrian_number')->first();
+        if ($appointment != NULL && $appointmentsekarang != NULL) {
+            $appointment->update([
+                'status' => '2'
+            ]);
+            $appointmentsekarang->update([
+                'status' => '3'
+            ]);
+        }
+        else if($appointment != NULL && $appointmentsekarang == NULL){
+            $appointment->update([
+                'status' => '2'
+            ]);
+        }
+
+
+
+
+    }
 
     public function undo($id){
         $this->appointment = Appointment::find($id);
@@ -81,7 +104,7 @@ class ResepsiMainComponent extends Component
 
         $this->appointment = Appointment::where('status', '2')->first();
         if ($this->appointment != NULL) {
-            return view('livewire.resepsi.resepsi-main-component', $this->appointment);
+            return view('livewire.resepsi-component.resepsi-main-component', $this->appointment);
         }
         else{
             return view('livewire.resepsi-component.resepsi-main-component');

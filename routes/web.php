@@ -35,6 +35,7 @@ Route::get('/trs',function(){
 
 
 Route::middleware(['isLogin'])->group(function () {
+    Route::get('/',[AntrianController::class,'index']);
     Route::get('/resepsi',[AntrianController::class,'index']);
     // Route::get('resepsi',[PatientController::class,'index']);
 

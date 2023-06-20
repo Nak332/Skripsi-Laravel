@@ -46,7 +46,7 @@ class VaksinController extends Controller
         $vaksin->notes = $request->notes;
         $vaksin->next_dose = $request->next_dose;
         $vaksin->save();
-        return redirect('/');
+        return redirect('/resepsi');
     }
 
     public function update(Request $request, $id)
