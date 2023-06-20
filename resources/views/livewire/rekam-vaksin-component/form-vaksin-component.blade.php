@@ -4,7 +4,7 @@
             <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-4xl w-128 h-fit">
                 <p class="font-bold text-black">Vaksinasi</p>
                 </div>
-          <form method="POST" action="vaksinasi/tambah" enctype="multipart/form-data">
+          <form method="POST" action="/vaksinasi/tambah" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
                 @livewire('patient-search-bar')
@@ -20,15 +20,15 @@
                  </div>
                  <input type="text" name="patient_id" id="patient_id" hidden value="{{$selected_patient['id']}}">
                 </div>
-              
+
               @endif
-              
+
             </div>
             <div class="mb-4">
               <label for="vaccination_date" class="block text-gray-700 text-sm font-medium mb-2">Tanggal vaksinasi</label>
               <input type="date" value="{{ date('Y-m-d') }}" id="vaccination_date" name="vaccination_date" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="">
             </div>
-         
+            <input type="text" name="employee_id" id="employee_id" hidden value="{{Auth::user()->employee_id}}">
             <hr>
 
             <div class="mb-4 mt-4">
@@ -37,7 +37,7 @@
                     @foreach ($penyakit as $p)
                     <option value="{{$p}}">{{$p}}</option>
                     @endforeach
-                    
+
                 </select>
               </div>
 
@@ -50,8 +50,8 @@
               <label for="vaccine_name" class="block text-gray-700 text-sm font-medium mb-2">Supplier Vaksin</label>
               <input type="text" id="vaccine_name" name="vaccine_name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Abott">
             </div>
-            
-           
+
+
             <div class="mb-4">
               <label for="batch_number" class="block text-gray-700 text-sm font-medium mb-2">Nomor Batch</label>
               <input type="text" id="batch_number" name="batch_number" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="">
