@@ -31,6 +31,14 @@
               class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
               id="password_new" name="password_new" type="password" placeholder="" required>
           </div>
+          <div class="mb-6">
+            <label class="block text-gray-700 font-bold mb-2" for="email">
+              Confirm Password
+            </label>
+            <input
+              class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+              id="password_new_confirm" name="password_new_confirm" type="password" placeholder="" required>
+          </div>
    
           <div class="flex items-center justify-center">
             <button
