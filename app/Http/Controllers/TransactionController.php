@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use App\Models\TransactionDetails;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -13,10 +14,11 @@ class TransactionController extends Controller
     	return view('', ['transaksi' => $transaksi]);
     }
 
-    public function Rekam($id)
+    public function transaksi($id)
     {
         $transaksi = Transaction::find($id);
-    	return view('', compact(['transaksi']));
+        $detil = TransactionDetails::where('transaction_id',$id)->get();
+    	return view('transaksi.transaksi', compact(['transaksi','detil']));
 
     }
 

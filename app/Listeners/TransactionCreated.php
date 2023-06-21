@@ -41,6 +41,11 @@ class TransactionCreated
 
         $transactiondetail = new TransactionDetails;
         $transactiondetail->transaction_id = $transaction->id;
+        $transactiondetail->konsultasi = '1';
+        $transactiondetail->save();
+
+        $transactiondetail = new TransactionDetails;
+        $transactiondetail->transaction_id = $transaction->id;
         $transactiondetail->treatment = $rekammedis->treatment;
         $transactiondetail->save();
 

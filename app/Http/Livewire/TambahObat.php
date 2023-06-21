@@ -19,7 +19,7 @@ class TambahObat extends Component
     public $medicine;
 
     protected $rules = [
-      'name' => 'required|min:6',
+      'name' => 'required',
       'stock' => 'required|numeric',
       'expired_date' => 'required',
       'description' => 'required',
@@ -28,7 +28,6 @@ class TambahObat extends Component
 
     protected $messages= [
         'name.required'=>'Nama obat harus diisi',
-        'name.min' => 'Nama obat minimal 6 huruf',
         'stock.required' => 'Stok obat harus diisi',
         'stock.numeric' => 'Stok obat hanya berisi angka',
         'price.required' => 'Harga harus diisi',

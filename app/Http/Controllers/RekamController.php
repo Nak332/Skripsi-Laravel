@@ -27,7 +27,7 @@ class RekamController extends Controller
     public function insert(Request $request)
     {
         $request->validate([
-            'file_input' => 'nullable|mimetypes:application/pdf,application/msword|max:50000',
+            'file_input' => 'nullable|mimetypes:application/pdf,application/msword,image/jpeg,image/png|max:50000',
             'patient_id' => 'required',
             'appointment_id' => 'nullable',
             'medicine_id' => 'nullable',
@@ -80,7 +80,7 @@ class RekamController extends Controller
 
         event(new CreateTransaction($rekamMedis));
 
-        return redirect('/');
+        return redirect()->route('to.pasien', ['id' => $request->patient_id]);
     }
 
     public function update(Request $request, $id)

@@ -9,10 +9,12 @@ use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\MedicineDetailController;
 use App\Http\Controllers\PatientController ;
 use App\Http\Controllers\RekamController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\VaksinController;
 use App\Models\Appointment;
 use App\Models\Medicine;
 use App\Models\Patient;
+use App\Models\Transaction;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +33,7 @@ Route::get('/trs',function(){
     return view('transaksi.transaksi');
 });
 
-
+Route::get('/trs/{id}',[TransactionController::class,'transaksi']);
 
 
 Route::middleware(['isLogin'])->group(function () {
@@ -83,6 +85,9 @@ Route::middleware(['checkrole:admin,Dokter'])->group(function () {
     });
 });
 
+Route::post('ganti-password-karyawan/{id}', [EmployeeController::class,'password']);
+
+
 Route::middleware(['checkrole:admin,Dokter,Perawat'])->group(function () {
     Route::get('/tambah-pasien', function () {
         return view('form-patient');
@@ -103,7 +108,7 @@ Route::get('daftar-obat', function () {
 });
 
 Route::get('tambah-obat', function () {
-    return view('tambah-obat-page');
+    return view('form-obat');
 });
 
 Route::get('/logout', [UserController::class, 'logout']);

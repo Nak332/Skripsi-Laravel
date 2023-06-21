@@ -7,10 +7,12 @@ use App\Events\EmployeeCreated;
 use App\Events\RoleChanged;
 use App\Listeners\CreateUserForEmployee;
 use App\Models\Employees;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -169,6 +171,19 @@ class EmployeeController extends Controller
     ]);
 
     event(new DisableAccount($employeeDelete));
+
+	return redirect('/daftar-karyawan');
+}
+
+public function password(Request $request, $id)
+{
+    $request->validate([
+        'password_new' => 'required|confirmed',
+    ]);
+    $employeePassword = User::where('employee_id',$id)->first();
+    $employeePassword->update([
+        'password' => Hash::make($request->password_new)
+    ]);
 
 	return redirect('/daftar-karyawan');
 }

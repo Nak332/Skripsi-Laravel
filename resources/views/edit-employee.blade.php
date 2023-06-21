@@ -24,7 +24,7 @@
                   @enderror
                   <div class="mb-4">
                     <label for="employee_job" class="block text-gray-700 text-sm font-medium mb-2">Job</label>
-    
+
                     <select name = "employee_job" id="employee_job" class="border border-gray-300 rounded-md p-2">
                       <option hidden selected value="{{$employee->employee_job}}" class="pl-4 py-2 text-gray-300">{{$employee->employee_job}}</option>
                       <option value="Dokter" class="pl-4 py-2">Dokter</option>
@@ -77,7 +77,7 @@
                   </div>
                 <div class="mb-4">
                     <label for="employee_POB" class="block text-gray-700 text-sm font-medium mb-2">Place of Birth</label>
-                    <textarea rows="2" name="employee_POB" id="employee_POB" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="" value="{{$employee->employee_POB}}"></textarea>
+                    <textarea rows="2" name="employee_POB" id="employee_POB" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="" >{{$employee->employee_POB}}</textarea>
                     @error('employee_POB')
                     <div class="error text-red-600">{{ $message }}</div>
                     @enderror
@@ -89,7 +89,7 @@
                   @error('employee_email')
                   <div class="error text-red-600">{{ $message }}</div>
                   @enderror
-                 
+
                   <div>
                     <label for="employee_photo" class="block text-gray-700 text-sm font-medium mt-3 mb-2">Photo</label>
                     <input type="file" name="image" id="image">
@@ -105,33 +105,38 @@
               </form>
             </div>
           </div>
+
+          <form action="/ganti-password-karyawan/{{$employee->id}}" method="post">
+            @csrf
         </div>
-          <div class="h-max flex items-center justify-center py-4">
-            <div class="max-w-screen-sm w-full mx-auto bg-white p-8 rounded-md shadow-md">
-              <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-3xl w-128 h-fit">
-                <p class="font-bold text-black">Reset Password</p>
-                </div>
-              <div class="mb-6">
-                <label class="block text-gray-700 font-bold mb-2" for="email">
-                  Password
-                </label>
-                <input
-                  class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                  id="password" name="password" type="password" placeholder="" required>
+        <div class="h-max flex items-center justify-center py-4">
+          <div class="max-w-screen-sm w-full mx-auto bg-white p-8 rounded-md shadow-md">
+            <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-3xl w-128 h-fit">
+              <p class="font-bold text-black">Reset Password</p>
               </div>
-              <div class="mb-6">
-                <label class="block text-gray-700 font-bold mb-2" for="email">
-                  Confirm Password
-                </label>
-                <input
-                  class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                  id="confirm_password" name="confirm_password" type="password" placeholder="" required>
-              </div>
-              <div class="flex w-full mx-auto items-center justify-center">
-                 <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mt-3 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Submit</button>
+            <div class="mb-6">
+              <label class="block text-gray-700 font-bold mb-2" for="email">
+                Password
+              </label>
+              <input
+                class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                id="password_new" name="password_new" type="password" placeholder="" required>
             </div>
+            <div class="mb-6">
+              <label class="block text-gray-700 font-bold mb-2" for="email">
+                Confirm Password
+              </label>
+              <input
+                class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                id="password_new_confirmation" name="password_new_confirmation" type="password" placeholder="" required>
+            </div>
+            <div class="flex w-full mx-auto items-center justify-center">
+               <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mt-3 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Submit</button>
           </div>
         </div>
+      </div>
+          </form>
+
 
 
 
