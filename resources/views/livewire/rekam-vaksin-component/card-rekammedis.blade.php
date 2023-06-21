@@ -19,7 +19,7 @@
 
 
         <div id="left-side" class="flex-inline p-6 md:w-1/2">
-    
+
 
         <div class="mb-4">
             <label for="hasil_anamnesis" class="block text-gray-700 text-sm font-medium mb-2">Anamnesis</label>
@@ -133,10 +133,10 @@
         @if ($Rekam->attachment) <!-- Check if the record has an associated file -->
         <div class="mb-4">
             <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tempat Download</label>
-            
-            <a href="{{ asset('storage/' . $Rekam->attachment) }}" download>Download File</a>
+
+            <a href="{{ asset('Dokumen/' . $Rekam->attachment) }}" download>Download File</a>
             <!-- Use the `asset` helper to generate the URL to the file in your storage directory -->
-            
+
         </div>
         @endif
 
