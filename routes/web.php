@@ -85,6 +85,9 @@ Route::middleware(['checkrole:admin,Dokter'])->group(function () {
     });
 });
 
+Route::post('ganti-password-karyawan/{id}', [EmployeeController::class,'password']);
+
+
 Route::middleware(['checkrole:admin,Dokter,Perawat'])->group(function () {
     Route::get('/tambah-pasien', function () {
         return view('form-patient');
