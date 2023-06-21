@@ -85,6 +85,9 @@ Route::middleware(['checkrole:admin,Dokter'])->group(function () {
     });
 });
 
+Route::post('/update-transaksi/{id}', [TransactionController::class,'update']);
+
+
 Route::post('ganti-password-karyawan/{id}', [EmployeeController::class,'password']);
 
 

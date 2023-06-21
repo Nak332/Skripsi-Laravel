@@ -15,13 +15,14 @@
         </div>
     </div>
 
-    <form action="" method="post">
+
 
         <div id="container_invoice" class=" flex justify-center w-full pt-8">
             <div id="card_pasien" class="w-4/5 p-4 bg-white rounded">
                 <h1 class="text-2xl font-bold mb-4 truncate">Invoice</h1>
                 <hr>
-
+                <form action="/update-transaksi/{{$transaksi->id}}" method="post">
+                    @csrf
                 <div class="w-full p-2 rounded mt-4 items-center">
                     @foreach ($detil as $item)
                     @if ($item->konsultasi != NULL)
@@ -66,10 +67,14 @@
                     </div>
                     <hr>
 
+                </form>
+
+                <form action="/update-transaksi/{{$transaksi->id}}" method="post">
+                    @csrf
                     <div class="md:flex mt-4 items-center">
                         <label for="Total" class="w-1/2 block text-gray-700 text-lg font-medium ">Tipe Pembayaran</label>
 
-                            <Select class="px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
+                            <Select name="payment" id="payment" class="px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
                                 <option value="Kredit">Kredit</option>
                                 <option value="Debit">Debit</option>
                                 <option value="Tunai">Tunai</option>
@@ -80,11 +85,14 @@
 
                     </div>
                     <div class="md:flex mt-4 items-center">
-                        <label for="Total" class="w-1/2 block text-gray-700 text-lg font-medium ">Deskripsi Pembayaran</label>
-
-                         <input type="text" name="" id=""  class=" w-1/2 px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
-
+                        <label for="Total" class="w-1/2 block text-gray-700 text-lg font-medium ">Obat Tambahan</label>
+                         <input type="text" name="extra_medicine" id="extra_medicine"  class=" w-1/2 px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
                     </div>
+                    <div class="md:flex mt-4 items-center">
+                        <label for="Total" class="w-1/2 block text-gray-700 text-lg font-medium ">Harga</label>
+                         <input type="text" name="price" id="price"  class=" w-1/2 px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
+                    </div>
+
                     <div class="flex items-center justify-between">
                         <button
                           class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -92,11 +100,14 @@
                           Submit
                         </button>
                       </div>
+                </form>
+
+
 
                 </div>
 
             </div>
         </div>
 
-    </form>
+
 </div>

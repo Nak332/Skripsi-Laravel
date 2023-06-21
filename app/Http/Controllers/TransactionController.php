@@ -34,4 +34,20 @@ class TransactionController extends Controller
 
         return redirect('/daftar-transaksi');
     }
+
+    public function update(Request $request, $id)
+    {
+        $transaksi = Transaction::find($id);
+        $transaksiDetail = new TransactionDetails;
+        $transaksi->update([
+            'payment' => $request->payment,
+            'flag' => '2'
+        ]);
+        $transaksiDetail->transaction_id = $id;
+        $transaksiDetail->extra_medicine = $request->extra_medicine;
+        $transaksiDetail->price = $request->price;
+        $transaksiDetail->save();
+
+        return redirect('/daftar-transaksi');
+    }
 }
