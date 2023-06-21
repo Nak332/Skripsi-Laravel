@@ -18,18 +18,8 @@
 
 
 
-        <div id="left-side" class="flex-inline p-6 w-1/2">
-        <div class="mb-4">
-            <label for="keluhan" class="block text-gray-700 text-sm font-medium mb-2">Keluhan</label>
-            <p class="bg-gray-200 rounded-lg p-2">
-                {{$Rekam->complaint}}
-            </p>
-
-        </div>
-        <div class="mb-4">
-            <label for="symptoms" class="block text-gray-700 text-sm font-medium mb-2">Gejala</label>
-            <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->symptoms}}</p>
-        </div>
+        <div id="left-side" class="flex-inline p-6 md:w-1/2">
+    
 
         <div class="mb-4">
             <label for="hasil_anamnesis" class="block text-gray-700 text-sm font-medium mb-2">Anamnesis</label>
@@ -47,12 +37,32 @@
             </div>
         </div>
 
-        
+
 
         <div class="md:flex ">
             <div class="mb-4 w-1/2">
+            <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Tinggi Badan</label>
+            <div class="flex items-center  text-black  w-fit  bg-gray-200 rounded-lg p-2 ">
+                {{-- <input type="number" name='body_temperature' id="suhu_badan" class="md:w-1/2 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=80 > --}}
+                <p class="">{{$Rekam->height}}</p>
+                <div class="p-1"><h1>cm</h1></div>
+            </div>
+            </div>
+
+
+            <div class="mb-4 w-1/2">
+            <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Berat Badan</label>
+            <div class="flex items-center  text-black  w-fit  bg-gray-200 rounded-lg p-2 ">
+                {{-- <input type="number" name='body_temperature' id="suhu_badan" class="md:w-1/2 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=80 > --}}
+                <p class="">{{$Rekam->weight}}</p>
+                <div class="p-1"><h1>Kg</h1></div>
+            </div>
+            </div>
+        </div>
+        <div class="md:flex ">
+            <div class="mb-4 w-1/2">
             <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Sistol</label>
-            <div class="flex items-center p-2 text-white rounded-lg w-fit bg-green-500">
+            <div class="flex items-center p-2 text-white rounded-lg w-fit {{($Rekam->sistol > '130' or $Rekam->sistol < '100') ?  'bg-red-500'  : 'bg-green-500' }}">
                 {{-- <input type="number" name='body_temperature' id="suhu_badan" class="md:w-1/2  px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=120 > --}}
                 <p class="px-1 py-1  rounded-md resize-none"> {{$Rekam->sistol}} </p>
                 <div class=" p-1"><h1>mmHg</h1></div>
@@ -62,7 +72,7 @@
 
             <div class="mb-4 w-1/2">
             <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Diastol</label>
-            <div class="flex items-center p-2 text-white rounded-lg w-fit bg-green-500">
+            <div class="flex items-center p-2 text-white rounded-lg w-fit {{($Rekam->diastol > '90' or $Rekam->diastol < '70') ?  'bg-red-500'  : 'bg-green-500' }}">
                 {{-- <input type="number" name='body_temperature' id="suhu_badan" class="md:w-1/2 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=80 > --}}
                 <p class="px-1 py-1  rounded-md resize-none"> {{$Rekam->diastol}} </p>
                 <div class="p-1"><h1>mmHg</h1></div>
@@ -71,53 +81,45 @@
         </div>
         </div>
 
-        <div id="right-side" class="flex-inline p-6 w-1/2">
+        <div id="right-side" class="flex-inline p-6 md:w-1/2">
 
-        <div class="mb-4">
-            <label for="disease" class="block text-gray-700 text-sm font-medium mb-2">Diagnosa</label>
-            <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->diagnosis}}</p>
+            <div class="mb-4">
+                <label for="disease" class="block text-gray-700 text-sm font-medium mb-2">Diagnosa</label>
+                <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->diagnosis}}</p>
 
-            {{-- <input type="text" name="disease" id="disease" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
-        </div>
-        {{-- <div class="mb-4">
-            <label for="total_price" class="block text-gray-700 text-sm font-medium mb-2">Total Price</label>
-            <input type="text" name="total_price" id="total_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
-        </div>
-        <div class="mb-4">
-            <label for="type" class="block text-gray-700 text-sm font-medium mb-2">Type</label>
-            <input type="text"  name="type" id="type" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
-        </div> --}}
-        <div class="mb-4">
-            <label for="note" class="block text-gray-700 text-sm font-medium mb-2">Note</label>
-            <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->note}}</p>
-            {{-- <textarea id="note" name="note" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
-        </div>
+                {{-- <input type="text" name="disease" id="disease" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
+            </div>
+            {{-- <div class="mb-4">
+                <label for="total_price" class="block text-gray-700 text-sm font-medium mb-2">Total Price</label>
+                <input type="text" name="total_price" id="total_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="type" class="block text-gray-700 text-sm font-medium mb-2">Type</label>
+                <input type="text"  name="type" id="type" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+            </div> --}}
+            <div class="mb-4">
+                <label for="note" class="block text-gray-700 text-sm font-medium mb-2">Note</label>
+                <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->note}}</p>
+                {{-- <textarea id="note" name="note" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
+            </div>
 
-        <div class="mb-4">
-            <label for="medicine_id" class="block text-gray-700 text-sm font-medium mb-2">Preskripsi Obat</label>
-            <p class="bg-gray-200 rounded-lg p-2">Paracetamol</p>
-            {{-- <input type="text" id="medicine_id" name="medicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Obat"> --}}
-        </div>
+            <div class="mb-4">
+                <label for="medicine_id" class="block text-gray-700 text-sm font-medium mb-2">Preskripsi Obat</label>
+                <p class="bg-gray-200 rounded-lg p-2">Paracetamol</p>
+                {{-- <input type="text" id="medicine_id" name="medicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Obat"> --}}
+            </div>
 
-        <div class="mb-4">
-            <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Penatalaksanaan</label>
-            <p class="bg-gray-200 rounded-lg p-2"> {{$Rekam->follow_up_plan}}</p>
-            {{-- <textarea rows="3" name="penatalaksaan" id="penatalaksaan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
-        </div>
-        <div class="mb-4">
-            <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tindakan</label>
-            <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->treatment}}</p>
-            {{-- <textarea rows="3" name="penatalaksaan" id="penatalaksaan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
-        </div>
+            <div class="mb-4">
+                <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Penatalaksanaan</label>
+                <p class="bg-gray-200 rounded-lg p-2"> {{$Rekam->follow_up_plan}}</p>
+                {{-- <textarea rows="3" name="penatalaksaan" id="penatalaksaan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
+            </div>
+            <div class="mb-4">
+                <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tindakan</label>
+                <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->treatment}}</p>
+                {{-- <textarea rows="3" name="penatalaksaan" id="penatalaksaan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
+            </div>
 
-        {{-- <div class="mb-4">
-            <label for="extramedicine_id" class="block text-gray-700 text-sm font-medium mb-2">Extra Medicine</label>
-            <input type="text" id="extramedicine_id" name="extramedicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="">
-        </div> --}}
-        {{-- <div class="mb-4">
-            <label for="total_price" class="block text-gray-700 text-sm font-medium mb-2">Total Price</label>
-            <input type="text" name="total_price" id="total_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
-        </div> --}}
         </div>
 
     </div>
@@ -126,18 +128,17 @@
     <div id="selected-patient-footer" class="flex justify-center">
 
         <div class="mb-4 w-1/2">
-            <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Status Rekam</label>
-            <select name="flag" class="w-1/2" id="flag">
-                <option value="0">Terbuka</option>
-                <option value="1" selected>Final</option>
-            </select>
-        </div>
 
+        </div>
+        @if ($Rekam->attachment) <!-- Check if the record has an associated file -->
         <div class="mb-4">
-            <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tindakan</label>
-            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+            <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tempat Download</label>
+            
+            <a href="{{ asset('storage/' . $Rekam->attachment) }}" download>Download File</a>
+            <!-- Use the `asset` helper to generate the URL to the file in your storage directory -->
+            
         </div>
-
+        @endif
 
 
 

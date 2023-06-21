@@ -18,7 +18,7 @@ class DashboardMainComponent extends Component
     public $currentdate;
 
     public function mount(){
-        $this->antrian_stats = Appointment::where('status','2')->count();
+        $this->antrian_stats = Appointment::where('status','1')->count();
         $this->patient_stats = Patient::all()->count();
         $this->currentdate = Carbon::now()->format('Y-m-d');
         $this->vaksin_list= Vaksin::where('next_dose', '>', $this->currentdate)
