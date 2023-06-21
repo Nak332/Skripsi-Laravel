@@ -77,7 +77,7 @@
                   </div>
                 <div class="mb-4">
                     <label for="employee_POB" class="block text-gray-700 text-sm font-medium mb-2">Place of Birth</label>
-                    <textarea rows="2" name="employee_POB" id="employee_POB" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="" value="{{$employee->employee_POB}}"></textarea>
+                    <textarea rows="2" name="employee_POB" id="employee_POB" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="" >{{$employee->employee_POB}}</textarea>
                     @error('employee_POB')
                     <div class="error text-red-600">{{ $message }}</div>
                     @enderror

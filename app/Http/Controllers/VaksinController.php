@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vaksin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 
 class VaksinController extends Controller
 {
@@ -24,14 +25,27 @@ class VaksinController extends Controller
 
     public function insert(Request $request)
     {
-        // $request->validate([
-        //     'vaccine_name' => 'required',
-        //     'vaccine_date' => 'required',
-        //     'patient_id' => 'required',
-        //     'batch_number' => 'nullable',
-        //     'notes' => 'nullable',
-        //     'next_dose' => 'nullable'
-        //     ]);
+        $today = Date::now()->format('Y-m-d');
+        $request->validate([
+            'vaccine_name' => 'required',
+            'jenis_vaksin' => 'required',
+            'vaccination_date' => 'required',
+            'patient_id' => 'required',
+            'batch_number' => 'required',
+            'expired_date' => 'required',
+            'supplier' => 'required',
+            'notes' => 'nullable',
+            'next_dose' => ['nullable','date_format:Y-m-d','after:'.$today]
+            ],[
+            'vaccine_name' => 'Nama vaksin harus diisi',
+            'jenis_vaksin' => 'Jenis vaksin harus diisi',
+            'vaccine_date' => 'Tanggal vaksin harus diisi',
+            'expired_date' => 'Tanggal Kadaluarsa harus diisi',
+            'patient_id' => 'Pasien harus diisi',
+            'batch_number' => 'Nomor batch vaksin harus diisi',
+            'supplier' => 'Supplier harus diisi',
+            'next_dose.after' => 'Tanggal dosis berikut harus melewati hari ini'
+            ]);
 
         $vaksin = new Vaksin;
         $vaksin->employee_id = $request->employee_id;
