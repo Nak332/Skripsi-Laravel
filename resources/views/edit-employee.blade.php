@@ -105,6 +105,33 @@
               </form>
             </div>
           </div>
+        </div>
+          <div class="h-max flex items-center justify-center py-4">
+            <div class="max-w-screen-sm w-full mx-auto bg-white p-8 rounded-md shadow-md">
+              <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-3xl w-128 h-fit">
+                <p class="font-bold text-black">Reset Password</p>
+                </div>
+              <div class="mb-6">
+                <label class="block text-gray-700 font-bold mb-2" for="email">
+                  Password
+                </label>
+                <input
+                  class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                  id="password" name="password" type="password" placeholder="" required>
+              </div>
+              <div class="mb-6">
+                <label class="block text-gray-700 font-bold mb-2" for="email">
+                  Confirm Password
+                </label>
+                <input
+                  class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                  id="confirm_password" name="confirm_password" type="password" placeholder="" required>
+              </div>
+              <div class="flex w-full mx-auto items-center justify-center">
+                 <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mt-3 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Submit</button>
+            </div>
+          </div>
+        </div>
 
 
 
