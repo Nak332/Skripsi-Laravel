@@ -9,10 +9,12 @@ use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\MedicineDetailController;
 use App\Http\Controllers\PatientController ;
 use App\Http\Controllers\RekamController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\VaksinController;
 use App\Models\Appointment;
 use App\Models\Medicine;
 use App\Models\Patient;
+use App\Models\Transaction;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +33,7 @@ Route::get('/trs',function(){
     return view('transaksi.transaksi');
 });
 
-
+Route::get('/trs/{id}',[TransactionController::class,'transaksi']);
 
 
 Route::middleware(['isLogin'])->group(function () {

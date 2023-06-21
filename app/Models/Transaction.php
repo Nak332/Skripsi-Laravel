@@ -10,6 +10,9 @@ class Transaction extends Model
     public function transaksi(){
         return $this->hasMany(TransactionDetails::class);
     }
+    public function Patient(){
+        return $this->belongsTo(Patient::class);
+    }
     protected $guarded = [
     ];
 

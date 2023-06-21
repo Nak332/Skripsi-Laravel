@@ -13,6 +13,9 @@ class Medicine extends Model
     public function Detail(){
         return $this->hasMany(MedicineDetail::class);
     }
+    public function Detil(){
+        return $this->hasMany(TransactionDetails::class);
+    }
     use HasFactory;
     protected $guarded = [
     ];

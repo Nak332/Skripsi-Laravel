@@ -80,7 +80,7 @@ class RekamController extends Controller
 
         event(new CreateTransaction($rekamMedis));
 
-        return redirect('/');
+        return redirect()->route('to.pasien', ['id' => $request->patient_id]);
     }
 
     public function update(Request $request, $id)
