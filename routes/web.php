@@ -153,7 +153,7 @@ Route::get('users', function () {
     return view('crud-sandbox');
 });
 
-Route::get('trxlist', function () {
+Route::get('daftar-transaksi', function () {
     return view('transaction-list');
 });
 
