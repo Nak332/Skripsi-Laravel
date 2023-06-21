@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="fit-content h-screen bg-gray-200">
+<div class="min-h-screen bg-gray-200">
 
     @livewire('dashboard-main-component')
    

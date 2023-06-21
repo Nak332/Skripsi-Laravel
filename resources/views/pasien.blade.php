@@ -137,12 +137,12 @@
             </div>  
             @else
               @foreach ($Vaksin as $V)
-                <div class="p-4 rounded-lg text-white transition-all cursor-pointer {{$V->flag =='1' ?  'bg-blue-500 hover:bg-blue-300' : 'bg-red-500  hover:bg-red-300' }} ">
+                <div class="p-4 rounded-lg text-black transition-all cursor-pointer  ">
                 <p class=" truncate font-bold">{{$V->created_at}}</p>
                 <p class="truncate">Nama Vaksin: {{$V->vaccine_name}}</p>
-            <p class="truncate">Tanggal Vaksinasi: {{$V->vaccination_date}}</p>
-            <p class="truncate">Batch Number: {{$V->batch_number}}</p>
-            <p class="truncate">Tanggal Dosis Selanjutnya: {{$V->next_dose}}</p>
+                <p class="truncate">Tanggal Vaksinasi: {{$V->vaccination_date}}</p>
+                <p class="truncate">Batch Number: {{$V->batch_number}}</p>
+                <p class="truncate">Tanggal Dosis Selanjutnya: {{$V->next_dose}}</p>
                 </div>
               <br>
             @endforeach

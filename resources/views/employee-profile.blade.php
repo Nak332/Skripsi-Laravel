@@ -8,24 +8,11 @@
 
 <div class="bg-gray-300">
   
-<div class="container mx-auto p-4 bg-gray-300">
-  <div class="button-container">
-      <div class="flex justify-end">
-        <div>
-          <a href="/edit-emp/{{$employee->id}}">
-          <button class="rounded-full bg-yellow-400 hover:bg-white hover:text-yellow-400 hover:outline hover:outline-yellow-400 outline-2 transition-all  ml-2 px-3 py-1 text-center text-white"> <x-far-edit class=" w-6 h-6" /></button></a>
-        </div>
-        <div x-data="{ open: false }">
-          <button @click="open = true" class="rounded-full bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all  ml-2 px-3 py-1 text-center text-white"> <x-feathericon-alert-triangle class=" w-6 h-6" /> </button>
-          <div wire:model='' x-show="open">
-            @livewire('deactivate-employee',['employee'=>$employee])
-          </div>
-        </div>
-      </div>
-   
-  </div>
+<div class="min-h-screen container mx-auto p-4 bg-gray-300">
   
-<div class="min-h-screen pb-4 flex items-center justify-center bg-gray-300">
+  
+<div class=" pb-4 flex items-center justify-center bg-gray-300">
+  
     <div class="w-3/4 mx-auto bg-white shadow-md rounded-md overflow-hidden">
       <div class="px-6 py-4">
         <div class="p-4 flex justify-center items-center">
@@ -57,6 +44,21 @@
           <p class="text-gray-600">Email: {{$employee->employee_email}}</p>
           <p class="text-gray-600">No.Telp : {{$employee->employee_phone}}</p>
         </div>
+        <div class="button-container">
+          <div class="flex justify-end">
+            <div>
+              <a href="/edit-emp/{{$employee->id}}">
+              <button class="rounded-full bg-yellow-400 hover:bg-white hover:text-yellow-400 hover:outline hover:outline-yellow-400 outline-2 transition-all  ml-2 px-3 py-1 text-center text-white"> <x-far-edit class=" w-6 h-6" /></button></a>
+            </div>
+            <div x-data="{ open: false }">
+              <button @click="open = true" class="rounded-full bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all  ml-2 px-3 py-1 text-center text-white"> <x-feathericon-alert-triangle class=" w-6 h-6" /> </button>
+              <div wire:model='' x-show="open">
+                @livewire('deactivate-employee',['employee'=>$employee])
+              </div>
+            </div>
+          </div>
+       
+      </div>
       </div>
     </div>
   </div>

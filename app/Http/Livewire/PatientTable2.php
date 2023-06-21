@@ -110,11 +110,12 @@ final class PatientTable2 extends PowerGridComponent
     {
         return [
             Column::make('Id', 'id'),
-            Column::make('Name', 'patient_name')
+            Column::make('Nama', 'patient_name')
                 ->searchable(),
-            Column::make('Gender', 'patient_gender')
-            ,
-            Column::make('Created at', 'created_at_formatted', 'created_at')
+            Column::make('Gender', 'patient_gender'),
+            Column::make('Alamat', 'patient_address'),
+            Column::make('No. Telepon', 'patient_phone'),
+            Column::make(' Tanggal Terdaftar', 'created_at_formatted', 'created_at')
                 ->sortable(),
 
         ];

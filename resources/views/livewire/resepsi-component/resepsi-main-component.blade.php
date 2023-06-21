@@ -81,10 +81,17 @@
 
     <div id="container-items-atas" class="  mt-20 xl:flex  justify-center h-fit">
       @if ($history and $antrian)
+      <div class="lg:w-5/12">
         @livewire('antrian-list',['antrian'=>$antrian,'history'=>$history,'q_type'=>'on_the_spot'])
-      @endif
+      </div>
+      <div class="md:w-5/12">
+        @livewire('antrian-list',['antrian'=>$antrian,'history'=>$history,'q_type'=>'scheduled'])
+      </div>
+        
+      
 
-      @livewire('antrian-list',['antrian'=>$antrian,'history'=>$history,'q_type'=>'scheduled'])
+      
+      @endif
     </div>
 
     {{-- ///////////////////////////////////// Container Bawah //////////////////////////////////////--}}
