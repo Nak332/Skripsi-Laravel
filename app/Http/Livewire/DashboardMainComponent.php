@@ -25,6 +25,20 @@ class DashboardMainComponent extends Component
         ->whereNotNull('next_dose')
         ->pluck('id');
     }
+    public function updated()
+    {
+        $this->refreshData();
+    }
+
+    public function refreshData()
+    {
+        $this->currentdate = Carbon::now()->format('Y-m-d');
+    
+        $this->vaksin_list =Vaksin::where('next_dose', '>', $this->currentdate)
+        ->whereNotNull('next_dose')
+        ->pluck('id');
+    }
+
     public function render()
     {
         return view('livewire.dashboard.dashboard-main-component');
