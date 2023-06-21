@@ -19,13 +19,13 @@
                     </div>
                  </div>
                  <input type="text" name="patient_id" id="patient_id" hidden value="{{$selected_patient['id']}}">
-                 @error('patient_id')
-                    <div class="error text-red-600">{{ $message }}</div>
-                    @enderror
+            
                 </div>
 
               @endif
-
+              @error('patient_id')
+              <div class="error text-red-600">{{ $message }}</div>
+              @enderror
             </div>
             <div class="mb-4">
               <label for="vaccination_date" class="block text-gray-700 text-sm font-medium mb-2">Tanggal vaksinasi</label>
