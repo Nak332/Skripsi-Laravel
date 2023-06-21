@@ -20,7 +20,7 @@
           <div class="flex mb-2">
             <p class="block font-bold" for="name">Name : </p><p class="ml-2 truncate">{{$patient->patient_name}}</p>
           </div>
-          @if(Auth::user()->role=="admin" or Auth::user()->role=="dokter" )
+          @if(Auth::user()->role=="admin" or Auth::user()->role=="Dokter" or Auth::user()->role=="Resepsionis" )
           <div class="flex mb-2">
             <p class="block font-bold" for="nik">NIK : </p><p class="ml-2 truncate">{{$patient->patient_NIK}}</p>
           </div>
@@ -131,13 +131,13 @@
 
           <div class="overflow-y-auto h-96 max-h-96">
 
-            @if (!$RekamMedis->first())
+            @if (!$Vaksin->first())
             <div class=" mt-8 flex justify-center">
               <p class="font-bold"> Riwayat pasien ini masih kosong</p>
             </div>  
             @else
               @foreach ($Vaksin as $V)
-                <div class="p-4 rounded-lg text-black transition-all cursor-pointer  ">
+                <div class="p-4 rounded-lg text-black transition-all bg-gray-300">
                 <p class=" truncate font-bold">{{$V->created_at}}</p>
                 <p class="truncate">Nama Vaksin: {{$V->vaccine_name}}</p>
                 <p class="truncate">Tanggal Vaksinasi: {{$V->vaccination_date}}</p>
