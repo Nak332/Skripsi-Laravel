@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Klinik Sehat - @yield('title')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    @include('sweetalert::alert')
     <style>
         [x-cloak] { display: none !important; }
     </style>

@@ -105,7 +105,7 @@ Route::get('daftar-obat', function () {
 });
 
 Route::get('tambah-obat', function () {
-    return view('tambah-obat-page');
+    return view('form-obat');
 });
 
 Route::get('/logout', [UserController::class, 'logout']);

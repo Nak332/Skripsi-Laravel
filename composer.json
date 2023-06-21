@@ -22,6 +22,7 @@
         "owenvoke/blade-fontawesome": "^2.3",
         "power-components/livewire-powergrid": "^4.6",
         "rappasoft/laravel-livewire-tables": "^2.14",
+        "realrashid/sweet-alert": "^7.0",
         "ryangjchandler/blade-tabler-icons": "^1.5",
         "select2/select2": "^4.0",
         "wire-elements/modal": "^1.0"

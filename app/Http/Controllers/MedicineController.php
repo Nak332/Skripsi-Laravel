@@ -7,6 +7,7 @@ use App\Models\MedicineDetail;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MedicineController extends Controller
 {
@@ -61,6 +62,7 @@ class MedicineController extends Controller
         $medicineDetail->medicine_stock = $request->medicine_stock;
         $medicineDetail->medicine_expired_date = $request->medicine_expired_date;
         $medicineDetail->save();
+        Alert::toast('Sukses menambah obat!', 'success');
         return redirect('/daftar-obat');
     }
 
