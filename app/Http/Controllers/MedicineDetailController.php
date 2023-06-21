@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MedicineDetail;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MedicineDetailController extends Controller
 {
@@ -29,7 +30,7 @@ class MedicineDetailController extends Controller
             ]);
         }
 
-
+        Alert::toast('Sukses menambah stok obat!', 'success');
 
         return redirect()->back();
     }
@@ -46,6 +47,7 @@ class MedicineDetailController extends Controller
         'medicine_stock' => $request->medicine_stock,
         'medicine_expired_date' => $request->medicine_expired_date
         ]);
+        Alert::toast('Sukses mengedit stok obat!', 'success');
         return back();
     }
 
@@ -53,7 +55,8 @@ class MedicineDetailController extends Controller
     {
         $medicineDelete = MedicineDetail::find($id);
         $medicineDelete->delete();
-
+        
+        Alert::toast('Sukses menghapus stok obat!', 'success');
         return redirect()->back();
     }
 }

@@ -7,6 +7,7 @@ use App\Models\RekamMedis;
 use App\Models\Vaksin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PatientController extends Controller
 {
@@ -76,7 +77,7 @@ class PatientController extends Controller
         $patient->patient_emergency_contact_phone = $request->patient_emergency_contact_phone;
         $patient->has_BPJS = $request->has_BPJS;
         $patient->save();
-
+        Alert::toast('Sukses menambahkan pasien ' . $request->patient_name.' !', 'success');
         return redirect('/');
     }
 
@@ -120,6 +121,7 @@ class PatientController extends Controller
         'patient_emergency_contact_phone' => $request->patient_emergency_contact_phone,
         'has_BPJS' => $request->has_BPJS
         ]);
+        Alert::toast('Sukses mengedit pasien ' . $request->patient_name.' !', 'success');
         return redirect('/');
     }
 

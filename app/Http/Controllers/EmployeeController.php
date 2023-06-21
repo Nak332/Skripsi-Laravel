@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EmployeeController extends Controller
 {
@@ -97,7 +98,7 @@ class EmployeeController extends Controller
         $employee->save();
 
         event(new EmployeeCreated($employee));
-
+        Alert::toast('Sukses menambahkan ' . $request->employee_name . ' kedalam daftar karyawan!', 'success');
         return redirect('/resepsi');
     }
 
@@ -159,7 +160,7 @@ class EmployeeController extends Controller
         Log::alert('berjalan2');
 
         event(new RoleChanged($employeeUpdate));
-
+        Alert::toast('Sukses mengedit profil'. $request->employee_name .' !', 'success');
         return redirect('/');
     }
 

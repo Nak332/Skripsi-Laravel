@@ -72,6 +72,10 @@ class MedicineController extends Controller
             'medicine_name' => 'required',
             'medicine_description' =>'required',
             'medicine_price' =>'required',
+        ],[
+            'medicine_name' => 'Nama obat harus diisi',
+            'medicine_description' => 'Keterangan obat perlu diisi',
+            'medicine_price' => 'Harga obat perlu diisi'
         ]);
         $medicineUpdate = Medicine::findOrFail($id);
         $medicineUpdate->update([
@@ -79,7 +83,7 @@ class MedicineController extends Controller
         'medicine_description' => $request->medicine_description,
         'medicine_price' => $request->medicine_price
         ]);
-
+        Alert::toast('Sukses mengedit obat!', 'success');
         return redirect()->route('to.obat', ['id' => $id]);
     }
 
@@ -89,6 +93,7 @@ class MedicineController extends Controller
     $medicineDelete->delete();
     $medicineDetailDelete = MedicineDetail::where('medicine_id',$id);
     $medicineDetailDelete->delete();
+    Alert::toast('Sukses menghapus obat!', 'success');
 
 	return redirect('daftar-obat');
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vaksin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class VaksinController extends Controller
 {
@@ -60,6 +61,7 @@ class VaksinController extends Controller
         $vaksin->notes = $request->notes;
         $vaksin->next_dose = $request->next_dose;
         $vaksin->save();
+        Alert::toast('Sukses menambahkan riwayat vaksin!', 'success');
         return redirect('/resepsi');
     }
 
