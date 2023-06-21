@@ -127,7 +127,7 @@ Route::get('/reset_password', function(){
 });
 
 Route::post('pra-rekam/{id}', [AntrianController::class,'update']);
-
+Route::post('/change-password', [UserController::class,'updatePassword']);
 
 Route::get('dev', function () {
     return view('crud-sandbox');

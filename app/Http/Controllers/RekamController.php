@@ -58,8 +58,8 @@ class RekamController extends Controller
         $rekamMedis->body_temperature = $request->body_temperature;
         $rekamMedis->sistol = $request->sistol;
         $rekamMedis->diastol = $request->diastol;
-        $rekamMedis->weight -> $request->weight;
-        $rekamMedis->height -> $request->heigh;
+        $rekamMedis->weight = $request->weight;
+        $rekamMedis->height = $request->height;
         $rekamMedis->blood_sugar = $request->blood_sugar;
         $rekamMedis->pulse = $request->pulse;
         $rekamMedis->anamnesis = $request->anamnesis;
