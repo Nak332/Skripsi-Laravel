@@ -24,7 +24,7 @@
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 font-bold mb-2" for="email">
-              Password
+              New Password
             </label>
             <input
               class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -32,7 +32,7 @@
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 font-bold mb-2" for="email">
-              Confirm_password
+              Confirm password
             </label>
             <input
               class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -49,11 +49,7 @@
             </button>
           </div>
         </form>
-        <div class="mt-4">
-          <p class="text-center text-sm text-gray-600">
-            message random <a class="text-blue-500 hover:text-blue-700" href="#">hyperlinkrandom</a>.
-          </p>
-        </div>
+        
       </div>
     </div>
   </div>

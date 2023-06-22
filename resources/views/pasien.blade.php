@@ -53,6 +53,9 @@
           <div class="flex mb-2">
             <p class="block font-bold" for="dob">Tanggal Lahir : </p><p class="ml-2 truncate"> {{$patient->patient_DOB}}</p>
           </div>
+          <div class="flex mb-2">
+            <p class="block font-bold" for="dob">Tempat Lahir : </p><p class="ml-2 truncate"> {{$patient->patient_POB}}</p>
+          </div>
 
         </div>
         <div class="py-4">
