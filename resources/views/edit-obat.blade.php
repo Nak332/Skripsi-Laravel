@@ -24,7 +24,7 @@
                 @enderror
                 <div class="mb-4">
                     <label for="medicine_description" class="block text-gray-700 text-sm font-medium mb-2">Deskripsi</label>
-                    <textarea rows="2" id="medicine_description" name="medicine_description" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" value="{{$medicine->medicine_description}}" placeholder="Deskripsi obat"></textarea>
+                    <textarea rows="2" id="medicine_description" name="medicine_description" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Deskripsi obat">{{$medicine->medicine_description}}</textarea>
                     @error('medicine_description')
                     <div class="error text-red-600">{{ $message }}</div>
                     @enderror

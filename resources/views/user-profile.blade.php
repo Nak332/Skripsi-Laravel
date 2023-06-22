@@ -8,9 +8,9 @@
 
 <div class="bg-gray-300">
 
-<div class="container mx-auto p-4 bg-gray-300">
+<div class="container h-max mx-auto p-4 bg-gray-300">
 
-<div class="min-h-screen pb-4 flex items-center justify-center bg-gray-300">
+<div class="min-h-screen flex items-center justify-center bg-gray-300">
     <div class="w-3/4 mx-auto bg-white shadow-md rounded-md overflow-hidden">
       <div class="px-6 py-4">
         <div class="p-4 flex justify-center items-center">
@@ -44,8 +44,9 @@
         </div>
       </div>
     </div>
+    
   </div>
-  <div class="px-2 flex mt-4 justify-center">
+  <div class="px-2 flex mb-5 justify-center">
     <a href="/change-password">
     <button type="submit" class="bg-gray-700 hover:bg-white hover:text-gray-700 hover:outline hover:outline-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 outline-2 transition-all text-center text-white ">Change Password</button>
     </a>
