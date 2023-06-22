@@ -4,7 +4,7 @@
 
 @section('content')
 
-@extends('layouts.navigation-bar')
+
 
 <div class="bg-gray-200">
 <div class="min-h-screen flex flex-col items-center justify-center">
