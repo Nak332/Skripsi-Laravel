@@ -45,7 +45,7 @@ class EmployeeController extends Controller
         $limaBelas = Date::now()->subYears(15)->format('Y-m-d');
         $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
-            'employee_name' =>'required|max:50|regex:/^[a-zA-Z\s]+$/', //|alpha|max:25
+            'employee_name' =>'required|max:50|regex:/^[a-zA-Z.\'\s]+$/', //|alpha|max:25
             'employee_job' => 'required',
             'employee_phone' => 'required',
             'employee_gender' => 'required',
@@ -57,7 +57,7 @@ class EmployeeController extends Controller
         ],[
             'image' => 'Gambar yang dimasukkan harus dalam format jpeg atau png atau jpg atau svg',
             'employee_name' =>'Nama harus ditambahkan',
-            'employee_name.regex' =>'Nama hanya boleh berisikan alfabet',
+            'employee_name.regex' =>'Nama hanya boleh berisikan alfabet, titik dan tanda kutip',
             'employee_name.max' =>'Nama maksimal 50 huruf',
             'employee_job' => 'Pekerjaan harus ditambahkan',
             'employee_phone' => 'Nomor telepon harus ditambahkan',
@@ -107,7 +107,7 @@ class EmployeeController extends Controller
         $limaBelas = Date::now()->subYears(15)->format('Y-m-d');
         $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
-            'employee_name' =>'required|max:50|regex:/^[a-zA-Z\s]+$/', //|alpha|max:25
+            'employee_name' =>'required|max:50|regex:/^[a-zA-Z.\'\s]+$/', //|alpha|max:25
             'employee_job' => 'required',
             'employee_phone' => 'required',
             'employee_gender' => 'required',
@@ -119,7 +119,7 @@ class EmployeeController extends Controller
         ],[
             'image' => 'Gambar yang dimasukkan harus dalam format jpeg atau png atau jpg atau svg',
             'employee_name' =>'Nama harus ditambahkan',
-            'employee_name.regex' =>'Nama hanya boleh berisikan alfabet',
+            'employee_name.regex' =>'Nama hanya boleh berisikan alfabet, titik dan koma',
             'employee_name.max' =>'Nama maksimal 50 huruf',
             'employee_job' => 'Pekerjaan harus ditambahkan',
             'employee_phone' => 'Nomor telepon harus ditambahkan',
