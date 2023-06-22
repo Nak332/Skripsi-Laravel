@@ -16,7 +16,7 @@
     <div class="w-3/4 mx-auto bg-white shadow-md rounded-md overflow-hidden">
       <div class="px-6 py-4">
         <div class="p-4 flex justify-center items-center">
-            <img class="w-32 h-32 rounded-full mr-4" src="profile-picture.jpg" alt="Profile Picture">
+            <img class="w-32 h-32 rounded-full mr-4" src="{{ asset("images/" . $employee->employee_photo) }}" alt="Profile Picture">
             <div>
               <h2 class="text-2xl font-semibold">{{$employee->employee_name}}</h2>
               <p class="text-gray-600">{{$employee->employee_job}}</p>
