@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Rekam medis')
+@section('title','Tambah Rekam medis')
 
 @section('content')
 
@@ -106,3 +106,6 @@
 
 
 @stop
+@section('footer')
+  @include('layouts.footer')
+@endsection

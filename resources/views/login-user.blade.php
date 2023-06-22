@@ -1,7 +1,7 @@
 
 @extends('layouts.master')
 
-@section('title','Resepsi')
+@section('title','Login')
 
 @section('content')
 

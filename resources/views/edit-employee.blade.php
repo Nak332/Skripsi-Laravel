@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Employee Register')
+@section('title','Edit Karyawan')
 
 @section('content')
 
@@ -148,3 +148,6 @@
 
 
 @stop
+@section('footer')
+  @include('layouts.footer')
+@endsection

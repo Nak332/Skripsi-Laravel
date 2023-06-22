@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Rekam medis')
+@section('title','Tambah Rekam medis')
 
 @section('content')
 
@@ -11,3 +11,6 @@
 </div>
 
 @stop
+@section('footer')
+  @include('layouts.footer')
+@endsection

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Profil')
+@section('title','Profil User')
 
 @section('content')
 
@@ -54,3 +54,6 @@
 </div>
 </div>
 @stop
+@section('footer')
+  @include('layouts.footer')
+@endsection

@@ -106,3 +106,6 @@
 
 
 @stop
+@section('footer')
+  @include('layouts.footer')
+@endsection
