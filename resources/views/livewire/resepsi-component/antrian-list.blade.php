@@ -57,12 +57,12 @@
                                                     <x-fas-up-long class="w-4 h-4" />
                                                 </button>
                                             </div>
-                                            <form action="/hapus-antrian/{{$a->id}}" method="post" class="w-fit">
-                                                @csrf
-                                                <button class="bg-red-500 hover:bg-white hover:text-red-500 transition-all text-white p-2 rounded" title="Hapus antrian pasien ini">
+                                            {{-- <form action="/hapus-antrian/{{$a->id}}" method="post" class="w-fit">
+                                                @csrf --}}
+                                                <button onclick="Livewire.emit('openModal', 'delete-antrian', {{json_encode(['antrian' => $a->id])}})" wire:click="$emit('refreshComponent')" class="bg-red-500 hover:bg-white hover:text-red-500 transition-all text-white p-2 rounded" title="Hapus antrian pasien ini">
                                                     <x-feathericon-x class="w-4 h-4" />
                                                 </button>
-                                            </form>
+                                            {{-- </form> --}}
                                         </div>
                                     </div>
 

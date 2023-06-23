@@ -23,6 +23,7 @@ class AntrianController extends Controller
     	$antrian = Appointment::all();
         $history = AppointmentHistory::whereDate('created_at',  Carbon::today()->toDateString())->get();
     	return view('resepsi', compact(['antrian','history']));
+    
     }
 
     public function insert(Request $request)
@@ -96,6 +97,8 @@ class AntrianController extends Controller
 
 public function delete($id)
 {
+
+
     $antrianDelete = Appointment::findOrFail($id);
     event(new antrianDelete($antrianDelete));
     $antrianDelete->delete();

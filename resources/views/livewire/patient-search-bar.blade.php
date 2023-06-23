@@ -16,9 +16,11 @@
                     <div class="space-y-2">
                         <p class="text-red-500 ">Pasien tidak ditemukan</p>
                         
-                        <button class="bg-green-500 text-white hover:bg-white hover:text-green-500 hover:outline-green-500   transition-all rounded p-2  font-bold">
-                            + Pasien baru
-                        </button>
+                        <form action="/tambah-pasien" method="GET">
+                            <button class="bg-green-500 text-white hover:bg-white hover:text-green-500 hover:outline-green-500   transition-all rounded p-2  font-bold">
+                                + Pasien baru
+                            </button>
+                        </form>
 
                     </div>
                     
