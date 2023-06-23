@@ -5,15 +5,10 @@
 @section('content')
 
 @extends('layouts.navigation-bar')
-
-<div class="bg-gray-300">
   
-<div class="min-h-screen container mx-auto p-4 bg-gray-300">
+<div class="flex-inline h-max pt-5 py-5 bg-gray-300">
   
-  
-<div class=" pb-4 flex items-center justify-center bg-gray-300">
-  
-    <div class="w-3/4 mx-auto bg-white shadow-md rounded-md overflow-hidden">
+    <div class="w-3/4 mx-auto mt-10 bg-white shadow-md rounded-md overflow-hidden">
       <div class="px-6 py-4">
         <div class="p-4 flex justify-center items-center">
             <img class="w-32 h-32 rounded-full mr-4" src="{{ asset("images/" . $employee->employee_photo) }}" alt="Profile Picture">
@@ -24,15 +19,16 @@
             
           </div>
         
-        <div class="mt-4">
-          <h3 class="text-lg font-medium">Informasi</h3>
-          <ul class="mt-2 list-disc list-inside text-gray-600">
-            <li>Jenis Kelamin: {{$employee->employee_gender}}</li>
-            <li>NIK: {{$employee->employee_NIK}}</li>
-            <li>DOB: {{$employee->employee_DOB}}</li>
-            <li>POB: {{$employee->employee_POB}}</li>
-          </ul>
-        </div>
+          <div class="mt-4">
+            <h3 class="text-lg font-medium">Informasi</h3>
+            <ul class="mt-2 text-gray-600">
+              <li><span class="font-semibold">Jenis Kelamin : </span>{{$mployee->employee_gender}}</li>
+              <li><span class="font-semibold">NIK :</span> {{$employee->employee_NIK}}</li>
+              <li><span class="font-semibold">DOB : </span>{{$employee->employee_DOB}}</li>
+              <li><span class="font-semibold">POB :</span> {{$employee->employee_POB}}</li>
+            </ul>
+          </div>
+          <div class="mt-4">
         <div class="mt-4">
             <h3 class="text-lg font-medium">Alamat</h3>
             <p class="text-gray-600">{{$employee->employee_address}}</p>
@@ -41,8 +37,8 @@
 
         <div class="mt-4">
           <h3 class="text-lg font-medium">Contact</h3>
-          <p class="text-gray-600">Email: {{$employee->employee_email}}</p>
-          <p class="text-gray-600">No.Telp : {{$employee->employee_phone}}</p>
+          <p class="text-gray-600"><span class="font-semibold">Email:</span> {{$employee->employee_email}}</p>
+          <p class="text-gray-600"><span class="font-semibold">No.Telp :</span> {{$employee->employee_phone}}</p>
         </div>
         <div class="button-container">
           <div class="flex justify-end">
@@ -60,11 +56,10 @@
        
       </div>
       </div>
+   
+
     </div>
   </div>
-
-</div>
-</div>
 @stop
 @section('footer')
   @include('layouts.footer')
