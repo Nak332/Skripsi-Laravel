@@ -82,7 +82,7 @@
     @if ($q_type=='on_the_spot')
     <div x-data="{ open: false }">
 
-        <button @click="open = true" class="drop-shadow hover:drop-shadow-xl transition-all bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 hover:transition-all px-4 rounded">Tambah</button>
+        <button @click="open = true" class="rounded-lg font-bold bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all  text-sm px-5 py-2.5 mr-2 mb-2 text-center text-white">Tambah</button>
         <div wire:model='patients' x-show="open">
             @livewire('tambah-antrian-modal',['patients'=>$patients])
         </div>

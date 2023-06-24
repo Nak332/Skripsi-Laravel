@@ -39,15 +39,20 @@
           <p class="text-gray-600"><span class="font-semibold">No.Telp :</span> {{Auth::user()->Employee->employee_phone}}</p>
         </div>
       </div>
+<div class="button-container">
+
+  <div class="w-3/4 h-full mx-auto py-3 flex justify-center">
+    <div x-data="{ open: false }">
+      <button @click="open = true" class="rounded-lg font-medium bg-yellow-400 hover:bg-white hover:text-yellow-400 hover:outline hover:outline-yellow-400 outline-2 transition-all  text-sm px-5 py-2.5 mr-2 mb-2 text-center text-white"> Change Password </button>
+      <div x-show="open">
+        @livewire('change-password')
+      </div>
+  </div>
+</div>
+
     </div>
     
-    <div class="w-3/4 h-full mx-auto mt-10 flex justify-center">
-      <div x-data="{ open: false }">
-        <button @click="open = true" class="rounded-lg font-medium bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all  text-sm px-5 py-2.5 mr-2 mb-2 text-center text-white"> Change Password </button>
-        <div x-show="open">
-          @livewire('change-password')
-        </div>
-    </div>
+    
         
   </div>
   

@@ -28,10 +28,11 @@
           </table>
           <div class="px-2 flex mt-4 justify-start">
             <a href="/edit-obat/{{$medicine->id}}/edit">
-            <button type="submit" class="bg-gray-700 hover:bg-white hover:text-gray-700 hover:outline hover:outline-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 outline-2 transition-all text-center text-white ">Edit</button>
+            <button type="submit" class="rounded-lg font-bold bg-yellow-400 hover:bg-white hover:text-yellow-400 hover:outline hover:outline-yellow-400 outline-2 transition-all text-sm px-5 py-2.5 mr-2 mb-2 text-center text-white">Edit</button>
             </a>
+            <div class="px-1"></div>
             <div x-data="{ open: false }">
-              <button @click="open = true" class="rounded-lg font-medium bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all  text-sm px-5 py-2.5 mr-2 mb-2 text-center text-white"> Delete </button>
+              <button @click="open = true" class="rounded-lg font-medium bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all text-sm px-5 py-2.5 mr-2 mb-2 text-center text-white"> Delete </button>
               <div x-show="open">
                 @livewire('delete-obat',['medicine'=>$medicine])
               </div>
@@ -128,7 +129,7 @@
         @endif
         <hr class="">
         <div class="flex justify-start pt-2" x-data="{ open: false }">
-          <button @click="open = true" class="bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-1 text-white items-center flex font-bold py-2 px-2 rounded transition-all">
+          <button @click="open = true" class="rounded-lg bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-1 text-white items-center flex font-bold py-2 px-3 transition-all">
             <x-ri-add-fill class="h-4 w-4"/>
             <p class="pl-2">Tambah Stok</p>
           </button>

@@ -29,9 +29,10 @@
 
 
                     </div>
-                    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                    <button @click="open = false" type="submit" class="mt-3 inline-flex w-full justify-center rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-700 sm:mt-0 sm:w-auto">Hapus</button>
-                    <button @click="open = false" type="button" class="mt-3 mr-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
+                    <div class="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                    <button @click="open = false" type="submit" class="rounded-lg font-medium bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all text-sm px-4 py-2.5 mr-2 mb-2 text-center text-white">Hapus</button>
+                    <div class="px-1"></div>
+                    <button @click="open = false" type="button" class="rounded-lg font-medium bg-black hover:bg-white hover:text-black hover:outline hover:outline-black outline-2 transition-all text-sm px-4 py-2.5 mr-2 mb-2 text-center text-white">Cancel</button>
                     </div>
 
                         {{-- <input wire:model='selected_patient' type="text"> --}}

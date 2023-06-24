@@ -28,7 +28,7 @@
           </div>
           <div class="flex items-center justify-between">
             <button
-              class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              class="rounded-lg font-medium bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all  text-sm px-5 py-2.5 mr-2 mb-2 text-center text-white"
               type="submit">
               Reset Password
             </button>

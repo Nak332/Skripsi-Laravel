@@ -100,7 +100,7 @@
 
 
                   <div class="flex justify-center">
-                    <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mt-3 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Submit</button>
+                    <button type="submit" class="rounded-lg font-medium bg-yellow-400 hover:bg-white hover:text-yellow-400 hover:outline hover:outline-yellow-400 outline-2 transition-all px-5 py-2.5 mr-2 mb-2 text-center text-white">Update</button>
                 </div>
               </form>
             </div>
@@ -131,7 +131,7 @@
                 id="password_new_confirmation" name="password_new_confirmation" type="password" placeholder="" required>
             </div>
             <div class="flex w-full mx-auto items-center justify-center">
-               <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mt-3 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Submit</button>
+               <button type="submit" class="rounded-lg font-medium bg-yellow-400 hover:bg-white hover:text-yellow-400 hover:outline hover:outline-yellow-400 outline-2 transition-all px-5 py-2.5 mr-2 mb-2 text-center text-white">Change Password</button>
           </div>
         </div>
       </div>

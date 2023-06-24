@@ -16,7 +16,7 @@
     <div class="flex justify-center pt-12">
         <div class="w-4/5">
             <form action="/tambah-pasien" method="get">
-                <button class="bg-green-500 text-white font-bold rounded-lg p-4 "> + Tambah Pasien</button>
+                <button class="rounded-lg font-bold bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all px-5 py-3 mr-2 mb-2 text-center text-white "> + Tambah Pasien</button>
             </form>
 
         </div>

@@ -159,7 +159,7 @@ final class MedicineDetailTable extends PowerGridComponent
     {
        return [
            Button::make('redirect','Open')
-                ->class('bg-green-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+                ->class('rounded-lg font-bold bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all  text-sm px-3 py-2 mr-2 mb-2 text-center text-white')
                 ->route('to.obat',['id'=>'id'])
         ];
     }

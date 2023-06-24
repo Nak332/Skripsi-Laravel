@@ -13,6 +13,9 @@ class MedicineDetailController extends Controller
         $request->validate([
             'medicine_stock' =>'required',
             'medicine_expired_date' =>'required',
+        ],[
+            'medicine_stock' => 'Masukkan jumlah stok',
+            'medicine_expired_date' => 'Masukkan tanggal kadaluarsa'
         ]);
 
         $obat = MedicineDetail::where('medicine_expired_date',$request->medicine_expired_date)->first();
@@ -40,6 +43,9 @@ class MedicineDetailController extends Controller
         $request->validate([
             'medicine_stock' =>'required',
             'medicine_expired_date' =>'required',
+        ],[
+            'medicine_stock' => 'Masukkan jumlah stok',
+            'medicine_expired_date' => 'Masukkan tanggal kadaluarsa'
         ]);
         $medicineUpdate = MedicineDetail::findOrFail($id);
         $medicineUpdate->update([

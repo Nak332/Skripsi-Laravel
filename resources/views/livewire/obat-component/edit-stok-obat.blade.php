@@ -33,6 +33,7 @@
                             <label class="block mb-2 text-sm font-medium text-gray-900 " for="patient_id">Tanggal Kadaluarsa</label>
 
                             <input type="date" name="medicine_expired_date" id="medicine_expired_date" class='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300' wire:model='expiry' value="{{$medicineDetail->medicine_expired_date}}">
+                            @error('medicine_expired_date') <span class="error text-red-500">{{$message}}</span> @enderror
                             <br><br>
                         </div>
                         <div>
@@ -40,12 +41,14 @@
                             <input wire:model='currentStock' type="number" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="medicine_stock" id="medicine_stock"
                              value="{{$medicineDetail->medicine_stock}}">
                         </div>
+                        @error('medicine_stock') <span class="error text-red-500">{{$message}}</span> @enderror
 
 
                     </div>
-                    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                    <button @click="open = false" type="submit" class="hover:outline hover:outline-1 hover:outline-blue-600 hover:bg-white hover:text-blue-600 transition-all inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm  sm:ml-3 sm:w-auto">Update</button>
-                    <button @click="open = false" type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
+                    <div class="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                    <button @click="open = false" type="submit" class="rounded-lg font-medium bg-yellow-400 hover:bg-white hover:text-yellow-400 hover:outline hover:outline-yellow-400 outline-2 transition-all text-sm px-4 py-2.5 mr-2 mb-2 text-center text-white">Update</button>
+                    <div class="px-1"></div>
+                    <button @click="open = false" type="button" class="rounded-lg font-medium bg-black hover:bg-white hover:text-black hover:outline hover:outline-black outline-2 transition-all text-sm px-4 py-2.5 mr-2 mb-2 text-center text-white">Cancel</button>
                     </div>
 
                         {{-- <input wire:model='selected_patient' type="text"> --}}
