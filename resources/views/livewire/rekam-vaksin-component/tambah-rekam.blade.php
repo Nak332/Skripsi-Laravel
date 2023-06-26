@@ -39,7 +39,7 @@
                     <div>
                        <p class="py-3 px-2 truncate ">
 
-                          {{$selected_patient->lastAppointment()->created_at}}
+                          {{$selected_patient->lastAppointment()['created_at']}}
                           <div wire:click="$emit('openModal','rekam-summary',{{ json_encode(['selected_patient' => $selected_patient]) }})" class="bg-green-200 cursor-pointer"> rekap</div>
                        </p>
                     </div>

@@ -1,4 +1,5 @@
 
+@if ($Rekam)
 <div id="main-container" class="flex items-center">
     <div wire:click='prev' class="cursor-pointer  text-white">
         <div class="text-gray-700 h-10 w-10 p-2">
@@ -187,3 +188,7 @@
     </div>
     </div>
 </div>
+
+@else
+<div class="p-12"> Pasien Belum Memiliki Rekam Medis</div>
+@endif

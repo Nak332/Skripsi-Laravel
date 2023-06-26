@@ -6,7 +6,7 @@
 
 @extends('layouts.navigation-bar')
 
-<div class="h-screen bg-gray-200">
+<div class="min-h-screen bg-gray-200">
 
 @livewire('transaction-detail-component', ['transaksi' => $transaksi, 'detil' => $detil])
 
@@ -18,3 +18,7 @@
 
 
 @stop
+@section('footer')
+  @include('layouts.footer')
+@endsection
+

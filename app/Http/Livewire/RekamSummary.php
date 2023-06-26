@@ -16,9 +16,13 @@ class RekamSummary extends ModalComponent
 
     
     public function mount(){
-        $this->RekamAll = RekamMedis::where('patient_id',$this->selected_patient)->get();
+        if(RekamMedis::where('patient_id',$this->selected_patient)->count() > 0){
+            $this->RekamAll = RekamMedis::where('patient_id',$this->selected_patient)->get();
+        
         $this->Rekam = $this->RekamAll[$this->index];
         $this->limit = RekamMedis::where('patient_id',$this->selected_patient)->count() -1 ;
+        }
+        
     }
 
     public function next(){
