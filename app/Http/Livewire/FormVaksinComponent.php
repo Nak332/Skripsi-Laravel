@@ -18,7 +18,7 @@ class FormVaksinComponent extends Component
         "Dengue",
         "Difteri, Tetanus & Pertusis (DTP)",
         "Hepatitis A",
-        "Hepatitis A",
+        "Hepatitis B",
         "Hib",
         "HPV",
         "HV",

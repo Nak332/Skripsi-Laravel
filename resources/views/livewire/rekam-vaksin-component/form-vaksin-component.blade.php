@@ -38,7 +38,7 @@
             <hr>
 
             <div class="mb-4 mt-4">
-                <label for="jenis_vaksin" class="block text-gray-700 text-sm font-medium mb-2">Jenis Vaksin</label>
+                <label for="jenis_vaksin" class="block text-gray-700 text-sm font-medium mb-2 flex">Jenis Vaksin <p class="text-red-500 ml-1"> *</p></label>
                 <select  name="jenis_vaksin" id="jenis_vaksin" class="w-full px-4 py-2 border border-gray-300 rounded-md ">
                     <option hidden disabled selected class="pl-4 py-2">-- Pilih jenis vaksin --</option>
                     @foreach ($penyakit as $p)

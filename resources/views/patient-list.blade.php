@@ -10,10 +10,19 @@
 
 <div class=" bg-gray-200 min-h-screen">
     <div class="flex justify-center pt-8">
-        <h1 class="w-4/5 font-bold text-2xl">Daftar Pasien</h1>
-    </div>
+        <div class="w-4/5 flex items-end space-x-4">
+            <div class="w-14 h-14">
+                <x-carbon-hospital-bed />
+            </div>
+            <h1 class=" font-bold text-2xl">Daftar Pasien</h1>
+          </div>
+         
+        </div>
+        <div class="mt-4 flex items-center justify-center">
+          <hr class="h-0.5 w-4/5 block bg-gray-500">
+        </div>
 
-    <div class="flex justify-center pt-12">
+    <div class="flex justify-center pt-6">
         <div class="w-4/5">
             <form action="/tambah-pasien" method="get">
                 <button class="rounded-lg font-bold bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all px-5 py-3 mr-2 mb-2 text-center text-white "> + Tambah Pasien</button>
@@ -22,7 +31,7 @@
         </div>
     </div>
 
-    <div class="flex justify-center pt-12 pb-4">
+    <div class="flex justify-center pt-6 pb-4">
 
         <div class="w-4/5 h-fit">
             @livewire('patient-table2')

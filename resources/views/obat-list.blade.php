@@ -9,7 +9,16 @@
 <div id="container-main" class="bg-gray-200">
   <div class=" bg-gray-200 min-h-screen">
     <div class="flex justify-center pt-8">
-      <h1 class="w-4/5 font-bold text-2xl">Daftar Obat</h1>
+      <div class="w-4/5 flex items-center space-x-2">
+        <div class="w-10 h-10">
+          <x-ri-medicine-bottle-fill />
+        </div>
+        <h1 class=" font-bold text-2xl">Daftar Obat</h1>
+      </div>
+     
+    </div>
+    <div class="mt-4 flex items-center justify-center">
+      <hr class="h-0.5 w-4/5 block bg-gray-500">
     </div>
     
 
