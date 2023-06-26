@@ -24,7 +24,7 @@
                 @enderror
                 <div class="mb-4">
                     <label for="medicine_description" class="block text-gray-700 text-sm font-medium mb-2">Deskripsi</label>
-                    <textarea rows="2" id="medicine_description" name="medicine_description" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" value="{{$medicine->medicine_description}}" placeholder="Deskripsi obat"></textarea>
+                    <textarea rows="2" id="medicine_description" name="medicine_description" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Deskripsi obat">{{$medicine->medicine_description}}</textarea>
                     @error('medicine_description')
                     <div class="error text-red-600">{{ $message }}</div>
                     @enderror
@@ -37,7 +37,7 @@
                   @enderror
                 </div>
                   <div class="flex justify-center">
-                    <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Submit</button>
+                    <button type="submit" class="rounded-lg font-medium bg-yellow-400 hover:bg-white hover:text-yellow-400 hover:outline hover:outline-yellow-400 outline-2 transition-all px-5 py-2.5 mr-2 mb-2 text-center text-white">Update</button>
                 </div>
               </form>
             </div>
@@ -53,3 +53,6 @@
 
 
 @stop
+@section('footer')
+  @include('layouts.footer')
+@endsection

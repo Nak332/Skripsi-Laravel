@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Form Vaksin')
+@section('title','Tambah Vaksin')
 
 @extends('layouts.navigation-bar')
 
@@ -14,5 +14,7 @@
 
 
 @stop
-
+@section('footer')
+  @include('layouts.footer')
+@endsection
 

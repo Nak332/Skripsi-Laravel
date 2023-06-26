@@ -24,8 +24,15 @@
                 </div>
                 <div class="mb-4">
                   <label for="patient_gender" class="block text-gray-700 text-sm font-medium mb-2">Jenis Kelamin</label>
-                  <input type="text" id="patient_gender" name="patient_gender" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" value="{{$patient->patient_gender}}" placeholder="">
-                </div>
+                  <select name = "patient_gender" id="patient_gender" class="border border-gray-300 rounded-md p-2">
+                    <option hidden selected value="{{$patient->patient_gender}}" class="pl-4 py-2 text-gray-300">{{$patient->patient_gender}}</option>
+                    <option value="Pria" class="pl-4 py-2">Pria</option>
+                    <option value="Wanita" class="pl-4 py-2">Wanita</option>
+                  </select>
+                  @error('patient_gender')
+                  <div class="error text-red-600">{{ $message }}</div>
+                  @enderror
+
                 <div class="mb-4">
                   <label for="patient_alias" class="block text-gray-700 text-sm font-medium mb-2">Nama alias</label>
                   <input type="text" id="patient_alias" name="patient_alias" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" value="{{$patient->patient_alias}}" placeholder="">
@@ -91,7 +98,7 @@
                       </div>
 
                   <div class="flex justify-center">
-                    <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Submit</button>
+                    <button type="submit" class="rounded-lg font-medium bg-yellow-400 hover:bg-white hover:text-yellow-400 hover:outline hover:outline-yellow-400 outline-2 transition-all px-5 py-2.5 mr-2 mb-2 text-center text-white">Update</button>
                 </div>
               </form>
             </div>
@@ -107,3 +114,6 @@
 
 
 @stop
+@section('footer')
+  @include('layouts.footer')
+@endsection

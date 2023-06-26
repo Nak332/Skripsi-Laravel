@@ -1,7 +1,7 @@
 
 @extends('layouts.master')
 
-@section('title','Resepsi')
+@section('title','Login')
 
 @section('content')
 
@@ -33,7 +33,7 @@
                         </div>
 
 
-                        <button type="submit" class="w-full text-white bg-green-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-800 hover:bg-white hover:text-green-500 transition-all">Login</button>
+                        <button type="submit" class="w-full rounded-lg font-medium bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all  text-sm px-5 py-2.5 mr-2 mb-2 text-center text-white">Login</button>
                         <div class="mt-4">
                             <p class="text-center text-sm text-white">
                               Lupa password? <a class="text-blue-500 hover:text-blue-700" href="/forgot-password">Klik Disini</a>.

@@ -53,6 +53,9 @@
           <div class="flex mb-2">
             <p class="block font-bold" for="dob">Tanggal Lahir : </p><p class="ml-2 truncate"> {{$patient->patient_DOB}}</p>
           </div>
+          <div class="flex mb-2">
+            <p class="block font-bold" for="dob">Tempat Lahir : </p><p class="ml-2 truncate"> {{$patient->patient_POB}}</p>
+          </div>
 
         </div>
         <div class="py-4">
@@ -72,7 +75,7 @@
           <hr>
           <div class="flex mt-4 justify-start">
             <a href="/pasien/{{$patient->id}}/edit">
-            <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Edit</button>
+            <button type="submit" class="rounded-lg font-bold bg-yellow-400 hover:bg-white hover:text-yellow-400 hover:outline hover:outline-yellow-400 outline-2 transition-all px-5 py-2.5 mr-2 mb-2 text-center text-white">Edit</button>
             </a>
           </div>
         </div>
@@ -87,8 +90,8 @@
           <div class="flex justify-between pb-6">
             <h1 class="text-2xl font-bold mb-4 truncate">Rekam Medis </h1>
             <form action="/form-rekam/{{$patient->id}}" method="get">
-                <button class="text-xl text-white font-bold bg-green-500 hover:bg-green-700 transition-all rounded-lg p-2">
-                    <h1 >+ Tambah Rekam</h1>
+                <button class="rounded-lg font-bold bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all px-5 py-2.5 mr-2 mb-2 text-center text-white">
+                    <h1>+ Tambah Rekam</h1>
                   </button>
             </form>
 
@@ -122,7 +125,7 @@
           <div class="flex justify-between pb-6">
             <h1 class="text-2xl font-bold mb-4 truncate">Riwayat Imunisasi </h1>
             <form action="/tambah-vaksin/{{$patient->id}}" method="get">
-                <button class="text-xl text-white font-bold bg-green-500 hover:bg-green-700 transition-all rounded-lg p-2">
+                <button class="rounded-lg font-bold bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all px-5 py-2.5 mr-2 mb-2 text-center text-white">
                     <h1 >+ Tambah Riwayat</h1>
                   </button>
             </form>
@@ -170,3 +173,6 @@
 
 
 @stop
+@section('footer')
+  @include('layouts.footer')
+@endsection

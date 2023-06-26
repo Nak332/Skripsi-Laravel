@@ -4,7 +4,7 @@
 
 @section('content')
 
-@extends('layouts.navigation-bar')
+
 
 <div class="bg-gray-200">
 <div class="min-h-screen flex flex-col items-center justify-center">
@@ -24,7 +24,7 @@
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 font-bold mb-2" for="email">
-              Password
+              New Password
             </label>
             <input
               class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -32,7 +32,7 @@
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 font-bold mb-2" for="email">
-              Confirm_password
+              Confirm password
             </label>
             <input
               class="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -43,17 +43,13 @@
           id="token" name="token" type="text" hidden value="{{request()->route('token')}}" required>
           <div class="flex items-center justify-between">
             <button
-              class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              class="rounded-lg font-medium bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all  text-sm px-5 py-2.5 mr-2 mb-2 text-center text-white"
               type="submit">
               Enter
             </button>
           </div>
         </form>
-        <div class="mt-4">
-          <p class="text-center text-sm text-gray-600">
-            message random <a class="text-blue-500 hover:text-blue-700" href="#">hyperlinkrandom</a>.
-          </p>
-        </div>
+        
       </div>
     </div>
   </div>
