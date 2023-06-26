@@ -29,11 +29,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/trs',function(){
-    return view('transaksi.transaksi');
-});
+// Route::get('/trs',function(){
+//     return view('transaksi.transaksi');
+// });
 
-Route::get('/trs/{id}',[TransactionController::class,'transaksi']);
+Route::get('/transaksi/{id}',[TransactionController::class,'transaksi'])->name('to.transaction');
 
 
 Route::middleware(['isLogin'])->group(function () {
@@ -158,15 +158,6 @@ Route::get('daftar-transaksi', function () {
 });
 
 
-
-
-
-
-
-
-
-
-
 // Route::get('pasien', function () {
 //     return view('pasien');
 // });
@@ -178,7 +169,7 @@ Route::get('daftar-transaksi', function () {
 
 
 Route::get('daftar-rekam', function () {
-    return view('rekam-list');
+    return view('rekam-table');
 });
 
 

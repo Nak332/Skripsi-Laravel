@@ -13,6 +13,76 @@
           </button>
           <div class="hidden w-full md:inline md:w-auto pt-3" id="navbar-default">
             <ul class="ml-auto flex items-center space-x-4">
+
+                <li>
+                    <div class="container mx-auto flex items-center">
+                      <div class="flex justify-center">
+                        <div
+                            x-data="{
+                                open: false,
+                                toggle() {
+                                    if (this.open) {
+                                        return this.close()
+                                    }
+    
+                                    this.$refs.button.focus()
+    
+                                    this.open = true
+                                },
+                                close(focusAfter) {
+                                    if (! this.open) return
+    
+                                    this.open = false
+    
+                                    focusAfter && focusAfter.focus()
+                                }
+                            }"
+                            x-on:keydown.escape.prevent.stop="close($refs.button)"
+                            x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                            x-id="['dropdown-button']"
+                            class="relative"
+                        >
+                            <!-- Button -->
+                            <button
+                                x-ref="button"
+                                x-on:click="toggle()"
+                                :aria-expanded="open"
+                                :aria-controls="$id('dropdown-button')"
+                                type="button"
+                                class="max-w-xs hover:bg-gray-600 flex rounded-md items-center text-sm  text-white"
+                            >
+                            <a  class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" >Rekam Medis</a>
+    
+    
+                          
+    
+                            </button>
+    
+                            <!-- Panel -->
+                            <div
+                                x-ref="panel"
+                                x-show="open"
+                                x-transition.origin.top.left
+                                x-on:click.outside="close($refs.button)"
+                                :id="$id('dropdown-button')"
+                                style="display: none;"
+                                class="absolute left-0 mt-4 w-40 z-50 rounded-md bg-white shadow-md"
+                            >
+                            {{-- /profil-user/{{Auth::user()->employee_id}} --}}
+                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                    Tambah Rekam Sakit
+                                </a>
+    
+                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                     Tambah Rekam Vaksin
+                                </a>
+    
+                                
+    
+                            </div>
+                        </div>
+                      </div>
+                    </li>
                 
                 <li>
                     <a href="/resepsi" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" >Resepsi</a>
@@ -21,7 +91,7 @@
                     <a href="/daftar-pasien" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Pasien</a>
                 </li>
                 <li>
-                    <a href="/trs" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Transaksi</a>
+                    <a href="/daftar-transaksi" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">Transaksi</a>
                 </li>
                 <li>
                     <a href="/daftar-obat" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600">e-Obat</a>
@@ -125,7 +195,7 @@
                         </div>
                     </div>
                   </div>
-            </li>
+                </li>
             </ul>
           </div>
         </div>

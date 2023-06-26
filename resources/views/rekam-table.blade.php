@@ -9,7 +9,7 @@
 <div id="container-main" class="bg-gray-200">
   <div class=" bg-gray-200 min-h-screen">
     <div class="flex justify-center pt-8">
-      <h1 class="w-4/5 font-bold text-2xl">Daftar Obat</h1>
+      <h1 class="w-4/5 font-bold text-2xl">Daftar Rekam</h1>
     </div>
     
 
@@ -17,7 +17,7 @@
      
     <div class="flex justify-center pt-4">
         <div class="w-4/5">
-          <form action="/tambah-obat" method="get">
+          <form action="/" method="get">
             <button class="bg-green-500 text-white font-bold rounded-lg p-4 "> + Rekam</button>
         </form>
   

@@ -10,6 +10,7 @@
         "blade-ui-kit/blade-heroicons": "^2.1",
         "blade-ui-kit/blade-icons": "^1.5",
         "brunocfalcao/blade-feather-icons": "^3.0",
+        "codeat3/blade-uiw-icons": "^1.4",
         "doctrine/dbal": "^3.6",
         "guzzlehttp/guzzle": "^7.2",
         "khatabwedaa/blade-css-icons": "^1.3",

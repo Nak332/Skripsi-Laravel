@@ -6,8 +6,8 @@
 
 @extends('layouts.navigation-bar')
 
-<div class="flex-inline h-max pt-5 py-10 bg-gray-300">
-    <div class="w-3/4 mx-auto mt-10 my-10 bg-white shadow-md rounded-md overflow-hidden">
+<div class="flex-inline h-screen pt-5 py-10 bg-gray-300">
+    <div class="w-3/4 mx-auto h-fit mt-10 my-10 bg-white shadow-md rounded-md overflow-hidden">
       <div class="px-6 py-4">
         <div class="p-4 flex justify-center items-center">
             <img class="w-32 h-32 rounded-full mr-4" src="{{ asset("images/" . $employee->employee_photo) }}" alt="Profile Picture">
