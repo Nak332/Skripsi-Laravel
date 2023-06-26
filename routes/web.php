@@ -177,6 +177,9 @@ Route::get('daftar-transaksi', function () {
 
 
 
+Route::get('daftar-rekam', function () {
+    return view('rekam-list');
+});
 
 
 

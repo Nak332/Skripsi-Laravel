@@ -61,23 +61,41 @@
         </div>
         <div class="md:flex ">
             <div class="mb-4 w-1/2">
-            <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Sistol</label>
-            <div class="flex items-center p-2 text-white rounded-lg w-fit {{($Rekam->sistol > '130' or $Rekam->sistol < '100') ?  'bg-red-500'  : 'bg-green-500' }}">
-                {{-- <input type="number" name='body_temperature' id="suhu_badan" class="md:w-1/2  px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=120 > --}}
-                <p class="px-1 py-1  rounded-md resize-none"> {{$Rekam->sistol}} </p>
-                <div class=" p-1"><h1>mmHg</h1></div>
-            </div>
+                <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Sistol</label>
+                <div class="flex items-center p-2 text-white rounded-lg w-fit {{($Rekam->sistol > '130' or $Rekam->sistol < '100') ?  'bg-red-500'  : 'bg-green-500' }}">
+                    {{-- <input type="number" name='body_temperature' id="suhu_badan" class="md:w-1/2  px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=120 > --}}
+                    <p class="px-1 py-1  rounded-md resize-none"> {{$Rekam->sistol}} </p>
+                    <div class=" p-1"><h1>mmHg</h1></div>
+                </div>
             </div>
 
 
             <div class="mb-4 w-1/2">
-            <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Diastol</label>
-            <div class="flex items-center p-2 text-white rounded-lg w-fit {{($Rekam->diastol > '90' or $Rekam->diastol < '70') ?  'bg-red-500'  : 'bg-green-500' }}">
-                {{-- <input type="number" name='body_temperature' id="suhu_badan" class="md:w-1/2 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=80 > --}}
-                <p class="px-1 py-1  rounded-md resize-none"> {{$Rekam->diastol}} </p>
-                <div class="p-1"><h1>mmHg</h1></div>
+                <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Diastol</label>
+                <div class="flex items-center p-2 text-white rounded-lg w-fit {{($Rekam->diastol > '90' or $Rekam->diastol < '70') ?  'bg-red-500'  : 'bg-green-500' }}">
+                    {{-- <input type="number" name='body_temperature' id="suhu_badan" class="md:w-1/2 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=80 > --}}
+                    <p class="px-1 py-1  rounded-md resize-none"> {{$Rekam->diastol}} </p>
+                    <div class="p-1"><h1>mmHg</h1></div>
+                </div>
             </div>
+        </div>
+        <div class="md:flex ">
+            <div class="mb-4 w-1/2">
+                <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Gula Darah</label>
+                <div class="flex items-center p-2 text-black    rounded-lg w-fit bg-gray-200">
+                    {{-- <input type="number" name='body_temperature' id="suhu_badan" class="md:w-1/2  px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=120 > --}}
+                    <p class="px-1 py-1  rounded-md resize-none"> {{$Rekam->blood_sugar}} </p>
+                    <div class=" p-1"><h1>%</h1></div>
+                </div>
             </div>
+
+
+            {{-- <div class="mb-4 w-1/2">
+                <label for="suhu_badan" class="block text-gray-700 text-sm font-medium mb-2">Diastol</label>
+                <div class="flex items-center p-2 text-white rounded-lg w-fit bg-gray-200"><p class="px-1 py-1  rounded-md resize-none"> {{$Rekam->diastol}} </p>
+                    <div class="p-1"><h1>mmHg</h1></div>
+                </div>
+            </div> --}}
         </div>
         </div>
 
@@ -105,7 +123,7 @@
 
             <div class="mb-4">
                 <label for="medicine_id" class="block text-gray-700 text-sm font-medium mb-2">Preskripsi Obat</label>
-                <p class="bg-gray-200 rounded-lg p-2">Paracetamol</p>
+                <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->extra_medicine}} Paracetamol</p>
                 {{-- <input type="text" id="medicine_id" name="medicine_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Obat"> --}}
             </div>
 
