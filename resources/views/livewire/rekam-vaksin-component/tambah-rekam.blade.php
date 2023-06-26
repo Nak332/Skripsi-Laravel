@@ -146,7 +146,7 @@
                  </div>
                  <div id="med" class="mb-4  overflow-auto">
                     <label for="medicine_id" class="block text-gray-700 text-sm font-medium mb-2">Preskripsi Obat</label>
-
+                     
                     <div class="  p-2 rounded-md border border-gray-300 ">
                        @livewire('medicine-cart')
 
@@ -164,7 +164,7 @@
 
                  <div class="mb-4">
                     <label for="obat lain" class="block text-gray-700 text-sm font-medium mb-2">Obat lain</label>
-                    <textarea rows="3" name="" id="" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                    <textarea rows="3" name="extra_medicine" id="extra_medicine" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                  </div>
 
 
