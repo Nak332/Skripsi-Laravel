@@ -160,7 +160,7 @@ class EmployeeController extends Controller
         Log::alert('berjalan2');
 
         event(new RoleChanged($employeeUpdate));
-        Alert::toast('Sukses mengedit profil'. $request->employee_name .' !', 'success');
+        Alert::toast('Sukses mengedit profil '. $request->employee_name .' !', 'success');
         return redirect('/');
     }
 
