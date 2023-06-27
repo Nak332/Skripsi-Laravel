@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('extra_medicine')->nullable();
             $table->integer('medicine_id')->nullable();
             $table->integer('quantity')->nullable();
+            $table->string('dosis')->nullable();
+            $table->string('konsumsi')->nullable();
             $table->integer('price')->nullable();
             $table->timestamps();
         });

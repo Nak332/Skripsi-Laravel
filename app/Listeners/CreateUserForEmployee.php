@@ -36,7 +36,8 @@ class CreateUserForEmployee
         $changeformat = date('d-m-Y', $stringtotime);
         $deletestrip = explode('-',$changeformat);
         $addstring = implode("", $deletestrip);
-        $username = $emp->employee_name . $addstring;
+        $nama = explode(' ',$emp->employee_name);
+        $username = $nama[0] . $addstring;
         $user = new User();
         $user->name = $emp->employee_name;
         $user->username = $username;
