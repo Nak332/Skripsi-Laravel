@@ -88,10 +88,11 @@ class EmployeeController extends Controller
 
         if ($tanggallahir->first()) {
             foreach ($tanggallahir as $karyawanlama) {
+                $karyawanbenarbenarlama ='';
                 if ($karyawanlama->employee_NIK == $request->employee_NIK) {
                     $karyawanbenarbenarlama = Employees::where('id',$karyawanlama->id)->first();
                 }
-                if ($karyawanbenarbenarlama) {
+                if ($karyawanbenarbenarlama != NULL) {
                     $karyawanbenarbenarlama->update([
                         'employee_name' => $request->employee_name,
                         'employee_job' => $request->employee_job,
@@ -122,8 +123,36 @@ class EmployeeController extends Controller
                     Log::alert('berjalan2');
 
                     event(new RoleChanged($karyawanbenarbenarlama));
+                    return redirect('/resepsi');
                 }
-                return redirect('/resepsi');
+                else{
+                    if ($request->image) {
+                        $imageName = $request->employee_name. '_' . $request->employee_DOB .'_' . time().'.'.$request->image->extension();
+
+                        $request->image->move(public_path('images'), $imageName);
+                    } else {
+                        $imageName = NULL;
+                    }
+
+                    $employee = new Employees();
+                    $employee->employee_name = $request->employee_name;
+                    $employee->employee_job = $request->employee_job;
+                    $employee->employee_phone = $request->employee_phone;
+                    $employee->employee_gender = $request->employee_gender;
+                    $employee->employee_NIK = $request->employee_NIK;
+                    $employee->employee_address = $request->employee_address;
+                    $employee->employee_photo = $imageName;
+                    $employee->status = '1';
+                    $employee->employee_DOB = $request->employee_DOB;
+                    $employee->employee_POB = $request->employee_POB;
+                    $employee->employee_email = $request->employee_email;
+                    $employee->save();
+
+                    event(new EmployeeCreated($employee));
+                    Alert::toast('Sukses menambahkan ' . $request->employee_name . ' kedalam daftar karyawan!', 'success');
+                    return redirect('/resepsi');
+                }
+
             }
         } else {
             log::alert('Jalan');

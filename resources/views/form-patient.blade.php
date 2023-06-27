@@ -15,6 +15,13 @@
                     </div>
               <form method="POST" action="/tambah-pasien/tambah" enctype="multipart/form-data">
                 @csrf
+                    @if (Session::has('Duplicate'))
+                         <div class="alert alert-success">
+                            <ul>
+                                <li>{{ Session::get('Duplicate') }}</li>
+                            </ul>
+                        </div>
+                    @endif
                 <div class="mb-4">
                   <label for="patient_name" class="block text-gray-700 text-sm font-medium mb-2">Nama</label>
                   <input type="text" id="patient_name" name="patient_name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Nama Lengkap" value="{{old('patient_name')}}">
@@ -26,7 +33,7 @@
                   @enderror
                 </div>
                 <div class="mb-4">
-                  <label for="patient_gender" class="block text-gray-700 text-sm font-medium mb-2">Jenis Kelamin</label> 
+                  <label for="patient_gender" class="block text-gray-700 text-sm font-medium mb-2">Jenis Kelamin</label>
                       <input type="radio" id="pria" name="patient_gender" value="pria" class="mr-2"
                       {{ old('patient_gender') === 'pria' ? 'checked' : '' }}>
                       <label for="pria" class="mr-4">Pria</label>
@@ -40,7 +47,7 @@
                     <div class="error text-red-600">{{ $message }}</div>
                     @enderror
                 </div>
-            
+
                 <div class="mb-4">
                     <label for="patient_NIK" class="block text-gray-700 text-sm font-medium mb-2">NIK</label>
                     <input type="text" id="patient_NIK" name="patient_NIK" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="NIK" value="{{old('patient_NIK')}}">

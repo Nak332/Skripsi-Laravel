@@ -74,24 +74,54 @@ class PatientController extends Controller
                     ->with('submitted', true)
                 ;
             }
-    
 
-        $patient = new Patient;
-        $patient->patient_name = $request->patient_name;
-        $patient->patient_gender = $request->patient_gender;
-        $patient->patient_phone = $request->patient_phone;
-        $patient->patient_address = $request->patient_address;
-        $patient->patient_NIK = $request->patient_NIK;
-        $patient->patient_alias = $request->patient_alias;
-        $patient->patient_DOB = $request->patient_DOB;
-        $patient->patient_POB = $request->patient_POB;
-        $patient->patient_marital_status = $request->patient_marital_status;
-        $patient->patient_emergency_contact_name = $request->patient_emergency_contact_name;
-        $patient->patient_emergency_contact_phone = $request->patient_emergency_contact_phone;
-        $patient->has_BPJS = $request->has_BPJS;
-        $patient->save();
-        Alert::toast('Sukses menambahkan pasien ' . $request->patient_name.' !', 'success');
-        return redirect('/');
+
+            $tanggallahir = Patient::where('patient_DOB', $request->patient_DOB)->get();
+            if ($tanggallahir->first()) {
+                foreach ($tanggallahir as $pasienlama) {
+                    if ($pasienlama->patient_NIK == $request->patient_NIK) {
+                        return redirect()->back()->with('Duplicate','NIK ini sudah pernah didaftarkan sebelumnya');
+                    }
+                    else {
+                        $patient = new Patient;
+                        $patient->patient_name = $request->patient_name;
+                        $patient->patient_gender = $request->patient_gender;
+                        $patient->patient_phone = $request->patient_phone;
+                        $patient->patient_address = $request->patient_address;
+                        $patient->patient_NIK = $request->patient_NIK;
+                        $patient->patient_alias = $request->patient_alias;
+                        $patient->patient_DOB = $request->patient_DOB;
+                        $patient->patient_POB = $request->patient_POB;
+                        $patient->patient_marital_status = $request->patient_marital_status;
+                        $patient->patient_emergency_contact_name = $request->patient_emergency_contact_name;
+                        $patient->patient_emergency_contact_phone = $request->patient_emergency_contact_phone;
+                        $patient->has_BPJS = $request->has_BPJS;
+                        $patient->save();
+                        Alert::toast('Sukses menambahkan pasien ' . $request->patient_name.' !', 'success');
+                        return redirect('/');
+                    }
+                }
+            } else {
+                $patient = new Patient;
+                $patient->patient_name = $request->patient_name;
+                $patient->patient_gender = $request->patient_gender;
+                $patient->patient_phone = $request->patient_phone;
+                $patient->patient_address = $request->patient_address;
+                $patient->patient_NIK = $request->patient_NIK;
+                $patient->patient_alias = $request->patient_alias;
+                $patient->patient_DOB = $request->patient_DOB;
+                $patient->patient_POB = $request->patient_POB;
+                $patient->patient_marital_status = $request->patient_marital_status;
+                $patient->patient_emergency_contact_name = $request->patient_emergency_contact_name;
+                $patient->patient_emergency_contact_phone = $request->patient_emergency_contact_phone;
+                $patient->has_BPJS = $request->has_BPJS;
+                $patient->save();
+                Alert::toast('Sukses menambahkan pasien ' . $request->patient_name.' !', 'success');
+                return redirect('/');
+            }
+
+
+
     }
 
     public function update(Request $request, $id)
