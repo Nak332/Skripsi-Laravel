@@ -8,6 +8,7 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class MedicineController extends Controller
 {
@@ -40,7 +41,7 @@ class MedicineController extends Controller
 
     public function insert(Request $request)
     {
-        $request->validate([
+        $validate = Validator::make($request->all(), [
             'medicine_name' => 'required',
             'medicine_description' =>'required',
             'medicine_price' =>'required',
@@ -51,6 +52,26 @@ class MedicineController extends Controller
             'medicine_description' => 'Keterangan obat perlu diisi',
             'medicine_price' => 'Harga obat perlu diisi'
         ]);
+
+        if($validate->fails()){
+            return redirect()
+                ->back()
+                ->withErrors($validate)
+                ->withInput()
+                ->with('submitted', true)
+            ;
+        }
+        // $request->validate([
+        //     'medicine_name' => 'required',
+        //     'medicine_description' =>'required',
+        //     'medicine_price' =>'required',
+        //     'medicine_stock' =>'nullable',
+        //     'medicine_expired_date' =>'nullable'
+        // ],[
+        //     'medicine_name' => 'Nama obat harus diisi',
+        //     'medicine_description' => 'Keterangan obat perlu diisi',
+        //     'medicine_price' => 'Harga obat perlu diisi'
+        // ]);
 
         $medicine = new Medicine;
         $medicine->medicine_name = $request->medicine_name;
@@ -63,7 +84,7 @@ class MedicineController extends Controller
         $medicineDetail->medicine_expired_date = $request->medicine_expired_date;
         $medicineDetail->save();
         Alert::toast('Sukses menambah obat!', 'success');
-        return redirect('/daftar-obat');
+        return redirect('/daftar-obat')->with('submitted', true);;
     }
 
     public function update(Request $request, $id)

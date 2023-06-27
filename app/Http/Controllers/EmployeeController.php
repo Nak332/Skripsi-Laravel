@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class EmployeeController extends Controller
 {
@@ -44,11 +45,12 @@ class EmployeeController extends Controller
     public function insert(Request $request)
     {
         $limaBelas = Date::now()->subYears(15)->format('Y-m-d');
-        $request->validate([
+
+        $validate = Validator::make($request->all(), [
             'image' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
             'employee_name' =>'required|max:50|regex:/^[a-zA-Z.\'\s]+$/', //|alpha|max:25
             'employee_job' => 'required',
-            'employee_phone' => 'required',
+            'employee_phone' => 'required|numeric',
             'employee_gender' => 'required',
             'employee_NIK' => 'required|regex:/^\d{16}$/',
             'employee_address' => 'required',
@@ -62,6 +64,7 @@ class EmployeeController extends Controller
             'employee_name.max' =>'Nama maksimal 50 huruf',
             'employee_job' => 'Pekerjaan harus ditambahkan',
             'employee_phone' => 'Nomor telepon harus ditambahkan',
+            'employee_phone.numeric'=>'Nomor telepon hanya boleh berisi angka',
             'employee_gender' => 'Jenis Kelamin harus ditambahkan',
             'employee_NIK' => 'NIK harus diisi',
             'employee_NIK.regex' => 'NIK harus sesuai 16 digit',
@@ -71,6 +74,15 @@ class EmployeeController extends Controller
             'employee_POB' => 'Tempat lahir harus ditambahkan',
             'employee_email.email' =>'Format email salah'
         ]);
+
+        if($validate->fails()){
+            return redirect()
+                ->back()
+                ->withErrors($validate)
+                ->withInput()
+                ->with('submitted', true)
+            ;
+        }
 
         $tanggallahir = Employees::where('employee_DOB', $request->employee_DOB)->get();
 
