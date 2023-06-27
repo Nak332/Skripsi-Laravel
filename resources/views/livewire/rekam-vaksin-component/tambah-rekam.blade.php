@@ -40,7 +40,7 @@
                        <p class="py-3 px-2 truncate ">
 
                           {{$selected_patient->lastAppointment()['created_at']}}
-                          <div wire:click="$emit('openModal','rekam-summary',{{ json_encode(['selected_patient' => $selected_patient]) }})" class="bg-green-200 cursor-pointer"> rekap</div>
+                          <div wire:click="$emit('openModal','rekam-summary',{{ json_encode(['selected_patient' => $selected_patient]) }})" class=" p-2  bg-gray-700 text-white hover:text-gray-700 hover:bg-white hover:outline transition-all hover:outline-gray-700 rounded cursor-pointer w-fit"> Riwayat Kunjungan</div>
                        </p>
                     </div>
                     <input type="text" name="patient_id" id="patient_id" hidden value="{{$selected_patient['id']}}">
@@ -50,80 +50,28 @@
               </div>
               @endif
               <hr class="mt-8">
+
+             
            </div>
+
+           <div id="main_container_form" class="md:flex px-4">
+            <div id="left-side" class="w-1/2 flex flex-col justify-between p-6">
+               <div class=" flex justify-start ">
+                  <div onclick="Livewire.emit('openModal', 'rekam-tests')" class=" cursor-pointer text-white hover:text-gray-700 hover:bg-white hover:outline transition-all hover:outline-gray-700 flex mt-4 items-center space-x-2 w-fit bg-gray-700 p-3 rounded">
+                     <div class="w-6 h-6"><x-fontisto-blood-test /></div>
+                     <p class="text-md font-bold ">Hasil pemeriksaan</p>
+                  </div>
+                 
+                 </div>
+            </div>
+         </div>
            <div id="main_container_form" class="md:flex px-4">
                <div id="left-side" class="w-1/2 flex flex-col justify-between p-6">
-
-                 <div class="mb-4">
-                    <label for="hasil_anamnesis" class="block text-black text-sm font-medium mb-2">Anamnesis</label>
-                    <textarea name="anamnesis" id="anamnesis" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
-                 </div>
-                 <div class="mb-4">
-                    <label for="suhu_badan" class="block text-black text-sm font-medium mb-2">Suhu Badan</label>
-                    <div class="flex">
-                       <input type="number" name='body_temperature' step="0.1" min="25" max="45" id="body_temperature" class="md:w-1/4 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=36 >
-                       <div class=" p-3">
-                          <h1>° C</h1>
-                       </div>
-                    </div>
-                 </div>
-                 <div class="mb-4">
-                    <label for="suhu_badan" class="block text-black text-sm font-medium mb-2">Gula Darah</label>
-                    <div class="flex">
-                       <input type="number" name='blood_sugar' id="blood_sugar" class="md:w-1/4 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=2 >
-                        <div class=" p-3">
-                            <h1 class="text-xl">%</h1>
-                        </div>
-                    </div>
-                 </div>
-                   <div class="md:flex inline">
-                       <div class="mb-4 w-1/2">
-                           <label for="suhu_badan" class="block text-black text-sm font-medium mb-2">Tinggi Badan</label>
-                           <div class="flex">
-                               <input type="number" name='height' id="height" class="md:w-1/2  px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=120 >
-                               <div class=" p-3">
-                                   <h1>cm</h1>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="mb-4 w-1/2">
-                           <label for="suhu_badan" class="block text-black text-sm font-medium mb-2">Berat Badan</label>
-                           <div class="flex">
-                               <input type="number" name='weight' id="weight" class="md:w-1/2 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=80 >
-                               <div class=" p-3">
-                                   <h1>kg</h1>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-                 <div class="md:flex inline">
-                    <div class="mb-4 w-1/2">
-                       <label for="suhu_badan" class="block text-black text-sm font-medium mb-2">Sistol</label>
-                       <div class="flex">
-                          <input type="number" name='sistol' id="sistol" class="md:w-1/2  px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=120 >
-                          <div class=" p-3">
-                             <h1>mmHg</h1>
-                          </div>
-                       </div>
-                    </div>
-                    <div class="mb-4 w-1/2">
-                       <label for="suhu_badan" class="block text-black text-sm font-medium mb-2">Diastol</label>
-                       <div class="flex">
-                          <input type="number" name='diastol' id="diastol" class="md:w-1/2 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=80 >
-                          <div class=" p-3">
-                             <h1>mmHg</h1>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-
-                 <div class="mb-4">
-                  <label for="suhu_badan" class="block text-black text-sm font-medium mb-2">Denyut Nadi / Jantung</label>
-                  <div class="flex">
-                     <input type="number" name='pulse' id="pulse" class="md:w-1/4 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=70 >
-
-                     </div>
+                  <div class="mb-4">
+                     <label for="hasil_anamnesis" class="block text-black text-sm font-medium mb-2">Anamnesis</label>
+                     <textarea name="anamnesis" id="anamnesis" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                   </div>
+      
                  <div class="mb-4">
                     <label for="penatalaksaan" class="block text-black text-sm font-medium mb-2">Penatalaksanaan</label>
                     <textarea rows="3" name="follow_up_plan" id="follow_up_plan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
@@ -131,20 +79,23 @@
                  <div class="mb-4">
                   <label for="penatalaksaan" class="block text-black text-sm font-medium mb-2">Tindakan</label>
                   <textarea rows="3" name="treatment" id="treatment" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                </div>
+
+               <div class="mb-4">
+                  <label for="disease" class="block text-black text-sm font-medium mb-2">Diagnosa</label>
+                  <textarea rows="3" name="diagnosis" id="diagnosis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+               </div>
+               <div class="mb-4">
+                  <label for="note" class="block text-black text-sm font-medium mb-2">Catatan</label>
+                  <textarea id="note" name="note" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                </div>
               </div>
 
 
               <div id="right-side" class="w-1/2 flex flex-col justify-between p-6">
-                 <div class="mb-4">
-                    <label for="disease" class="block text-black text-sm font-medium mb-2">Diagnosa</label>
-                    <input type="text" name="diagnosis" id="diagnosis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
-                 </div>
+                
 
-                 <div class="mb-4">
-                    <label for="note" class="block text-black text-sm font-medium mb-2">Note</label>
-                    <textarea id="note" name="note" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
-                 </div>
+                 
                  <div id="med" class="mb-4  overflow-auto">
                     <label for="medicine_id" class="block text-black text-sm font-medium mb-2">Preskripsi Obat</label>
                      

@@ -12,6 +12,7 @@
         "brunocfalcao/blade-feather-icons": "^3.0",
         "codeat3/blade-carbon-icons": "^2.13",
         "codeat3/blade-fontisto-icons": "^1.3",
+        "codeat3/blade-line-awesome-icons": "^1.3",
         "codeat3/blade-uiw-icons": "^1.4",
         "doctrine/dbal": "^3.6",
         "guzzlehttp/guzzle": "^7.2",

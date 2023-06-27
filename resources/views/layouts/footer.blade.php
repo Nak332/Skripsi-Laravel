@@ -9,5 +9,6 @@
         </div>
         
         <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a  class="hover:underline">AMG™</a>. All Rights Reserved.</span>
+        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">Created with the TALL Stack</span>
     </div>
 </footer>
