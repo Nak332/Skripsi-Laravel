@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('appointment_id')->nullable();
             $table->string('payment')->nullable();
             $table->integer('flag');
+            $table->string('total')->nullable();
             $table->timestamps();
         });
     }

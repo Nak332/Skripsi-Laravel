@@ -9,6 +9,7 @@ use App\Listeners\CreateUserForEmployee;
 use App\Models\Employees;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Date;
@@ -71,35 +72,76 @@ class EmployeeController extends Controller
             'employee_email.email' =>'Format email salah'
         ]);
 
-        if ($request->image != NULL) {
-            $imageName = $request->employee_name. '_' . $request->employee_DOB .'_' . time().'.'.$request->image->extension();
+        $tanggallahir = Employees::where('employee_DOB', $request->employee_DOB)->get();
 
-            $request->image->move(public_path('images'), $imageName);
+        if ($tanggallahir->first()) {
+            foreach ($tanggallahir as $karyawanlama) {
+                if ($karyawanlama->employee_NIK == $request->employee_NIK) {
+                    $karyawanbenarbenarlama = Employees::where('id',$karyawanlama->id)->first();
+                }
+                if ($karyawanbenarbenarlama) {
+                    $karyawanbenarbenarlama->update([
+                        'employee_name' => $request->employee_name,
+                        'employee_job' => $request->employee_job,
+                        'employee_phone' => $request->employee_phone,
+                        'employee_gender' => $request->employee_gender,
+                        'employee_NIK' => $request->employee_NIK,
+                        'employee_address' => $request->employee_address,
+                        'employee_DOB' => $request->employee_DOB,
+                        'employee_POB' => $request->employee_POB,
+                        'employee_email' => $request->employee_email,
+                        'status' => '1'
+                    ]);
+
+                    $userlama = User::where('employee_id',$karyawanbenarbenarlama->id)->first();
+                    $userlama->update([
+                        'status' => '1'
+                    ]);
+
+                    if ($request->image) {
+                        $imageName = $request->employee_name. '_' . $request->employee_DOB .'_' . time().'.'.$request->image->extension();
+
+                        $request->image->move(public_path('images'), $imageName);
+                        File::delete(public_path('images/' . $karyawanbenarbenarlama->employee_photo));
+                        $karyawanbenarbenarlama->update([
+                            'employee_photo' => $imageName
+                        ]);
+                    }
+                    Log::alert('berjalan2');
+
+                    event(new RoleChanged($karyawanbenarbenarlama));
+                }
+                return redirect('/resepsi');
+            }
         } else {
-            $imageName = NULL;
+            log::alert('Jalan');
+            if ($request->image) {
+                $imageName = $request->employee_name. '_' . $request->employee_DOB .'_' . time().'.'.$request->image->extension();
+
+                $request->image->move(public_path('images'), $imageName);
+            } else {
+                $imageName = NULL;
+            }
+
+            $employee = new Employees();
+            $employee->employee_name = $request->employee_name;
+            $employee->employee_job = $request->employee_job;
+            $employee->employee_phone = $request->employee_phone;
+            $employee->employee_gender = $request->employee_gender;
+            $employee->employee_NIK = $request->employee_NIK;
+            $employee->employee_address = $request->employee_address;
+            $employee->employee_photo = $imageName;
+            $employee->status = '1';
+            $employee->employee_DOB = $request->employee_DOB;
+            $employee->employee_POB = $request->employee_POB;
+            $employee->employee_email = $request->employee_email;
+            $employee->save();
+
+            event(new EmployeeCreated($employee));
+            Alert::toast('Sukses menambahkan ' . $request->employee_name . ' kedalam daftar karyawan!', 'success');
+            return redirect('/resepsi');
         }
 
-
-
-
-
-        $employee = new Employees();
-        $employee->employee_name = $request->employee_name;
-        $employee->employee_job = $request->employee_job;
-        $employee->employee_phone = $request->employee_phone;
-        $employee->employee_gender = $request->employee_gender;
-        $employee->employee_NIK = $request->employee_NIK;
-        $employee->employee_address = $request->employee_address;
-        $employee->employee_photo = $imageName;
-        $employee->status = '1';
-        $employee->employee_DOB = $request->employee_DOB;
-        $employee->employee_POB = $request->employee_POB;
-        $employee->employee_email = $request->employee_email;
-        $employee->save();
-
-        event(new EmployeeCreated($employee));
-        Alert::toast('Sukses menambahkan ' . $request->employee_name . ' kedalam daftar karyawan!', 'success');
-        return redirect('/resepsi');
     }
 
     public function update(Request $request, $id)

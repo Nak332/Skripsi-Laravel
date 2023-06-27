@@ -18,6 +18,12 @@ class Employees extends Model
     }
     use HasFactory;
 
+    // public function decryptEmp()
+    // {
+    //     return decrypt($this->attributes['employee_NIK']);
+    // }
+
+
     protected $casts = [
         'employee_NIK' => 'encrypted',
     ];

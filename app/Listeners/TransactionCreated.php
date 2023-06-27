@@ -58,7 +58,7 @@ class TransactionCreated
                 $transactiondetail->medicine_id = $o;
                 $transactiondetail->quantity = $qty[$index];
                 $harga = Medicine::where('id', $o)->first();
-                $transactiondetail->price = $qty[$index] * $harga->medicine_price;
+                $transactiondetail->price = $harga->medicine_price;
                 $transactiondetail->save();
             }
 

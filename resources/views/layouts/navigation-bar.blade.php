@@ -9,7 +9,7 @@
           </a>
           <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
-            
+
           </button>
           <div class="hidden w-full md:inline md:w-auto pt-3" id="navbar-default">
             <ul class="ml-auto flex items-center space-x-4">
@@ -24,16 +24,16 @@
                                     if (this.open) {
                                         return this.close()
                                     }
-    
+
                                     this.$refs.button.focus()
-    
+
                                     this.open = true
                                 },
                                 close(focusAfter) {
                                     if (! this.open) return
-    
+
                                     this.open = false
-    
+
                                     focusAfter && focusAfter.focus()
                                 }
                             }"
@@ -52,12 +52,12 @@
                                 class="max-w-xs hover:bg-gray-600 flex rounded-md items-center text-sm  text-white"
                             >
                             <a  class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" >Rekam Medis</a>
-    
-    
-                          
-    
+
+
+
+
                             </button>
-    
+
                             <!-- Panel -->
                             <div
                                 x-ref="panel"
@@ -75,18 +75,18 @@
                                 <a href="/form-rekam/new" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
                                     Tambah Rekam Sakit
                                 </a>
-    
+
                                 <a href="/tambah-vaksin/" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
                                      Tambah Rekam Vaksin
                                 </a>
-    
-                                
-    
+
+
+
                             </div>
                         </div>
                       </div>
                     </li>
-                
+
                 <li>
                     <a href="/resepsi" class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" >Resepsi</a>
                 </li>
@@ -145,14 +145,14 @@
                             <h1 class="text-xs font-bold text-white pr-4">Name</h1>
                             <p class="text-xs text-white pr-4">Title</p>
                         </div>
-                        <img src="{{ asset('storage/profile-icon.webp') }}" alt="Profile Picture" class="h-10 w-10 rounded-full mr-4">
+                        <img src="{{ asset('images/profile-icon.webp') }}" alt="Profile Picture" class="h-10 w-10 rounded-full mr-4">
                         {{-- ^^^^^ nanti dihapus kalo udah jadi (buat test aja kalo ga ada user) atau header jangan dimunculin pas login --}}
                         @elseif (Auth::user()->role == 'admin')
                         <div class="ml-2">
                             <h1 class="text-xs font-bold text-white pr-4">{{Auth::user()->name}}</h1>
                             <p class="text-xs text-white pr-4">{{Auth::user()->role}}</p>
                         </div>
-                        <img src="{{ asset('storage/profile-icon.webp') }}" alt="Profile Picture" class="h-10 w-10 rounded-full mr-4"> {{--default photo--}}
+                        <img src="{{ asset('images/profile-icon.webp') }}" alt="Profile Picture" class="h-10 w-10 rounded-full mr-4"> {{--default photo--}}
                         @else
 
                         <div class="ml-2">
