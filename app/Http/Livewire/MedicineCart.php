@@ -16,23 +16,48 @@ class MedicineCart extends Component
     public $prescription;
     public $obat_name;
     public $obat_qty;
+    public $obat_dose;
+    public $obat_consump_type;
     public $obat_list;
     public $qty_list;
+    public $dose_list;
+    public $consump_type_list;
     public $indexing;
 
+    public $transact_mount;
+    public $transact_rekam;
     // public $obj;
 
 
     public function mount(){
+        
         $this->ix;
         $this->obat=[];
         $this->obat_name=[];
         $this->qty=[];
+        $this->obat_dose=[];
+        $this->obat_consump_type=[];
         $this->prescription=[];
+        $this->dose_list='';
+        $this->consump_type_list='';
         $this->obat_list = '';
         $this->qty_list = '';
         $this->indexing = 0;
+        if($this->transact_mount and $this->transact_rekam){
+            
+        }
     }
+    ##Buat kalo dari transaksi page, import obat dari data rekam medis
+    // public function importMedicine($medicine_id,$qty)
+    // {
+    //     $obat ='id obat';
+    //     $obj = Medicine::find();
+    //     $medicineName = $obj ? $obj->medicine_name : null;
+    //     array_push($this->obat_name, $medicineName);
+    //     array_push($this->obat, $obat);
+    //     array_push($this->qty,0);
+    //     $this->updateParentData();
+    // }
 
     public function tostring(){
         $this->obat_list = '';
@@ -46,21 +71,26 @@ class MedicineCart extends Component
 
     }
 
-    public function add($i){
-        $this->ix = $i + 1;
-        array_push($this->prescription,$i);
-    }
+    // public function add($i){
+    //     $this->ix = $i + 1;
+    //     array_push($this->prescription,$i);
+    //     array_push($this->qty);
+    // }
 
     public function remove($i)
     {
         unset($this->obat[$i]);
         unset($this->qty[$i]);
         unset($this->obat_name[$i]);
+        unset($this->obat_dose[$i]);
+        unset($this->obat_consump_type[$i]);
 
         // Re-index the arrays to remove any gaps
         $this->obat = array_values($this->obat);
         $this->qty = array_values($this->qty);
         $this->obat_name = array_values($this->obat_name);
+        $this->obat_dose = array_values($this->obat_dose);
+        $this->obat_consump_type = array_values($this->obat_consump_type);
         $this->updateParentData();
     }
 
@@ -79,6 +109,8 @@ class MedicineCart extends Component
         array_push($this->obat_name, $medicineName);
         array_push($this->obat, $obat);
         array_push($this->qty,0);
+        array_push($this->obat_dose,'');
+        array_push($this->obat_consump_type,'Kapsul');
         $this->updateParentData();
     }
 

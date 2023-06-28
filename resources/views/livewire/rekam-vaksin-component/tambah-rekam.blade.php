@@ -7,6 +7,13 @@
         <form method="POST" action="/form_rekam/tambah" enctype="multipart/form-data">
            @csrf
            {{--Bikin iinvisible buat 3 bagian diatas --}}
+            <input name='blood_sugar' wire:model='blood_sugar' step="0.1" type="number" hidden>
+            <input name='body_temperature' wire:model='body_temperature' step="0.1" type="number" hidden>
+            <input name='diastol' wire:model='diastol' type="number" hidden>
+            <input name='sistol' wire:model='sistol' type="number" hidden>
+            <input name='height' wire:model='height' step="0.1" type="number" hidden>
+            <input name='weight' wire:model='weight' step="0.1" type="number" hidden>
+            <input name='complaint' wire:model='complaint' type="text" hidden>
 
            <div id="container_pasien" class="flex-inline py-4">
               <div class="px-6 py-4 w-1/3 ml-2" x-data="{ show: true }">
@@ -28,8 +35,11 @@
                     <label class="block mb-2 text-sm font-medium text-gray-900  " for="patient_id">Pasien</label>
                     <div>
                        <p class="font-bold text-white rounded-lg bg-blue-500 p-3 truncate">
-                          {{$selected_patient['patient_name']}}
-
+                           {{$selected_patient['patient_name']}} <br>
+                           Nomor Pasien {{$selected_patient['id']}}    <br>
+                           {{$selected_patient['patient_address']}} <br>
+                           {{$selected_patient['patient_phone']}}
+                       </p>
                        </p>
                     </div>
                  </div>
@@ -57,7 +67,7 @@
            <div id="main_container_form" class="md:flex px-4">
             <div id="left-side" class="w-1/2 flex flex-col justify-between p-6">
                <div class=" flex justify-start ">
-                  <div onclick="Livewire.emit('openModal', 'rekam-tests')" class=" cursor-pointer text-white hover:text-gray-700 hover:bg-white hover:outline transition-all hover:outline-gray-700 flex mt-4 items-center space-x-2 w-fit bg-gray-700 p-3 rounded">
+                  <div onclick="Livewire.emit('openModal', 'rekam-tests',{{ json_encode(['antrian' => $antrian,'','','']) }})" class=" cursor-pointer text-white hover:text-gray-700 hover:bg-white hover:outline transition-all hover:outline-gray-700 flex mt-4 items-center space-x-2 w-fit bg-gray-700 p-3 rounded">
                      <div class="w-6 h-6"><x-fontisto-blood-test /></div>
                      <p class="text-md font-bold ">Hasil pemeriksaan</p>
                   </div>

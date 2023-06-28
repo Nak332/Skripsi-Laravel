@@ -98,7 +98,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    
+                        @livewire('medicine-cart')
                
                     <div>
                         <label for="hasil_anamnesis" class="w-1/2 block text-black text-lg font-medium mb-2 mt-4">Obat Lain</label>

@@ -36,8 +36,14 @@
                             @if ($selected_patient)
                             <label class="block mb-2 text-sm font-medium text-gray-900 " for="patient_id">Pasien</label>
                             <div>
-                                <p class="font-bold text-white rounded-lg bg-blue-500 p-3"> {{$selected_patient['patient_name']}}</p>
-                            </div>
+                                <p class="font-bold text-white rounded-lg bg-blue-500 p-3 truncate">
+                                    {{$selected_patient['patient_name']}} <br>
+                                    Nomor Pasien {{$selected_patient['id']}}    <br>
+                                    {{$selected_patient['patient_address']}} <br>
+                                    {{$selected_patient['patient_phone']}}
+                                </p>
+                                </p>
+                             </div>
                             <input type="text" name="patient_id" id="patient_id" class='hidden' value="{{$selected_patient['id']}}">
                             <input type="text" name="employee_id" id="employee_id" class='hidden' value="{{Auth::user()->employee_id}}">
                             @endif

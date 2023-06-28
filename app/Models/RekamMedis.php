@@ -18,5 +18,8 @@ class RekamMedis extends Model
     public function Patient(){
         return $this->belongsTo(Patient::class,'patient_id','id');
     }
+    public function Employees(){
+        return $this->belongsTo(Employees::class,'employee_id','id');
+    }
     use HasFactory;
 }

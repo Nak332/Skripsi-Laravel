@@ -18,14 +18,14 @@
             </div>
             <div class="w-1/2 inline p-6">
                 <label for="keluhan" class="block text-gray-700 text-sm font-medium mb-2">Dokter</label>
-                {{-- <p>{{$Rekam->employee->employee_name}}</p> --}}
+                <p>{{$Rekam->Employees->employee_name}}</p>
             </div>
         </div>
         <hr>
     
     
     
-        <div id="main_container_card" class="h-fit md:flex overflow-y-auto m-4">
+        <div id="main_container_card" class="h-fit  md:flex overflow-y-auto m-4">
     
     
     
@@ -113,9 +113,9 @@
     
             <div id="right-side" class="flex-inline p-6 md:w-1/2">
     
-                <div class="mb-4">
+                <div class="mb-4 w-full">
                     <label for="disease" class="block text-gray-700 text-sm font-medium mb-2">Diagnosa</label>
-                    <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->diagnosis}}</p>
+                    <p class="bg-gray-200 min-w-full rounded-lg overflow-hidden p-2">{{$Rekam->diagnosis}}</p>
     
                     {{-- <input type="text" name="disease" id="disease" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
                 </div>
@@ -129,7 +129,7 @@
                 </div> --}}
                 <div class="mb-4">
                     <label for="note" class="block text-gray-700 text-sm font-medium mb-2">Note</label>
-                    <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->note}}</p>
+                    <p class="bg-gray-200 rounded-lg p-2 overflow-hidden">{{$Rekam->note}}</p>
                     {{-- <textarea id="note" name="note" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
                 </div>
     
@@ -141,12 +141,12 @@
     
                 <div class="mb-4">
                     <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Penatalaksanaan</label>
-                    <p class="bg-gray-200 rounded-lg p-2"> {{$Rekam->follow_up_plan}}</p>
+                    <p class="bg-gray-200 rounded-lg p-2 overflow-hidden"> {{$Rekam->follow_up_plan}}</p>
                     {{-- <textarea rows="3" name="penatalaksaan" id="penatalaksaan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
                 </div>
                 <div class="mb-4">
                     <label for="penatalaksaan" class="block text-gray-700 text-sm font-medium mb-2">Tindakan</label>
-                    <p class="bg-gray-200 rounded-lg p-2">{{$Rekam->treatment}}</p>
+                    <p class="bg-gray-200 rounded-lg p-2 overflow-hidden">{{$Rekam->treatment}}</p>
                     {{-- <textarea rows="3" name="penatalaksaan" id="penatalaksaan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea> --}}
                 </div>
     

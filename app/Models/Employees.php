@@ -13,6 +13,9 @@ class Employees extends Model
     public function appointments(){
         return $this->hasMany(Appointment::class);
     }
+    public function Rekam(){
+        return $this->hasMany(RekamMedis::class);
+    }
     public function user(){
         return $this->hasOne(User::class);
     }
