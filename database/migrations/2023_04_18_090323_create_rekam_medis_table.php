@@ -41,6 +41,8 @@ return new class extends Migration
             $table->string('rujukan_recipient')->nullable();
             $table->string('rujukan_specialist')->nullable();
             $table->string('rujukan_current_state')->nullable();
+            $table->string('dosis')->nullable();
+            $table->string('konsumsi')->nullable();
             $table->timestamps();
         });
     }
