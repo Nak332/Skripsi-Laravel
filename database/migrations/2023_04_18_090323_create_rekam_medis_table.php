@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('diastol');
             $table->string('attachment')->nullable();
             $table->integer('height') ->nullable();
-            $table->integer('weight') ->nullable();
+            $table->float('weight', 5, 2) ->nullable();
             $table->float('body_temperature', 5, 2)->nullable();
             $table->integer('pulse') ->nullable();
             $table->float('blood_sugar', 5, 2) ->nullable();
