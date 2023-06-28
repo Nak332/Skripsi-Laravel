@@ -69,6 +69,9 @@ class RekamController extends Controller
         $rekamMedis->past_service = $request->past_service;
         $rekamMedis->diagnosis = $request->diagnosis;
         $rekamMedis->type = $request->type;
+        $rekamMedis->konsumsi = $request->konsumsi;
+        $rekamMedis->extra_medicine = $request->extra_medicine;
+        $rekamMedis->dosis = $request->dosis;
         $rekamMedis->note = $request->note;
         $rekamMedis->flag = $request->flag;
         $rekamMedis->icd10 = $request->icd10;

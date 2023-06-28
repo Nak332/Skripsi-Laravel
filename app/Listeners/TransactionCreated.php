@@ -49,6 +49,11 @@ class TransactionCreated
         $transactiondetail->treatment = $rekammedis->treatment;
         $transactiondetail->save();
 
+        $transactiondetail = new TransactionDetails;
+        $transactiondetail->transaction_id = $transaction->id;
+        $transactiondetail->extra_medicine = $rekammedis->extra_medicine;
+        $transactiondetail->save();
+
         $obat = explode(',', $rekammedis->medicine_id);
         $qty = explode(',', $rekammedis->quantity);
         $konsumsi = explode(',', $rekammedis->konsumsi);
@@ -66,7 +71,6 @@ class TransactionCreated
 
                 $transactiondetail->save();
             }
-
         }
 
     }

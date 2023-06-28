@@ -4,14 +4,14 @@
         @livewire('medicine-search-bar')
     </div>
 
-    <div class="overflow-y-auto h-72 ">  
+    <div class="overflow-y-auto h-72 ">
 
 
         @if ($obat)
         <div class="w-full ">
-            
+
             @foreach ($obat as $index => $o)
-            
+
             <div class="flex drop-shadow-sm  justify-center p-4 ">
                 <div class="border border-gray-300 rounded-tl py-2 justify-between rounded-bl w-full">
 
@@ -35,10 +35,10 @@
                     <div class="w-full mt-2 ">
                         <hr>
                     </div>
-                    
-                
+
+
                     <div class="flex justify-between mt-2 px-4 items-start">
-                       
+
                             <div class="w-1/2">
                                 <p>Dosis:</p>
                                 <textarea
@@ -50,9 +50,9 @@
                                     placeholder="1 Tablet 3 kali sehari"
                                 ></textarea>
                             </div>
-                            
-                        
-                    
+
+
+
                             <div class="w-1/2 justify-end text-end">
                                 <p>Tipe Konsumsi:</p>
                                 <select
@@ -67,22 +67,22 @@
                                 <option value="Salep">Salep</option>
                             </select>
                             </div>
-                            
-                        
+
+
                     </div>
                 </div>
-                
-               
-                <div wire:click="remove({{ $index }})"  
+
+
+                <div wire:click="remove({{ $index }})"
                 class="bg-red-500 rounded-br w-1/12 p-3 flex align-middle text-center justify-center items-center border border-red-500 rounded-tr  text-white font-bold cursor-pointer hover:bg-white hover:text-red-500 transition-all">
                     <p>X</p>
                 </div>
             </div>
-    
-
-    
             @endforeach
         </div>
         @endif
-    </div>  
+    </div>
+    @if ($transact_rekam)
+    <button wire:click="wireChangeDataTransaction">Save</button>
+@endif
 </div>
