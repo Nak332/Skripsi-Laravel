@@ -51,14 +51,19 @@ class TransactionCreated
 
         $obat = explode(',', $rekammedis->medicine_id);
         $qty = explode(',', $rekammedis->quantity);
+        $konsumsi = explode(',', $rekammedis->konsumsi);
+        $dosis = explode(',', $rekammedis->dosis);
         foreach ($obat as $index => $o) {
             if ($o != NULL) {
                 $transactiondetail = new TransactionDetails;
                 $transactiondetail->transaction_id = $transaction->id;
                 $transactiondetail->medicine_id = $o;
                 $transactiondetail->quantity = $qty[$index];
+                $transactiondetail->konsumsi = $konsumsi[$index];
+                $transactiondetail->dosis = $dosis[$index];
                 $harga = Medicine::where('id', $o)->first();
                 $transactiondetail->price = $harga->medicine_price;
+
                 $transactiondetail->save();
             }
 
