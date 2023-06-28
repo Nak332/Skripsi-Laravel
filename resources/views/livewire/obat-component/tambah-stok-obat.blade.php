@@ -31,13 +31,19 @@
 
                             <label class="block mb-2 text-sm font-medium text-gray-900 " for="patient_id">Tanggal Kadaluarsa</label>
 
-                            <input type="date" name="medicine_expired_date" id="medicine_expired_date" class='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300'>
+                            <input type="date" name="medicine_expired_date" id="medicine_expired_date" class='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300' value="{{ old('medicine_expired_date') }}">
+                            @if(!session('submitted'))
+                            <div class="text-red-500">*required</div>
+                          @endif
                             @error('medicine_expired_date') <span class="error text-red-500">{{$message}}</span> @enderror
                             <br><br>
                         </div>
                         <div>
                             <label for="" class="block mb-2 text-sm font-medium text-gray-900 ">Stok</label>
-                            <input type="number" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="medicine_stock" id="medicine_stock">
+                            <input type="number" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="medicine_stock" id="medicine_stock" value="{{ old('medicine_stock') }}">
+                            @if(!session('submitted'))
+                            <div class="text-red-500">*required</div>
+                          @endif
                             @error('medicine_stock') <span class="error text-red-500">{{$message}}</span> @enderror
                         </div>
 

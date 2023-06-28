@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class EmployeeController extends Controller
 {
@@ -44,11 +45,12 @@ class EmployeeController extends Controller
     public function insert(Request $request)
     {
         $limaBelas = Date::now()->subYears(15)->format('Y-m-d');
-        $request->validate([
+
+        $validate = Validator::make($request->all(), [
             'image' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
             'employee_name' =>'required|max:50|regex:/^[a-zA-Z.\'\s]+$/', //|alpha|max:25
             'employee_job' => 'required',
-            'employee_phone' => 'required',
+            'employee_phone' => 'required|numeric',
             'employee_gender' => 'required',
             'employee_NIK' => 'required|regex:/^\d{16}$/',
             'employee_address' => 'required',
@@ -62,6 +64,7 @@ class EmployeeController extends Controller
             'employee_name.max' =>'Nama maksimal 50 huruf',
             'employee_job' => 'Pekerjaan harus ditambahkan',
             'employee_phone' => 'Nomor telepon harus ditambahkan',
+            'employee_phone.numeric'=>'Nomor telepon hanya boleh berisi angka',
             'employee_gender' => 'Jenis Kelamin harus ditambahkan',
             'employee_NIK' => 'NIK harus diisi',
             'employee_NIK.regex' => 'NIK harus sesuai 16 digit',
@@ -72,14 +75,24 @@ class EmployeeController extends Controller
             'employee_email.email' =>'Format email salah'
         ]);
 
+        if($validate->fails()){
+            return redirect()
+                ->back()
+                ->withErrors($validate)
+                ->withInput()
+                ->with('submitted', true)
+            ;
+        }
+
         $tanggallahir = Employees::where('employee_DOB', $request->employee_DOB)->get();
 
         if ($tanggallahir->first()) {
             foreach ($tanggallahir as $karyawanlama) {
+                $karyawanbenarbenarlama ='';
                 if ($karyawanlama->employee_NIK == $request->employee_NIK) {
                     $karyawanbenarbenarlama = Employees::where('id',$karyawanlama->id)->first();
                 }
-                if ($karyawanbenarbenarlama) {
+                if ($karyawanbenarbenarlama != NULL) {
                     $karyawanbenarbenarlama->update([
                         'employee_name' => $request->employee_name,
                         'employee_job' => $request->employee_job,
@@ -110,8 +123,36 @@ class EmployeeController extends Controller
                     Log::alert('berjalan2');
 
                     event(new RoleChanged($karyawanbenarbenarlama));
+                    return redirect('/resepsi');
                 }
-                return redirect('/resepsi');
+                else{
+                    if ($request->image) {
+                        $imageName = $request->employee_name. '_' . $request->employee_DOB .'_' . time().'.'.$request->image->extension();
+
+                        $request->image->move(public_path('images'), $imageName);
+                    } else {
+                        $imageName = NULL;
+                    }
+
+                    $employee = new Employees();
+                    $employee->employee_name = $request->employee_name;
+                    $employee->employee_job = $request->employee_job;
+                    $employee->employee_phone = $request->employee_phone;
+                    $employee->employee_gender = $request->employee_gender;
+                    $employee->employee_NIK = $request->employee_NIK;
+                    $employee->employee_address = $request->employee_address;
+                    $employee->employee_photo = $imageName;
+                    $employee->status = '1';
+                    $employee->employee_DOB = $request->employee_DOB;
+                    $employee->employee_POB = $request->employee_POB;
+                    $employee->employee_email = $request->employee_email;
+                    $employee->save();
+
+                    event(new EmployeeCreated($employee));
+                    Alert::toast('Sukses menambahkan ' . $request->employee_name . ' kedalam daftar karyawan!', 'success');
+                    return redirect('/resepsi');
+                }
+
             }
         } else {
             log::alert('Jalan');

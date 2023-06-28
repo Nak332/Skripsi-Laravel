@@ -37,7 +37,13 @@ class CreateUserForEmployee
         $deletestrip = explode('-',$changeformat);
         $addstring = implode("", $deletestrip);
         $nama = explode(' ',$emp->employee_name);
-        $username = $nama[0] . $addstring;
+        $usernamesudahada = User::where('username', 'LIKE', $nama[0].'%')->count();
+        if ($usernamesudahada != NULL) {
+            $username = $nama[0]. $usernamesudahada++ . '_' . $addstring;
+        }
+        else{
+            $username = $nama[0] . '_' . $addstring;
+        }
         $user = new User();
         $user->name = $emp->employee_name;
         $user->username = $username;

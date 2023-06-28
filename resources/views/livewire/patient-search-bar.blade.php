@@ -17,9 +17,11 @@
                         <p class="text-red-500 ">Pasien tidak ditemukan</p>
                         
                         <form action="/tambah-pasien" method="GET">
-                            <button class="bg-green-500 text-white hover:bg-white hover:text-green-500 hover:outline-green-500   transition-all rounded p-2  font-bold">
+                            <div class="pl-1">
+                            <button class="rounded-lg font-medium bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all  text-sm px-5 py-2.5 mr-2 mb-2 text-center text-white">
                                 + Pasien baru
                             </button>
+                            </div>
                         </form>
 
                     </div>

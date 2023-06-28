@@ -8,39 +8,85 @@
 
 <div class="flex-inline h-screen pt-5 py-5 bg-gray-300">
 
+    @if (Auth::user()->role == 'admin')
     <div class="w-3/4 mx-auto mt-10 h-fit bg-white shadow-md rounded-md overflow-hidden">
-  
-      <div class="px-6 py-4">
-        <div class="p-4 flex justify-center items-center">
-            <img class="w-32 h-32 rounded-full mr-4" src="{{ asset("images/" . Auth::user()->Employee->employee_photo) }}" alt="Profile Picture">
-            <div>
-              <h2 class="text-2xl font-semibold">{{Auth::user()->Employee->employee_name}}</h2>
-              <p class="text-gray-600">{{Auth::user()->Employee->employee_job}}</p>
+
+        <div class="px-6 py-4">
+          <div class="p-4 flex justify-center items-center">
+              <img class="w-32 h-32 rounded-full mr-4" src="{{ asset('images/profile-icon.webp') }}" alt="Profile Picture">
+              <div>
+                <h2 class="text-2xl font-semibold">Admin</h2>
+                <p class="text-gray-600">Admin</p>
+              </div>
+
             </div>
 
+          <div class="mt-4">
+            <h3 class="text-lg font-medium">Informasi</h3>
+            <ul class="mt-2 text-gray-600">
+              <li><span class="font-semibold">Jenis Kelamin : </span> </li>
+              <li><span class="font-semibold">NIK :</span> </li>
+              <li><span class="font-semibold">DOB : </span> </li>
+              <li><span class="font-semibold">POB :</span> </li>
+            </ul>
           </div>
+          <div class="mt-4">
+              <h3 class="text-lg font-medium">Alamat</h3>
+              <p class="text-gray-600"> </p>
 
-        <div class="mt-4">
-          <h3 class="text-lg font-medium">Informasi</h3>
-          <ul class="mt-2 text-gray-600">
-            <li><span class="font-semibold">Jenis Kelamin : </span>{{Auth::user()->Employee->employee_gender}}</li>
-            <li><span class="font-semibold">NIK :</span> {{Auth::user()->Employee->employee_NIK}}</li>
-            <li><span class="font-semibold">DOB : </span>{{Auth::user()->Employee->employee_DOB}}</li>
-            <li><span class="font-semibold">POB :</span> {{Auth::user()->Employee->employee_POB}}</li>
-          </ul>
-        </div>
-        <div class="mt-4">
-            <h3 class="text-lg font-medium">Alamat</h3>
-            <p class="text-gray-600">{{Auth::user()->Employee->employee_address}}</p>
+            </div>
 
+          <div class="mt-4">
+            <h3 class="text-lg font-medium">Contact</h3>
+            <p class="text-gray-600"><span class="font-semibold">Email :</span> </p>
+            <p class="text-gray-600"><span class="font-semibold">No.Telp :</span> </p>
           </div>
-
-        <div class="mt-4">
-          <h3 class="text-lg font-medium">Contact</h3>
-          <p class="text-gray-600"><span class="font-semibold">Email :</span> {{Auth::user()->Employee->employee_email}}</p>
-          <p class="text-gray-600"><span class="font-semibold">No.Telp :</span> {{Auth::user()->Employee->employee_phone}}</p>
         </div>
-      </div>
+
+    @else
+    <div class="w-3/4 mx-auto mt-10 h-fit bg-white shadow-md rounded-md overflow-hidden">
+
+        <div class="px-6 py-4">
+          <div class="p-4 flex justify-center items-center">
+
+
+              @if (Auth::user()->Employee->employee_photo != null)
+              <img class="w-32 h-32 rounded-full mr-4" src="{{ asset("images/" . Auth::user()->Employee->employee_photo) }}" alt="Profile Picture">
+              @else
+              <img class="w-32 h-32 rounded-full mr-4" src="{{ asset('images/profile-icon.webp') }}" alt="Profile Picture">
+              @endif
+
+              <div>
+                <h2 class="text-2xl font-semibold">{{Auth::user()->Employee->employee_name}}</h2>
+                <p class="text-gray-600">{{Auth::user()->Employee->employee_job}}</p>
+              </div>
+
+            </div>
+
+          <div class="mt-4">
+            <h3 class="text-lg font-medium">Informasi</h3>
+            <ul class="mt-2 text-gray-600">
+              <li><span class="font-semibold">Jenis Kelamin : </span>{{Auth::user()->Employee->employee_gender}}</li>
+              <li><span class="font-semibold">NIK :</span> {{Auth::user()->Employee->employee_NIK}}</li>
+              <li><span class="font-semibold">DOB : </span>{{Auth::user()->Employee->employee_DOB}}</li>
+              <li><span class="font-semibold">POB :</span> {{Auth::user()->Employee->employee_POB}}</li>
+            </ul>
+          </div>
+          <div class="mt-4">
+              <h3 class="text-lg font-medium">Alamat</h3>
+              <p class="text-gray-600">{{Auth::user()->Employee->employee_address}}</p>
+
+            </div>
+
+          <div class="mt-4">
+            <h3 class="text-lg font-medium">Contact</h3>
+            <p class="text-gray-600"><span class="font-semibold">Email :</span> {{Auth::user()->Employee->employee_email}}</p>
+            <p class="text-gray-600"><span class="font-semibold">No.Telp :</span> {{Auth::user()->Employee->employee_phone}}</p>
+          </div>
+        </div>
+    @endif
+
+
 <div class="button-container">
 
   <div class="w-3/4 h-full mx-auto py-3 flex justify-center">
@@ -53,11 +99,11 @@
 </div>
 
     </div>
-    
-    
-        
+
+
+
   </div>
-  
+
   </div>
 
 

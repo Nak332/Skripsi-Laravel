@@ -5,18 +5,29 @@ namespace App\Http\Controllers;
 use App\Models\MedicineDetail;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class MedicineDetailController extends Controller
 {
     public function insert(Request $request)
     {
-        $request->validate([
+
+        $validate = Validator::make($request->all(), [
             'medicine_stock' =>'required',
             'medicine_expired_date' =>'required',
         ],[
             'medicine_stock' => 'Masukkan jumlah stok',
             'medicine_expired_date' => 'Masukkan tanggal kadaluarsa'
         ]);
+
+        if($validate->fails()){
+            return redirect()
+                ->back()
+                ->withErrors($validate)
+                ->withInput()
+                ->with('submitted', true)
+            ;
+        }
 
         $obat = MedicineDetail::where('medicine_expired_date',$request->medicine_expired_date)->first();
 
