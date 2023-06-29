@@ -11,7 +11,7 @@
         <div class="min-h-screen flex items-center justify-center">
             <div class="max-w-screen-sm w-full mx-auto bg-white p-8 rounded-md shadow-md">
                 <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-4xl w-128 h-fit">
-                    <p class="font-bold text-black">Add Medicine</p>
+                    <p class="font-bold text-black">Tambah Obat</p>
                     </div>
               <form method="POST" action="tambah-obat/tambah" enctype="multipart/form-data">
                 @csrf
@@ -24,7 +24,7 @@
                   <input type="text" id="medicine_name" name="medicine_name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Nama obat"
                   title="Masukkan nama obat" value="{{ old('medicine_name') }}">
                   @if(!session('submitted'))
-                    <span class="text-red-500">*required</span>
+                    <span class="text-red-500">*wajib</span>
                   @endif
                   @error('medicine_name') <span class="error text-red-500">{{$message}}</span> @enderror
                 </div>
@@ -35,7 +35,7 @@
                     <textarea rows="2" id="medicine_description" name="medicine_description" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Deskripsi obat"
                     pattern="^[a-zA-Z\s]+$" title="Masukkan deskripsi">{!! old('medicine_description') !!}</textarea>
                     @if(!session('submitted'))
-                    <span class="text-red-500">*required</span>
+                    <span class="text-red-500">*wajib</span>
                   @endif
                     @error('medicine_description') <span class="error text-red-500">{{$message}}</span> @enderror
                   </div>
@@ -43,7 +43,7 @@
                   <label for="medicine_price" class="block text-gray-700 text-sm font-medium mb-2">Harga</label>
                   <input type="text" name="medicine_price" id="medicine_price" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Harga obat" pattern="[0-9]+" title="Masukkan angka" value="{{ old('medicine_price') }}">
                   @if(!session('submitted'))
-                  <span class="text-red-500">*required</span>
+                  <span class="text-red-500">*wajib</span>
                 @endif
                   @error('medicine_price') <span class="error text-red-500">{{$message}}</span> @enderror
                 </div>
