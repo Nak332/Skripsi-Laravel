@@ -29,10 +29,20 @@ class TransactionController extends Controller
         $transaksi->appointment_id = $request->appointment_id;
         $transaksi->employee_id = $request->employee_id;
         $transaksi->rekamMedis_id = $request->rekamMedis_id;
-        $transaksi->payment = $request->payment;
+        $transaksi->flag = '1';
         $transaksi->save();
 
-        return redirect('/daftar-transaksi');
+        if ($request->treatment != 'medicine_purchase') {
+            $detiltransaksi = new TransactionDetails;
+            $detiltransaksi->transaction_id = $transaksi->id;
+            $detiltransaksi->treatment = $request->treatment;
+            $detiltransaksi->save();
+        }
+
+
+
+        return redirect()->route('to.transaction', ['id' => $transaksi->id]);
+        // return redirect('/');
     }
 
     public function update(Request $request, $id)

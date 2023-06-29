@@ -5,8 +5,17 @@
             <h1 class="text-sm  font-bold mb-4 truncate">No. Rekam Medis: {{$transaksi->rekamMedis_id}}</h1>
             <hr>
             <div class="flex justify-between mt-2">
+                @if ($transaksi->patient)
                 <p class="w-1/2">Pasien: <br> {{$transaksi->patient->patient_name}}</p>
+                @else
+
+                @endif
+                @if ($transaksi->rekammedis)
                 <p class="w-1/2">Dokter: <br> {{$transaksi->rekammedis->employees->employee_name}} </p>
+                @else
+                <p class="w-1/2">Kasir: <br> {{Auth::user()->Employee->employee_name}} </p>
+                @endif
+
             </div>
             <p class="mt-4">
                 Tanggal Transaksi: {{$transaksi->created_at}}

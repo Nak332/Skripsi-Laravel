@@ -68,6 +68,7 @@ Route::middleware(['checkrole:admin,Dokter'])->group(function () {
         return view('employee-list');
     });
     Route::post('/add-employee', [EmployeeController::class,'insert']);
+    Route::post('/tambah-transaksi', [TransactionController::class,'insert']);
     Route::post('/disable-employee/{id}', [EmployeeController::class,'delete']);
     Route::get('/profil/{id}', [EmployeeController::class , 'employee']) -> name('to.emp');
     Route::get('/edit-emp/{id}', [EmployeeController::class , 'employee']);
