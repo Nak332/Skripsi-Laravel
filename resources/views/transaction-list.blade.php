@@ -28,9 +28,9 @@
 
     <div class="flex justify-center pt-4">
         <div class="w-4/5">
-            <form action="/" method="get">
-                <button class="rounded-lg font-bold bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all px-5 py-2.5 mr-2 mb-2 text-center text-white "> + Buat Transaksi</button>
-              </form>
+            
+              <button onclick="Livewire.emit('openModal', 'tambah-transaksi')"  class="rounded-lg font-bold bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all px-5 py-2.5 mr-2 mb-2 text-center text-white "> + Buat Transaksi</button>
+              
 
         </div>
     </div>
