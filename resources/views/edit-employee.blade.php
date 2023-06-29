@@ -11,7 +11,7 @@
         <div class="min-h-screen flex items-center justify-center">
             <div class="max-w-screen-sm w-full mx-auto bg-white p-8 rounded-md shadow-md">
                 <div class="drop-shadow flex-inline text-center text-black p-6 m-4 rounded-lg text-4xl w-128 h-fit">
-                    <p class="font-bold text-black">Employee Edit</p>
+                    <p class="font-bold text-black">Edit Karyawan</p>
                     </div>
               <form method="POST" action="/edit-emp/edit/{{$employee->id}}" enctype="multipart/form-data">
                 @csrf

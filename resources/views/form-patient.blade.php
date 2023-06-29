@@ -26,7 +26,7 @@
                   <label for="patient_name" class="block text-gray-700 text-sm font-medium mb-2">Nama</label>
                   <input type="text" id="patient_name" name="patient_name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Nama Lengkap" value="{{old('patient_name')}}">
                   @if(!session('submitted'))
-                    <span class="text-red-500">*required</span>
+                    <span class="text-red-500">*wajib</span>
                   @endif
                   @error('patient_name')
                   <div class="error text-red-600">{{ $message }}</div>
@@ -41,7 +41,7 @@
                       {{ old('patient_gender') === 'wanita' ? 'checked' : '' }}>
                       <label for="wanita">Wanita</label>
                       @if(!session('submitted'))
-                    <div class="text-red-500">*required</div>
+                    <div class="text-red-500">*wajib</div>
                   @endif
                     @error('patient_gender')
                     <div class="error text-red-600">{{ $message }}</div>
@@ -63,7 +63,7 @@
                     <label for="patient_phone" class="block text-gray-700 text-sm font-medium mb-2">No. Telpon</label>
                     <input type="text" name="patient_phone" id="patient_phone" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" value="{{old('patient_phone')}}">
                     @if(!session('submitted'))
-                    <span class="text-red-500">*required</span>
+                    <span class="text-red-500">*wajib</span>
                   @endif
                     @error('patient_phone')
                         <div class="error text-red-600">{{ $message }}</div>
@@ -73,7 +73,7 @@
                     <label for="patient_address" class="block text-gray-700 text-sm font-medium mb-2">Alamat</label>
                     <textarea rows="2" id="patient_address" name="patient_address" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="">{{old('patient_address')}}</textarea>
                     @if(!session('submitted'))
-                    <span class="text-red-500">*required</span>
+                    <span class="text-red-500">*wajib</span>
                   @endif
                     @error('patient_address')
                     <div class="error text-red-600">{{ $message }}</div>
@@ -83,7 +83,7 @@
                     <label for="patient_DOB" class="block text-gray-700 text-sm font-medium mb-2">Tanggal Lahir</label>
                     <input type="date" name="patient_DOB" id="patient_DOB" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="" value="{{old('patient_DOB')}}">
                     @if(!session('submitted'))
-                    <span class="text-red-500">*required</span>
+                    <span class="text-red-500">*wajib</span>
                   @endif
                     @error('patient_DOB')
                     <div class="error text-red-600">{{ $message }}</div>
@@ -93,7 +93,7 @@
                     <label for="patient_POB" class="block text-gray-700 text-sm font-medium mb-2">Tempat Lahir</label>
                     <textarea rows="2" id="patient_POB" name="patient_POB" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="">{{old('patient_POB')}}</textarea>
                     @if(!session('submitted'))
-                    <span class="text-red-500">*required</span>
+                    <span class="text-red-500">*wajib</span>
                   @endif
                     @error('patient_POB')
                     <div class="error text-red-600">{{ $message }}</div>
@@ -109,7 +109,7 @@
                       <option value="Cerai Mati" class="pl-4 py-2">Cerai Mati</option>
                     </select>
                     @if(!session('submitted'))
-                  <div class="text-red-500">*required</div>
+                  <div class="text-red-500">*wajib</div>
                   @endif
                     @error('patient_marital_status')
                     <div class="error text-red-600">{{ $message }}</div>
