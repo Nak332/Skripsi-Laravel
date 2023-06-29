@@ -20,4 +20,6 @@ public/css/app.css
 public/js/app.js
 composer.lock
 *.jpg
-public/ images
+public/images
+
+
