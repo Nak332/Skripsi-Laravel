@@ -13,7 +13,9 @@ class RekamMedis extends Model
 
     public function Medicine(){
         return $this->hasMany(Medicine::class);
-
+    }
+    public function transaction(){
+        return $this->hasOne(Transaction::class);
     }
     public function Patient(){
         return $this->belongsTo(Patient::class,'patient_id','id');

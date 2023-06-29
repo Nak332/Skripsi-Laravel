@@ -6,7 +6,7 @@
             <hr>
             <div class="flex justify-between mt-2">
                 <p class="w-1/2">Pasien: <br> {{$transaksi->patient->patient_name}}</p>
-                <p class="w-1/2">Dokter: <br> Elton </p>
+                <p class="w-1/2">Dokter: <br> {{$transaksi->rekammedis->employees->employee_name}} </p>
             </div>
             <p class="mt-4">
                 Tanggal Transaksi: {{$transaksi->created_at}}
@@ -44,10 +44,10 @@
                     @endforeach
                     </div>
                 </div>
-                
+
                 <div class="bg-white p-4 rounded my-6">
 
-                    <div class=""></div>    
+                    <div class=""></div>
                     <div>
                         <label for="hasil_anamnesis" class="w-1/2 block text-black text-lg font-medium mb-2 ">Preskripsi Obat</label>
                     </div>
@@ -119,8 +119,8 @@
                     </div>
 
                 </div>
-                   
-                    
+
+
                 <div class=" bg-white p-4 rounded my-6">
 
                     <div class="">
@@ -154,7 +154,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                  
+
                 </div>
                 <form action="/update-transaksi/{{$transaksi->id}}" method="post">
                     @csrf
@@ -162,11 +162,11 @@
                     <div class="flex items-center justify-between">
 
                       </div>
-                      
+
                       <div class=" bg-white p-4 rounded my-6">
                       <div class="md:flex mt-4 items-center">
                         <label for="Total" class="w-1/2 block text-black text-lg font-medium ">Tipe Pembayaran</label>
-                        
+
 
                             <Select name="payment" id="payment" class="px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
                                 <option value="Kredit">Kredit</option>
@@ -178,7 +178,7 @@
 
 
                     </div>
-                    
+
                         <div class="md:flex mt-4 mb-4 items-center">
                             <label for="Total" class="w-1/2 block text-black text-lg font-medium ">Total</label>
                             <input  name="Total" wire:init='SetTotal({{$transaksi->id}})' wire:model="totalharga">
@@ -196,7 +196,7 @@
                 </div>
 
             </div>
-   
+
 
     </div>
 </div>

@@ -13,6 +13,9 @@ class Transaction extends Model
     public function Patient(){
         return $this->belongsTo(Patient::class);
     }
+    public function rekammedis(){
+        return $this->belongsTo(RekamMedis::class, 'rekamMedis_id', 'id');
+    }
     protected $guarded = [
     ];
 
