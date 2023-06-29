@@ -14,6 +14,8 @@ class TransactionDetailComponent extends Component
     public $detil;
     public $rekammedis;
     public $konsul;
+    public $dosis;
+    public $konsumsi;
     public $treatment;
     public $extra_medicine;
     public $totalqty = [];
@@ -24,6 +26,8 @@ class TransactionDetailComponent extends Component
         'detil.*.price'=>'required',
         'detil.*.quantity'=>'required',
         'detil.*.extra_medicine' => 'required',
+        'detil.*.dosis'=>'required',
+        'detil.*.konsumsi'=>'required',
     ];
 
     public function mount(){
@@ -147,6 +151,34 @@ class TransactionDetailComponent extends Component
         // $transaction->price = $this->treatment;
         $transaction->update([
             'quantity' => $qty
+        ]);
+    }
+
+    public function SetKonsumsi($id){
+        $transaction = TransactionDetails::find($id);
+        // $transaction->price = $this->konsul;
+        $this->konsumsi = $transaction->konsumsi;
+    }
+
+    public function UpdateKonsumsi($id, $konsumsi){
+        $transaction = TransactionDetails::find($id);
+        // $transaction->price = $this->treatment;
+        $transaction->update([
+            'konsumsi' => $konsumsi
+        ]);
+    }
+
+    public function SetDosis($id){
+        $transaction = TransactionDetails::find($id);
+        // $transaction->price = $this->konsul;
+        $this->dosis = $transaction->dosis;
+    }
+
+    public function UpdateDosis($id, $dosis){
+        $transaction = TransactionDetails::find($id);
+        // $transaction->price = $this->treatment;
+        $transaction->update([
+            'dosis' => $dosis
         ]);
     }
 

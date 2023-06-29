@@ -56,4 +56,12 @@ class TransactionController extends Controller
 
         return redirect('/daftar-transaksi');
     }
+
+    public function delete($id)
+    {
+        $transaksi = Transaction::find($id);
+        $transaksi->delete();
+
+        return redirect('/daftar-transaksi');
+    }
 }
