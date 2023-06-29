@@ -6,6 +6,7 @@ use App\Models\Medicine;
 use App\Models\Transaction;
 use App\Models\TransactionDetails;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 
 use function PHPUnit\Framework\isEmpty;
@@ -51,19 +52,19 @@ class MedicineCart extends Component
         if($this->transact_rekam){
             // -----------------------------Cek kalo pernah diubah transaction Detailnya ( Beda dari dalem RekamMedis)
             if(($transact_id=$this->checkDetailWithRekam())!=false){
-                
-                $cart_items = TransactionDetails::where('id',$transact_id->id)->whereNotNull('medicine_id')->count();
+
+                $cart_items = TransactionDetails::where('transaction_id',$transact_id->id)->whereNotNull('medicine_id')->get();
                 foreach($cart_items as $index => $o){
-                    $medicine_id = $o;
-                    $qty = $cart_items->medicine_id[$index];
-                    $dose = $cart_items->dosis[$index];
-                    $type = $cart_items->konsumsi[$index];
+                    $medicine_id = $cart_items[$index]->medicine_id;
+                    Log::alert( $medicine_id . 'Ini masuk tidak?');
+                    $qty = $cart_items[$index]->quantity;
+                    $dose = $cart_items[$index]->dosis;
+                    $type = $cart_items[$index]->konsumsi;
                     $this->importMedicine($medicine_id,$qty,$dose,$type);
                 }
             }
-
-
-            ##Ambil Data dari Rekam Medis kedalem cart
+            else if ($this->checkDetailWithRekam() == false) {
+                ##Ambil Data dari Rekam Medis kedalem cart
             $obat = explode(',', $this->transact_rekam->medicine_id);
             $quantity = explode(',', $this->transact_rekam->quantity);
             $konsumsi = explode(',', $this->transact_rekam->konsumsi);
@@ -77,6 +78,23 @@ class MedicineCart extends Component
                     $this->importMedicine($medicine_id,$qty,$dose,$type);
                 }
             }
+            }
+
+
+            ##Ambil Data dari Rekam Medis kedalem cart
+            // $obat = explode(',', $this->transact_rekam->medicine_id);
+            // $quantity = explode(',', $this->transact_rekam->quantity);
+            // $konsumsi = explode(',', $this->transact_rekam->konsumsi);
+            // $dosis = explode(',', $this->transact_rekam->dosis);
+            // foreach ($obat as $index => $o) {
+            //     if ($o != NULL) {
+            //         $medicine_id = $o;
+            //         $qty = $quantity[$index];
+            //         $dose = $dosis[$index];
+            //         $type = $konsumsi[$index];
+            //         $this->importMedicine($medicine_id,$qty,$dose,$type);
+            //     }
+            // }
         }
     }
 
@@ -84,36 +102,50 @@ class MedicineCart extends Component
     public function checkDetailWithRekam(){
         if($this->transact_rekam){
             $rekam_count = count(explode(',', $this->transact_rekam->medicine_id));
-            $rekam_transaction = Transaction::where('rekamMedis_id',$this->transact_rekam->id)->get();
-            $transaction_details = TransactionDetails::where('id',$rekam_transaction->id)->whereNotNull('medicine_id')->get();
+
+            $rekam_transaction = Transaction::where('rekamMedis_id',$this->transact_rekam->id)->first();
+            $transaction_details = TransactionDetails::where('transaction_id',$rekam_transaction['id'])->whereNotNull('medicine_id')->get();
             #Cek Jumlah Obat
             if($rekam_count != count($transaction_details)){
+                Log::alert('Masuk count');
                 return $rekam_transaction;
             }
             #Cek konten obat
             else{
+                Log::alert('Masuk else');
                 $obat = explode(',', $this->transact_rekam->medicine_id);
                 $quantity = explode(',', $this->transact_rekam->quantity);
                 $konsumsi = explode(',', $this->transact_rekam->konsumsi);
                 $dosis = explode(',', $this->transact_rekam->dosis);
                 foreach ($obat as $index => $o) {
+                    Log::alert($o);
+                    Log::alert($transaction_details[$index]->medicine_id);
+                    Log::alert($dosis[$index]);
+                    Log::alert($transaction_details[$index]->dosis);
+                    Log::alert($konsumsi[$index]);
+                    Log::alert($transaction_details[$index]->konsumsi);
+                    Log::alert($quantity[$index]);
+                    Log::alert($transaction_details[$index]->quantity);
                     if ($o != NULL) {
                         if($o != $transaction_details[$index]->medicine_id or $dosis[$index] != $transaction_details[$index]->dosis or $konsumsi[$index] != $transaction_details[$index]->konsumsi or $quantity[$index] != $transaction_details[$index]->quantity){
-                            return false;
+                            return $rekam_transaction;
                         }
+                        return false;
                     }
 
-                
+                }
             }
         }
-
     }
 
     public function wireChangeDataTransaction (){
         $this->tostring();
         Log::alert("jalan2");
-        $this->emit('MedicineCartUpdate', ['obat'=>$this->obat,'qty'=>$this->qty,'listobat'=>$this->obat_list,'listqty' => $this->qty_list,'konsumsilist' => $this->consump_type_list, 'dosislist' => $this->dose_list] );
-    Log::alert("jalan");
+        $this->emit('MedicineCartUpdate', ['listobat'=>$this->obat_list,'listqty' => $this->qty_list,'konsumsilist' => $this->consump_type_list, 'dosislist' => $this->dose_list] );
+        Log::alert("jalan");
+        // $this->emit('MedicineCartRefresh');
+        // sleep(1);
+        // return redirect(request()->header('Referer'));
     }
 
     // public function wireChangeDelete (){
@@ -139,11 +171,21 @@ class MedicineCart extends Component
         $this->dose_list = '';
         $this->consump_type_list = '';
         if ($this->obat && $this->qty && count($this->obat) === count($this->qty) && !empty($this->obat) && !empty($this->qty)) {
+            $last = array_key_last($this->obat);
             foreach ($this->obat as $index => $o) {
-                $this->obat_list .= $o . ',';
-                $this->qty_list .= $this->qty[$index] . ',';
-                $this->dose_list .= $this->obat_dose[$index] . ',';
-                $this->consump_type_list .= $this->obat_consump_type[$index] . ',';
+                if ($index != $last) {
+                    $this->obat_list .= $o . ',';
+                    $this->qty_list .= $this->qty[$index] . ',';
+                    $this->dose_list .= $this->obat_dose[$index] . ',';
+                    $this->consump_type_list .= $this->obat_consump_type[$index] . ',';
+                }
+                else{
+                    $this->obat_list .= $o;
+                    $this->qty_list .= $this->qty[$index];
+                    $this->dose_list .= $this->obat_dose[$index];
+                    $this->consump_type_list .= $this->obat_consump_type[$index];
+                }
+
             }
         }
 

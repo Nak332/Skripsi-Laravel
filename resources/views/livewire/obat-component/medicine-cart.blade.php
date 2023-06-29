@@ -83,6 +83,11 @@
         @endif
     </div>
     @if ($transact_rekam)
-    <button wire:click="wireChangeDataTransaction">Save</button>
+
+        <div class="cursor-pointer bg-green-500"  wire:click="wireChangeDataTransaction">Save</div>
+
+
+
+
 @endif
 </div>

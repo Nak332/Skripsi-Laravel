@@ -21,8 +21,6 @@
             <div id="card_pasien" class="w-4/5 p-4 bg-white rounded">
                 <h1 class="text-2xl font-bold mb-4 truncate">Invoice</h1>
                 <hr>
-                <form action="/update-transaksi/{{$transaksi->id}}" method="post">
-                    @csrf
                 <div class="w-full p-2 rounded mt-4 items-center">
                     @foreach ($detil as $item)
                     @if ($item->konsultasi != NULL)
@@ -72,10 +70,10 @@
                                             </div>
                                          </td>
                                         <td class="align-top">
-                                            <input type="number" wire:model="detil.{{ $index }}.quantity" wire:change="UpdateQuantity({{ $item->id }},{{ $detil[$index]->quantity }})" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300">
+                                            <input type="number" wire:model="detil.{{ $index }}.quantity" disabled wire:change="UpdateQuantity({{ $item->id }},{{ $detil[$index]->quantity }})" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300">
                                         </td>
                                         <td class="align-top">
-                                            <select name="consumption_type" id="" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="" id="">
+                                            <select name="consumption_type" disabled id="" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="" id="">
                                                 <option value="">Kapsul</option>
                                                 <option value="">Tablet</option>
                                                 <option value="">Sirup</option>
@@ -83,7 +81,7 @@
                                             </select>
                                         </td>
                                         <td class="align-top">
-                                            <input type="text" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="" id="">
+                                            <input type="text" disabled class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="" id="">
                                         </td>
 
 
@@ -138,11 +136,9 @@
                     </table>
                     <hr>
 
-                </form>
-
                 <form action="/update-transaksi/{{$transaksi->id}}" method="post">
                     @csrf
-
+{{--
                     <div class="md:flex mt-4 items-center">
                         <label for="Total" class="w-1/2 block text-black text-lg font-medium ">Obat Tambahan</label>
                          <input type="text" name="extra_medicine" id="extra_medicine"  class=" w-1/2 px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
@@ -150,7 +146,7 @@
                     <div class="md:flex my-4 items-center">
                         <label for="Total" class="w-1/2 block text-black text-lg font-medium ">Harga</label>
                          <input type="text" name="price" id="price"  class=" w-1/2 px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
-                    </div>
+                    </div> --}}
 
                     <div class="flex items-center justify-between">
 
@@ -171,7 +167,8 @@
                     </div>
                       <div class="md:flex mt-4 mb-4 items-center">
                           <label for="Total" class="w-1/2 block text-black text-lg font-medium ">Total</label>
-                          <p>500.500</p>
+                          <input  name="Total" wire:init='SetTotal({{$transaksi->id}})' wire:model="totalharga">
+                          <input type="text" name="total" value="{{$totalharga}}">
                       </div>
                       <button
                       class="bg-green-500 mb-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

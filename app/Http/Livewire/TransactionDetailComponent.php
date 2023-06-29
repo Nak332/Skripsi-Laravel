@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Medicine;
 use App\Models\RekamMedis;
 use App\Models\TransactionDetails;
 use Illuminate\Support\Facades\Log;
@@ -17,11 +18,12 @@ class TransactionDetailComponent extends Component
     public $extra_medicine;
     public $totalqty = [];
     public $medicineprice= [];
+    public $totalharga;
 
     protected $rules=[
         'detil.*.price'=>'required',
         'detil.*.quantity'=>'required',
-        'detil.*.extra_medicine' => 'required'
+        'detil.*.extra_medicine' => 'required',
     ];
 
     public function mount(){
@@ -30,7 +32,7 @@ class TransactionDetailComponent extends Component
         }
     }
 
-    protected $listeners = ['MedicineCartUpdate' => 'UpdateTransactionDetail'];
+    protected $listeners = ['MedicineCartUpdate' => 'UpdateTransactionDetail','MedicineCartRefresh' => '$refresh'];
 
 
     ##IMPORT DARI REKAM MEDIS
@@ -41,13 +43,16 @@ class TransactionDetailComponent extends Component
         $listobat1 = $data['listobat'];
         // Log::alert($listobat1 . 'ini adalah1' . gettype($listobat1));
         $listobat = explode(',', $listobat1);
+        // Log::alert(print_r($listobat) . ' ini listobat' . count($listobat));
         $listqty_temp = $data['listqty'];
         $listqty = explode(',',$listqty_temp);
+        // Log::alert(print_r($listqty) . ' ini listqty');
         $konsumsilist_temp= $data['konsumsilist'];
         $konsumsilist = explode(',',$konsumsilist_temp);
         $dosislist_temp = $data['dosislist'];
         $dosislist = explode(',',$dosislist_temp);
-        // Log::alert('masuk2');
+        // Log::alert(print_r($dosislist) . ' ini dosislist');
+        Log::alert('masuk2');
 
         if ($detil->first()) {
             foreach ($detil as $o) {
@@ -55,18 +60,24 @@ class TransactionDetailComponent extends Component
             }
         }
 
-        foreach ($listobat as $index => $o) {
-            // Log::alert("berjalan");
-            $transaksibaru = new TransactionDetails;
-            $transaksibaru->transaction_id = $this->transaksi->id;
-            $transaksibaru->medicine_id = $o;
-            $transaksibaru->quantity = $listqty[$index];
-            $transaksibaru->konsumsi = $konsumsilist[$index];
-            $transaksibaru->dosis = $dosislist[$index];
-            $transaksibaru->save();
+        if ($listobat) {
+            foreach ($listobat as $index => $o) {
+                // Log::alert("berjalan");
+                    $transaksibaru = new TransactionDetails;
+                    $transaksibaru->transaction_id = $this->transaksi->id;
+                    $transaksibaru->medicine_id = $o;
+                    $medicineprice = Medicine::find($o);
+                    $transaksibaru->price = $medicineprice->medicine_price;
+                    $transaksibaru->quantity = $listqty[$index];
+                    $transaksibaru->konsumsi = $konsumsilist[$index];
+                    $transaksibaru->dosis = $dosislist[$index];
+                    $transaksibaru->save();
+            }
         }
 
-        // Log::alert("keluar");
+
+
+        Log::alert("keluar");
     }
 
     public function SetKonsul($id){
@@ -137,6 +148,22 @@ class TransactionDetailComponent extends Component
         $transaction->update([
             'quantity' => $qty
         ]);
+    }
+
+    public function SetTotal($id){
+        $transaction = TransactionDetails::where('Transaction_id', $id)->get();
+        if ($transaction->first()) {
+            foreach ($transaction as $price) {
+                if ($price->quantity) {
+                    $pricebenar = $price->price * $price->quantity;
+                $this->totalharga += $pricebenar;
+                }
+                else {
+                    $pricebenar = $price->price;
+                $this->totalharga += $pricebenar;
+                }
+            }
+        }
     }
 
 
