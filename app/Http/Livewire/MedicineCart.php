@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Medicine;
+use App\Models\Transaction;
+use App\Models\TransactionDetails;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
@@ -43,7 +45,25 @@ class MedicineCart extends Component
         $this->obat_list = '';
         $this->qty_list = '';
         $this->indexing = 0;
+
+
+        // ------------------------------------------------------------ Transaction Mounting
         if($this->transact_rekam){
+            // -----------------------------Cek kalo pernah diubah transaction Detailnya ( Beda dari dalem RekamMedis)
+            if(($transact_id=$this->checkDetailWithRekam())!=false){
+                
+                $cart_items = TransactionDetails::where('id',$transact_id->id)->whereNotNull('medicine_id')->count();
+                foreach($cart_items as $index => $o){
+                    $medicine_id = $o;
+                    $qty = $cart_items->medicine_id[$index];
+                    $dose = $cart_items->dosis[$index];
+                    $type = $cart_items->konsumsi[$index];
+                    $this->importMedicine($medicine_id,$qty,$dose,$type);
+                }
+            }
+
+
+            ##Ambil Data dari Rekam Medis kedalem cart
             $obat = explode(',', $this->transact_rekam->medicine_id);
             $quantity = explode(',', $this->transact_rekam->quantity);
             $konsumsi = explode(',', $this->transact_rekam->konsumsi);
@@ -58,6 +78,35 @@ class MedicineCart extends Component
                 }
             }
         }
+    }
+
+    ##cek kalo transaction detailnya udah pernah diubah
+    public function checkDetailWithRekam(){
+        if($this->transact_rekam){
+            $rekam_count = count(explode(',', $this->transact_rekam->medicine_id));
+            $rekam_transaction = Transaction::where('rekamMedis_id',$this->transact_rekam->id)->get();
+            $transaction_details = TransactionDetails::where('id',$rekam_transaction->id)->whereNotNull('medicine_id')->get();
+            #Cek Jumlah Obat
+            if($rekam_count != count($transaction_details)){
+                return $rekam_transaction;
+            }
+            #Cek konten obat
+            else{
+                $obat = explode(',', $this->transact_rekam->medicine_id);
+                $quantity = explode(',', $this->transact_rekam->quantity);
+                $konsumsi = explode(',', $this->transact_rekam->konsumsi);
+                $dosis = explode(',', $this->transact_rekam->dosis);
+                foreach ($obat as $index => $o) {
+                    if ($o != NULL) {
+                        if($o != $transaction_details[$index]->medicine_id or $dosis[$index] != $transaction_details[$index]->dosis or $konsumsi[$index] != $transaction_details[$index]->konsumsi or $quantity[$index] != $transaction_details[$index]->quantity){
+                            return false;
+                        }
+                    }
+
+                
+            }
+        }
+
     }
 
     public function wireChangeDataTransaction (){

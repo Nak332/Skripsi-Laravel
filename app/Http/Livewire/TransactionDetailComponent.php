@@ -32,20 +32,22 @@ class TransactionDetailComponent extends Component
 
     protected $listeners = ['MedicineCartUpdate' => 'UpdateTransactionDetail'];
 
+
+    ##IMPORT DARI REKAM MEDIS
     public function UpdateTransactionDetail($data){
-        Log::alert('masuk');
+        // Log::alert('masuk');
         $detil = TransactionDetails::where('transaction_id',$this->transaksi->id)->whereNotNull('medicine_id')->get();
-        Log::alert($detil . 'ini adalah' . gettype($detil));
+        // Log::alert($detil . 'ini adalah' . gettype($detil));
         $listobat1 = $data['listobat'];
-        Log::alert($listobat1 . 'ini adalah1' . gettype($listobat1));
+        // Log::alert($listobat1 . 'ini adalah1' . gettype($listobat1));
         $listobat = explode(',', $listobat1);
-        $listqty1 = $data['listqty'];
-        $listqty = explode(',',$listqty1);
-        $konsumsilist1= $data['konsumsilist'];
-        $konsumsilist = explode(',',$konsumsilist1);
-        $dosislist1 = $data['dosislist'];
-        $dosislist = explode(',',$dosislist1);
-        Log::alert('masuk2');
+        $listqty_temp = $data['listqty'];
+        $listqty = explode(',',$listqty_temp);
+        $konsumsilist_temp= $data['konsumsilist'];
+        $konsumsilist = explode(',',$konsumsilist_temp);
+        $dosislist_temp = $data['dosislist'];
+        $dosislist = explode(',',$dosislist_temp);
+        // Log::alert('masuk2');
 
         if ($detil->first()) {
             foreach ($detil as $o) {
@@ -54,7 +56,7 @@ class TransactionDetailComponent extends Component
         }
 
         foreach ($listobat as $index => $o) {
-            Log::alert("berjalan");
+            // Log::alert("berjalan");
             $transaksibaru = new TransactionDetails;
             $transaksibaru->transaction_id = $this->transaksi->id;
             $transaksibaru->medicine_id = $o;
@@ -64,7 +66,7 @@ class TransactionDetailComponent extends Component
             $transaksibaru->save();
         }
 
-        Log::alert("keluar");
+        // Log::alert("keluar");
     }
 
     public function SetKonsul($id){
