@@ -162,6 +162,7 @@ final class TransactionTable extends PowerGridComponent
                Button::make('redirect','Open')
                ->class('bg-green-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
                ->route('to.transaction',['id'=>'id'])
+               ->target('_self')
         ];
     }
     

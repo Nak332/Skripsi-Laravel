@@ -4,7 +4,7 @@
         @livewire('medicine-search-bar')
     </div>
 
-    <div class="overflow-y-auto h-72 ">
+    <div class="overflow-y-auto h-96 ">
 
 
         @if ($obat)
@@ -83,8 +83,10 @@
         @endif
     </div>
     @if ($transact_rekam)
-
-        <div class="cursor-pointer bg-green-500"  wire:click="wireChangeDataTransaction">Save</div>
+    <div class="flex">
+        <div class="cursor-pointer bg-green-500 w-fit m-4 p-2 rounded hover:outline hover:outline-green-500 hover:bg-white hover:text-green-500 transition-all text-center text-white font-bold"  wire:click="wireChangeDataTransaction">Simpan</div>
+    </div>
+        
 
 
 

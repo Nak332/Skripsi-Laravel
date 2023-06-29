@@ -1,6 +1,6 @@
 <div class="bg-gray-200 h-fit">
     <div id="container_header_transaksi" class=" flex justify-center w-full pt-8">
-        <div id="card_pasien" class="w-4/5 p-4 bg-white rounded">
+        <div id="card_pasien" class="w-4/5 p-4 bg-white rounded ">
             <h1 class="text-2xl font-bold mb-4 truncate">Transaksi {{$transaksi->id}}</h1>
             <h1 class="text-sm  font-bold mb-4 truncate">No. Rekam Medis: {{$transaksi->rekamMedis_id}}</h1>
             <hr>
@@ -17,36 +17,39 @@
 
 
 
-        <div id="container_invoice" class=" flex justify-center w-full pt-8">
-            <div id="card_pasien" class="w-4/5 p-4 bg-white rounded">
-                <h1 class="text-2xl font-bold mb-4 truncate">Invoice</h1>
-                <hr>
-                <div class="w-full p-2 rounded mt-4 items-center">
+        <div id="container_invoice" class=" flex justify-center w-full ">
+            <div id="card_pasien" class="w-4/5 ">
+                <div class=" bg-white p-4 rounded my-6">
+                    <label for="hasil_anamnesis" class="w-1/2 block text-black text-lg font-medium mb-2 ">Layanan</label>
+                    <hr>
+                    <div class="w-full p-2 rounded mt-4 items-center">
                     @foreach ($detil as $item)
                     @if ($item->konsultasi != NULL)
                     <div class="mb-4 md:flex">
-                        <label for="hasil_anamnesis" class="w-1/2 block text-black text-lg font-medium mb-2">Konsultasi</label>
+                        <label  class="w-1/2 block text-black text-lg font-medium p-2">Konsultasi</label>
                         <input type="number" wire:init='SetKonsul({{$item->id}})' wire:model="konsul" wire:change="UpdateKonsul({{$item->id}})" placeholder="{{$item->price}}" class="w-1/2 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300">
                     </div>
                     @endif
                     @endforeach
+                    </div>
 
-                    {{-- <div class="mb-4 md:flex">
-                        <label for="hasil_anamnesis" class="w-1/2 block text-black text-lg font-medium mb-2">Tindakan / Pelayanan</label>
-
-                        <input type="number" name="" id=""  placeholder="45000" class="w-1/2 px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
-                    </div> --}}
+                    <div class="w-full p-2 rounded mt-4 items-center">
                     @foreach ($detil as $item)
                     @if ($item->treatment != NULL)
                     <div class="mb-4 md:flex">
-                        <label for="hasil_anamnesis" class="w-1/2 block text-black text-lg font-medium mb-2">{{$item->treatment}}</label>
+                        <label  class="w-1/2 block text-black text-lg font-medium p-2">{{$item->treatment}}</label>
                         <input type="number" wire:init='SetTreatment({{$item->id}})' wire:model="treatment" wire:change="UpdateTreatment({{$item->id}})"   placeholder="45000" class="w-1/2 px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
                     </div>
                     @endif
                     @endforeach
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 rounded my-6">
 
+                    <div class=""></div>    
                     <div>
-                        <label for="hasil_anamnesis" class="w-1/2 block text-black text-lg font-medium mb-2 mt-4">Preskripsi Obat</label>
+                        <label for="hasil_anamnesis" class="w-1/2 block text-black text-lg font-medium mb-2 ">Preskripsi Obat</label>
                     </div>
                     <hr>
                     <table class="w-full my-4">
@@ -96,15 +99,32 @@
                             @endforeach
                         </tbody>
                     </table>
-                    @if ($rekammedis)
-                        @livewire('medicine-cart',['transact_rekam' => $rekammedis])
-                    @else
-                    @livewire('medicine-cart')
-                    @endif
 
+                    <div x-data="{ showDiv: false }">
+                        <label class="bg-yellow-300 p-2 text-black rounded">
+                            <input type="checkbox" x-model="showDiv" class="form-checkbox">
+                            <span class="ml-2">Edit Obat</span>
+                        </label>
+                        <div x-show="showDiv" x-transition:enter="transition ease-out duration-300"
+                             x-transition:enter-start="opacity-0 transform scale-95"
+                             x-transition:enter-end="opacity-100 transform scale-100"
+                             x-transition:leave="transition ease-in duration-300"
+                             class="mt-4 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300">
+                            @if ($rekammedis)
+                                @livewire('medicine-cart',['transact_rekam' => $rekammedis])
+                            @else
+                                @livewire('medicine-cart')
+                            @endif
+                        </div>
+                    </div>
 
-                    <div>
-                        <label for="hasil_anamnesis" class="w-1/2 block text-black text-lg font-medium mb-2 mt-4">Obat Lain</label>
+                </div>
+                   
+                    
+                <div class=" bg-white p-4 rounded my-6">
+
+                    <div class="">
+                        <label for="hasil_anamnesis" class="w-1/2 block text-black text-lg font-medium mb-2 ">Obat Lain</label>
                     </div>
                     <hr>
                     <table class="w-full my-4">
@@ -134,26 +154,19 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <hr>
-
+                  
+                </div>
                 <form action="/update-transaksi/{{$transaksi->id}}" method="post">
                     @csrf
-{{--
-                    <div class="md:flex mt-4 items-center">
-                        <label for="Total" class="w-1/2 block text-black text-lg font-medium ">Obat Tambahan</label>
-                         <input type="text" name="extra_medicine" id="extra_medicine"  class=" w-1/2 px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
-                    </div>
-                    <div class="md:flex my-4 items-center">
-                        <label for="Total" class="w-1/2 block text-black text-lg font-medium ">Harga</label>
-                         <input type="text" name="price" id="price"  class=" w-1/2 px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
-                    </div> --}}
 
                     <div class="flex items-center justify-between">
 
                       </div>
-                      <hr>
+                      
+                      <div class=" bg-white p-4 rounded my-6">
                       <div class="md:flex mt-4 items-center">
                         <label for="Total" class="w-1/2 block text-black text-lg font-medium ">Tipe Pembayaran</label>
+                        
 
                             <Select name="payment" id="payment" class="px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
                                 <option value="Kredit">Kredit</option>
@@ -165,24 +178,25 @@
 
 
                     </div>
-                      <div class="md:flex mt-4 mb-4 items-center">
-                          <label for="Total" class="w-1/2 block text-black text-lg font-medium ">Total</label>
-                          <input  name="Total" wire:init='SetTotal({{$transaksi->id}})' wire:model="totalharga">
-                          <input type="text" name="total" value="{{$totalharga}}">
-                      </div>
-                      <button
-                      class="bg-green-500 mb-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                      type="submit">
-                      Submit
-                    </button>
+                    
+                        <div class="md:flex mt-4 mb-4 items-center">
+                            <label for="Total" class="w-1/2 block text-black text-lg font-medium ">Total</label>
+                            <input  name="Total" wire:init='SetTotal({{$transaksi->id}})' wire:model="totalharga">
+                            <input type="text" name="total" value="{{$totalharga}}">
+                        </div>
+                        <button
+                        class="bg-green-500 mb-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="submit">
+                        Submit
+                        </button>
                 </form>
-
+                    </div>
 
 
                 </div>
 
             </div>
-        </div>
+   
 
-
+    </div>
 </div>

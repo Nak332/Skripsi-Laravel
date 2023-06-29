@@ -36,6 +36,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/transaksi/{id}',[TransactionController::class,'transaksi'])->name('to.transaction');
 
 
+
 Route::middleware(['isLogin'])->group(function () {
     Route::get('/',[AntrianController::class,'index']);
     Route::get('/resepsi',[AntrianController::class,'index']);
