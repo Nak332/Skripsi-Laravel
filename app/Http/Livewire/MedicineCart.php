@@ -27,6 +27,7 @@ class MedicineCart extends Component
     public $dose_list;
     public $consump_type_list;
     public $indexing;
+    public $medicine_purchase=false;
 
     public $transact_rekam;
     // public $obj;

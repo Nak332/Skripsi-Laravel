@@ -28,6 +28,7 @@
 
         <div id="container_invoice" class=" flex justify-center w-full ">
             <div id="card_pasien" class="w-4/5 ">
+                @if ($transaksi->patient_id)
                 <div class=" bg-white p-4 rounded my-6">
                     <label for="hasil_anamnesis" class="w-1/2 block text-black text-lg font-medium mb-2 ">Layanan</label>
                     <hr>
@@ -53,7 +54,11 @@
                     @endforeach
                     </div>
                 </div>
-
+                    
+                @endif
+                
+                @if ($transaksi->rekamMedis_id or !$transaksi->patient_id)
+                
                 <div class="bg-white p-4 rounded my-6">
 
                     <div class=""></div>
@@ -121,6 +126,8 @@
                              class="mt-4 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300">
                             @if ($rekammedis)
                                 @livewire('medicine-cart',['transact_rekam' => $rekammedis])
+                            @elseif(!$transaksi->patient_id)
+                                @livewire('medicine-cart',['medicine_purchase' => true])
                             @else
                                 @livewire('medicine-cart')
                             @endif
@@ -129,7 +136,7 @@
 
                 </div>
 
-
+                @if ($transaksi->rekamMedis_id)
                 <div class=" bg-white p-4 rounded my-6">
 
                     <div class="">
@@ -165,6 +172,17 @@
                     </table>
 
                 </div>
+                    
+                @endif
+
+            
+                
+                    
+                @endif
+               
+                    
+             
+               
                 <form action="/update-transaksi/{{$transaksi->id}}" method="post">
                     @csrf
 
@@ -194,11 +212,13 @@
                             <input type="text" name="total" value="{{$totalharga}}">
                         </div>
                         <button
-                        class="bg-green-500 mb-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        class="rounded-lg font-medium bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all px-4 py-2.5 mr-2 mb-2 text-center text-white"
                         type="submit">
                         Submit
                         </button>
                 </form>
+                <button type="" class="rounded-lg font-medium bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all px-4 py-2.5 mr-2 mb-2 text-center text-white">Batalkan Transaksi</button>     
+    </div>
                     </div>
 
 
