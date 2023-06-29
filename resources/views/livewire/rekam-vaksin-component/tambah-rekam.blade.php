@@ -61,7 +61,7 @@
               @endif
               <hr class="mt-8">
 
-             
+
            </div>
 
            <div id="main_container_form" class="md:flex px-4">
@@ -71,7 +71,7 @@
                      <div class="w-6 h-6"><x-fontisto-blood-test /></div>
                      <p class="text-md font-bold ">Hasil pemeriksaan</p>
                   </div>
-                 
+
                  </div>
             </div>
          </div>
@@ -81,7 +81,7 @@
                      <label for="hasil_anamnesis" class="block text-black text-sm font-medium mb-2">Anamnesis</label>
                      <textarea name="anamnesis" id="anamnesis" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                   </div>
-      
+
                  <div class="mb-4">
                     <label for="penatalaksaan" class="block text-black text-sm font-medium mb-2">Penatalaksanaan</label>
                     <textarea rows="3" name="follow_up_plan" id="follow_up_plan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
@@ -103,12 +103,12 @@
 
 
               <div id="right-side" class="w-1/2 flex flex-col justify-between p-6">
-                
 
-                 
+
+
                  <div id="med" class="mb-4  overflow-auto">
                     <label for="medicine_id" class="block text-black text-sm font-medium mb-2">Preskripsi Obat</label>
-                     
+
                     <div class="  p-2 rounded-md border border-gray-300 ">
                        @livewire('medicine-cart')
 
@@ -123,6 +123,8 @@
 
                  <input type="text" name="medicine_id" id="medicine_id" hidden value="{{$listobat}}">
                  <input type="text" name="quantity" id="quantity" hidden value="{{$listqty}}">
+                 <input type="text" name="konsumsi" id="konsumsi" hidden value="{{$konsumsilist}}">
+                 <input type="text" name="dosis" id="dosis" hidden value="{{$dosislist}}">
 
                  <div class="mb-4">
                     <label for="obat lain" class="block text-black text-sm font-medium mb-2">Obat lain</label>

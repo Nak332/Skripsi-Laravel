@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Medicine;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 use function PHPUnit\Framework\isEmpty;
@@ -24,13 +25,12 @@ class MedicineCart extends Component
     public $consump_type_list;
     public $indexing;
 
-    public $transact_mount;
     public $transact_rekam;
     // public $obj;
 
 
     public function mount(){
-        
+
         $this->ix;
         $this->obat=[];
         $this->obat_name=[];
@@ -43,29 +43,58 @@ class MedicineCart extends Component
         $this->obat_list = '';
         $this->qty_list = '';
         $this->indexing = 0;
-        if($this->transact_mount and $this->transact_rekam){
-            
+        if($this->transact_rekam){
+            $obat = explode(',', $this->transact_rekam->medicine_id);
+            $quantity = explode(',', $this->transact_rekam->quantity);
+            $konsumsi = explode(',', $this->transact_rekam->konsumsi);
+            $dosis = explode(',', $this->transact_rekam->dosis);
+            foreach ($obat as $index => $o) {
+                if ($o != NULL) {
+                    $medicine_id = $o;
+                    $qty = $quantity[$index];
+                    $dose = $dosis[$index];
+                    $type = $konsumsi[$index];
+                    $this->importMedicine($medicine_id,$qty,$dose,$type);
+                }
+            }
         }
     }
-    ##Buat kalo dari transaksi page, import obat dari data rekam medis
-    // public function importMedicine($medicine_id,$qty)
-    // {
-    //     $obat ='id obat';
-    //     $obj = Medicine::find();
-    //     $medicineName = $obj ? $obj->medicine_name : null;
-    //     array_push($this->obat_name, $medicineName);
-    //     array_push($this->obat, $obat);
-    //     array_push($this->qty,0);
-    //     $this->updateParentData();
+
+    public function wireChangeDataTransaction (){
+        $this->tostring();
+        Log::alert("jalan2");
+        $this->emit('MedicineCartUpdate', ['obat'=>$this->obat,'qty'=>$this->qty,'listobat'=>$this->obat_list,'listqty' => $this->qty_list,'konsumsilist' => $this->consump_type_list, 'dosislist' => $this->dose_list] );
+    Log::alert("jalan");
+    }
+
+    // public function wireChangeDelete (){
+    //     $this->emit('MedicineCartUpdate',[$this->obat_list,$this->qty_list,$this->dose_list,$this->consump_type_list]);
     // }
+
+    ##Buat kalo dari transaksi page, import obat dari data rekam medis
+    public function importMedicine($medicine_id,$qty,$dose, $type)
+    {
+        $obj = Medicine::find($medicine_id);
+        $medicineName = $obj ? $obj->medicine_name : null;
+        array_push($this->obat_name, $medicineName);
+        array_push($this->obat, $medicine_id);
+        array_push($this->qty,$qty);
+        array_push($this->obat_dose,$dose);
+        array_push($this->obat_consump_type,$type);
+        $this->updateParentData();
+    }
 
     public function tostring(){
         $this->obat_list = '';
-            $this->qty_list = '';
+        $this->qty_list = '';
+        $this->dose_list = '';
+        $this->consump_type_list = '';
         if ($this->obat && $this->qty && count($this->obat) === count($this->qty) && !empty($this->obat) && !empty($this->qty)) {
             foreach ($this->obat as $index => $o) {
                 $this->obat_list .= $o . ',';
                 $this->qty_list .= $this->qty[$index] . ',';
+                $this->dose_list .= $this->obat_dose[$index] . ',';
+                $this->consump_type_list .= $this->obat_consump_type[$index] . ',';
             }
         }
 
@@ -116,7 +145,7 @@ class MedicineCart extends Component
 
     public function updateParentData(){
         $this->tostring();
-        $this->emit('objectsUpdated', ['obat'=>$this->obat,'qty'=>$this->qty,'listobat'=>$this->obat_list,'listqty' => $this->qty_list] );
+        $this->emit('objectsUpdated', ['obat'=>$this->obat,'qty'=>$this->qty,'listobat'=>$this->obat_list,'listqty' => $this->qty_list,'konsumsilist' => $this->consump_type_list, 'dosislist' => $this->dose_list] );
     }
 
     public function render()

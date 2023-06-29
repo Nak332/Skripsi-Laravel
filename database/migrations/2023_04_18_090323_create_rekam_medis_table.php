@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('appointment_id')->nullable();
             $table->string('medicine_id')->nullable();
             $table->integer('employee_id');
-            $table->integer('sistol');
-            $table->integer('diastol');
+            $table->integer('sistol')->nullable();
+            $table->integer('diastol')->nullable();
             $table->string('attachment')->nullable();
             $table->integer('height') ->nullable();
             $table->float('weight', 5, 2) ->nullable();

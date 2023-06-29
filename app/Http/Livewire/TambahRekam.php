@@ -30,6 +30,8 @@ class TambahRekam extends Component
     public $sistol;
     public $diastol;
     public $pulse;
+    public $dosislist = '';
+    public $konsumsilist = '';
 
 
     protected $rules=[
@@ -85,7 +87,7 @@ class TambahRekam extends Component
         $this->selected_patient=Patient::findorFail($id);
         $this->selected_patient_name=  $this->selected_patient['patient_name'];
     }
-    
+
     public function toggle()
     {
         $this->rujukan = !$this->rujukan;
@@ -96,9 +98,11 @@ class TambahRekam extends Component
         $this->qty  = $data['qty'];
         $this->listqty = $data ['listqty'];
         $this->listobat = $data['listobat'];
+        $this->dosislist = $data['dosislist'];
+        $this->konsumsilist = $data['konsumsilist'];
     }
 
-    
+
     public function render()
     {
         return view('livewire.rekam-vaksin-component.tambah-rekam');
