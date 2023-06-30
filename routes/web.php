@@ -59,7 +59,7 @@ Route::middleware(['isLogin'])->group(function () {
 
 });
 
-Route::middleware(['checkrole:admin,Dokter'])->group(function () {
+Route::middleware(['checkrole:admin,Dokter,Farmasi'])->group(function () {
     Route::get('/pasien/{id}', [PatientController::class , 'patient']) -> name('to.pasien');
     Route::get('/tambah-karyawan', function () {
         return view('form-empregister');

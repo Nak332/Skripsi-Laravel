@@ -41,7 +41,14 @@ class RekamController extends Controller
             'diagnosis' => 'required',
             'type' => 'nullable',
             'note' => 'nullable'
-            ]);
+            ],[
+                'file_input.mimetypes' => 'Jenis file yang diterima: .pdf .msword .jpeg dan .png. Maksimal 50 mb',
+                'patient_id' => 'Pasien harus diisi',
+                'employee_id' => 'Karyawan harus diisi',
+                'anamnesis' => 'Anamnesis harus diisi',
+                'treatment' => 'Perawatan harus diisi',
+                'diagnosis' => 'Diagnosa harus diisi'
+                ]);
 
         $rekamMedis = new RekamMedis;
             if ($request->file_input != NULL) {

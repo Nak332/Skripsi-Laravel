@@ -15,8 +15,10 @@
             <input name='weight' wire:model='weight' step="0.1" type="number" hidden >
             <input name='complaint' wire:model='complaint' type="text" hidden >
 
+            <div class="px-6 ml-2"><span class="text-sm text-red-500">*Wajib diisi</span></div><br>    
            <div id="container_pasien" class="flex-inline py-4">
               <div class="px-6 py-4 w-1/3 ml-2" x-data="{ show: true }">
+                  <label for="Pasien" class="block text-black text-sm font-medium mb-2">Pasien<span class="text-red-500">*</span></label>
                  <input type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" @click="show = !show;$wire.clear();$wire.getFromQueue();">
                  <label for="checkbox" class="ml-2 text-sm font-medium text-gray-400 dark:text-black">Gunakan antrian pasien</label>
                  @if ($check=='false')
@@ -25,14 +27,16 @@
                  </p>
 
                  @endif
-                 <div class="mt-4" x-show="show">
-                    @livewire('patient-search-bar')
-                 </div>
+               
+                     <div class="mt-4" x-show="show">
+                    @livewire('patient-search-bar') 
+                     </div>
+                     @error('patient_id') <span class="text-xs text-red-500">{{$message}}</span> @enderror
               </div>
               @if ($selected_patient)
               <div id="selected-patient-container" class="flex">
                  <div id="selected-patient-card" class="w-1/2 flex-inline px-8">
-                    <label class="block mb-2 text-sm font-medium text-gray-900  " for="patient_id">Pasien</label>
+     
                     <div>
                        <p class="font-bold text-white rounded-lg bg-blue-500 p-3 truncate">
                            {{$selected_patient['patient_name']}} <br>
@@ -57,8 +61,9 @@
                     <input type="text" name="appointment_id" id="appointment_id"  wire:model='q_number' hidden @if($q_number>0) value="{{ $q_number }}" @else value="-1" @endif >
                     <input type="text" name="employee_id" id="employee_id" hidden value="{{Auth::user()->employee_id}}">
                  </div>
-              </div>
+              </div> 
               @endif
+             
               <hr class="mt-8">
 
 
@@ -78,8 +83,9 @@
            <div id="main_container_form" class="md:flex px-4">
                <div id="left-side" class="w-1/2 flex flex-col justify-between p-6">
                   <div class="mb-4">
-                     <label for="hasil_anamnesis" class="block text-black text-sm font-medium mb-2">Anamnesis</label>
+                     <label for="hasil_anamnesis" class="block text-black text-sm font-medium mb-2">Anamnesis<span class="text-red-500">*</span></label>
                      <textarea name="anamnesis" id="anamnesis" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                     @error('anamnesis') <span class="text-xs text-red-500">{{$message}}</span> @enderror
                   </div>
 
                  <div class="mb-4">
@@ -87,13 +93,15 @@
                     <textarea rows="3" name="follow_up_plan" id="follow_up_plan" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                  </div>
                  <div class="mb-4">
-                  <label for="penatalaksaan" class="block text-black text-sm font-medium mb-2">Tindakan</label>
+                  <label for="tindakan" class="block text-black text-sm font-medium mb-2">Tindakan<span class="text-red-500">*</span></label>
                   <textarea rows="3" name="treatment" id="treatment" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                  @error('treatment') <span class="text-xs text-red-500">{{$message}}</span> @enderror
                 </div>
 
                <div class="mb-4">
-                  <label for="disease" class="block text-black text-sm font-medium mb-2">Diagnosa</label>
+                  <label for="diagnosis" class="block text-black text-sm font-medium mb-2">Diagnosa<span class="text-red-500">*</span></label>
                   <textarea rows="3" name="diagnosis" id="diagnosis" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                  @error('diagnosis') <span class="text-xs text-red-500">{{$message}}</span> @enderror
                </div>
                <div class="mb-4">
                   <label for="note" class="block text-black text-sm font-medium mb-2">Catatan</label>
@@ -157,7 +165,7 @@
                   </div>
 
                   <div class="mb-4 ">
-                     <label for="dissease" class="block text-black text-sm font-medium mb-2">Untuk Poli</label>
+                     <label for="disease" class="block text-black text-sm font-medium mb-2">Untuk Poli</label>
                      <input type="text" name="rujukan_specialist" id="rujukan_specialist" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Ortopedi"></textarea>
                   </div>
 
@@ -189,6 +197,7 @@
                 <div class="mb-4">
                     <label for="penatalaksaan" class="block text-black text-sm font-medium mb-2">Lampiran</label>
                     <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" name="file_input" type="file">
+                    @error('file_input') <span class="text-xs text-red-500">{{$message}}</span> @enderror
                 </div>
 
 

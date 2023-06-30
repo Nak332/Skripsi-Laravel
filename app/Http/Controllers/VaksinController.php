@@ -34,7 +34,7 @@ class VaksinController extends Controller
             'patient_id' => 'required',
             'batch_number' => 'required',
             'expired_date' => 'required',
-            'supplier' => 'required',
+            'supplier' => 'nullable',
             'notes' => 'nullable',
             'next_dose' => ['nullable','date_format:Y-m-d','after:'.$today]
             ],[
@@ -44,7 +44,6 @@ class VaksinController extends Controller
             'expired_date' => 'Tanggal Kadaluarsa harus diisi',
             'patient_id' => 'Pasien harus diisi',
             'batch_number' => 'Nomor batch vaksin harus diisi',
-            'supplier' => 'Supplier harus diisi',
             'next_dose.after' => 'Tanggal dosis berikut harus melewati hari ini'
             ]);
 

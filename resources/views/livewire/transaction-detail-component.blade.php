@@ -66,7 +66,7 @@
                         <label for="hasil_anamnesis" class="w-1/2 block text-black text-lg font-medium mb-2 ">Preskripsi Obat</label>
                     </div>
                     <hr>
-                    <table class="w-full my-4">
+                    <table class="w-max my-4">
                         <thead class="">
                             <tr>
                                 <th class="text-black text-base text-start font-medium capitalize">Nama Obat</th>
@@ -87,10 +87,10 @@
                                             </div>
                                          </td>
                                         <td class="align-top">
-                                            <input type="number" wire:model="detil.{{ $index }}.quantity" disabled wire:change="UpdateQuantity({{ $item->id }},{{ $detil[$index]->quantity }})" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300">
+                                            <input type="number" wire:model="detil.{{ $index }}.quantity" disabled wire:change="UpdateQuantity({{ $item->id }},{{ $detil[$index]->quantity }})" class="px-4 w-24 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300">
                                         </td>
                                         <td class="align-top">
-                                            <input type="text" disabled wire:model="detil.{{ $index }}.konsumsi" wire:change="UpdateKonsumsi({{ $item->id }},{{ $detil[$index]->konsumsi }})" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300">
+                                            <input type="text" disabled wire:model="detil.{{ $index }}.konsumsi" wire:change="UpdateKonsumsi({{ $item->id }},{{ $detil[$index]->konsumsi }})" class="px-4 w-32 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300">
                                         </td>
                                         {{-- <td class="align-top">
                                             <select wire:model="detil.{{ $index }}.konsumsi" wire:change="UpdateKonsumsi({{ $item->id }},{{ $detil[$index]->konsumsi }})" name="consumption_type" disabled id="" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="" id="">
@@ -106,10 +106,10 @@
 
 
                                         <td class="align-top">
-                                            <input type="number" wire:model="detil.{{ $index }}.price" wire:change="UpdateMedicinePrice({{ $item->id }},{{ $detil[$index]->price }})" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="" id="">
+                                            <input type="number" wire:model="detil.{{ $index }}.price" wire:change="UpdateMedicinePrice({{ $item->id }},{{ $detil[$index]->price }})" class="px-4 w-32 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="" id="">
                                         </td>
                                         <td class="align-top">
-                                            <input type="number" wire:model="detil.{{ $index }}.quantity" wire:change="UpdateQuantity({{ $item->id }},{{ $detil[$index]->quantity }})" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" disabled>
+                                            <input type="number" wire:model="detil.{{ $index }}.quantity" wire:change="UpdateQuantity({{ $item->id }},{{ $detil[$index]->quantity }})" class="px-4 w-32 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" disabled>
                                         </td>
                                     </tr>
                                 @endif
