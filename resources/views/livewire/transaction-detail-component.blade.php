@@ -54,11 +54,11 @@
                     @endforeach
                     </div>
                 </div>
-                    
+
                 @endif
-                
+
                 @if ($transaksi->rekamMedis_id or !$transaksi->patient_id)
-                
+
                 <div class="bg-white p-4 rounded my-6">
 
                     <div class=""></div>
@@ -90,15 +90,18 @@
                                             <input type="number" wire:model="detil.{{ $index }}.quantity" disabled wire:change="UpdateQuantity({{ $item->id }},{{ $detil[$index]->quantity }})" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300">
                                         </td>
                                         <td class="align-top">
-                                            <select name="consumption_type" disabled id="" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="" id="">
+                                            <input type="text" disabled wire:model="detil.{{ $index }}.konsumsi" wire:change="UpdateKonsumsi({{ $item->id }},{{ $detil[$index]->konsumsi }})" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300">
+                                        </td>
+                                        {{-- <td class="align-top">
+                                            <select wire:model="detil.{{ $index }}.konsumsi" wire:change="UpdateKonsumsi({{ $item->id }},{{ $detil[$index]->konsumsi }})" name="consumption_type" disabled id="" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="" id="">
                                                 <option value="">Kapsul</option>
                                                 <option value="">Tablet</option>
                                                 <option value="">Sirup</option>
                                                 <option value="">Salep</option>
                                             </select>
-                                        </td>
+                                        </td> --}}
                                         <td class="align-top">
-                                            <input type="text" disabled class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="" id="">
+                                            <input type="text" disabled wire:model="detil.{{ $index }}.dosis" wire:change="UpdateDosis({{ $item->id }},{{ $detil[$index]->dosis }})" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300">
                                         </td>
 
 
@@ -172,17 +175,17 @@
                     </table>
 
                 </div>
-                    
+
                 @endif
 
-            
-                
-                    
+
+
+
                 @endif
-               
-                    
-             
-               
+
+
+
+
                 <form action="/update-transaksi/{{$transaksi->id}}" method="post">
                     @csrf
 
@@ -217,8 +220,11 @@
                         Submit
                         </button>
                 </form>
-                <button type="" class="rounded-lg font-medium bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all px-4 py-2.5 mr-2 mb-2 text-center text-white">Batalkan Transaksi</button>     
-    </div>
+                <form action="/batalkan-transaksi/{{$transaksi->id}}" method="post">
+                    @csrf
+                    <button type="" class="rounded-lg font-medium bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all px-4 py-2.5 mr-2 mb-2 text-center text-white">Batalkan Transaksi</button>
+                </form>
+                    </div>
                     </div>
 
 
