@@ -32,7 +32,7 @@
                     <div class="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                     <button @click="open = false" type="submit" class="rounded-lg font-medium bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all text-sm px-4 py-2.5 mr-2 mb-2 text-center text-white">Delete</button>
                     <div class="px-1"></div>
-                    <button @click="open = false" type="button" class="rounded-lg font-medium bg-black hover:bg-white hover:text-black hover:outline hover:outline-black outline-2 transition-all text-sm px-3 py-2.5 mr-2 mb-2 text-center text-white">Cancel</button>
+                    <button @click="open = false" type="button" class="rounded-lg font-medium bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all text-sm px-4 py-2.5 mr-2 mb-2 text-center text-white">Cancel</button>
                     </div>
 
                         {{-- <input wire:model='selected_patient' type="text"> --}}

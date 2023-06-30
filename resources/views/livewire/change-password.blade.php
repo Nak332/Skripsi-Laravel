@@ -59,7 +59,7 @@
                 type="submit">Update</button>
                 <div class="px-1"></div>
               <button @click="open = false"
-                class="rounded-lg font-medium bg-black hover:bg-white hover:text-black hover:outline hover:outline-black outline-2 transition-all px-5 py-2.5 mr-2 mb-2 text-center text-white"
+                class="rounded-lg font-medium bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all text-sm px-4 py-2.5 mr-2 mb-2 text-center text-white"
                 type="button">Cancel</button>
             </div>
           </form>
