@@ -88,10 +88,14 @@ final class TransactionTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
-            ->addColumn('name')
-            ->addColumn('name_lower', fn (Transaction $model) => strtolower(e($model->name)))
             ->addColumn('created_at')
-            ->addColumn('created_at_formatted', fn (Transaction $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (Transaction $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
+            ->addColumn('available', function (Transaction $model) {
+                return ($model->flag==1 ? 'Aktif' : 'Selesai');
+              })
+            ->addColumn('type', function (Transaction $model) {
+                return ($model->rekamMedis_id ?'Rekam Medis' : (!$model->patient_id ? 'Pembelian Obat': 'Lainnya'));
+              });
     }
 
     /*
@@ -115,7 +119,10 @@ final class TransactionTable extends PowerGridComponent
                 ->searchable()
                 ->sortable(),
 
-            Column::make('Name', 'name')
+                Column::make('Status', 'available')
+                ->searchable()
+                ->sortable(),
+                Column::make('Tipe Transaksi', 'type')
                 ->searchable()
                 ->sortable(),
 
@@ -135,7 +142,7 @@ final class TransactionTable extends PowerGridComponent
     public function filters(): array
     {
         return [
-            Filter::inputText('name'),
+            
             Filter::datepicker('created_at_formatted', 'created_at'),
         ];
     }
