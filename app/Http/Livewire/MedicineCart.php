@@ -50,8 +50,22 @@ class MedicineCart extends Component
 
 
         // ------------------------------------------------------------ Transaction Mounting
-        if($this->transact_rekam){
+        if($this->medicine_purchase!=false){
+            $cart_items = TransactionDetails::where('transaction_id',$this->medicine_purchase)->whereNotNull('medicine_id')->get();
+            foreach($cart_items as $index => $o){
+                $medicine_id = $cart_items[$index]->medicine_id;
+                
+                $qty = $cart_items[$index]->quantity;
+                $dose = $cart_items[$index]->dosis;
+                $type = $cart_items[$index]->konsumsi;
+                $this->importMedicine($medicine_id,$qty,$dose,$type);
+            }
+
+        }
+        else if($this->transact_rekam){
+            Log::alert( $this->transact_rekam. 'Ini med purch');
             // -----------------------------Cek kalo pernah diubah transaction Detailnya ( Beda dari dalem RekamMedis)
+            
             if(($transact_id=$this->checkDetailWithRekam())!=false){
 
                 $cart_items = TransactionDetails::where('transaction_id',$transact_id->id)->whereNotNull('medicine_id')->get();
@@ -66,19 +80,19 @@ class MedicineCart extends Component
             }
             else if ($this->checkDetailWithRekam() == false) {
                 ##Ambil Data dari Rekam Medis kedalem cart
-            $obat = explode(',', $this->transact_rekam->medicine_id);
-            $quantity = explode(',', $this->transact_rekam->quantity);
-            $konsumsi = explode(',', $this->transact_rekam->konsumsi);
-            $dosis = explode(',', $this->transact_rekam->dosis);
-            foreach ($obat as $index => $o) {
-                if ($o != NULL) {
-                    $medicine_id = $o;
-                    $qty = $quantity[$index];
-                    $dose = $dosis[$index];
-                    $type = $konsumsi[$index];
-                    $this->importMedicine($medicine_id,$qty,$dose,$type);
+                $obat = explode(',', $this->transact_rekam->medicine_id);
+                $quantity = explode(',', $this->transact_rekam->quantity);
+                $konsumsi = explode(',', $this->transact_rekam->konsumsi);
+                $dosis = explode(',', $this->transact_rekam->dosis);
+                foreach ($obat as $index => $o) {
+                    if ($o != NULL) {
+                        $medicine_id = $o;
+                        $qty = $quantity[$index];
+                        $dose = $dosis[$index];
+                        $type = $konsumsi[$index];
+                        $this->importMedicine($medicine_id,$qty,$dose,$type);
+                    }
                 }
-            }
             }
 
 

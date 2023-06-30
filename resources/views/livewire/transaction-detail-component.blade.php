@@ -127,7 +127,7 @@
                             @if ($rekammedis)
                                 @livewire('medicine-cart',['transact_rekam' => $rekammedis])
                             @elseif(!$transaksi->patient_id)
-                                @livewire('medicine-cart',['medicine_purchase' => true])
+                                @livewire('medicine-cart',['medicine_purchase' => $transaksi->id])
                             @else
                                 @livewire('medicine-cart')
                             @endif
@@ -208,8 +208,8 @@
 
                         <div class="md:flex mt-4 mb-4 items-center">
                             <label for="Total" class="w-1/2 block text-black text-lg font-medium ">Total</label>
-                            <input  name="Total" wire:init='SetTotal({{$transaksi->id}})' wire:model="totalharga">
-                            <input type="text" name="total" value="{{$totalharga}}">
+                            <p class="font-bold text-lg p-2"  name="Total" wire:init='SetTotal({{$transaksi->id}})'>{{number_format($totalharga,2,'.')}} Rupiah</p>
+                            <input type="text" name="total" value="{{$totalharga}}" class="hidden">
                         </div>
                         <button
                         class="rounded-lg font-medium bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all px-4 py-2.5 mr-2 mb-2 text-center text-white"
