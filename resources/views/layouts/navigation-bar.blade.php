@@ -51,7 +51,7 @@
                                 type="button"
                                 class="max-w-xs hover:bg-gray-600 flex rounded-md items-center text-sm  text-white"
                             >
-                            <a  class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" >Rekam Medis</a>
+                            <a  class="px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-600" >Rekam dan Vaksin</a>
 
 
 
@@ -73,7 +73,7 @@
                                     Daftar Rekam Medis
                                 </a>
                                 <a href="/form-rekam/new" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                    Tambah Rekam Sakit
+                                    Tambah Rekam Medis
                                 </a>
 
                                 <a href="/tambah-vaksin/" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
