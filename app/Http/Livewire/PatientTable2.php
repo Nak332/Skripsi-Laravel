@@ -31,7 +31,7 @@ final class PatientTable2 extends PowerGridComponent
             Exportable::make('export')
                 ->striped()
                 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
-            Header::make()->showSearchInput(),
+            Header::make()->showSearchInput()->showToggleColumns(),
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(),
@@ -147,7 +147,7 @@ final class PatientTable2 extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    
+
     public function actions(): array
     {
        return [
@@ -168,7 +168,7 @@ final class PatientTable2 extends PowerGridComponent
                 ->route('to.pasien',['id'=>'id'])
         ];
     }
-    
+
     /*
     |--------------------------------------------------------------------------
     | Actions Rules
