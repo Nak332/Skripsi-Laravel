@@ -33,16 +33,28 @@ use Illuminate\Support\Facades\Route;
 //     return view('transaksi.transaksi');
 // });
 
-Route::get('/transaksi/{id}',[TransactionController::class,'transaksi'])->name('to.transaction');
 
 
+
+Route::middleware(['checkrole:admin'])->group(function () {
+    Route::post('ganti-password-karyawan/{id}', [EmployeeController::class,'password']);
+    Route::get('/tambah-karyawan', function () {
+        return view('form-empregister');
+    });
+    Route::get('/daftar-karyawan', function () {
+        return view('employee-list');
+    });
+    Route::post('/add-employee', [EmployeeController::class,'insert']);
+    Route::post('/disable-employee/{id}', [EmployeeController::class,'delete']);
+    Route::get('/profil/{id}', [EmployeeController::class , 'employee']) -> name('to.emp');
+    Route::get('/edit-emp/{id}', [EmployeeController::class , 'employee']);
+    Route::post('/edit-emp/edit/{id}', [EmployeeController::class , 'update']);
+});
 
 Route::middleware(['isLogin'])->group(function () {
     Route::get('/',[AntrianController::class,'index']);
     Route::get('/resepsi',[AntrianController::class,'index']);
-    // Route::get('resepsi',[PatientController::class,'index']);
-
-    // Route::get('/logout', [UserController::class, 'logout']);
+    Route::get('/logout', [UserController::class, 'logout']);
     Route::get('/daftar-pasien', function () {
         return view('patient-list');
     });
@@ -56,45 +68,50 @@ Route::middleware(['isLogin'])->group(function () {
     Route::get('/change-password',function(){
         return view('change-user-password');
     });
-
+    Route::post('/change-password', [UserController::class,'updatePassword']);
 });
 
-Route::middleware(['checkrole:admin,Dokter,Farmasi'])->group(function () {
+Route::middleware(['checkrole:admin,Dokter'])->group(function () {
     Route::get('/pasien/{id}', [PatientController::class , 'patient']) -> name('to.pasien');
-    Route::get('/tambah-karyawan', function () {
-        return view('form-empregister');
-    });
-    Route::get('/daftar-karyawan', function () {
-        return view('employee-list');
-    });
-    Route::post('/add-employee', [EmployeeController::class,'insert']);
-    Route::post('/tambah-transaksi', [TransactionController::class,'insert']);
-    Route::post('/batalkan-transaksi/{id}', [TransactionController::class,'delete']);
-    Route::post('/disable-employee/{id}', [EmployeeController::class,'delete']);
-    Route::get('/profil/{id}', [EmployeeController::class , 'employee']) -> name('to.emp');
-    Route::get('/edit-emp/{id}', [EmployeeController::class , 'employee']);
-    Route::post('/edit-emp/edit/{id}', [EmployeeController::class , 'update']);
     Route::get('/form-rekam/{id}', [RekamController::class , 'Rekam']);
     Route::get('/form-rekam/new', [RekamController::class , 'Rekam']);
-    // Route::get('/form-rekam', function () {
-    //     return view('tambah-rekam-medis-page');
-    // });
-
     Route::post('form_rekam/tambah', [RekamController::class,'insert']);
     Route::post('vaksinasi/tambah', [VaksinController::class,'insert']);
     Route::get('/tambah-vaksin/{id}', [VaksinController::class , 'Vaksin']);
     Route::get('tambah-vaksin', function () {
         return view('form-vaksin');
     });
+    Route::get('daftar-rekam', function () {
+        return view('rekam-table');
+    });
 });
 
-Route::post('/update-transaksi/{id}', [TransactionController::class,'update']);
+Route::middleware(['checkrole:admin,Dokter,Farmasi'])->group(function () {
+    Route::get('/transaksi/{id}',[TransactionController::class,'transaksi'])->name('to.transaction');
+    Route::post('/update-transaksi/{id}', [TransactionController::class,'update']);
+    Route::get('edit-obat/{id}/edit', [MedicineController::class , 'medicines']);
+    Route::post('edit-obat/{id}', [MedicineController::class , 'update']);
+    Route::get('obat/{id}', [MedicineController::class , 'medicines']) -> name('to.obat');
+    Route::get('daftar-obat', function () {
+       return view('obat-list');
+    });
+    Route::get('tambah-obat', function () {
+        return view('form-obat');
+    });
+    Route::post('/tambah-obat/tambah', [MedicineController::class,'insert']);
+    Route::post('/delete-obat/{id}', [MedicineController::class,'delete']);
+    Route::post('/tambah-stock', [MedicineDetailController::class,'insert']);
+    Route::post('/edit-stock/{id}', [MedicineDetailController::class,'update']);
+    Route::post('/delete-stock/{id}', [MedicineDetailController::class,'delete']);
+    Route::get('daftar-transaksi', function () {
+        return view('transaction-list');
+    });
+    Route::post('/tambah-transaksi', [TransactionController::class,'insert']);
+    Route::post('/batalkan-transaksi/{id}', [TransactionController::class,'delete']);
+});
 
 
-Route::post('ganti-password-karyawan/{id}', [EmployeeController::class,'password']);
-
-
-Route::middleware(['checkrole:admin,Dokter,Perawat'])->group(function () {
+Route::middleware(['checkrole:admin,Dokter,Perawat,Resepsionis'])->group(function () {
     Route::get('/tambah-pasien', function () {
         return view('form-patient');
     });
@@ -102,33 +119,14 @@ Route::middleware(['checkrole:admin,Dokter,Perawat'])->group(function () {
     Route::get('/pasien/{id}/edit', [PatientController::class,'patient']);
     Route::post('/edit/pasien/{id}', [PatientController::class,'update']);
     Route::post('/hapus-antrian/{id}', [AntrianController::class,'delete']);
+    Route::get('edit_pasien', function () {
+        return view('edit-patient');
+    });
+    Route::post('/tambah-antrian', [AntrianController::class,'insert']);
+    Route::post('pra-rekam/{id}', [AntrianController::class,'update']);
 });
 
 
-//obat
-Route::get('edit-obat/{id}/edit', [MedicineController::class , 'medicines']);
-Route::post('edit-obat/{id}', [MedicineController::class , 'update']);
-Route::get('obat/{id}', [MedicineController::class , 'medicines']) -> name('to.obat');
-Route::get('daftar-obat', function () {
-    return view('obat-list');
-});
-
-Route::get('tambah-obat', function () {
-    return view('form-obat');
-});
-
-Route::get('/logout', [UserController::class, 'logout']);
-
-Route::post('/tambah-obat/tambah', [MedicineController::class,'insert']);
-Route::post('/delete-obat/{id}', [MedicineController::class,'delete']);
-Route::post('/tambah-stock', [MedicineDetailController::class,'insert']);
-Route::post('/edit-stock/{id}', [MedicineDetailController::class,'update']);
-Route::post('/delete-stock/{id}', [MedicineDetailController::class,'delete']);
-Route::post('/tambah-antrian', [AntrianController::class,'insert']);
-
-// Route::get('register', function () {
-//     return view('register-user');
-// });
 
 Route::get('/forgot-password', function(){
     return view('userForgot.forgot-password');
@@ -137,14 +135,28 @@ Route::get('/reset_password', function(){
     return view('userForgot.reset-password');
 });
 
-Route::post('pra-rekam/{id}', [AntrianController::class,'update']);
-Route::post('/change-password', [UserController::class,'updatePassword']);
 
-Route::get('dev', function () {
-    return view('crud-sandbox');
-});
+//obat
 
-Route::post('/dev/simp', [UserController::class,'store']);
+
+
+
+
+
+
+// Route::get('register', function () {
+//     return view('register-user');
+// });
+
+
+
+
+
+// Route::get('dev', function () {
+//     return view('crud-sandbox');
+// });
+
+// Route::post('/dev/simp', [UserController::class,'store']);
 
 // Route::post('/patient/insert', 'PatientController@insert');
 
@@ -152,13 +164,10 @@ Route::post('/dev/simp', [UserController::class,'store']);
 //     return view('login-user');
 // });
 
-Route::get('users', function () {
-    return view('crud-sandbox');
-});
+// Route::get('users', function () {
+//     return view('crud-sandbox');
+// });
 
-Route::get('daftar-transaksi', function () {
-    return view('transaction-list');
-});
 
 
 // Route::get('pasien', function () {
@@ -171,21 +180,16 @@ Route::get('daftar-transaksi', function () {
 
 
 
-Route::get('daftar-rekam', function () {
-    return view('rekam-table');
-});
 
 
 
 
 
 
-Route::get('edit-rekam', function () {
-    return view('edit-rekammedis');
-});
+
+// Route::get('edit-rekam', function () {
+//     return view('edit-rekammedis');
+// });
 
 
 
-Route::get('edit_pasien', function () {
-    return view('edit-patient');
-});
