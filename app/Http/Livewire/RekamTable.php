@@ -88,7 +88,13 @@ final class RekamTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
-            ->addColumn('created_at_formatted', fn (RekamMedis $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (RekamMedis $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
+            ->addColumn('patient', function (RekamMedis $model) {
+                return ($model->Patient->patient_name );
+              })
+              ->addColumn('doctor', function (RekamMedis $model) {
+                return ($model->Employees->employee_name);
+              });
     }
 
     /*
@@ -109,6 +115,9 @@ final class RekamTable extends PowerGridComponent
     {
         return [
             Column::make('Id', 'id'),
+            Column::make('Pasien', 'patient'),
+            Column::make('Dokter', 'doctor'),
+            Column::make('Diagnosa', 'diagnosis'),
             Column::make('Created at', 'created_at_formatted', 'created_at')
                 ->sortable(),
 

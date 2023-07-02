@@ -146,16 +146,16 @@
 
             </div>
             <hr class="mb-8">
-            <div class="flex justify-center">
+            {{-- <div class="flex justify-center">
 
                <div x-data="{ rujukan: @entangle('rujukan') }" >
                   <label for="toggleSwitch">Buat Rujukan</label>
                   <input type="checkbox" id="toggleSwitch" x-model="rujukan" x-on:click="rujukan = !toggleProperty">
                 </div>
-            </div>
+            </div> --}}
 
 
-            <div class="w-full px-10">
+            {{-- <div class="w-full px-10">
 
                @if ($rujukan)
 
@@ -177,7 +177,7 @@
 
                @endif
 
-            </div>
+            </div> --}}
 
 
 
