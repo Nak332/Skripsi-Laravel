@@ -49,8 +49,8 @@ class MedicineController extends Controller
             'medicine_expired_date' =>'nullable'
         ],[
             'medicine_name' => 'Nama obat harus diisi',
-            'medicine_description' => 'Keterangan obat perlu diisi',
-            'medicine_price' => 'Harga obat perlu diisi'
+            'medicine_description' => 'Keterangan obat harus diisi',
+            'medicine_price' => 'Harga obat harus diisi'
         ]);
 
         if($validate->fails()){
@@ -61,17 +61,6 @@ class MedicineController extends Controller
                 ->with('submitted', true)
             ;
         }
-        // $request->validate([
-        //     'medicine_name' => 'required',
-        //     'medicine_description' =>'required',
-        //     'medicine_price' =>'required',
-        //     'medicine_stock' =>'nullable',
-        //     'medicine_expired_date' =>'nullable'
-        // ],[
-        //     'medicine_name' => 'Nama obat harus diisi',
-        //     'medicine_description' => 'Keterangan obat perlu diisi',
-        //     'medicine_price' => 'Harga obat perlu diisi'
-        // ]);
 
         $medicine = new Medicine;
         $medicine->medicine_name = $request->medicine_name;
@@ -95,8 +84,8 @@ class MedicineController extends Controller
             'medicine_price' =>'required',
         ],[
             'medicine_name' => 'Nama obat harus diisi',
-            'medicine_description' => 'Keterangan obat perlu diisi',
-            'medicine_price' => 'Harga obat perlu diisi'
+            'medicine_description' => 'Keterangan obat harus diisi',
+            'medicine_price' => 'Harga obat harus diisi'
         ]);
         $medicineUpdate = Medicine::findOrFail($id);
         $medicineUpdate->update([
