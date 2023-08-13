@@ -188,6 +188,7 @@
 
                 <form action="/update-transaksi/{{$transaksi->id}}" method="post">
                     @csrf
+                    <input type="text" name="employee_id" id="employee_id" class='hidden' value="{{Auth::user()->employee_id}}">
 
                     <div class="flex items-center justify-between">
 
@@ -196,17 +197,12 @@
                       <div class=" bg-white p-4 rounded my-6">
                       <div class="md:flex mt-4 items-center">
                         <label for="Total" class="w-1/2 block text-black text-lg font-medium ">Tipe Pembayaran</label>
-
-
                             <Select name="payment" id="payment" class="px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
                                 <option value="Kredit">Kredit</option>
                                 <option value="Debit">Debit</option>
                                 <option value="Tunai">Tunai</option>
                                 {{-- <option value="">Lainnya</option> --}}
                             </Select>
-
-
-
                     </div>
 
                         <div class="md:flex mt-4 mb-4 items-center">
@@ -220,6 +216,8 @@
                         Submit
                         </button>
                 </form>
+
+                
                 <form action="/batalkan-transaksi/{{$transaksi->id}}" method="post">
                     @csrf
                     <button type="" class="rounded-lg font-medium bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all px-4 py-2.5 mr-2 mb-2 text-center text-white">Batalkan Transaksi</button>
