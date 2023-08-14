@@ -21,6 +21,7 @@ class MedicineSearchBar extends Component
 
     public function updatedQuery(){
         $this->medicines= Medicine::where('medicine_name','like','%'.$this->query.'%')
+        ->orWhere('medicine_description', 'like', '%' . $this->query . '%')
         ->get()
         ->toArray();
     }

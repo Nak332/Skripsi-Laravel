@@ -34,7 +34,7 @@
                     class="w-full flex">
                         <div class="flex justify-between">
                             <p>{{$m['medicine_name']}} </p>
-                            <p>x80</p>
+                            {{-- <p>x80</p> --}}
 
                         </div>
                             
