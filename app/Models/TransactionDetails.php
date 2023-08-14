@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TransactionDetails extends Model
 {
     public function transaksi(){
-        return $this->belongsTo(Transaction::class);
+        return $this->hasMany(Transaction::class);
     }
     public function medicine(){
         return $this->belongsTo(Medicine::class,'medicine_id','id');

@@ -12,6 +12,8 @@
                 @endif
                 @if ($transaksi->rekammedis)
                 <p class="w-1/2">Dokter: <br> {{$transaksi->rekammedis->employees->employee_name}} </p>
+                @elseif ($transaksi->employee)
+                <p class="w-1/2">Kasir: <br> {{$transaksi->employee->employee_name}} </p>
                 @else
                 <p class="w-1/2">Kasir: <br> {{Auth::user()->Employee->employee_name}} </p>
                 @endif
@@ -80,15 +82,21 @@
                         <tbody>
                             @foreach ($detil as $index => $item)
                                 @if ($item->medicine_id != null)
+
                                     <tr>
                                         <td class="align-top">
                                             <div class="w-64 max-w-full  ">
                                                 <p class="py-4">{{ $item->medicine->medicine_name }}</p>
                                             </div>
                                          </td>
-                                        <td class="align-top">
+
+                                         <td class="align-top">
                                             <input type="number" wire:model="detil.{{ $index }}.quantity" disabled wire:change="UpdateQuantity({{ $item->id }},{{ $detil[$index]->quantity }})" class="px-4 w-24 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300">
                                         </td>
+
+                                        {{-- <td class="align-top">
+                                            <input type="number" wire:model="detil.{{ $index }}.quantity" disabled wire:change="UpdateQuantity({{ $item->id }},{{ $detil[$index]->quantity }})" class="px-4 w-24 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300">
+                                        </td> --}}
                                         <td class="align-top">
                                             <input type="text" disabled wire:model="detil.{{ $index }}.konsumsi" wire:change="UpdateKonsumsi({{ $item->id }},{{ $detil[$index]->konsumsi }})" class="px-4 w-32 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300">
                                         </td>
@@ -116,6 +124,8 @@
                             @endforeach
                         </tbody>
                     </table>
+
+
 
                     <div x-data="{ showDiv: false }">
                         <label class="bg-yellow-300 p-2 text-black rounded">
@@ -217,7 +227,7 @@
                         </button>
                 </form>
 
-                
+
                 <form action="/batalkan-transaksi/{{$transaksi->id}}" method="post">
                     @csrf
                     <button type="" class="rounded-lg font-medium bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all px-4 py-2.5 mr-2 mb-2 text-center text-white">Batalkan Transaksi</button>

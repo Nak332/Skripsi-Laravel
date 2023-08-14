@@ -80,7 +80,7 @@ class TransactionDetailComponent extends Component
         }
 
 
-
+        return redirect(request()->header('Referer'));
         Log::alert("keluar");
     }
 
@@ -96,6 +96,7 @@ class TransactionDetailComponent extends Component
         $transaction->update([
             'price' => $this->konsul
         ]);
+        return redirect(request()->header('Referer'));
     }
 
     public function SetTreatment($id){
@@ -110,6 +111,7 @@ class TransactionDetailComponent extends Component
         $transaction->update([
             'price' => $this->treatment
         ]);
+        return redirect(request()->header('Referer'));
     }
 
     public function SetExtra($id){
@@ -124,6 +126,7 @@ class TransactionDetailComponent extends Component
         $transaction->update([
             'extra_medicine' => $this->extra_medicine
         ]);
+        return redirect(request()->header('Referer'));
     }
 
     public function SetMedicinePrice($id){

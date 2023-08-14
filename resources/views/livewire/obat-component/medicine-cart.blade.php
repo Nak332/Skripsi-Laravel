@@ -68,7 +68,6 @@
                             </select>
                             </div>
 
-
                     </div>
                 </div>
 
@@ -86,7 +85,7 @@
     <div class="flex">
         <div class="cursor-pointer bg-green-500 w-fit m-4 p-2 rounded hover:outline hover:outline-green-500 hover:bg-white hover:text-green-500 transition-all text-center text-white font-bold"  wire:click="wireChangeDataTransaction">Simpan</div>
     </div>
-        
+
 
 
 
