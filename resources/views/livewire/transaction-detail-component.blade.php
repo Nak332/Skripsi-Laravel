@@ -2,20 +2,44 @@
     <div id="container_header_transaksi" class=" flex justify-center w-full pt-8">
         <div id="card_pasien" class="w-4/5 p-4 bg-white rounded ">
             <h1 class="text-2xl font-bold mb-4 truncate">Transaksi {{$transaksi->id}}</h1>
+            @if ($transaksi->rekamMedis_id)
             <h1 class="text-sm  font-bold mb-4 truncate">No. Rekam Medis: {{$transaksi->rekamMedis_id}}</h1>
+            @elseif (!$transaksi->rekamMedis_id && !$transaksi->patient_id)
+            <h1 class="text-sm  font-bold mb-4 truncate">Pembelian Obat</h1>
+            @else
+            <h1 class="text-sm  font-bold mb-4 truncate">Lain-Lain</h1>
+            @endif
+            
             <hr>
             <div class="flex justify-between mt-2">
                 @if ($transaksi->patient)
-                <p class="w-1/2">Pasien: <br> {{$transaksi->patient->patient_name}}</p>
+                <div class="w-1/2">
+                    <p class="font-bold">Pasien:</p>
+                    <p class=""> {{$transaksi->patient->patient_name}} <br> Nomor Pasien {{$transaksi->patient->id}} </p>
+                </div>
                 @else
 
                 @endif
                 @if ($transaksi->rekammedis)
-                <p class="w-1/2">Dokter: <br> {{$transaksi->rekammedis->employees->employee_name}} </p>
+                <div class="w-1/2">
+                    <p class="font-bold">Dokter:  </p>
+                    <p class="">{{$transaksi->rekammedis->employees->employee_name}} </p>
+                    <p class="">Nomor Karyawan {{$transaksi->rekammedis->employees->id}} </p>
+                </div>
+                
                 @elseif ($transaksi->employee)
-                <p class="w-1/2">Kasir: <br> {{$transaksi->employee->employee_name}} </p>
+                
+                <div class="w-1/2">
+                    <p class="font-bold">Kasir:  </p>
+                    <p class="">{{$transaksi->employee->employee_name}} </p>
+                    <p class="">Nomor Karyawan {{$transaksi->employee->id}} </p>
+                </div>
                 @else
-                <p class="w-1/2">Kasir: <br> {{Auth::user()->Employee->employee_name}} </p>
+                <div class="w-1/2">
+                    <p class="font-bold">Kasir:  </p>
+                    <p class="">{{Auth::user()->Employee->employee_name}}</p>
+                    <p class="">Nomor Karyawan {{Auth::user()->Employee->id}}</p>
+                </div>
                 @endif
 
             </div>
@@ -70,7 +94,8 @@
                     <hr>
                     <table class="w-max my-4">
                         <thead class="">
-                            <tr>
+                            @if (!$detil->isEmpty())
+                            <tr class="">
                                 <th class="text-black text-base text-start font-medium capitalize">Nama Obat</th>
                                 <th class="text-black text-base text-start font-medium capitalize">Kuantitas</th>
                                 <th class="text-black text-base text-start font-medium capitalize">Tipe</th>
@@ -78,6 +103,10 @@
                                 <th class="text-black text-base text-start font-medium capitalize">Harga</th>
                                 <th class="text-black text-base text-start font-medium capitalize">Harga Total</th>
                             </tr>
+                            @else
+                             <p class="mt-3">Daftar Obat Kosong</p>
+                            @endif
+                           
                         </thead>
                         <tbody>
                             @foreach ($detil as $index => $item)
@@ -126,7 +155,7 @@
                     </table>
 
 
-
+                    @if ($transaksi->flag ==1)
                     <div x-data="{ showDiv: false }">
                         <label class="bg-yellow-300 p-2 text-black rounded">
                             <input type="checkbox" x-model="showDiv" class="form-checkbox">
@@ -145,7 +174,9 @@
                                 @livewire('medicine-cart')
                             @endif
                         </div>
-                    </div>
+                    </div>    
+                    @endif
+                    
 
                 </div>
 
@@ -207,12 +238,17 @@
                       <div class=" bg-white p-4 rounded my-6">
                       <div class="md:flex mt-4 items-center">
                         <label for="Total" class="w-1/2 block text-black text-lg font-medium ">Tipe Pembayaran</label>
+                        @if ($transaksi->flag ==1)    
                             <Select name="payment" id="payment" class="px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
                                 <option value="Kredit">Kredit</option>
                                 <option value="Debit">Debit</option>
                                 <option value="Tunai">Tunai</option>
                                 {{-- <option value="">Lainnya</option> --}}
                             </Select>
+                        @else
+                            <p class="px-4 py-2">{{$transaksi->payment}}</p>
+                        @endif
+                        
                     </div>
 
                         <div class="md:flex mt-4 mb-4 items-center">
@@ -220,18 +256,22 @@
                             <p class="font-bold text-lg p-2"  name="Total" wire:init='SetTotal({{$transaksi->id}})'>{{number_format($totalharga,2,'.')}} Rupiah</p>
                             <input type="text" name="total" value="{{$totalharga}}" class="hidden">
                         </div>
+                        @if ($transaksi->flag == 1)
                         <button
                         class="rounded-lg font-medium bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all px-4 py-2.5 mr-2 mb-2 text-center text-white"
                         type="submit">
                         Submit
-                        </button>
+                        </button>    
+                        @endif
+                        
                 </form>
 
-
+                @if ($transaksi->flag == 1)
                 <form action="/batalkan-transaksi/{{$transaksi->id}}" method="post">
                     @csrf
                     <button type="" class="rounded-lg font-medium bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all px-4 py-2.5 mr-2 mb-2 text-center text-white">Batalkan Transaksi</button>
                 </form>
+                @endif
                     </div>
                     </div>
 
