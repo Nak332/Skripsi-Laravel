@@ -71,11 +71,17 @@ class TransactionDetailComponent extends Component
                     $transaksibaru->transaction_id = $this->transaksi->id;
                     $transaksibaru->medicine_id = $o;
                     $medicineprice = Medicine::find($o);
-                    $transaksibaru->price = $medicineprice->medicine_price;
+                    if ($medicineprice) {
+                        $transaksibaru->price = $medicineprice->medicine_price;
                     $transaksibaru->quantity = $listqty[$index];
                     $transaksibaru->konsumsi = $konsumsilist[$index];
                     $transaksibaru->dosis = $dosislist[$index];
                     $transaksibaru->save();
+                    } else {
+                        return redirect(request()->header('Referer'));
+                    }
+
+
             }
         }
 
