@@ -54,7 +54,7 @@ class MedicineCart extends Component
             $cart_items = TransactionDetails::where('transaction_id',$this->medicine_purchase)->whereNotNull('medicine_id')->get();
             foreach($cart_items as $index => $o){
                 $medicine_id = $cart_items[$index]->medicine_id;
-                
+
                 $qty = $cart_items[$index]->quantity;
                 $dose = $cart_items[$index]->dosis;
                 $type = $cart_items[$index]->konsumsi;
@@ -65,7 +65,7 @@ class MedicineCart extends Component
         else if($this->transact_rekam){
             Log::alert( $this->transact_rekam. 'Ini med purch');
             // -----------------------------Cek kalo pernah diubah transaction Detailnya ( Beda dari dalem RekamMedis)
-            
+
             if(($transact_id=$this->checkDetailWithRekam())!=false){
 
                 $cart_items = TransactionDetails::where('transaction_id',$transact_id->id)->whereNotNull('medicine_id')->get();
