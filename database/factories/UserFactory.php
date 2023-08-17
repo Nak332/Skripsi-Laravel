@@ -20,7 +20,7 @@ class UserFactory extends Factory
         return [
             'name' => 'admin',
             'email' => fake()->unique()->safeEmail(),
-            'employee_id' => '0',
+            'employee_id' => '1',
             'role' => 'admin',
             'status' => '1',
             'username' => 'admin',

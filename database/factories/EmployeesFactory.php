@@ -22,7 +22,7 @@ class EmployeesFactory extends Factory
     {
         $name = $this->faker->name();
         $job = $this->faker->randomElement(['Perawat','Doktor']);
-        $gender = 'binary';
+        $gender = 'Pria';
         return [
             'employee_name' => $name,
             'employee_job' => $job,
