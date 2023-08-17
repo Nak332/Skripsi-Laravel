@@ -79,7 +79,7 @@
 
 
 
-    <div id="container-items-atas" class="  mt-20 xl:flex  justify-center h-fit">
+    <div id="container-items-atas" wire:poll.200ms class="  mt-20 xl:flex  justify-center h-fit">
       @if ($history and $antrian)
       <div class="lg:w-5/12">
         @livewire('antrian-list',['antrian'=>$antrian,'history'=>$history,'q_type'=>'on_the_spot'])

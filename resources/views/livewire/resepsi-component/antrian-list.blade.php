@@ -1,4 +1,4 @@
-<div id="container-antrian" class="flex-inline self-center p-8  h-fit w-full truncate">
+<div id="container-antrian" class="flex-inline self-center p-8  h-fit w-full truncate" wire:poll.200ms>
     <div class="md:flex justify-between items-start">
         <h1 class="text-2xl font-bold mb-4">
             @if ($q_type=='on_the_spot')
