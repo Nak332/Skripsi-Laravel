@@ -26,7 +26,7 @@ class EmployeeCreated
     {
         $this->employee = $employeess;
         Log::info('berjalan');
-        log::info($this->employee->name);
+        log::info($this->employee->employee_name);
     }
 
     /**

@@ -23,7 +23,7 @@ class AntrianController extends Controller
     	$antrian = Appointment::all();
         $history = AppointmentHistory::whereDate('created_at',  Carbon::today()->toDateString())->get();
     	return view('resepsi', compact(['antrian','history']));
-    
+
     }
 
     public function insert(Request $request)
@@ -46,8 +46,8 @@ class AntrianController extends Controller
 
 
         $antrian = new Appointment;
-
-        $antrian->patient_id = $request->patient_id;
+        if ($request->patient_id) {
+            $antrian->patient_id = $request->patient_id;
         $antrian->employee_id = $request->employee_id;
         $antrian->appointment_type = $request->appointment_type;
         if ($last != $today->day) {
@@ -67,11 +67,17 @@ class AntrianController extends Controller
 
 
         $antrian->save();
-
         event(new AppointmentHistoryCreated($antrian));
-
         Log::info('sekarang' . $antrian->id);
         return redirect('/resepsi');
+        }
+        else {
+            return redirect()->back();
+        }
+
+
+
+
     }
 
     public function update(Request $request, $id)

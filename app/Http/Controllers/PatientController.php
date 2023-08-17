@@ -165,7 +165,7 @@ class PatientController extends Controller
         'has_BPJS' => $request->has_BPJS
         ]);
         Alert::toast('Sukses mengedit pasien ' . $request->patient_name.' !', 'success');
-        return redirect('/');
+        return redirect()->route('to.pasien', ['id' => $id]);
     }
 
     public function delete($id)
