@@ -70,7 +70,7 @@
                     <textarea rows="2" id="patient_address" name="patient_address" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="">{{old('patient_address')}}</textarea>
                   
                     @error('patient_address')
-                    <div class="text-xstext-red-600">{{ $message }}</div>
+                    <div class="text-xs text-red-600">{{ $message }}</div>
                     @enderror
                   </div>
                   <div class="mb-4">
