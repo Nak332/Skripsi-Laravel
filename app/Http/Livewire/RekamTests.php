@@ -49,6 +49,7 @@ class RekamTests extends ModalComponent
                     'diastol'=>$this->diastol,
                     'pulse'=>$this->pulse                
             ]);
+            $this->closeModal();
             
         }
         $this->emit('testValueUpdated',[
@@ -60,7 +61,7 @@ class RekamTests extends ModalComponent
             'sistol'=>$this->sistol,
             'diastol'=>$this->diastol,
             'pulse'=>$this->pulse   ]);
-        
+            $this->closeModal();
         
 
     }

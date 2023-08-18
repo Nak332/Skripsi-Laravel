@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Http\Controllers\AntrianController;
 use App\Models\Appointment;
 use App\Models\Patient;
+use App\Models\Transaction;
 use App\Models\Vaksin;
 use Carbon\Carbon;
 use Livewire\Component;
@@ -16,6 +17,7 @@ class DashboardMainComponent extends Component
     public $patient_stats;
     public $vaksin_list;
     public $currentdate;
+    public $transaction_list;
     public $count = 0;
     public $target = 100;
 
@@ -28,6 +30,8 @@ class DashboardMainComponent extends Component
         ->whereNotNull('next_dose')->orderBy('next_dose')
         ->get();
         $this->count = $this->target;
+        $this->transaction_list = Transaction::where('created_at', '>=', $this->currentdate)->get();
+        
     
     }
 

@@ -24,21 +24,24 @@
                 {{-- <hr class="h-0.5 rounded-2xl my-4 border-0 dark:bg-gray-700"> --}}
                 <div class="justify-center flex mt-4">
                     <div class="w-full h-72 inline bg-white  rounded overflow-y-auto">
-                        
-                        @foreach ($vaksin_list as $v)
-                            <form class="bg-blue-400 text-white m-3 p-2 rounded " action="/pasien/{{$v->patient_id}}" method="GET">
+                    @if ($transaction_list)
+                        @foreach ($transaction_list as $t)
+                            <form class="bg-blue-400 text-white m-3 p-2 rounded " action="/transaksi/{{$t->id}}" method="GET">
                                 <button class="w-full text-start justify-between flex font-bold" >
                                     <div class="">
-                                        {{$v->patient->patient_name}} 
+                                       Transaksi No. {{$t->id}} ({{$t->flag == 1 ? "Terbuka" : "Selesai"}})
                                     </div>
                                     <div class=""> 
-                                        {{$v->next_dose}}
+                                        {{DATE_FORMAT($t->created_at,'H:i:s')}}
                                     </div>
                                 </button>
                                 
                             </form>
 
                         @endforeach
+                        
+                    @endif
+                        
                             
                     </div>
                 </div>

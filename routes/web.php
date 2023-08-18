@@ -144,9 +144,9 @@ Route::get('/reset_password', function(){
 
 
 
-// Route::get('register', function () {
-//     return view('register-user');
-// });
+Route::get('surat', function () {
+    return view('surat-rujukan');
+});
 
 
 
