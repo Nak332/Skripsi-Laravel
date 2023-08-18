@@ -24,6 +24,21 @@ class RekamController extends Controller
 
     }
 
+    public function Surat($name,$id)
+    {
+        $pasien = Patient::find($name);
+        $surat = RekamMedis::find($id);
+
+        if ($surat->rujukan_recipient) {
+            return view('surat-rujukan', compact(['pasien','surat']));
+        }
+        else{
+            return redirect()->back();
+        }
+
+
+    }
+
     public function insert(Request $request)
     {
         $request->validate([
@@ -81,6 +96,9 @@ class RekamController extends Controller
         $rekamMedis->dosis = $request->dosis;
         $rekamMedis->note = $request->note;
         $rekamMedis->flag = $request->flag;
+        $rekamMedis->rujukan_recipient = $request->rujukan_recipient;
+        $rekamMedis->rujukan_specialist = $request->rujukan_specialist;
+        $rekamMedis->rujukan_current_state = $request->rujukan_current_state;
         $rekamMedis->icd10 = $request->icd10;
         $rekamMedis->save();
 

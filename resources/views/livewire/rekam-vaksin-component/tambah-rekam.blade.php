@@ -15,7 +15,7 @@
             <input name='weight' wire:model='weight' step="0.1" type="number" hidden >
             <input name='complaint' wire:model='complaint' type="text" hidden >
 
-            <div class="px-6 ml-2"><span class="text-sm text-red-500">*Wajib diisi</span></div><br>    
+            <div class="px-6 ml-2"><span class="text-sm text-red-500">*Wajib diisi</span></div><br>
            <div id="container_pasien" class="flex-inline py-4">
               <div class="px-6 py-4 w-1/3 ml-2" x-data="{ show: true }">
                   <label for="Pasien" class="block text-black text-sm font-medium mb-2">Pasien<span class="text-red-500">*</span></label>
@@ -27,16 +27,16 @@
                  </p>
 
                  @endif
-               
+
                      <div class="mt-4" x-show="show">
-                    @livewire('patient-search-bar') 
+                    @livewire('patient-search-bar')
                      </div>
                      @error('patient_id') <span class="text-xs text-red-500">{{$message}}</span> @enderror
               </div>
               @if ($selected_patient)
               <div id="selected-patient-container" class="flex">
                  <div id="selected-patient-card" class="w-1/2 flex-inline px-8">
-     
+
                     <div>
                        <p class="font-bold text-white rounded-lg bg-blue-500 p-3 truncate">
                            {{$selected_patient['patient_name']}} <br>
@@ -56,16 +56,16 @@
                         {{$selected_patient->lastAppointment()['created_at']}}
                         <div wire:click="$emit('openModal','rekam-summary',{{ json_encode(['selected_patient' => $selected_patient]) }})" class=" p-2  bg-gray-700 text-white hover:text-gray-700 hover:bg-white hover:outline transition-all hover:outline-gray-700 rounded cursor-pointer w-fit"> Riwayat Kunjungan</div>
                      </p>
-                  </div> 
+                  </div>
                   @endif
-                    
+
                     <input type="text" name="patient_id" id="patient_id" hidden value="{{$selected_patient['id']}}">
                     <input type="text" name="appointment_id" id="appointment_id"  wire:model='q_number' hidden @if($q_number>0) value="{{ $q_number }}" @else value="-1" @endif >
                     <input type="text" name="employee_id" id="employee_id" hidden value="{{Auth::user()->employee_id}}">
                  </div>
-              </div> 
+              </div>
               @endif
-             
+
               <hr class="mt-8">
 
 
@@ -163,7 +163,7 @@
 
                   <div class="mb-4 ">
                      <label for="dissease" class="block text-black text-sm font-medium mb-2">Kepada Rumah Sakit / Klinik / Dokter</label>
-                     <input type="text" name="rujukan_recepient" id="rujukan_recepient" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
+                     <input type="text" name="rujukan_recipient" id="rujukan_recipient" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder=""></textarea>
                   </div>
 
                   <div class="mb-4 ">
