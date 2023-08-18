@@ -115,7 +115,12 @@
                                     <tr>
                                         <td class="align-top">
                                             <div class="w-64 max-w-full  ">
-                                                <p class="py-4">{{ $item->medicine->medicine_name }}</p>
+                                                <p class="py-4">{{ $item->medicine->medicine_name }} @php
+                                                    
+                                                    $sum = \App\Models\Medicine::stock($item->medicine->id);
+                                                @endphp
+                                                (Stok: {{$sum}})
+                                            </p>
                                             </div>
                                          </td>
 
