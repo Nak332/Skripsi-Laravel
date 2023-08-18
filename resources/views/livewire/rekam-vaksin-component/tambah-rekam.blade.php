@@ -48,15 +48,17 @@
                     </div>
                  </div>
                  <div id="selected-patient-card" class="w-1/2 flex-inline px-8">
+                  @if ($selected_patient->lastAppointment())
+                  <label class="block mb-2 text-sm font-medium text-gray-900 " for="patient_id">Kunjungan terakhir</label>
+                  <div>
+                     <p class="py-3 px-2 truncate ">
 
-                    <label class="block mb-2 text-sm font-medium text-gray-900 " for="patient_id">Kunjungan terakhir</label>
-                    <div>
-                       <p class="py-3 px-2 truncate ">
-
-                          {{$selected_patient->lastAppointment()['created_at']}}
-                          <div wire:click="$emit('openModal','rekam-summary',{{ json_encode(['selected_patient' => $selected_patient]) }})" class=" p-2  bg-gray-700 text-white hover:text-gray-700 hover:bg-white hover:outline transition-all hover:outline-gray-700 rounded cursor-pointer w-fit"> Riwayat Kunjungan</div>
-                       </p>
-                    </div>
+                        {{$selected_patient->lastAppointment()['created_at']}}
+                        <div wire:click="$emit('openModal','rekam-summary',{{ json_encode(['selected_patient' => $selected_patient]) }})" class=" p-2  bg-gray-700 text-white hover:text-gray-700 hover:bg-white hover:outline transition-all hover:outline-gray-700 rounded cursor-pointer w-fit"> Riwayat Kunjungan</div>
+                     </p>
+                  </div> 
+                  @endif
+                    
                     <input type="text" name="patient_id" id="patient_id" hidden value="{{$selected_patient['id']}}">
                     <input type="text" name="appointment_id" id="appointment_id"  wire:model='q_number' hidden @if($q_number>0) value="{{ $q_number }}" @else value="-1" @endif >
                     <input type="text" name="employee_id" id="employee_id" hidden value="{{Auth::user()->employee_id}}">
