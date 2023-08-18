@@ -14,6 +14,7 @@ use App\Http\Controllers\VaksinController;
 use App\Models\Appointment;
 use App\Models\Medicine;
 use App\Models\Patient;
+use App\Models\RekamMedis;
 use App\Models\Transaction;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
@@ -84,6 +85,7 @@ Route::middleware(['checkrole:admin,Dokter'])->group(function () {
     Route::get('daftar-rekam', function () {
         return view('rekam-table');
     });
+    Route::get('/surat/{name}/{id}', [RekamController::class , 'Surat']);
 });
 
 Route::middleware(['checkrole:admin,Dokter,Farmasi'])->group(function () {
@@ -141,12 +143,6 @@ Route::get('/reset_password', function(){
 
 
 
-
-
-
-Route::get('surat', function () {
-    return view('surat-rujukan');
-});
 
 
 
