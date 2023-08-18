@@ -31,9 +31,12 @@ class Patient extends Model
         return $a->diff(Carbon::now()) ->format('%y years, %m months and %d days');
     }
 
-    public function LastAppointment(){
-        $p = RekamMedis::orderBy('created_at')->first();
-        return $p;
+    public function LastAppointment($id){
+        $p = RekamMedis::where('patient_id',$id)->orderby('created_at' ,'DESC')->first();
+        if ($p) {
+            return $p;
+        }
+
     }
 
     protected $guarded = [

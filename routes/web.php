@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::middleware(['checkrole:admin'])->group(function () {
+Route::middleware(['checkrole:Kepala Praktek'])->group(function () {
     Route::post('ganti-password-karyawan/{id}', [EmployeeController::class,'password']);
     Route::get('/tambah-karyawan', function () {
         return view('form-empregister');
@@ -56,10 +56,6 @@ Route::middleware(['isLogin'])->group(function () {
     Route::get('/',[AntrianController::class,'index']);
     Route::get('/resepsi',[AntrianController::class,'index']);
     Route::get('/logout', [UserController::class, 'logout']);
-    Route::get('/daftar-pasien', function () {
-        return view('patient-list');
-    });
-    Route::view('/pasien', 'pasien');
     Route::get('/db', function(){
         return view('dashboard.dashboard_main');
     });
@@ -72,8 +68,7 @@ Route::middleware(['isLogin'])->group(function () {
     Route::post('/change-password', [UserController::class,'updatePassword']);
 });
 
-Route::middleware(['checkrole:admin,Dokter'])->group(function () {
-    Route::get('/pasien/{id}', [PatientController::class , 'patient']) -> name('to.pasien');
+Route::middleware(['checkrole:Kepala Praktek,Dokter'])->group(function () {
     Route::get('/form-rekam/{id}', [RekamController::class , 'Rekam']);
     Route::get('/form-rekam/new', [RekamController::class , 'Rekam']);
     Route::post('form_rekam/tambah', [RekamController::class,'insert']);
@@ -85,10 +80,10 @@ Route::middleware(['checkrole:admin,Dokter'])->group(function () {
     Route::get('daftar-rekam', function () {
         return view('rekam-table');
     });
-    Route::get('/surat/{name}/{id}', [RekamController::class , 'Surat']);
+
 });
 
-Route::middleware(['checkrole:admin,Dokter,Farmasi'])->group(function () {
+Route::middleware(['checkrole:Kepala Praktek,Dokter,Farmasi'])->group(function () {
     Route::get('/transaksi/{id}',[TransactionController::class,'transaksi'])->name('to.transaction');
     Route::post('/update-transaksi/{id}', [TransactionController::class,'update']);
     Route::get('edit-obat/{id}/edit', [MedicineController::class , 'medicines']);
@@ -113,7 +108,13 @@ Route::middleware(['checkrole:admin,Dokter,Farmasi'])->group(function () {
 });
 
 
-Route::middleware(['checkrole:admin,Dokter,Perawat,Resepsionis'])->group(function () {
+Route::middleware(['checkrole:Kepala Praktek,Dokter,Perawat,Resepsionis'])->group(function () {
+    Route::get('/daftar-pasien', function () {
+        return view('patient-list');
+    });
+    Route::get('/surat/{name}/{id}', [RekamController::class , 'Surat']);
+    Route::view('/pasien', 'pasien');
+    Route::get('/pasien/{id}', [PatientController::class , 'patient']) -> name('to.pasien');
     Route::get('/tambah-pasien', function () {
         return view('form-patient');
     });

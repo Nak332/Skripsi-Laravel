@@ -23,7 +23,7 @@
                   <label for="employee_name" class="block text-gray-700 text-sm font-medium mb-2">Name<span class="text-red-500">*</span>
                   </label>
                   <input type="text" id="employee_name" name="employee_name" class="flex w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Nama Karyawan" value="{{old('employee_name')}}">
-                  
+
                   @error('employee_name')
                   <div class="text-xs text-red-600">{{ $message }}</div>
                   @enderror
@@ -31,14 +31,14 @@
                 <div class="mb-4">
                   <label for="employee_job" class="block text-gray-700 text-sm font-medium mb-2">Job<span class="text-red-500">*</span></label>
                 <div class="mb-4">
-                  
+
                   <select name = "employee_job" id="employee_job" class="border border-gray-300 rounded-md p-2">
-                    
+
                     <option hidden selected class ="pl-4 py-2" value="{{old('employee_job')}}">{{old('employee_job') ?: '-- Pilih Pekerjaan --'}}</option>
                     <option value="Dokter" class="pl-4 py-2">Dokter</option>
                     <option value="Perawat" class="pl-4 py-2">Perawat</option>
                     <option value="Farmasi" class="pl-4 py-2">Farmasi</option>
-                    <option value="Farmasi" class="pl-4 py-2">Resepsionis</option>
+                    <option value="Resepsionis" class="pl-4 py-2">Resepsionis</option>
                   </select>
                   @error('employee_job')
                   <div class="text-xs text-red-600">{{ $message }}</div>
@@ -59,7 +59,7 @@
                 <div class="mb-4">
                     <label for="employee_NIK" class="block text-gray-700 text-sm font-medium mb-2">NIK<span class="text-red-500">*</span></label>
                     <input type="text" id="employee_NIK" name="employee_NIK" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="NIK" value="{{old('employee_NIK')}}">
-                   
+
                     @error('employee_NIK')
                     <div class="text-xs text-red-600">{{ $message }}</div>
                     @enderror
@@ -73,8 +73,8 @@
                 </div>
                   <div class="mb-4">
                     <label for="employee_phone" class="block text-gray-700 text-sm font-medium mb-2">Phone<span class="text-red-500">*</span></label>
-                    <input type="text" name="employee_phone" id="employee_phone" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" 
-                    value="{{old('employee_phone')}}">        
+                    <input type="text" name="employee_phone" id="employee_phone" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300"
+                    value="{{old('employee_phone')}}">
                     @error('employee_phone')
                     <div class="text-xs text-red-600">{{ $message }}</div>
                     @enderror
@@ -82,7 +82,7 @@
                   <div class="mb-4">
                     <label for="employee_DOB" class="block text-gray-700 text-sm font-medium mb-2">Date of Birth<span class="text-red-500">*</span></label>
                     <input type="date" name="employee_DOB" id="employee_DOB" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" value="{{old('employee_DOB')}}">
-                   
+
                     @error('employee_DOB')
                     <div class="text-xs text-red-600">{{ $message }}</div>
                     @enderror
@@ -91,7 +91,7 @@
                     <label for="employee_POB" class="block text-gray-700 text-sm font-medium mb-2">Place of Birth<span class="text-red-500">*</span></label>
                     <textarea rows="2" name="employee_POB" id="employee_POB" class="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring focus:ring-blue-300" placeholder="Tempat Lahir">{{old('employee_POB')}}</textarea>
                     @if(!session('submitted'))
-                    
+
                   @endif
                     @error('employee_POB')
                     <div class="text-xs text-red-600">{{ $message }}</div>
@@ -105,7 +105,7 @@
                     <div class="text-xs text-red-600">{{ $message }}</div>
                     @enderror
                   </div>
-                  
+
                   <div class="mb-4">
                     <label for="employee_photo" class="block text-gray-700 text-sm font-medium mb-2">Photo</label>
                     <input type="file" name="image" id="image">

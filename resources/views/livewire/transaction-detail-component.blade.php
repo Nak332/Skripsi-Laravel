@@ -9,7 +9,7 @@
             @else
             <h1 class="text-sm  font-bold mb-4 truncate">Lain-Lain</h1>
             @endif
-            
+
             <hr>
             <div class="flex justify-between mt-2">
                 @if ($transaksi->patient)
@@ -26,9 +26,9 @@
                     <p class="">{{$transaksi->rekammedis->employees->employee_name}} </p>
                     <p class="">Nomor Karyawan {{$transaksi->rekammedis->employees->id}} </p>
                 </div>
-                
+
                 @elseif ($transaksi->employee)
-                
+
                 <div class="w-1/2">
                     <p class="font-bold">Kasir:  </p>
                     <p class="">{{$transaksi->employee->employee_name}} </p>
@@ -94,7 +94,9 @@
                     <hr>
                     <table class="w-max my-4">
                         <thead class="">
-                            @if (!$detil->isEmpty())
+                            @if ($detil->isEmpty() && !$transaksi->rekammedis->medicine_id)
+                            <p class="mt-3">Daftar Obat Kosong</p>
+                            @else
                             <tr class="">
                                 <th class="text-black text-base text-start font-medium capitalize">Nama Obat</th>
                                 <th class="text-black text-base text-start font-medium capitalize">Kuantitas</th>
@@ -103,10 +105,8 @@
                                 <th class="text-black text-base text-start font-medium capitalize">Harga</th>
                                 <th class="text-black text-base text-start font-medium capitalize">Harga Total</th>
                             </tr>
-                            @else
-                             <p class="mt-3">Daftar Obat Kosong</p>
                             @endif
-                           
+
                         </thead>
                         <tbody>
                             @foreach ($detil as $index => $item)
@@ -116,7 +116,7 @@
                                         <td class="align-top">
                                             <div class="w-64 max-w-full  ">
                                                 <p class="py-4">{{ $item->medicine->medicine_name }} @php
-                                                    
+
                                                     $sum = \App\Models\Medicine::stock($item->medicine->id);
                                                 @endphp
                                                 (Stok: {{$sum}})
@@ -151,7 +151,8 @@
                                             <input type="number" wire:model="detil.{{ $index }}.price" wire:change="UpdateMedicinePrice({{ $item->id }},{{ $detil[$index]->price }})" class="px-4 w-32 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" name="" id="">
                                         </td>
                                         <td class="align-top">
-                                            <input type="number" wire:model="detil.{{ $index }}.quantity" wire:change="UpdateQuantity({{ $item->id }},{{ $detil[$index]->quantity }})" class="px-4 w-32 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" disabled>
+                                            <p class="px-4 w-32 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300" disabled>  {{$detil[$index]->quantity * $detil[$index]->price}} </p>
+
                                         </td>
                                     </tr>
                                 @endif
@@ -179,9 +180,9 @@
                                 @livewire('medicine-cart')
                             @endif
                         </div>
-                    </div>    
+                    </div>
                     @endif
-                    
+
 
                 </div>
 
@@ -192,6 +193,7 @@
                         <label for="hasil_anamnesis" class="w-1/2 block text-black text-lg font-medium mb-2 ">Obat Lain</label>
                     </div>
                     <hr>
+                    @if ($transaksi->rekammedis->extra_medicine)
                     <table class="w-full my-4">
                         <thead class="">
                             <tr >
@@ -219,6 +221,10 @@
                             @endforeach
                         </tbody>
                     </table>
+                    @else
+                        <p class="mt-3">Tidak ada</p>
+                    @endif
+
 
                 </div>
 
@@ -243,7 +249,7 @@
                       <div class=" bg-white p-4 rounded my-6">
                       <div class="md:flex mt-4 items-center">
                         <label for="Total" class="w-1/2 block text-black text-lg font-medium ">Tipe Pembayaran</label>
-                        @if ($transaksi->flag ==1)    
+                        @if ($transaksi->flag ==1)
                             <Select name="payment" id="payment" class="px-4 py-2 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-300">
                                 <option value="Kredit">Kredit</option>
                                 <option value="Debit">Debit</option>
@@ -253,7 +259,7 @@
                         @else
                             <p class="px-4 py-2">{{$transaksi->payment}}</p>
                         @endif
-                        
+
                     </div>
 
                         <div class="md:flex mt-4 mb-4 items-center">
@@ -266,12 +272,12 @@
                         class="rounded-lg font-medium bg-green-500 hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 outline-2 transition-all px-4 py-2.5 mr-2 mb-2 text-center text-white"
                         type="submit">
                         Submit
-                        </button>    
+                        </button>
                         @endif
-                        
+
                 </form>
 
-                @if ($transaksi->flag == 1)
+                @if ($transaksi->flag == 1 && !$transaksi->rekamMedis_id)
                 <form action="/batalkan-transaksi/{{$transaksi->id}}" method="post">
                     @csrf
                     <button type="" class="rounded-lg font-medium bg-red-500 hover:bg-white hover:text-red-500 hover:outline hover:outline-red-500 outline-2 transition-all px-4 py-2.5 mr-2 mb-2 text-center text-white">Batalkan Transaksi</button>

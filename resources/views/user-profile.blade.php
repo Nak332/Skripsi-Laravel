@@ -50,7 +50,7 @@
           <div class="p-4 flex justify-center items-center">
 
 
-              @if (Auth::user()->Employee->employee_photo != null)
+              @if (Auth::user()->Employee->employee_photo)
               <img class="w-32 h-32 rounded-full mr-4" src="{{ asset("images/" . Auth::user()->Employee->employee_photo) }}" alt="Profile Picture">
               @else
               <img class="w-32 h-32 rounded-full mr-4" src="{{ asset('images/profile-icon.webp') }}" alt="Profile Picture">

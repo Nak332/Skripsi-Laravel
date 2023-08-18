@@ -16,11 +16,15 @@
                     <h1 class="  font-bold leading-tight tracking-tight mt-20 text-gray-900 md:text-2xl ">
                         Selamat  Datang
                     </h1>
-                    @if (session('error'))
-                    <div class="alert alert-danger">
-                         {{ session('error') }}
-                    </div>
-                 @endif
+                    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
                     <form class="space-y-4 md:space-y-6" method="POST" action="#">
                         @csrf
                         <div>

@@ -180,12 +180,15 @@
         </div>
 
         @endif
+        @if ($Rekam->rujukan_recipient)
         <div class="mb-4">
-            <label for="surat" class="block text-gray-700 text-sm font-medium mb-2">Surat </label>
-            <a class="p-2 bg-green-500 text-white rounded hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 transition-all" href="/surat/{{$Rekam->patient_id}}/{{$Rekam->id}}" target="_blank">Unduh</a>
+            <label for="surat" class="block text-gray-700 text-sm font-medium mb-2">Surat Rujukan</label>
+            <a class="p-2 bg-green-500 text-white rounded hover:bg-white hover:text-green-500 hover:outline hover:outline-green-500 transition-all" href="/surat/{{$Rekam->patient_id}}/{{$Rekam->id}}" target="_blank">Lihat</a>
             <!-- Use the `asset` helper to generate the URL to the file in your storage directory -->
 
         </div>
+        @endif
+
 
 
 

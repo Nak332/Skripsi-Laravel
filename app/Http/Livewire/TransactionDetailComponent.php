@@ -124,6 +124,7 @@ class TransactionDetailComponent extends Component
         $transaction = TransactionDetails::find($id);
         // $transaction->price = $this->konsul;
         $this->extra_medicine = $transaction->extra_medicine;
+
     }
 
     public function UpdateExtra($id){
@@ -147,6 +148,7 @@ class TransactionDetailComponent extends Component
         $transaction->update([
             'price' => $price
         ]);
+        return redirect(request()->header('Referer'));
     }
 
     public function SetQuantity($id){
