@@ -30,7 +30,7 @@ final class TransactionTable extends PowerGridComponent
             Exportable::make('export')
                 ->striped()
                 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
-            Header::make()->showSearchInput(),
+                Header::make()->showSearchInput()->showToggleColumns(),
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(),
@@ -142,7 +142,7 @@ final class TransactionTable extends PowerGridComponent
     public function filters(): array
     {
         return [
-            
+
             Filter::datepicker('created_at_formatted', 'created_at'),
         ];
     }
@@ -161,18 +161,18 @@ final class TransactionTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    
+
     public function actions(): array
     {
        return [
-         
+
                Button::make('redirect','Open')
                ->class('bg-green-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
                ->route('to.transaction',['id'=>'id'])
                ->target('_self')
         ];
     }
-    
+
 
     /*
     |--------------------------------------------------------------------------

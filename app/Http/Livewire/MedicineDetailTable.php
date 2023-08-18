@@ -31,7 +31,7 @@ final class MedicineDetailTable extends PowerGridComponent
             Exportable::make('export')
                 ->striped()
                 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
-            Header::make()->showSearchInput(),
+            Header::make()->showSearchInput()->showToggleColumns(),
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(),
@@ -154,7 +154,7 @@ final class MedicineDetailTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    
+
     public function actions(): array
     {
        return [
@@ -163,7 +163,7 @@ final class MedicineDetailTable extends PowerGridComponent
                 ->route('to.obat',['id'=>'id'])
         ];
     }
-    
+
 
     /*
     |--------------------------------------------------------------------------

@@ -67,11 +67,14 @@ class MedicineController extends Controller
         $medicine->medicine_description = $request->medicine_description;
         $medicine->medicine_price = $request->medicine_price;
         $medicine->save();
-        $medicineDetail = new MedicineDetail;
+        if ($request->medicine_stock && $request->medicine_expired_date) {
+            $medicineDetail = new MedicineDetail;
         $medicineDetail->medicine_id = $medicine->id;
         $medicineDetail->medicine_stock = $request->medicine_stock;
         $medicineDetail->medicine_expired_date = $request->medicine_expired_date;
         $medicineDetail->save();
+        }
+
         Alert::toast('Sukses menambah obat!', 'success');
         return redirect('/daftar-obat')->with('submitted', true);;
     }
